@@ -59,7 +59,7 @@ def fill(t, ver):
 
 def parse_date(s):
     s = re.sub(r"(\d)(?:st|nd|rd|th)\b", r"\1", s.strip().replace(" of ", " "))
-    for f in ("%B %d, %Y", "%d %B %Y", "%B %d %Y", "%Y-%m-%d"):
+    for f in ("%B %d, %Y", "%b %d, %Y", "%d %B %Y", "%B %d %Y", "%Y-%m-%d"):
         try:
             return datetime.datetime.strptime(s, f).strftime("%Y-%m-%d")
         except ValueError:

@@ -126,3 +126,99 @@ items:
     released: "2026-10-20"
     link: https://www.dbaudio.com/global/en/products/software/arraycalc/
     note: Download vereist My d&b-account (versie handmatig)
+  - name: FabFilter Pro-Q 4
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Pro\-Q 4.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Pro\-Q 4.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffproq\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffproq\d+x64\.exe)["'']'}
+  - name: FabFilter Pro-C 3
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Pro\-C 3.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Pro\-C 3.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffproc\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffproc\d+x64\.exe)["'']'}
+  - name: FabFilter Pro-L 2
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Pro\-L 2.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Pro\-L 2.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffprol\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffprol\d+x64\.exe)["'']'}
+  - name: FabFilter Pro-R 2
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Pro\-R 2.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Pro\-R 2.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffpror\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffpror\d+x64\.exe)["'']'}
+  - name: FabFilter Pro-MB
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Pro\-MB.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Pro\-MB.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffpromb\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffpromb\d+x64\.exe)["'']'}
+  - name: FabFilter Pro-DS
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Pro\-DS.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Pro\-DS.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffprods\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffprods\d+x64\.exe)["'']'}
+  - name: FabFilter Pro-G
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Pro\-G.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Pro\-G.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffprog\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffprog\d+x64\.exe)["'']'}
+  - name: FabFilter Saturn 2
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Saturn 2.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Saturn 2.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffsaturn\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffsaturn\d+x64\.exe)["'']'}
+  - name: cntrlld Spectra
+    category: PLUGINS
+    url: https://cntrlld.com/download
+    regex: 'Latest build:\s*(?:<[^>]*>\s*)*v?(\d+\.\d+\.\d+)'
+    previous_from_page: false
+    date_regex: 'Latest build:.{0,200}?released\s*(?:<[^>]*>\s*)*(\d{4}-\d{2}-\d{2})'
+    link: https://cntrlld.com/download
+    note: Alleen macOS (VST3 en AU)
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*SPECTRA-v{version}\.pkg)["'']'}
+  - name: cntrlld ClearVox
+    category: PLUGINS
+    version: ""        # vul hier de versie in; de downloadpagina is niet automatisch te lezen
+    released: ""
+    link: https://cntrlld.com/clearvox/download
+    note: Versie handmatig
