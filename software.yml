@@ -18,12 +18,30 @@ items:
     category: RF
     url: https://www.shure.com/en-US/products/software/wwb
     regex: 'Version (7\.\d+(?:\.\d+)*)'             # nog te controleren met --test
+  # L-Acoustics: download zit achter een login, dus de versie vul je zelf in.
+  # Is er een nieuwe versie? Pas 'version' aan; de pagina toont dan de wijzigingsdatum.
   - name: L-Acoustics Network Manager
     category: Netwerk
-    url: https://www.l-acoustics.com/en/product/la-network-manager/
-    regex: 'Version[ :]*(\d+\.\d+(?:\.\d+)*)'       # nog te controleren met --test
+    version: ""
+    link: https://access.l-acoustics.com/download-center/software/network-manager
+    note: Download vereist L-Acoustics-account (versie handmatig)
   - name: L-Acoustics Soundvision
     category: Simulatie
-    url: https://www.l-acoustics.com/en/products/soundvision/
-    regex: 'Version[ :]*(\d+\.\d+(?:\.\d+)*)'       # nog te controleren met --test
-  # LiveProfessor en Milan Manager volgen zodra de bron is uitgezocht.
+    version: ""
+    link: https://access.l-acoustics.com/download-center/software/soundvision
+    note: Download vereist L-Acoustics-account (versie handmatig)
+  - name: LiveProfessor
+    category: Audio
+    url: https://www.audiostrom.com/change-log
+    regex: 'LiveProfessor (\d+\.\d+\.\d+)'      # hoogste versie op de changelog
+    downloads:                                      # {version} wordt vervangen door de gevonden versie
+      - {label: Mac, url: "https://fls-a2124b9f-5148-4760-a455-ace2436abe75.laravel.cloud/software/1004/{version}/LiveProfessor.dmg"}
+      - {label: Windows, url: "https://fls-a2124b9f-5148-4760-a455-ace2436abe75.laravel.cloud/software/1004/{version}/LiveProfessor-win-x64.msi"}
+  - name: Milan Manager
+    category: Netwerk
+    url: https://milanmanager.com/
+    regex: 'MilanManager V(\d+\.\d+\.\d+)'
+    downloads:                                      # links worden uit de pagina gehaald
+      - {label: Mac, regex: 'href=["'']([^"'']*MilanManager-V{version}\.dmg[^"'']*)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*MilanManager-V{version}\.zip[^"'']*)["'']'}
+
