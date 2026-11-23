@@ -11,12 +11,26 @@ def fetch(url):
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 update-watcher"})
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
 
+def debug_dump(name, page):
+    print(f"--- DEBUG {name}: {len(page)} tekens ontvangen", flush=True)
+    for m in re.findall(r".{0,60}[Vv]ersion.{0,60}", page)[:12]:
+        print("    ", " ".join(m.split()), flush=True)
+    for m in re.findall(r".{0,40}\b\d+\.\d+(?:\.\d+)+.{0,40}", page)[:8]:
+        print("    #", " ".join(m.split()), flush=True)
+
 def check(it):
     if it.get("github"):
         d = json.loads(fetch(f"https://api.github.com/repos/{it['github']}/releases/latest"))
         return d["tag_name"].lstrip("v")
-    found = re.findall(it["regex"], fetch(it["url"]))
+    if it.get("json"):
+        d = json.loads(fetch(it["json"]))
+        for k in it["key"].split("."):
+            d = d[k]
+        return re.search(r"\d+(?:\.\d+)+", str(d)).group(0)
+    page = fetch(it["url"])
+    found = re.findall(it["regex"], page)
     if not found:
+        debug_dump(it["name"], page)
         raise ValueError("geen versie gevonden (regex klopt niet meer?)")
     return max(found, key=vkey)  # hoogste versie op de pagina
 

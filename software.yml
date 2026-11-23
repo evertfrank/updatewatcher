@@ -11,8 +11,9 @@ items:
     note: Download vereist Audinate-account
   - name: QLab
     category: Showcontrol
-    url: https://qlab.app/downloads/
-    regex: 'QLab[ -]v?(5\.\d+(?:\.\d+)*)'          # nog te controleren met --test
+    json: https://formulae.brew.sh/api/cask/qlab.json   # versie via Homebrew (qlab.app blokkeert GitHub)
+    key: version
+    link: https://qlab.app/downloads/
   - name: Shure Wireless Workbench
     category: RF
     url: https://www.shure.com/en-US/products/software/wwb
