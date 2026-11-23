@@ -133,6 +133,59 @@ def resolve_downloads(it, ver):
             pass
     return out
 
+def fetch_bytes(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 update-watcher"})
+    with urllib.request.urlopen(req, timeout=20) as resp:
+        return resp.read(400_000), resp.headers.get("Content-Type", "")
+
+ICON_EXT = {"image/png": "png", "image/svg+xml": "svg", "image/x-icon": "ico", "image/vnd.microsoft.icon": "ico", "image/jpeg": "jpg", "image/webp": "webp", "image/gif": "gif"}
+
+def site_icon(it):
+    """Haalt het pictogram op dat de website zelf gebruikt (apple-touch-icon of favicon) en bewaart het in docs/icons/. Geeft het pad terug, of '' als dat niet lukt."""
+    base = it.get("icon_site") or it.get("link") or it.get("url") or ""
+    host = urllib.parse.urlparse(base).netloc
+    if not host:
+        return ""
+    slug = re.sub(r"[^a-z0-9]+", "-", host.lower()).strip("-")
+    folder = DATA / "icons"
+    for hit in folder.glob(slug + ".*") if folder.exists() else []:
+        return f"icons/{hit.name}"                      # al eerder opgehaald
+    try:
+        page_url = f"https://{host}/"
+        cands = []
+        try:
+            page = fetch(page_url)
+            links = re.findall(r"<link[^>]+>", page, re.I)
+            def rank(tag):
+                rel = re.search(r'rel=["\']([^"\']+)', tag, re.I)
+                rel = rel.group(1).lower() if rel else ""
+                if "apple-touch-icon" in rel: return 0
+                if "icon" in rel: return 1
+                return None
+            for tag in links:
+                r_ = rank(tag)
+                h = re.search(r'href=["\']([^"\']+)', tag, re.I)
+                if r_ is not None and h and not h.group(1).startswith("data:"):
+                    cands.append((r_, urllib.parse.urljoin(page_url, html.unescape(h.group(1)))))
+        except Exception:
+            pass
+        cands = [u for _, u in sorted(cands, key=lambda c: c[0])] + [page_url + "favicon.ico"]
+        for u in cands:
+            try:
+                data, ctype = fetch_bytes(u)
+            except Exception:
+                continue
+            ext = ICON_EXT.get(ctype.split(";")[0].strip().lower()) or pathlib.PurePosixPath(urllib.parse.urlparse(u).path).suffix.lstrip(".").lower()
+            if data and ext in ("png", "svg", "ico", "jpg", "jpeg", "webp", "gif"):
+                folder.mkdir(parents=True, exist_ok=True)
+                (folder / f"{slug}.{ext}").write_bytes(data)
+                print(f"OK   icoon {host}: {u}", flush=True)
+                return f"icons/{slug}.{ext}"
+        print(f"INFO icoon {host}: geen pictogram gevonden, lettericoon gebruikt", flush=True)
+    except Exception as ex:
+        print(f"INFO icoon {host}: {ex}", flush=True)
+    return ""
+
 def run():
     cfg = yaml.safe_load(CFG.read_text())
     f = DATA / "versions.json"
@@ -158,6 +211,8 @@ def run():
         r["released"], r["notes"], r["notes_url"] = None, None, None
         if r["version"] and not r["error"]:
             extras(it, r)
+        if not r["icon"]:
+            r["icon"] = site_icon(it)
         out.append(r)
     f.write_text(json.dumps(out, indent=1))
     (DATA / "index.html").write_text(render(out, now, cfg.get("contact"), cfg.get("categories")))
@@ -334,6 +389,7 @@ h1 em{font-style:normal;color:var(--red)}
 .row.new::before{content:"";position:absolute;inset:.3rem -.75rem;z-index:-1;border-radius:12px;background:linear-gradient(90deg,color-mix(in srgb,var(--red-deep) 70%,transparent),transparent 80%)}
 .who{display:flex;align-items:center;gap:.85rem;min-width:0}
 .ico{flex:none;width:2.1rem;height:2.1rem;border-radius:10px;object-fit:contain}
+img.ico{padding:.3rem;background:var(--text)}
 .mono{display:grid;place-items:center;font:800 .72rem/1 var(--display);letter-spacing:.02em}
 .mono.b{background:var(--blue-deep);color:var(--blue);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--blue) 30%,transparent)}
 .mono.r{background:var(--red-deep);color:var(--red-soft);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--red) 35%,transparent)}
