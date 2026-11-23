@@ -5,6 +5,8 @@
 #   url + regex     regex met precies één groep voor het versienummer; staan er meerdere versies
 #                   op de pagina, dan is de hoogste de huidige en de één-na-hoogste de vorige versie
 #   json + key      versie uit een JSON-bestand
+#   replace         tekens in de gevonden versie vervangen, bijvoorbeeld ["_", "."]
+#   previous_from_page: false   vorige versie niet uit de pagina halen (alleen zelf bijhouden)
 #   version         zelf invullen (bijvoorbeeld als de download achter een login zit)
 #
 # Optioneel:
@@ -71,3 +73,21 @@ items:
     downloads:                                      # links worden uit de pagina gehaald
       - {label: Mac, regex: 'href=["'']([^"'']*MilanManager-V{version}\.dmg[^"'']*)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*MilanManager-V{version}\.zip[^"'']*)["'']'}
+  - name: REAPER
+    url: https://www.reaper.fm/download.php
+    regex: 'Version (\d+\.\d+)\s*:'
+    previous_from_page: false                       # de pagina noemt meer versienummers; vorige versie zelf bijhouden
+    date_regex: 'Version {version}\s*:(?:<[^>]*>|\s)*([A-Z][a-z]+ \d{1,2}, \d{4})'
+    notes_regex: 'REAPER {version}\s*:.*?(<ul.*?</ul>)'
+    notes_url: https://www.reaper.fm/download.php
+    notes_label: Changelog
+    downloads:                                      # links worden uit de pagina gehaald
+      - {label: Windows, regex: 'href=["'']([^"'']*reaper\d+_x64-install\.exe)["'']'}
+      - {label: Mac, regex: 'href=["'']([^"'']*reaper\d+_universal\.dmg)["'']'}
+  - name: Lake Controller
+    url: https://www.labgruppen.com/en/products/0825-AAN?tab=downloads
+    regex: 'LakeController_v(\d+_\d+_\d+)_\d+\.exe'
+    replace: ["_", "."]                             # 8_1_7 wordt 8.1.7
+    note: Alleen Windows
+    downloads:
+      - {label: Windows, regex: 'href=["'']([^"'']*LakeController_v{version_us}_\d+\.exe)["'']'}

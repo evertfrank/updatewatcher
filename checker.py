@@ -27,8 +27,10 @@ def page_version(it):
     if not found:
         debug_dump(it["name"], page)
         raise ValueError("geen versie gevonden (regex klopt niet meer?)")
+    if it.get("replace"):                         # bijv. ["_", "."] om 8_1_7 om te zetten naar 8.1.7
+        found = [f.replace(it["replace"][0], it["replace"][1]) for f in found]
     vs = sorted(set(found), key=vkey, reverse=True)  # hoogste eerst; nummer 2 = vorige versie
-    return vs[0], (vs[1] if len(vs) > 1 else None)
+    return vs[0], (vs[1] if len(vs) > 1 and it.get("previous_from_page", True) else None)
 
 def check(it):
     """Geeft (huidige versie, vorige versie volgens de pagina of None)."""
@@ -53,7 +55,7 @@ def check(it):
 
 # ---- release-datum, wijzigingen en link naar release notes (allemaal optioneel) ----
 def fill(t, ver):
-    return t.replace("{version_dash}", ver.replace(".", "-")).replace("{version}", ver)
+    return t.replace("{version_dash}", ver.replace(".", "-")).replace("{version_us}", ver.replace(".", "_")).replace("{version}", ver)
 
 def parse_date(s):
     s = re.sub(r"(\d)(?:st|nd|rd|th)\b", r"\1", s.strip().replace(" of ", " "))
@@ -64,16 +66,28 @@ def parse_date(s):
             pass
     return None
 
+LABELS = {"fixed", "fix", "new", "improved", "improvement", "changed", "added", "removed", "feature"}
+
 def strip_html(h):
-    h = re.sub(r"</li>|<br\s*/?>|</p>", "\n", h)
+    h = re.sub(r"</?(?:li|p|div|br|span|h\d|tr|td|section|article)\b[^>]*>", "\n", h)
     h = re.sub(r"<[^>]+>", "", h)
     lines = [html.unescape(" ".join(l.split())) for l in h.split("\n")]
-    return [l for l in lines if l][:30]
+    lines = [l for l in lines if l]
+    out = []
+    for l in lines:
+        if out and out[-1].lower().rstrip(":") in LABELS:
+            out[-1] = f"{out[-1].rstrip(':')}: {l}"
+        else:
+            out.append(l)
+    return out[:30]
 
-def hint(name, what, page, ver):
+def hint(name, what, page, ver, needle=None):
     k = page.find(ver)
-    around = " ".join(page[max(0, k - 80):k + 400].split()) if k >= 0 else f"versie {ver} komt niet voor in de pagina"
+    around = " ".join(page[max(0, k - 80):k + 300].split()) if k >= 0 else f"versie {ver} komt niet voor in de pagina"
     print(f"INFO {name}: {what} niet gevonden. Pagina rond {ver}: {around}", flush=True)
+    if needle and page.find(needle) >= 0:
+        n = page.find(needle)
+        print(f"INFO {name}: pagina vanaf {needle}: " + " ".join(page[n:n + 1100].split()), flush=True)
 
 def extras(it, r):
     ver, name = r["version"], r["name"]
@@ -97,7 +111,7 @@ def extras(it, r):
             m = re.search(it["notes_regex"].replace("{version}", re.escape(ver)), page, re.S)
             notes = strip_html(next((g for g in m.groups() if g), "")) if m else None
             if not notes:
-                hint(name, "wijzigingen", page, ver)
+                hint(name, "wijzigingen", page, ver, needle="<h1")
         except Exception as ex:
             print(f"INFO {name}: wijzigingen ophalen mislukt: {ex}", flush=True)
     r["notes"] = notes or None
@@ -111,7 +125,7 @@ def resolve_downloads(it, ver):
             if "url" in d:  # vaste link met {version}
                 out.append({"label": d["label"], "url": d["url"].replace("{version}", ver)})
             else:           # link uit de pagina halen met een regex (één groep = de href)
-                m = re.search(d["regex"].replace("{version}", re.escape(ver)), fetch(it["url"]))
+                m = re.search(d["regex"].replace("{version_us}", ver.replace(".", "_")).replace("{version}", re.escape(ver)), fetch(it["url"]))
                 if m:
                     out.append({"label": d["label"], "url": urllib.parse.urljoin(it["url"], html.unescape(m.group(1)))})
         except Exception:
@@ -148,7 +162,7 @@ def run():
     (DATA / "index.html").write_text(render(out, now))
     return cfg.get("interval_hours", 6)
 
-PALETTE = ["#2ec4d6", "#e5489a", "#9b7bff", "#ff7a59", "#7ed957", "#4c8dff"]  # kleur per categorie, in volgorde van software.yml
+PALETTE = ["#c8202f", "#3a52b8", "#f3f1ea", "#ff6b78", "#6f8bff", "#9ea3b3"]  # kleur per categorie, in volgorde van software.yml
 MONTHS = ["jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
 NEW_DAYS = 14
 FMT = "%Y-%m-%d %H:%M"
@@ -250,49 +264,47 @@ PAGE = """<!doctype html>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:dark light;--display:"Big Shoulders Display","Barlow Condensed","Arial Narrow",sans-serif;
---bg:#131127;--surface:#1c1a36;--line:#2e2b52;--text:#ecebf7;--muted:#a29fc6;
---amber:#ffb020;--amber-ink:#2a1b00;--bad:#ff8a73;--btn:#ecebf7;--btn-ink:#131127}
-@media (prefers-color-scheme:light){:root{--bg:#f3f2fa;--surface:#fff;--line:#dedcf0;--text:#1b1936;--muted:#5c5985;--bad:#b8402a;--btn:#1b1936;--btn-ink:#fff}}
+:root{color-scheme:dark;--display:"Big Shoulders Display","Barlow Condensed","Arial Narrow",sans-serif;
+--bg:#0b0c0f;--surface:#14161b;--line:#2a2e38;--text:#f3f1ea;--muted:#9ea3b3;
+--navy:#1b2a5e;--navy-line:#3a52b8;--red:#c8202f;--red-soft:#ff6b78;--btn:#f3f1ea;--btn-ink:#0b0c0f}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 "Instrument Sans",system-ui,sans-serif}
-.wrap{max-width:1040px;margin:0 auto;padding:clamp(1.5rem,5vw,4rem) 1rem 4rem}
-header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:.5rem 2rem}
-h1{font:800 clamp(3.5rem,13vw,8.5rem)/.86 var(--display);letter-spacing:-.01em;margin:0}
-.checked{color:var(--muted);margin:0 0 .6rem}
-.summary{font-size:1.15rem;margin:1.25rem 0 1.5rem}
-.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 2.25rem}
-.chip{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem;border:1px solid var(--line);border-radius:999px;background:none;color:var(--text);font:inherit;cursor:pointer}
-.chip i{width:.55rem;height:.55rem;border-radius:50%;background:var(--c)}
-.chip[aria-pressed=true]{background:var(--text);color:var(--bg);border-color:var(--text)}
-.chip:focus-visible,.btn:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
-section{margin:0 0 2.25rem}
-h2{display:flex;align-items:baseline;gap:.6rem;margin:0 0 .6rem;font:700 1.75rem/1 var(--display)}
-.count{font:500 .9rem "Instrument Sans",sans-serif;color:var(--muted)}
-.list{--c:#2ec4d6;list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.row{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) 14.5rem;gap:.75rem 1.5rem;align-items:center;padding:1rem 1.25rem 1rem 1.6rem;border-top:1px solid var(--line)}
+body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 "Instrument Sans",system-ui,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:clamp(1.25rem,4vw,2.5rem) 1rem 3rem}
+header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.25rem 1.5rem;padding-bottom:.6rem;border-bottom:2px solid var(--red)}
+h1{font:800 clamp(1.6rem,4vw,2.3rem)/1 var(--display);letter-spacing:.01em;margin:0}
+.checked{color:var(--muted);font-size:.8rem;margin:0}
+.summary{font-size:.95rem;margin:1rem 0 1.25rem}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.5rem}
+.chip{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .7rem;border:1px solid var(--line);border-radius:999px;background:none;color:var(--text);font:inherit;font-size:.78rem;cursor:pointer}
+.chip i{width:.5rem;height:.5rem;border-radius:50%;background:var(--c)}
+.chip[aria-pressed=true]{background:var(--navy);color:var(--text);border-color:var(--navy-line)}
+.chip:focus-visible,.btn:focus-visible,.more summary:focus-visible,.more a:focus-visible{outline:2px solid var(--red-soft);outline-offset:2px}
+section{margin:0 0 1.75rem}
+h2{display:flex;align-items:baseline;gap:.5rem;margin:0 0 .5rem;font:700 1.1rem/1 var(--display)}
+.count{font:500 .78rem "Instrument Sans",sans-serif;color:var(--muted)}
+.list{--c:var(--navy-line);list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.row{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) 11rem;gap:.5rem 1.25rem;align-items:center;padding:.7rem 1rem .7rem 1.25rem;border-top:1px solid var(--line)}
 .row:first-child{border-top:0}
-.row::before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:var(--c)}
-.row.new{background:color-mix(in srgb,var(--amber) 11%,var(--surface))}
-.name{font-weight:600;font-size:1.1rem}
-.note{display:block;color:var(--muted);font-size:.88rem}
-.badge{display:inline-flex;align-items:center;gap:.4rem;margin-left:.6rem;padding:.1rem .6rem;border-radius:999px;background:var(--amber);color:var(--amber-ink);font-size:.8rem;font-weight:700;vertical-align:.1em}
-.badge::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--amber-ink);animation:lamp 1.8s ease-in-out infinite}
+.row::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--c)}
+.row.new{--c:var(--red);background:color-mix(in srgb,var(--red) 14%,var(--surface))}
+.name{font-weight:600;font-size:.95rem}
+.note{display:block;color:var(--muted);font-size:.78rem}
+.badge{display:inline-flex;align-items:center;gap:.35rem;margin-left:.5rem;padding:.05rem .5rem;border-radius:999px;background:var(--red);color:#fff;font-size:.7rem;font-weight:700;vertical-align:.1em}
+.badge::before{content:"";width:.4rem;height:.4rem;border-radius:50%;background:#fff;box-shadow:0 0 6px #fff;animation:lamp 1.8s ease-in-out infinite}
 @keyframes lamp{50%{opacity:.25}}
 @media (prefers-reduced-motion:reduce){.badge::before{animation:none}}
-.num{font:700 clamp(2rem,5vw,2.8rem)/1 var(--display);font-variant-numeric:tabular-nums}
-.was{display:block;color:var(--muted);font-size:.85rem;margin-top:.2rem}
-.err{display:block;color:var(--bad);font-size:.88rem;margin-top:.2rem}
-.dl{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:flex-end}
-.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.55rem 1rem;border-radius:8px;background:var(--btn);color:var(--btn-ink);font-weight:600;text-decoration:none}
-.btn:hover{background:var(--amber);color:var(--amber-ink)}
-.btn svg{width:1em;height:1em}
-.more{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:flex-start;gap:.5rem 1.5rem;font-size:.9rem}
+.num{display:inline-block;padding:.1rem .6rem;border:1px solid var(--navy-line);border-radius:9px;background:var(--navy);font:700 clamp(1.15rem,3vw,1.4rem)/1.2 var(--display);font-variant-numeric:tabular-nums}
+.was{display:block;color:var(--muted);font-size:.75rem;margin-top:.1rem}
+.err{display:block;color:var(--red-soft);font-size:.78rem;margin-top:.1rem}
+.dl{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:flex-end}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .75rem;border-radius:6px;background:var(--btn);color:var(--btn-ink);font-size:.8rem;font-weight:600;text-decoration:none}
+.btn:hover{background:var(--red);color:#fff}
+.btn svg{width:.95em;height:.95em}
+.more{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:flex-start;gap:.4rem 1.25rem;font-size:.8rem}
 .more summary{cursor:pointer;font-weight:600}
-.more ul{margin:.5rem 0 0;padding-left:1.1rem;color:var(--muted);max-width:70ch}
+.more ul{margin:.4rem 0 0;padding-left:1rem;color:var(--muted);max-width:70ch}
 .more a{color:var(--text)}
-.more summary:focus-visible,.more a:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
-footer{color:var(--muted);font-size:.88rem}
+footer{margin-top:1.25rem;color:var(--muted);font-size:.78rem}
 @media (max-width:700px){.row{grid-template-columns:1fr}.dl{justify-content:flex-start}}
 </style></head><body><div class="wrap">
 <header><h1>Software updates</h1><p class="checked">Laatst gecontroleerd __NOW__</p></header>
