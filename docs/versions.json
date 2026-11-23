@@ -2,7 +2,7 @@
  {
   "name": "Dante Controller",
   "category": "NETWORK",
-  "icon": "",
+  "icon": "icons/www-getdante-com.png",
   "icon_text": "DC",
   "link": "https://www.getdante.com/resources/software-downloads/",
   "note": "Mac-versie kan een nummer achterlopen",
@@ -10,7 +10,7 @@
   "previous": "4.18.0.11",
   "changed": "2026-11-23 14:48",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Windows",
@@ -29,7 +29,7 @@
  {
   "name": "QLab",
   "category": "DAW",
-  "icon": "",
+  "icon": "icons/qlab-app.png",
   "icon_text": "",
   "link": "https://qlab.app/downloads/QLab.dmg",
   "note": "",
@@ -37,7 +37,7 @@
   "previous": "5.6.4",
   "changed": "2026-11-23 15:01",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [],
   "released": "2026-10-28",
   "notes": [
@@ -62,7 +62,7 @@
  {
   "name": "Shure Wireless Workbench",
   "category": "CONTROLS",
-  "icon": "",
+  "icon": "icons/www-shure-com.ico",
   "icon_text": "WWB",
   "link": "https://www.shure.com/en-US/support/downloads/software-firmware-archive/wireless-workbench",
   "note": "",
@@ -70,7 +70,7 @@
   "previous": "7.8.3",
   "changed": "2026-11-23 16:05",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [],
   "released": "2026-10-06",
   "notes": null,
@@ -80,7 +80,7 @@
  {
   "name": "L-Acoustics Network Manager",
   "category": "PA DESIGN & CONTROL",
-  "icon": "",
+  "icon": "icons/www-l-acoustics-com.png",
   "icon_text": "NWM",
   "link": "https://www.l-acoustics.com/products/network-manager/",
   "note": "Versie handmatig bijgehouden",
@@ -88,7 +88,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -98,7 +98,7 @@
  {
   "name": "L-Acoustics Soundvision",
   "category": "PA DESIGN & CONTROL",
-  "icon": "",
+  "icon": "icons/www-l-acoustics-com.png",
   "icon_text": "SV",
   "link": "https://www.l-acoustics.com/products/soundvision/",
   "note": "Versie handmatig bijgehouden",
@@ -106,7 +106,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -116,7 +116,7 @@
  {
   "name": "LiveProfessor",
   "category": "DAW",
-  "icon": "",
+  "icon": "icons/www-audiostrom-com.png",
   "icon_text": "",
   "link": "https://www.audiostrom.com/change-log",
   "note": "",
@@ -124,7 +124,7 @@
   "previous": "2026.2.2",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -147,7 +147,7 @@
  {
   "name": "Milan Manager",
   "category": "NETWORK",
-  "icon": "",
+  "icon": "icons/milanmanager-com.ico",
   "icon_text": "",
   "link": "https://milanmanager.com/",
   "note": "",
@@ -155,7 +155,7 @@
   "previous": "2.5.3",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -174,7 +174,7 @@
  {
   "name": "REAPER",
   "category": "DAW",
-  "icon": "",
+  "icon": "icons/www-reaper-fm.ico",
   "icon_text": "",
   "link": "https://www.reaper.fm/download.php",
   "note": "",
@@ -182,7 +182,7 @@
   "previous": null,
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Windows",
@@ -204,7 +204,7 @@
  {
   "name": "Lake Controller",
   "category": "CONTROLS",
-  "icon": "",
+  "icon": "icons/www-labgruppen-com.ico",
   "icon_text": "",
   "link": "https://www.labgruppen.com/en/products/0825-AAN?tab=downloads",
   "note": "Alleen Windows",
@@ -212,7 +212,7 @@
   "previous": "8.1.6",
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Windows",
@@ -227,7 +227,7 @@
  {
   "name": "Green-GO Control",
   "category": "CONTROLS",
-  "icon": "",
+  "icon": "icons/greengocom-com.png",
   "icon_text": "",
   "link": "https://greengocom.com/software-products/control",
   "note": "",
@@ -235,7 +235,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Windows",
@@ -254,7 +254,7 @@
  {
   "name": "d&b ArrayCalc",
   "category": "PA DESIGN & CONTROL",
-  "icon": "",
+  "icon": "icons/www-dbaudio-com.png",
   "icon_text": "AC",
   "link": "https://www.dbaudio.com/global/en/products/software/arraycalc/",
   "note": "Download vereist My d&b-account (versie handmatig)",
@@ -262,7 +262,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [],
   "released": "2026-10-20",
   "notes": null,
@@ -272,7 +272,7 @@
  {
   "name": "FabFilter Pro-Q 4",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -280,7 +280,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -299,7 +299,7 @@
  {
   "name": "FabFilter Pro-C 3",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -307,7 +307,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -326,7 +326,7 @@
  {
   "name": "FabFilter Pro-L 2",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -334,7 +334,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -353,7 +353,7 @@
  {
   "name": "FabFilter Pro-R 2",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -361,7 +361,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -380,7 +380,7 @@
  {
   "name": "FabFilter Pro-MB",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -388,7 +388,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -407,7 +407,7 @@
  {
   "name": "FabFilter Pro-DS",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -415,7 +415,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -434,7 +434,7 @@
  {
   "name": "FabFilter Pro-G",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -442,7 +442,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -461,7 +461,7 @@
  {
   "name": "FabFilter Saturn 2",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -469,7 +469,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -488,7 +488,7 @@
  {
   "name": "FabFilter Timeless 3",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -496,7 +496,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -515,7 +515,7 @@
  {
   "name": "FabFilter Volcano 3",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -523,7 +523,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -542,7 +542,7 @@
  {
   "name": "FabFilter Twin 3",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -550,7 +550,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -569,7 +569,7 @@
  {
   "name": "FabFilter One",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -577,7 +577,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -596,7 +596,7 @@
  {
   "name": "FabFilter Simplon",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -604,7 +604,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -623,7 +623,7 @@
  {
   "name": "FabFilter Micro",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/www-fabfilter-com.png",
   "icon_text": "",
   "link": "https://www.fabfilter.com/download",
   "note": "",
@@ -631,7 +631,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -658,7 +658,7 @@
   "previous": null,
   "changed": "2026-11-23 16:40",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
@@ -681,7 +681,7 @@
   "previous": null,
   "changed": "2026-11-23 16:47",
   "error": null,
-  "checked": "2026-11-23 17:21",
+  "checked": "2026-11-23 17:30",
   "downloads": [
    {
     "label": "Mac",
