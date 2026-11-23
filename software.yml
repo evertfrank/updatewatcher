@@ -1,0 +1,28 @@
+# Elk programma = één blok. 'category' mag je zelf verzinnen.
+# Bron: 'github: eigenaar/repo'  OF  'url' + 'regex' (met precies één groep voor het versienummer;
+# staan er meerdere versies op de pagina, dan wordt de hoogste gekozen).
+# 'link' = waar de downloadknop naartoe gaat (standaard: url).
+interval_hours: 6
+items:
+  - name: Dante Controller
+    category: Netwerk
+    url: https://www.getdante.com/platform/windows
+    regex: 'Dante Controller v(\d+(?:\.\d+)+) Package'
+    note: Download vereist Audinate-account
+  - name: QLab
+    category: Showcontrol
+    url: https://qlab.app/downloads/
+    regex: 'QLab[ -]v?(5\.\d+(?:\.\d+)*)'          # nog te controleren met --test
+  - name: Shure Wireless Workbench
+    category: RF
+    url: https://www.shure.com/en-US/products/software/wwb
+    regex: 'Version (7\.\d+(?:\.\d+)*)'             # nog te controleren met --test
+  - name: L-Acoustics Network Manager
+    category: Netwerk
+    url: https://www.l-acoustics.com/en/product/la-network-manager/
+    regex: 'Version[ :]*(\d+\.\d+(?:\.\d+)*)'       # nog te controleren met --test
+  - name: L-Acoustics Soundvision
+    category: Simulatie
+    url: https://www.l-acoustics.com/en/products/soundvision/
+    regex: 'Version[ :]*(\d+\.\d+(?:\.\d+)*)'       # nog te controleren met --test
+  # LiveProfessor en Milan Manager volgen zodra de bron is uitgezocht.
