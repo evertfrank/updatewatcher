@@ -1,0 +1,73 @@
+# Elk programma = één blok.
+#
+# Bron voor het versienummer (kies er één):
+#   github: eigenaar/repo
+#   url + regex     regex met precies één groep voor het versienummer; staan er meerdere versies
+#                   op de pagina, dan is de hoogste de huidige en de één-na-hoogste de vorige versie
+#   json + key      versie uit een JSON-bestand
+#   version         zelf invullen (bijvoorbeeld als de download achter een login zit)
+#
+# Optioneel:
+#   category        om te groeperen (nu bewust niet gebruikt)
+#   link            waar de downloadknop heen gaat (standaard: url)
+#   downloads       meerdere knoppen, bijvoorbeeld Mac en Windows
+#   notes_url       link naar de release notes ({version} en {version_dash} worden ingevuld)
+#   notes_label     tekst van die link
+#   date_regex      regex met één groep: de release-datum, gezocht op date_url (standaard: url)
+#   notes_regex     regex met één groep: het HTML-stuk met de wijzigingen, gezocht op notes_page (standaard: url)
+#   released        release-datum zelf invullen, bijvoorbeeld "2026-10-09" (bij handmatige versies)
+#
+interval_hours: 6
+items:
+  - name: Dante Controller
+    url: https://www.getdante.com/platform/windows
+    regex: 'Dante Controller v(\d+(?:\.\d+)+) Package'
+    notes_url: "https://www.getdante.com/releases/dante-controller/windows/dante-controller-v{version_dash}-package-windows/"
+    date_url: "https://www.getdante.com/releases/dante-controller/windows/dante-controller-v{version_dash}-package-windows/"
+    date_regex: 'Release Date:\s*(?:<[^>]*>\s*)*(\d{1,2}(?:st|nd|rd|th)? of [A-Za-z]+ \d{4})'
+    note: Download vereist Audinate-account
+  - name: QLab
+    url: https://qlab.app/download/
+    regex: 'release-notes/(\d+\.\d+(?:\.\d+)*)'                  # alle versies in de links; hoogste = huidig, daarna = vorige
+    json: https://formulae.brew.sh/api/cask/qlab.json            # reserve als qlab.app de checker blokkeert (403)
+    key: version
+    date_regex: '[Rr]elease [Dd]ate.{0,200}?([A-Z][a-z]+ \d{1,2}, \d{4})|{version}.{0,400}?([A-Z][a-z]+ \d{1,2}, \d{4})'
+    notes_url: "https://qlab.app/release-notes/{version}"
+    notes_page: "https://qlab.app/release-notes/{version}"
+    notes_regex: '((?:<p[^>]*>(?:(?!</p>).)*?[Ff]ixed.*?</p>\s*)+)'
+    link: https://qlab.app/downloads/QLab.dmg
+  - name: Shure Wireless Workbench
+    url: https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench
+    regex: '(\d+\.\d+(?:\.\d+)*)\s*(?:<[^>]*>\s*)*See Release Notes'
+    date_regex: '{version}.{0,800}?([A-Z][a-z]+ \d{2}, \d{4})'
+    link: https://www.shure.com/en-US/products/software/wwb
+    notes_url: https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench
+    notes_label: Alle versies en release notes
+  - name: L-Acoustics Network Manager
+    version: ""        # zelf invullen; de download zit achter een login
+    released: ""       # optioneel: release-datum, bijvoorbeeld "2026-10-09"
+    link: https://access.l-acoustics.com/download-center/software/network-manager
+    note: Download vereist L-Acoustics-account (versie handmatig)
+  - name: L-Acoustics Soundvision
+    version: ""
+    released: ""
+    link: https://access.l-acoustics.com/download-center/software/soundvision
+    note: Download vereist L-Acoustics-account (versie handmatig)
+  - name: LiveProfessor
+    url: https://www.audiostrom.com/change-log
+    regex: 'LiveProfessor (\d+\.\d+\.\d+)'
+    date_regex: 'LiveProfessor {version}\b.{0,600}?([A-Z][a-z]+ \d{1,2}, \d{4})'
+    notes_regex: 'LiveProfessor {version}\b.*?(<ul.*?</ul>)'
+    notes_url: https://www.audiostrom.com/change-log
+    notes_label: Volledige changelog
+    downloads:                                      # {version} wordt vervangen door de gevonden versie
+      - {label: Mac, url: "https://fls-a2124b9f-5148-4760-a455-ace2436abe75.laravel.cloud/software/1004/{version}/LiveProfessor.dmg"}
+      - {label: Windows, url: "https://fls-a2124b9f-5148-4760-a455-ace2436abe75.laravel.cloud/software/1004/{version}/LiveProfessor-win-x64.msi"}
+  - name: Milan Manager
+    url: https://milanmanager.com/
+    regex: 'MilanManager V(\d+\.\d+\.\d+)'
+    notes_url: https://milanmanager.com/news
+    notes_label: Nieuws
+    downloads:                                      # links worden uit de pagina gehaald
+      - {label: Mac, regex: 'href=["'']([^"'']*MilanManager-V{version}\.dmg[^"'']*)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*MilanManager-V{version}\.zip[^"'']*)["'']'}

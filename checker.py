@@ -21,25 +21,88 @@ def debug_dump(name, page):
     show("LINK ", re.findall(r"href=\"[^\"]*\.(?:exe|dmg|zip|msi|pkg)[^\"]*\"", page, re.I), 10)
     show("TEKST", re.findall(r">[^<>]{0,60}(?:[Vv]ersion|[Rr]elease)[^<>]{0,60}<", page), 12)
 
-def check(it):
-    if "version" in it:  # handmatig bijgehouden versie
-        if not str(it["version"]).strip():
-            raise ValueError("versie nog niet ingevuld in software.yml")
-        return str(it["version"]).strip()
-    if it.get("github"):
-        d = json.loads(fetch(f"https://api.github.com/repos/{it['github']}/releases/latest"))
-        return d["tag_name"].lstrip("v")
-    if it.get("json"):
-        d = json.loads(fetch(it["json"]))
-        for k in it["key"].split("."):
-            d = d[k]
-        return re.search(r"\d+(?:\.\d+)+", str(d)).group(0)
+def page_version(it):
     page = fetch(it["url"])
-    found = re.findall(it["regex"], page)
+    found = re.findall(it["regex"], page, re.S)
     if not found:
         debug_dump(it["name"], page)
         raise ValueError("geen versie gevonden (regex klopt niet meer?)")
-    return max(found, key=vkey)  # hoogste versie op de pagina
+    vs = sorted(set(found), key=vkey, reverse=True)  # hoogste eerst; nummer 2 = vorige versie
+    return vs[0], (vs[1] if len(vs) > 1 else None)
+
+def check(it):
+    """Geeft (huidige versie, vorige versie volgens de pagina of None)."""
+    if "version" in it:  # handmatig bijgehouden versie
+        if not str(it["version"]).strip():
+            raise ValueError("versie nog niet ingevuld in software.yml")
+        return str(it["version"]).strip(), None
+    if it.get("github"):
+        d = json.loads(fetch(f"https://api.github.com/repos/{it['github']}/releases/latest"))
+        return d["tag_name"].lstrip("v"), None
+    if it.get("url") and it.get("regex"):
+        try:
+            return page_version(it)
+        except Exception as ex:
+            if not it.get("json"):
+                raise
+            print(f"INFO {it['name']}: pagina mislukt ({ex}), reservebron gebruikt", flush=True)
+    d = json.loads(fetch(it["json"]))
+    for k in it["key"].split("."):
+        d = d[k]
+    return re.search(r"\d+(?:\.\d+)+", str(d)).group(0), None
+
+# ---- release-datum, wijzigingen en link naar release notes (allemaal optioneel) ----
+def fill(t, ver):
+    return t.replace("{version_dash}", ver.replace(".", "-")).replace("{version}", ver)
+
+def parse_date(s):
+    s = re.sub(r"(\d)(?:st|nd|rd|th)\b", r"\1", s.strip().replace(" of ", " "))
+    for f in ("%B %d, %Y", "%d %B %Y", "%B %d %Y", "%Y-%m-%d"):
+        try:
+            return datetime.datetime.strptime(s, f).strftime("%Y-%m-%d")
+        except ValueError:
+            pass
+    return None
+
+def strip_html(h):
+    h = re.sub(r"</li>|<br\s*/?>|</p>", "\n", h)
+    h = re.sub(r"<[^>]+>", "", h)
+    lines = [html.unescape(" ".join(l.split())) for l in h.split("\n")]
+    return [l for l in lines if l][:30]
+
+def hint(name, what, page, ver):
+    k = page.find(ver)
+    around = " ".join(page[max(0, k - 80):k + 400].split()) if k >= 0 else f"versie {ver} komt niet voor in de pagina"
+    print(f"INFO {name}: {what} niet gevonden. Pagina rond {ver}: {around}", flush=True)
+
+def extras(it, r):
+    ver, name = r["version"], r["name"]
+    released = None
+    if str(it.get("released", "")).strip():                       # handmatig ingevuld
+        released = parse_date(str(it["released"])) or str(it["released"]).strip()
+    elif it.get("date_regex"):
+        try:
+            page = fetch(fill(it.get("date_url", it.get("url", "")), ver))
+            m = re.search(it["date_regex"].replace("{version}", re.escape(ver)), page, re.S)
+            released = parse_date(next((g for g in m.groups() if g), "")) if m else None
+            if not released:
+                hint(name, "releasedatum", page, ver)
+        except Exception as ex:
+            print(f"INFO {name}: releasedatum ophalen mislukt: {ex}", flush=True)
+    r["released"] = released
+    notes = None
+    if it.get("notes_regex"):
+        try:
+            page = fetch(fill(it.get("notes_page", it.get("url", "")), ver))
+            m = re.search(it["notes_regex"].replace("{version}", re.escape(ver)), page, re.S)
+            notes = strip_html(next((g for g in m.groups() if g), "")) if m else None
+            if not notes:
+                hint(name, "wijzigingen", page, ver)
+        except Exception as ex:
+            print(f"INFO {name}: wijzigingen ophalen mislukt: {ex}", flush=True)
+    r["notes"] = notes or None
+    r["notes_url"] = fill(it["notes_url"], ver) if it.get("notes_url") else None
+    r["notes_label"] = it.get("notes_label", "Release notes")
 
 def resolve_downloads(it, ver):
     out = []
@@ -63,46 +126,188 @@ def run():
     out = []
     for it in cfg["items"]:
         o = old.get(it["name"], {})
-        r = {"name": it["name"], "category": it.get("category", "Overig"),
+        r = {"name": it["name"], "category": it.get("category", ""),
              "link": it.get("link") or it.get("url"), "note": it.get("note", ""),
              "version": o.get("version"), "previous": o.get("previous"),
              "changed": o.get("changed"), "error": None, "checked": now}
         try:
-            v = check(it)
+            v, prev_page = check(it)
             if v != r["version"]:
                 r["previous"], r["version"], r["changed"] = r["version"], v, now
+            if prev_page:
+                r["previous"] = prev_page   # echte vorige versie uit de pagina gaat voor
         except Exception as e:
             r["error"] = str(e)[:200]
         print(("OK   " if not r["error"] else "FOUT ") + it["name"] + ": " + (r["error"] or r["version"]), flush=True)
         r["downloads"] = resolve_downloads(it, r["version"]) if r["version"] else []
+        r["released"], r["notes"], r["notes_url"] = None, None, None
+        if r["version"] and not r["error"]:
+            extras(it, r)
         out.append(r)
     f.write_text(json.dumps(out, indent=1))
     (DATA / "index.html").write_text(render(out, now))
     return cfg.get("interval_hours", 6)
 
+PALETTE = ["#2ec4d6", "#e5489a", "#9b7bff", "#ff7a59", "#7ed957", "#4c8dff"]  # kleur per categorie, in volgorde van software.yml
+MONTHS = ["jan", "feb", "mrt", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec"]
+NEW_DAYS = 14
+FMT = "%Y-%m-%d %H:%M"
+
+def nl_date(s):
+    try:
+        d = datetime.datetime.strptime(s, FMT)
+        return f"{d.day} {MONTHS[d.month - 1]}"
+    except Exception:
+        return ""
+
+def nl_iso(s):
+    try:
+        d = datetime.datetime.strptime(s, "%Y-%m-%d")
+        return f"{d.day} {MONTHS[d.month - 1]} {d.year}"
+    except Exception:
+        return s
+
+def nl_datetime(s):
+    try:
+        return f"{nl_date(s)}, {datetime.datetime.strptime(s, FMT):%H:%M}"
+    except Exception:
+        return s
+
+def is_new(i, now):
+    try:
+        if not i["previous"] or not i["changed"]:
+            return False
+        return (datetime.datetime.strptime(now, FMT) - datetime.datetime.strptime(i["changed"], FMT)).days < NEW_DAYS
+    except Exception:
+        return False
+
+ICON = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8m0 0L4.5 6.5M8 10l3.5-3.5M3 13.5h10"/></svg>'
+
+def row_html(i, now):
+    e = html.escape
+    new = is_new(i, now)
+    badge = '<span class="badge">Nieuw</span>' if new else ""
+    note = f'<span class="note">{e(i["note"])}</span>' if i["note"] else ""
+    was = ""
+    if i["previous"]:
+        was += f'<span class="was">Vorige versie {e(i["previous"])}</span>'
+    if i.get("released"):
+        was += f'<span class="was">Uitgebracht {e(nl_iso(i["released"]))}</span>'
+    elif i["previous"] and i["changed"]:
+        was += f'<span class="was">Ontdekt op {e(nl_date(i["changed"]))}</span>'
+    err = f'<span class="err">Controle mislukt: {e(i["error"])}</span>' if i["error"] else ""
+    if i.get("downloads"):
+        dl = "".join(f'<a class="btn" href="{e(d["url"])}">{ICON}{e(d["label"])}</a>' for d in i["downloads"])
+    else:
+        dl = f'<a class="btn" href="{e(i["link"] or "#")}">{ICON}Download</a>'
+    more = ""
+    if i.get("notes"):
+        more += '<details><summary>Wijzigingen</summary><ul>' + "".join(f"<li>{e(l)}</li>" for l in i["notes"]) + "</ul></details>"
+    if i.get("notes_url"):
+        more += f'<a href="{e(i["notes_url"])}" target="_blank" rel="noopener">{e(i["notes_label"])}</a>'
+    more = f'<div class="more">{more}</div>' if more else ""
+    return (f'<li class="row{" new" if new else ""}"><div class="who"><span class="name">{e(i["name"])}</span>{badge}{note}</div>'
+            f'<div class="ver"><span class="num">{e(i["version"] or "onbekend")}</span>{was}{err}</div>'
+            f'<div class="dl">{dl}</div>{more}</li>')
+
 def render(items, now):
     e = html.escape
     cats = {}
-    for i in items: cats.setdefault(i["category"], []).append(i)
-    body = ""
-    for c in sorted(cats):
-        body += f"<h2>{e(c)}</h2><table>"
-        for i in cats[c]:
-            ver = e(i["version"] or "onbekend")
-            ch = f"gewijzigd {e(i['changed'])}" if i["changed"] and i["previous"] else ""
-            warn = f"<span class=w>⚠ {e(i['error'])}</span>" if i["error"] else ""
-            note = f"<small>{e(i['note'])}</small>" if i["note"] else ""
-            dl = (" · ".join(f"<a href='{e(d['url'])}'>{e(d['label'])}</a>" for d in i["downloads"])
-                  if i.get("downloads") else f"<a href='{e(i['link'])}'>Download</a>")
-            body += (f"<tr><td><b>{e(i['name'])}</b>{note}</td><td>{ver}</td><td>{ch}{warn}</td>"
-                     f"<td>{dl}</td></tr>")
-        body += "</table>"
-    return f"""<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
-<title>Software updates</title><style>
-:root{{color-scheme:light dark;font-family:system-ui,sans-serif}}body{{max-width:900px;margin:2rem auto;padding:0 1rem}}
-table{{width:100%;border-collapse:collapse}}td{{padding:.5rem;border-bottom:1px solid #8884}}small{{display:block;opacity:.6}}
-.w{{color:#c60}}a{{text-decoration:none;font-weight:600}}</style>
-<h1>Software updates</h1><p>Laatst gecontroleerd: {e(now)}</p>{body}"""
+    for i in items:
+        cats.setdefault(i.get("category") or "", []).append(i)
+    grouped = any(cats)            # alleen groeperen als er categorieën zijn ingevuld
+    color = {c: PALETTE[n % len(PALETTE)] for n, c in enumerate(cats)}
+    n_new = sum(is_new(i, now) for i in items)
+    n_err = sum(bool(i["error"]) for i in items)
+    if n_new:
+        summary = f"{n_new} programma heeft een nieuwe versie" if n_new == 1 else f"{n_new} programma's hebben een nieuwe versie"
+    else:
+        summary = f"Geen nieuwe versies in de afgelopen {NEW_DAYS} dagen"
+    if n_err:
+        summary += f", bij {n_err} lukte de controle niet"
+    summary += "."
+
+    if not grouped:
+        chips = ""
+        sections = '<ul class="list">' + "".join(row_html(i, now) for i in items) + "</ul>"
+    else:
+        chips = '<div class="chips" role="group" aria-label="Filter op categorie"><button class="chip" data-cat="*" aria-pressed="true">Alles</button>'
+        sections = ""
+        for c, group in cats.items():
+            name = c or "Overig"
+            chips += f'<button class="chip" data-cat="{e(name)}" aria-pressed="false" style="--c:{color[c]}"><i></i>{e(name)}</button>'
+            sections += (f'<section data-cat="{e(name)}" style="--c:{color[c]}"><h2>{e(name)}<span class="count">{len(group)}</span></h2>'
+                         f'<ul class="list">{"".join(row_html(i, now) for i in group)}</ul></section>')
+        chips += "</div>"
+
+    return (PAGE.replace("__NOW__", e(nl_datetime(now))).replace("__SUMMARY__", e(summary))
+                .replace("__CHIPS__", chips).replace("__SECTIONS__", sections))
+
+PAGE = """<!doctype html>
+<html lang="nl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Software updates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark light;--display:"Big Shoulders Display","Barlow Condensed","Arial Narrow",sans-serif;
+--bg:#131127;--surface:#1c1a36;--line:#2e2b52;--text:#ecebf7;--muted:#a29fc6;
+--amber:#ffb020;--amber-ink:#2a1b00;--bad:#ff8a73;--btn:#ecebf7;--btn-ink:#131127}
+@media (prefers-color-scheme:light){:root{--bg:#f3f2fa;--surface:#fff;--line:#dedcf0;--text:#1b1936;--muted:#5c5985;--bad:#b8402a;--btn:#1b1936;--btn-ink:#fff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 "Instrument Sans",system-ui,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:clamp(1.5rem,5vw,4rem) 1rem 4rem}
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:.5rem 2rem}
+h1{font:800 clamp(3.5rem,13vw,8.5rem)/.86 var(--display);letter-spacing:-.01em;margin:0}
+.checked{color:var(--muted);margin:0 0 .6rem}
+.summary{font-size:1.15rem;margin:1.25rem 0 1.5rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 2.25rem}
+.chip{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .9rem;border:1px solid var(--line);border-radius:999px;background:none;color:var(--text);font:inherit;cursor:pointer}
+.chip i{width:.55rem;height:.55rem;border-radius:50%;background:var(--c)}
+.chip[aria-pressed=true]{background:var(--text);color:var(--bg);border-color:var(--text)}
+.chip:focus-visible,.btn:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+section{margin:0 0 2.25rem}
+h2{display:flex;align-items:baseline;gap:.6rem;margin:0 0 .6rem;font:700 1.75rem/1 var(--display)}
+.count{font:500 .9rem "Instrument Sans",sans-serif;color:var(--muted)}
+.list{--c:#2ec4d6;list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.row{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) 14.5rem;gap:.75rem 1.5rem;align-items:center;padding:1rem 1.25rem 1rem 1.6rem;border-top:1px solid var(--line)}
+.row:first-child{border-top:0}
+.row::before{content:"";position:absolute;inset:0 auto 0 0;width:6px;background:var(--c)}
+.row.new{background:color-mix(in srgb,var(--amber) 11%,var(--surface))}
+.name{font-weight:600;font-size:1.1rem}
+.note{display:block;color:var(--muted);font-size:.88rem}
+.badge{display:inline-flex;align-items:center;gap:.4rem;margin-left:.6rem;padding:.1rem .6rem;border-radius:999px;background:var(--amber);color:var(--amber-ink);font-size:.8rem;font-weight:700;vertical-align:.1em}
+.badge::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--amber-ink);animation:lamp 1.8s ease-in-out infinite}
+@keyframes lamp{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.badge::before{animation:none}}
+.num{font:700 clamp(2rem,5vw,2.8rem)/1 var(--display);font-variant-numeric:tabular-nums}
+.was{display:block;color:var(--muted);font-size:.85rem;margin-top:.2rem}
+.err{display:block;color:var(--bad);font-size:.88rem;margin-top:.2rem}
+.dl{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:flex-end}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.55rem 1rem;border-radius:8px;background:var(--btn);color:var(--btn-ink);font-weight:600;text-decoration:none}
+.btn:hover{background:var(--amber);color:var(--amber-ink)}
+.btn svg{width:1em;height:1em}
+.more{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:flex-start;gap:.5rem 1.5rem;font-size:.9rem}
+.more summary{cursor:pointer;font-weight:600}
+.more ul{margin:.5rem 0 0;padding-left:1.1rem;color:var(--muted);max-width:70ch}
+.more a{color:var(--text)}
+.more summary:focus-visible,.more a:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+footer{color:var(--muted);font-size:.88rem}
+@media (max-width:700px){.row{grid-template-columns:1fr}.dl{justify-content:flex-start}}
+</style></head><body><div class="wrap">
+<header><h1>Software updates</h1><p class="checked">Laatst gecontroleerd __NOW__</p></header>
+<p class="summary">__SUMMARY__</p>
+__CHIPS__
+__SECTIONS__
+<footer>De lijst wordt elke 6 uur automatisch bijgewerkt.</footer>
+</div>
+<script>
+const chips=[...document.querySelectorAll('.chip')],secs=[...document.querySelectorAll('section[data-cat]')];
+chips.forEach(c=>c.addEventListener('click',()=>{
+  chips.forEach(x=>x.setAttribute('aria-pressed',String(x===c)));
+  secs.forEach(s=>{s.hidden=c.dataset.cat!=='*'&&s.dataset.cat!==c.dataset.cat});
+}));
+</script></body></html>"""
 
 if __name__ == "__main__":
     DATA.mkdir(exist_ok=True)
