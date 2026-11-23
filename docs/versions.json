@@ -1,14 +1,14 @@
 [
  {
   "name": "Dante Controller",
-  "category": "",
+  "category": "NETWORK",
   "link": "https://www.getdante.com/platform/windows",
   "note": "Download vereist Audinate-account",
   "version": "4.18.1.2",
   "previous": "4.18.0.11",
   "changed": "2026-11-23 14:48",
   "error": null,
-  "checked": "2026-11-23 16:16",
+  "checked": "2026-11-23 16:37",
   "downloads": [],
   "released": "2026-07-15",
   "notes": null,
@@ -17,14 +17,14 @@
  },
  {
   "name": "QLab",
-  "category": "",
+  "category": "DAW",
   "link": "https://qlab.app/downloads/QLab.dmg",
   "note": "",
   "version": "5.6.5",
   "previous": "5.6.4",
   "changed": "2026-11-23 15:01",
   "error": null,
-  "checked": "2026-11-23 16:16",
+  "checked": "2026-11-23 16:37",
   "downloads": [],
   "released": "2026-10-28",
   "notes": null,
@@ -33,14 +33,14 @@
  },
  {
   "name": "Shure Wireless Workbench",
-  "category": "",
+  "category": "CONTROLS",
   "link": "https://www.shure.com/en-US/products/software/wwb",
   "note": "",
   "version": "7.9.0",
   "previous": "7.8.3",
   "changed": "2026-11-23 16:05",
   "error": null,
-  "checked": "2026-11-23 16:16",
+  "checked": "2026-11-23 16:37",
   "downloads": [],
   "released": "2026-10-06",
   "notes": null,
@@ -49,14 +49,14 @@
  },
  {
   "name": "L-Acoustics Network Manager",
-  "category": "",
+  "category": "NETWORK",
   "link": "https://access.l-acoustics.com/download-center/software/network-manager",
   "note": "Download vereist L-Acoustics-account (versie handmatig)",
   "version": null,
   "previous": null,
   "changed": null,
   "error": "versie nog niet ingevuld in software.yml",
-  "checked": "2026-11-23 16:16",
+  "checked": "2026-11-23 16:37",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -64,14 +64,14 @@
  },
  {
   "name": "L-Acoustics Soundvision",
-  "category": "",
+  "category": "PA Design & Control",
   "link": "https://access.l-acoustics.com/download-center/software/soundvision",
   "note": "Download vereist L-Acoustics-account (versie handmatig)",
   "version": null,
   "previous": null,
   "changed": null,
   "error": "versie nog niet ingevuld in software.yml",
-  "checked": "2026-11-23 16:16",
+  "checked": "2026-11-23 16:37",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -79,14 +79,14 @@
  },
  {
   "name": "LiveProfessor",
-  "category": "",
+  "category": "DAW",
   "link": "https://www.audiostrom.com/change-log",
   "note": "",
   "version": "2026.3.0",
   "previous": "2026.2.2",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 16:16",
+  "checked": "2026-11-23 16:37",
   "downloads": [
    {
     "label": "Mac",
@@ -108,14 +108,14 @@
  },
  {
   "name": "Milan Manager",
-  "category": "",
+  "category": "NETWORK",
   "link": "https://milanmanager.com/",
   "note": "",
   "version": "3.0.3",
   "previous": "2.5.3",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 16:16",
+  "checked": "2026-11-23 16:37",
   "downloads": [
    {
     "label": "Mac",
@@ -133,14 +133,14 @@
  },
  {
   "name": "REAPER",
-  "category": "",
+  "category": "DAW",
   "link": "https://www.reaper.fm/download.php",
   "note": "",
   "version": "7.86",
   "previous": null,
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-23 16:16",
+  "checked": "2026-11-23 16:37",
   "downloads": [
    {
     "label": "Windows",
@@ -161,14 +161,14 @@
  },
  {
   "name": "Lake Controller",
-  "category": "",
+  "category": "CONTROLS",
   "link": "https://www.labgruppen.com/en/products/0825-AAN?tab=downloads",
   "note": "Alleen Windows",
   "version": "8.1.7",
   "previous": "8.1.6",
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-23 16:16",
+  "checked": "2026-11-23 16:37",
   "downloads": [
    {
     "label": "Windows",
@@ -176,6 +176,47 @@
    }
   ],
   "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "Green-GO Control",
+  "category": "CONTROLS",
+  "link": "https://greengocom.com/software-products/control",
+  "note": "",
+  "version": "5.2.2",
+  "previous": null,
+  "changed": "2026-11-23 16:37",
+  "error": null,
+  "checked": "2026-11-23 16:37",
+  "downloads": [
+   {
+    "label": "Windows",
+    "url": "https://downloads.greengoconnect.com/5.2.2/windows/green-go-control.msi"
+   },
+   {
+    "label": "Mac",
+    "url": "https://downloads.greengoconnect.com/5.2.2/macos/green-go-control.dmg"
+   }
+  ],
+  "released": null,
+  "notes": null,
+  "notes_url": "https://manual.greengoconnect.com/en/software/",
+  "notes_label": "Handleiding"
+ },
+ {
+  "name": "d&b ArrayCalc",
+  "category": "PA Design & Control",
+  "link": "https://www.dbaudio.com/global/en/products/software/arraycalc/",
+  "note": "Download vereist My d&b-account (versie handmatig)",
+  "version": "12.10.0",
+  "previous": null,
+  "changed": "2026-11-23 16:37",
+  "error": null,
+  "checked": "2026-11-23 16:37",
+  "downloads": [],
+  "released": "2026-10-20",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
