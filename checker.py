@@ -141,7 +141,7 @@ def run():
     out = []
     for it in cfg["items"]:
         o = old.get(it["name"], {})
-        r = {"name": it["name"], "category": it.get("category", ""),
+        r = {"name": it["name"], "category": it.get("category", ""), "icon": it.get("icon", ""), "icon_text": it.get("icon_text", ""),
              "link": it.get("link") or it.get("url"), "note": it.get("note", ""),
              "version": o.get("version"), "previous": o.get("previous"),
              "changed": o.get("changed"), "error": None, "checked": now}
@@ -198,6 +198,27 @@ def is_new(i, now):
 
 ICON = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8m0 0L4.5 6.5M8 10l3.5-3.5M3 13.5h10"/></svg>'
 
+VENDORS = ("fabfilter", "cntrlld", "d&b", "l-acoustics", "shure")
+
+def monogram(name):
+    """Korte letters voor het icoontje, bijvoorbeeld QLab wordt QL en FabFilter Pro-Q 4 wordt PQ."""
+    words = name.split()
+    if len(words) > 1 and words[0].lower() in VENDORS:
+        words = words[1:]
+    tokens = re.findall(r"[A-Za-z]+", " ".join(words)) or [name[:2]]
+    if len(tokens) > 1:
+        return (tokens[0][0] + tokens[1][0]).upper()
+    caps = re.findall(r"[A-Z]", tokens[0])
+    return ("".join(caps[:2]) if 2 <= len(caps) <= 3 and tokens[0] != tokens[0].upper() else tokens[0][:2]).upper()
+
+def icon_html(i):
+    e = html.escape
+    if i.get("icon"):
+        return f'<img class="ico" src="{e(str(i["icon"]))}" alt="" width="32" height="32" loading="lazy">'
+    txt = str(i.get("icon_text") or "").strip() or monogram(i["name"])
+    tone = "r" if sum(map(ord, i["name"])) % 3 == 0 else "b"      # afwisselend blauw en rood
+    return f'<span class="ico mono {tone}" aria-hidden="true">{e(txt)}</span>'
+
 def row_html(i, now, cat=""):
     e = html.escape
     new = is_new(i, now)
@@ -212,16 +233,22 @@ def row_html(i, now, cat=""):
         was += f'<span class="was">Ontdekt op {e(nl_date(i["changed"]))}</span>'
     err = f'<span class="err">Controle mislukt: {e(i["error"])}</span>' if i["error"] else ""
     if i.get("downloads"):
-        dl = "".join(f'<a class="btn" href="{e(d["url"])}">{ICON}{e(d["label"])}</a>' for d in i["downloads"])
+        btn = lambda d: f'<a class="btn" href="{e(d["url"])}">{ICON}{e(d["label"])}</a>'
+        lab = lambda d: d["label"].lower()
+        mac = [d for d in i["downloads"] if lab(d).startswith("mac")]
+        win = [d for d in i["downloads"] if lab(d).startswith("win")]
+        rest = [d for d in i["downloads"] if d not in mac and d not in win]
+        # twee vaste plekken: links Mac (ook als Windows ontbreekt), rechts Windows, zodat de knoppen onder elkaar staan
+        dl = f'<span class="slot">{"".join(btn(d) for d in mac + rest)}</span><span class="slot">{"".join(btn(d) for d in win)}</span>'
     else:
-        dl = f'<a class="btn" href="{e(i["link"] or "#")}">{ICON}Download</a>'
+        dl = f'<span class="slot"><a class="btn" href="{e(i["link"] or "#")}">{ICON}Download</a></span><span class="slot"></span>'
     more = ""
     if i.get("notes"):
         more += '<details><summary>Wijzigingen</summary><ul>' + "".join(f"<li>{e(l)}</li>" for l in i["notes"]) + "</ul></details>"
     if i.get("notes_url"):
         more += f'<a href="{e(i["notes_url"])}" target="_blank" rel="noopener">{e(i["notes_label"])}</a>'
     more = f'<div class="more">{more}</div>' if more else ""
-    return (f'<li class="row{" new" if new else ""}" data-cat="{e(cat)}"><div class="who"><span class="name">{e(i["name"])}</span>{badge}{note}</div>'
+    return (f'<li class="row{" new" if new else ""}" data-cat="{e(cat)}"><div class="who">{icon_html(i)}<div><span class="name">{e(i["name"])}</span>{badge}{note}</div></div>'
             f'<div class="ver"><span class="num">{e(i["version"] or "onbekend")}</span>{was}{err}</div>'
             f'<div class="dl">{dl}</div>{more}</li>')
 
@@ -302,9 +329,14 @@ h1 em{font-style:normal;color:var(--red)}
 .cats button[aria-current=true]::before{content:"";position:absolute;left:-.5rem;top:25%;bottom:25%;width:2px;border-radius:2px;background:var(--red)}
 .cats button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .list{list-style:none;margin:0;padding:0}
-.row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 11rem 12.5rem;gap:.4rem 1.5rem;align-items:center;padding:.95rem .25rem;border-top:1px solid var(--line)}
+.row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 11rem 13.6rem;gap:.4rem 1.5rem;align-items:center;padding:.95rem .25rem;border-top:1px solid var(--line)}
 .row:first-child{border-top:0}
 .row.new::before{content:"";position:absolute;inset:.3rem -.75rem;z-index:-1;border-radius:12px;background:linear-gradient(90deg,color-mix(in srgb,var(--red-deep) 70%,transparent),transparent 80%)}
+.who{display:flex;align-items:center;gap:.85rem;min-width:0}
+.ico{flex:none;width:2.1rem;height:2.1rem;border-radius:10px;object-fit:contain}
+.mono{display:grid;place-items:center;font:800 .72rem/1 var(--display);letter-spacing:.02em}
+.mono.b{background:var(--blue-deep);color:var(--blue);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--blue) 30%,transparent)}
+.mono.r{background:var(--red-deep);color:var(--red-soft);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--red) 35%,transparent)}
 .name{font-weight:600;font-size:.95rem}
 .note{display:block;color:var(--muted);font-size:.76rem;margin-top:.1rem}
 .badge{display:inline-flex;align-items:center;gap:.4rem;margin-left:.6rem;padding:.08rem .55rem;border-radius:999px;background:var(--red-deep);color:var(--red-soft);font-size:.68rem;font-weight:600;vertical-align:.12em}
@@ -314,7 +346,9 @@ h1 em{font-style:normal;color:var(--red)}
 .num{display:inline-block;color:var(--blue);font:700 1.05rem/1.2 var(--display);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
 .was{display:block;color:var(--muted);font-size:.74rem;margin-top:.05rem}
 .err{display:block;color:var(--red-soft);font-size:.76rem;margin-top:.1rem}
-.dl{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:flex-end}
+.dl{display:grid;grid-template-columns:repeat(2,6.6rem);gap:.4rem;justify-content:end}
+.slot{display:flex;flex-direction:column;gap:.4rem}
+.slot .btn{justify-content:center}
 .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.38rem .85rem;border:1px solid color-mix(in srgb,var(--blue) 45%,transparent);border-radius:999px;background:none;color:var(--text);font-size:.78rem;font-weight:600;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
 .btn:hover{background:var(--blue);border-color:var(--blue);color:#0e1118}
 .btn:focus-visible,.more summary:focus-visible,.more a:focus-visible,.ask:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
@@ -346,7 +380,7 @@ footer{margin-top:2rem;color:var(--muted);font-size:.75rem}
 .cats{position:static;flex-direction:row;overflow-x:auto;gap:.4rem;padding:0 0 .25rem;border:0}
 .cats button{width:auto;white-space:nowrap;gap:.45rem;border:1px solid var(--line);border-radius:999px}
 .cats button[aria-current=true]{border-color:var(--red)}.cats button[aria-current=true]::before{display:none}
-.row{grid-template-columns:1fr}.dl{justify-content:flex-start}}
+.row{grid-template-columns:1fr}.dl{justify-content:start}}
 </style></head><body><div class="wrap">
 <header><div class="brand"><p class="by">by evertfront</p><h1><svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#26304f"/><circle cx="24" cy="25" r="14" fill="#0e1118" stroke="#8ea2d8" stroke-width="1.5"/><g stroke="#ebe8e2" stroke-width="1.6" stroke-linecap="round" opacity=".55"><path d="M10.5 31l-2.2 1.3M7.8 24H10M10.5 17L8.3 15.7M37.5 31l2.2 1.3M40.2 24H38M37.5 17l2.2-1.3"/></g><path d="M24 25L33 14.5" stroke="#c23f48" stroke-width="3.2" stroke-linecap="round"/><circle cx="24" cy="25" r="3.2" fill="#ebe8e2"/><path d="M33 8.5l4.5 0 0 4.5" fill="none" stroke="#c23f48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(-1 0)"/></svg><span>Software <em>Update</em> Watcher</span></h1></div><div class="side"><p class="checked">Laatst gecontroleerd __NOW__</p>__ASK__</div></header>
 <p class="summary">__SUMMARY__</p>

@@ -10,6 +10,8 @@
 #   version         zelf invullen (bijvoorbeeld als de download achter een login zit)
 #
 # Optioneel:
+#   icon            optioneel: pad of link naar een afbeelding, bijvoorbeeld icons/qlab.png (bestand in docs/icons/); zonder icon komt er een lettericoon
+#   icon_text       optioneel: eigen letters voor het lettericoon
 #   category        een van de categorieën hierboven; zonder category staat het programma alleen onder ALL
 #   link            waar de downloadknop heen gaat (standaard: url)
 #   downloads       meerdere knoppen, bijvoorbeeld Mac en Windows
@@ -33,6 +35,7 @@ contact:
 
 items:
   - name: Dante Controller
+    icon_text: DC
     category: NETWORK
     url: https://www.getdante.com/resources/software-downloads/
     regex: 'Dante Controller v(\d+(?:\.\d+)+) Package(?:\s|<[^>]*>)*\(Windows\)'   # versie van de Windows-uitvoering
@@ -43,8 +46,7 @@ items:
     note: Mac-versie kan een nummer achterlopen
     downloads:
       - {label: Windows, regex: 'href=["'']([^"'']*DanteController-{version}_windows\.exe)["'']'}
-      - {label: Mac (Apple Silicon), regex: 'href=["'']([^"'']*DanteController-[\d.]+-macos-arm64\.dmg)["'']'}
-      - {label: Mac (Intel), regex: 'href=["'']([^"'']*DanteController-[\d.]+-macos-x64\.dmg)["'']'}
+      - {label: Mac, regex: 'href=["'']([^"'']*DanteController-[\d.]+-macos-arm64\.dmg)["'']'}
   - name: QLab
     category: DAW
     url: https://qlab.app/download/
@@ -57,6 +59,7 @@ items:
     notes_regex: '<h2[^>]*>\s*{version}\s*</h2>(.*?)(?=<h2|<footer|$)'   # alles onder het versienummer
     link: https://qlab.app/downloads/QLab.dmg
   - name: Shure Wireless Workbench
+    icon_text: WWB
     category: CONTROLS
     url: https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench
     regex: '(\d+\.\d+(?:\.\d+)*)\s*(?:<[^>]*>\s*)*See Release Notes'
@@ -65,12 +68,14 @@ items:
     notes_url: https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench
     notes_label: Alle versies en release notes
   - name: L-Acoustics Network Manager
+    icon_text: NWM
     category: PA DESIGN & CONTROL
     version: "2026.2.1"   # handmatig; bron: l-acoustics.com/products/network-manager (juli 2026)
     released: ""
     link: https://www.l-acoustics.com/products/network-manager/
     note: Versie handmatig bijgehouden
   - name: L-Acoustics Soundvision
+    icon_text: SV
     category: PA DESIGN & CONTROL
     version: "2026.4"   # handmatig; bron: l-acoustics.com/products/soundvision (oktober 2026)
     released: ""
@@ -126,6 +131,7 @@ items:
       - {label: Windows, regex: 'href=["'']([^"'']*/{version}/windows/green-go-control\.msi)["'']'}
       - {label: Mac, regex: 'href=["'']([^"'']*/{version}/macos/green-go-control\.dmg)["'']'}
   - name: d&b ArrayCalc
+    icon_text: AC
     category: PA DESIGN & CONTROL
     version: "12.10.0"
     released: "2026-10-20"
