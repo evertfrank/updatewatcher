@@ -1,0 +1,57 @@
+[
+ {
+  "name": "Dante Controller",
+  "category": "Netwerk",
+  "link": "https://www.getdante.com/platform/windows",
+  "note": "Download vereist Audinate-account",
+  "version": "4.18.1.2",
+  "previous": null,
+  "changed": "2026-11-23 14:48",
+  "error": null,
+  "checked": "2026-11-23 14:48"
+ },
+ {
+  "name": "QLab",
+  "category": "Showcontrol",
+  "link": "https://qlab.app/downloads/",
+  "note": "",
+  "version": null,
+  "previous": null,
+  "changed": null,
+  "error": "HTTP Error 403: Forbidden",
+  "checked": "2026-11-23 14:48"
+ },
+ {
+  "name": "Shure Wireless Workbench",
+  "category": "RF",
+  "link": "https://www.shure.com/en-US/products/software/wwb",
+  "note": "",
+  "version": "7.4",
+  "previous": null,
+  "changed": "2026-11-23 14:48",
+  "error": null,
+  "checked": "2026-11-23 14:48"
+ },
+ {
+  "name": "L-Acoustics Network Manager",
+  "category": "Netwerk",
+  "link": "https://www.l-acoustics.com/en/product/la-network-manager/",
+  "note": "",
+  "version": null,
+  "previous": null,
+  "changed": null,
+  "error": "geen versie gevonden (regex klopt niet meer?)",
+  "checked": "2026-11-23 14:48"
+ },
+ {
+  "name": "L-Acoustics Soundvision",
+  "category": "Simulatie",
+  "link": "https://www.l-acoustics.com/en/products/soundvision/",
+  "note": "",
+  "version": null,
+  "previous": null,
+  "changed": null,
+  "error": "geen versie gevonden (regex klopt niet meer?)",
+  "checked": "2026-11-23 14:48"
+ }
+]
