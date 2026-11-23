@@ -23,7 +23,7 @@ interval_hours: 6
 
 # Categorieën in de zijbalk, in deze volgorde. 'ALL' staat er altijd boven.
 # Ze komen op een programma met  category: NAAM  (hoofdletters maken niet uit).
-categories: [DAW, NETWORK, CONTROLS, PLUGINS, PA Design & Control]
+categories: [DAW, NETWORK, CONTROLS, PLUGINS, PA DESIGN & CONTROL]
 
 # Knop "Mis je iets?" op de pagina. Laat 'endpoint' leeg en er verschijnt geen formulier.
 contact:
@@ -34,12 +34,17 @@ contact:
 items:
   - name: Dante Controller
     category: NETWORK
-    url: https://www.getdante.com/platform/windows
-    regex: 'Dante Controller v(\d+(?:\.\d+)+) Package'
+    url: https://www.getdante.com/resources/software-downloads/
+    regex: 'Dante Controller v(\d+(?:\.\d+)+) Package(?:\s|<[^>]*>)*\(Windows\)'   # versie van de Windows-uitvoering
+    previous_from_page: false
     notes_url: "https://www.getdante.com/releases/dante-controller/windows/dante-controller-v{version_dash}-package-windows/"
     date_url: "https://www.getdante.com/releases/dante-controller/windows/dante-controller-v{version_dash}-package-windows/"
     date_regex: 'Release Date:\s*(?:<[^>]*>\s*)*(\d{1,2}(?:st|nd|rd|th)? of [A-Za-z]+ \d{4})'
-    note: Download vereist Audinate-account
+    note: Mac-versie kan een nummer achterlopen
+    downloads:
+      - {label: Windows, regex: 'href=["'']([^"'']*DanteController-{version}_windows\.exe)["'']'}
+      - {label: Mac (Apple Silicon), regex: 'href=["'']([^"'']*DanteController-[\d.]+-macos-arm64\.dmg)["'']'}
+      - {label: Mac (Intel), regex: 'href=["'']([^"'']*DanteController-[\d.]+-macos-x64\.dmg)["'']'}
   - name: QLab
     category: DAW
     url: https://qlab.app/download/
@@ -56,21 +61,21 @@ items:
     url: https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench
     regex: '(\d+\.\d+(?:\.\d+)*)\s*(?:<[^>]*>\s*)*See Release Notes'
     date_regex: '{version}.{0,800}?([A-Z][a-z]+ \d{2}, \d{4})'
-    link: https://www.shure.com/en-US/products/software/wwb
+    link: https://www.shure.com/en-US/support/downloads/software-firmware-archive/wireless-workbench
     notes_url: https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench
     notes_label: Alle versies en release notes
   - name: L-Acoustics Network Manager
-    category: NETWORK
-    version: ""        # zelf invullen; de download zit achter een login
-    released: ""       # optioneel: release-datum, bijvoorbeeld "2026-10-09"
-    link: https://access.l-acoustics.com/download-center/software/network-manager
-    note: Download vereist L-Acoustics-account (versie handmatig)
-  - name: L-Acoustics Soundvision
-    category: PA Design & Control
-    version: ""
+    category: PA DESIGN & CONTROL
+    version: "2026.2.1"   # handmatig; bron: l-acoustics.com/products/network-manager (juli 2026)
     released: ""
-    link: https://access.l-acoustics.com/download-center/software/soundvision
-    note: Download vereist L-Acoustics-account (versie handmatig)
+    link: https://www.l-acoustics.com/products/network-manager/
+    note: Versie handmatig bijgehouden
+  - name: L-Acoustics Soundvision
+    category: PA DESIGN & CONTROL
+    version: "2026.4"   # handmatig; bron: l-acoustics.com/products/soundvision (oktober 2026)
+    released: ""
+    link: https://www.l-acoustics.com/products/soundvision/
+    note: Versie handmatig bijgehouden
   - name: LiveProfessor
     category: DAW
     url: https://www.audiostrom.com/change-log
@@ -121,7 +126,7 @@ items:
       - {label: Windows, regex: 'href=["'']([^"'']*/{version}/windows/green-go-control\.msi)["'']'}
       - {label: Mac, regex: 'href=["'']([^"'']*/{version}/macos/green-go-control\.dmg)["'']'}
   - name: d&b ArrayCalc
-    category: PA Design & Control
+    category: PA DESIGN & CONTROL
     version: "12.10.0"
     released: "2026-10-20"
     link: https://www.dbaudio.com/global/en/products/software/arraycalc/
@@ -132,7 +137,6 @@ items:
     regex: 'downloads/ffproq(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffproq413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffproq\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffproq\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffproq\d+x64\.exe)["'']'}
@@ -142,7 +146,6 @@ items:
     regex: 'downloads/ffproc(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffproc413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffproc\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffproc\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffproc\d+x64\.exe)["'']'}
@@ -152,7 +155,6 @@ items:
     regex: 'downloads/ffprol(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffprol413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffprol\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffprol\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffprol\d+x64\.exe)["'']'}
@@ -162,7 +164,6 @@ items:
     regex: 'downloads/ffpror(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffpror413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffpror\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffpror\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffpror\d+x64\.exe)["'']'}
@@ -172,7 +173,6 @@ items:
     regex: 'downloads/ffpromb(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffpromb413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffpromb\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffpromb\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffpromb\d+x64\.exe)["'']'}
@@ -182,7 +182,6 @@ items:
     regex: 'downloads/ffprods(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffprods413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffprods\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffprods\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffprods\d+x64\.exe)["'']'}
@@ -192,7 +191,6 @@ items:
     regex: 'downloads/ffprog(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffprog413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffprog\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffprog\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffprog\d+x64\.exe)["'']'}
@@ -202,7 +200,6 @@ items:
     regex: 'downloads/ffsaturn(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffsaturn413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffsaturn\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffsaturn\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffsaturn\d+x64\.exe)["'']'}
@@ -212,7 +209,6 @@ items:
     regex: 'downloads/fftimeless(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: fftimeless413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/fftimeless\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/fftimeless\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/fftimeless\d+x64\.exe)["'']'}
@@ -222,7 +218,6 @@ items:
     regex: 'downloads/ffvolcano(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffvolcano413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffvolcano\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffvolcano\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffvolcano\d+x64\.exe)["'']'}
@@ -232,7 +227,6 @@ items:
     regex: 'downloads/fftwin(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: fftwin413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/fftwin\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/fftwin\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/fftwin\d+x64\.exe)["'']'}
@@ -242,7 +236,6 @@ items:
     regex: 'downloads/ffone(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffone413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffone\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffone\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffone\d+x64\.exe)["'']'}
@@ -252,7 +245,6 @@ items:
     regex: 'downloads/ffsimplon(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffsimplon413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffsimplon\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffsimplon\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffsimplon\d+x64\.exe)["'']'}
@@ -262,7 +254,6 @@ items:
     regex: 'downloads/ffmicro(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffmicro413 wordt 4.13
     previous_from_page: false
     date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffmicro\d+\.dmg'   # laatste datum vóór de downloadlink
-    note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffmicro\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffmicro\d+x64\.exe)["'']'}
@@ -283,6 +274,8 @@ items:
     previous_from_page: false
     date_regex: '{version}.{0,300}?(\d{4}-\d{2}-\d{2})'
     link: https://cntrlld.com/clearvox/download
+    downloads:
+      - {label: Mac, url: "https://cntrlld.com/clearvox/download"}
     notes_url: https://cntrlld.com/clearvox
     notes_label: Wat is nieuw
     note: Alleen macOS (VST3 en AU), beta
