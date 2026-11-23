@@ -1,74 +1,92 @@
 [
  {
   "name": "Dante Controller",
-  "category": "Netwerk",
+  "category": "",
   "link": "https://www.getdante.com/platform/windows",
   "note": "Download vereist Audinate-account",
   "version": "4.18.1.2",
-  "previous": null,
+  "previous": "4.18.0.11",
   "changed": "2026-11-23 14:48",
   "error": null,
-  "checked": "2026-11-23 15:41",
-  "downloads": []
+  "checked": "2026-11-23 16:05",
+  "downloads": [],
+  "released": "2026-07-15",
+  "notes": null,
+  "notes_url": "https://www.getdante.com/releases/dante-controller/windows/dante-controller-v4-18-1-2-package-windows/",
+  "notes_label": "Release notes"
  },
  {
   "name": "QLab",
-  "category": "Showcontrol",
-  "link": "https://qlab.app/downloads/",
+  "category": "",
+  "link": "https://qlab.app/downloads/QLab.dmg",
   "note": "",
   "version": "5.6.5",
-  "previous": null,
+  "previous": "5.6.4",
   "changed": "2026-11-23 15:01",
   "error": null,
-  "checked": "2026-11-23 15:41",
-  "downloads": []
+  "checked": "2026-11-23 16:05",
+  "downloads": [],
+  "released": "2026-10-28",
+  "notes": null,
+  "notes_url": "https://qlab.app/release-notes/5.6.5",
+  "notes_label": "Release notes"
  },
  {
   "name": "Shure Wireless Workbench",
-  "category": "RF",
+  "category": "",
   "link": "https://www.shure.com/en-US/products/software/wwb",
   "note": "",
-  "version": "7.4",
-  "previous": null,
-  "changed": "2026-11-23 14:48",
+  "version": "7.9.0",
+  "previous": "7.8.3",
+  "changed": "2026-11-23 16:05",
   "error": null,
-  "checked": "2026-11-23 15:41",
-  "downloads": []
+  "checked": "2026-11-23 16:05",
+  "downloads": [],
+  "released": "2026-10-06",
+  "notes": null,
+  "notes_url": "https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench",
+  "notes_label": "Alle versies en release notes"
  },
  {
   "name": "L-Acoustics Network Manager",
-  "category": "Netwerk",
+  "category": "",
   "link": "https://access.l-acoustics.com/download-center/software/network-manager",
   "note": "Download vereist L-Acoustics-account (versie handmatig)",
   "version": null,
   "previous": null,
   "changed": null,
   "error": "versie nog niet ingevuld in software.yml",
-  "checked": "2026-11-23 15:41",
-  "downloads": []
+  "checked": "2026-11-23 16:05",
+  "downloads": [],
+  "released": null,
+  "notes": null,
+  "notes_url": null
  },
  {
   "name": "L-Acoustics Soundvision",
-  "category": "Simulatie",
+  "category": "",
   "link": "https://access.l-acoustics.com/download-center/software/soundvision",
   "note": "Download vereist L-Acoustics-account (versie handmatig)",
   "version": null,
   "previous": null,
   "changed": null,
   "error": "versie nog niet ingevuld in software.yml",
-  "checked": "2026-11-23 15:41",
-  "downloads": []
+  "checked": "2026-11-23 16:05",
+  "downloads": [],
+  "released": null,
+  "notes": null,
+  "notes_url": null
  },
  {
   "name": "LiveProfessor",
-  "category": "Audio",
+  "category": "",
   "link": "https://www.audiostrom.com/change-log",
   "note": "",
   "version": "2026.3.0",
-  "previous": null,
+  "previous": "2026.2.2",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 15:41",
+  "checked": "2026-11-23 16:05",
   "downloads": [
    {
     "label": "Mac",
@@ -78,18 +96,26 @@
     "label": "Windows",
     "url": "https://fls-a2124b9f-5148-4760-a455-ace2436abe75.laravel.cloud/software/1004/2026.3.0/LiveProfessor-win-x64.msi"
    }
-  ]
+  ],
+  "released": "2026-10-09",
+  "notes": [
+   "Fix: Fixed issue with hang on mac",
+   "Improvement: Added OSC address /GlobalSnapshots/Update [snapshot name]",
+   "Fix: Some VST3 plugins crashed on windows during load"
+  ],
+  "notes_url": "https://www.audiostrom.com/change-log",
+  "notes_label": "Volledige changelog"
  },
  {
   "name": "Milan Manager",
-  "category": "Netwerk",
+  "category": "",
   "link": "https://milanmanager.com/",
   "note": "",
   "version": "3.0.3",
-  "previous": null,
+  "previous": "2.5.3",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 15:41",
+  "checked": "2026-11-23 16:05",
   "downloads": [
    {
     "label": "Mac",
@@ -99,6 +125,10 @@
     "label": "Windows",
     "url": "https://milanmanager.com/?_hash=lR66B1TOEAhN8Ty8Fd_tH9WNKJ72io7yGbeoKKJO_Jw&ctx=a%3A1%3A%7Bs%3A2%3A%22id%22%3Bi%3A754%3B%7D&d=attachment&f=MilanManager-V3.0.3.zip&p=downloads%2Fwindows%2Fapp%2FMilanManager-V3.0.3.zip"
    }
-  ]
+  ],
+  "released": null,
+  "notes": null,
+  "notes_url": "https://milanmanager.com/news",
+  "notes_label": "Nieuws"
  }
 ]
