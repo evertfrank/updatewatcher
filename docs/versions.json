@@ -8,7 +8,7 @@
   "previous": "4.18.0.11",
   "changed": "2026-11-23 14:48",
   "error": null,
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [],
   "released": "2026-07-15",
   "notes": null,
@@ -24,10 +24,25 @@
   "previous": "5.6.4",
   "changed": "2026-11-23 15:01",
   "error": null,
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [],
   "released": "2026-10-28",
-  "notes": null,
+  "notes": [
+   "fixed: A regression in 5.6.4 that could cause QLab to crash when trying to manage tool tips.",
+   "fixed: When deleting a cue list or cart, the workspace will now ensure that a remaining list is correctly selected.",
+   "fixed: The Art-Net tab of the Workspace Status window now remains responsive when looking for Art-Net nodes on a slow network.",
+   "fixed: A bug that could cause QLab to crash when the light definition chooser was visible in the light settings.",
+   "fixed: A number of performance improvements when editing workspaces.",
+   "Download Latest Version",
+   "Version",
+   "5.6.5",
+   "Release Date",
+   "October 28, 2026",
+   "Requirements",
+   "macOS 11 or later",
+   "\u2190 5.6.4",
+   "Previous version"
+  ],
   "notes_url": "https://qlab.app/release-notes/5.6.5",
   "notes_label": "Release notes"
  },
@@ -40,7 +55,7 @@
   "previous": "7.8.3",
   "changed": "2026-11-23 16:05",
   "error": null,
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [],
   "released": "2026-10-06",
   "notes": null,
@@ -56,7 +71,7 @@
   "previous": null,
   "changed": null,
   "error": "versie nog niet ingevuld in software.yml",
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -71,7 +86,7 @@
   "previous": null,
   "changed": null,
   "error": "versie nog niet ingevuld in software.yml",
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -86,7 +101,7 @@
   "previous": "2026.2.2",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [
    {
     "label": "Mac",
@@ -115,7 +130,7 @@
   "previous": "2.5.3",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [
    {
     "label": "Mac",
@@ -140,7 +155,7 @@
   "previous": null,
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [
    {
     "label": "Windows",
@@ -168,7 +183,7 @@
   "previous": "8.1.6",
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [
    {
     "label": "Windows",
@@ -189,7 +204,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [
    {
     "label": "Windows",
@@ -214,7 +229,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [],
   "released": "2026-10-20",
   "notes": null,
@@ -226,210 +241,350 @@
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "4.13",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffproq413.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffproq413x64.exe"
+   }
+  ],
+  "released": "2026-06-25",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter Pro-C 3",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "3.02",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffproc302.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffproc302x64.exe"
+   }
+  ],
+  "released": "2026-04-16",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter Pro-L 2",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "2.26",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffprol226.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffprol226x64.exe"
+   }
+  ],
+  "released": "2026-04-16",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter Pro-R 2",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "2.06",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffpror206.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffpror206x64.exe"
+   }
+  ],
+  "released": "2026-04-16",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter Pro-MB",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "1.33",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffpromb133.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffpromb133x64.exe"
+   }
+  ],
+  "released": "2026-04-16",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter Pro-DS",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "1.32",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffprods132.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffprods132x64.exe"
+   }
+  ],
+  "released": "2026-04-16",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter Pro-G",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "1.42",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffprog142.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffprog142x64.exe"
+   }
+  ],
+  "released": "2026-04-16",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter Saturn 2",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "2.13",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffsaturn213.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffsaturn213x64.exe"
+   }
+  ],
+  "released": "2026-04-16",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter Timeless 3",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "3.10",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/fftimeless310.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/fftimeless310x64.exe"
+   }
+  ],
+  "released": "2026-04-16",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter Volcano 3",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "3.09",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffvolcano309.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffvolcano309x64.exe"
+   }
+  ],
+  "released": "2026-04-16",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter Twin 3",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "3.10",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/fftwin310.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/fftwin310x64.exe"
+   }
+  ],
+  "released": "2026-10-27",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter One",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "3.52",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffone352.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffone352x64.exe"
+   }
+  ],
+  "released": "2026-04-16",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter Simplon",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "1.42",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffsimplon142.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffsimplon142x64.exe"
+   }
+  ],
+  "released": "2026-04-16",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "FabFilter Micro",
   "category": "PLUGINS",
   "link": "https://www.fabfilter.com/download",
   "note": "Gratis proefversie 30 dagen",
-  "version": null,
+  "version": "1.32",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-23 16:47",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-23 16:55",
+  "error": null,
+  "checked": "2026-11-23 16:55",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffmicro132.dmg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://cdn-b.fabfilter.com/downloads/ffmicro132x64.exe"
+   }
+  ],
+  "released": "2026-04-16",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "cntrlld Spectra",
@@ -440,7 +595,7 @@
   "previous": null,
   "changed": "2026-11-23 16:40",
   "error": null,
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [
    {
     "label": "Mac",
@@ -461,7 +616,7 @@
   "previous": null,
   "changed": "2026-11-23 16:47",
   "error": null,
-  "checked": "2026-11-23 16:47",
+  "checked": "2026-11-23 16:55",
   "downloads": [],
   "released": "2026-11-15",
   "notes": null,
