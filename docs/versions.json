@@ -11,7 +11,7 @@
   "previous": "4.18.0.11",
   "changed": "2026-11-23 14:48",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Windows",
@@ -39,7 +39,7 @@
   "previous": "5.6.4",
   "changed": "2026-11-23 15:01",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [],
   "released": "2026-10-28",
   "notes": [
@@ -73,7 +73,7 @@
   "previous": "7.8.3",
   "changed": "2026-11-23 16:05",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [],
   "released": "2026-10-06",
   "notes": null,
@@ -92,7 +92,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -111,7 +111,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -130,7 +130,7 @@
   "previous": "2026.2.2",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Mac",
@@ -162,7 +162,7 @@
   "previous": "2.5.3",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Mac",
@@ -190,7 +190,7 @@
   "previous": null,
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Windows",
@@ -221,7 +221,7 @@
   "previous": "8.1.6",
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Windows",
@@ -245,7 +245,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Windows",
@@ -273,7 +273,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [],
   "released": "2026-10-20",
   "notes": null,
@@ -292,7 +292,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Mac",
@@ -320,7 +320,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Mac",
@@ -348,7 +348,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Mac",
@@ -376,7 +376,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Mac",
@@ -404,7 +404,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Mac",
@@ -432,7 +432,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Mac",
@@ -460,7 +460,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Mac",
@@ -488,7 +488,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Mac",
@@ -516,7 +516,7 @@
   "previous": null,
   "changed": "2026-11-23 16:40",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Mac",
@@ -540,7 +540,7 @@
   "previous": null,
   "changed": "2026-11-23 16:47",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [
    {
     "label": "Mac",
@@ -564,7 +564,7 @@
   "previous": null,
   "changed": "2026-11-23 18:39",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -574,7 +574,7 @@
  {
   "name": "DiGiCo",
   "category": "CONTROLS",
-  "icon": "",
+  "icon": "icons/digico-biz.png",
   "favorite": false,
   "icon_text": "DG",
   "link": "https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software",
@@ -583,9 +583,33 @@
   "previous": null,
   "changed": "2026-11-23 18:39",
   "error": null,
-  "checked": "2026-11-23 18:40",
+  "checked": "2026-11-23 18:49",
   "downloads": [],
   "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "RME TotalMix FX",
+  "category": "CONTROLS",
+  "icon": "icons/rme-audio-de.ico",
+  "favorite": false,
+  "icon_text": "TM",
+  "link": "https://rme-audio.de/fireface-ufx-3.html",
+  "note": "Alleen Mac (versie handmatig)",
+  "version": "2.10",
+  "previous": null,
+  "changed": "2026-11-23 18:49",
+  "error": null,
+  "checked": "2026-11-23 18:49",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://rme-audio.de/downloads/tmfx_210_1991_mac.zip"
+   }
+  ],
+  "released": "2026-10-22",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
