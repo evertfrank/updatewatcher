@@ -246,7 +246,17 @@ items:
   - name: DiGiCo
     category: CONTROLS
     icon_text: DG
+    icon_site: https://digico.biz   # icoon ophalen van de hoofdwebsite (de supportsite is geblokkeerd)
     version: "V22"   # handmatig; nieuwste console-software (maart 2026). Vul het exacte buildnummer in als je dat kent.
     released: ""
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     note: Console-, offline- en Session Convert-software (versie handmatig)
+  - name: RME TotalMix FX
+    category: CONTROLS
+    icon_text: TM
+    version: "2.10"   # handmatig; bron: RME-driverpagina van de Fireface UFX III (installer tmfx_210_1991, 22 okt 2026)
+    released: "2026-10-22"
+    link: https://rme-audio.de/fireface-ufx-3.html
+    note: Alleen Mac (versie handmatig)
+    downloads:
+      - {label: Mac, url: "https://rme-audio.de/downloads/tmfx_210_1991_mac.zip"}
