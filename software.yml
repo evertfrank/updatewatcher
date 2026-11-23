@@ -214,60 +214,6 @@ items:
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffsaturn\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffsaturn\d+x64\.exe)["'']'}
-  - name: FabFilter Timeless 3
-    category: PLUGINS
-    url: https://www.fabfilter.com/download
-    regex: 'downloads/fftimeless(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: fftimeless413 wordt 4.13
-    previous_from_page: false
-    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/fftimeless\d+\.dmg'   # laatste datum vóór de downloadlink
-    downloads:
-      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/fftimeless\d+\.dmg)["'']'}
-      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/fftimeless\d+x64\.exe)["'']'}
-  - name: FabFilter Volcano 3
-    category: PLUGINS
-    url: https://www.fabfilter.com/download
-    regex: 'downloads/ffvolcano(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffvolcano413 wordt 4.13
-    previous_from_page: false
-    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffvolcano\d+\.dmg'   # laatste datum vóór de downloadlink
-    downloads:
-      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffvolcano\d+\.dmg)["'']'}
-      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffvolcano\d+x64\.exe)["'']'}
-  - name: FabFilter Twin 3
-    category: PLUGINS
-    url: https://www.fabfilter.com/download
-    regex: 'downloads/fftwin(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: fftwin413 wordt 4.13
-    previous_from_page: false
-    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/fftwin\d+\.dmg'   # laatste datum vóór de downloadlink
-    downloads:
-      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/fftwin\d+\.dmg)["'']'}
-      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/fftwin\d+x64\.exe)["'']'}
-  - name: FabFilter One
-    category: PLUGINS
-    url: https://www.fabfilter.com/download
-    regex: 'downloads/ffone(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffone413 wordt 4.13
-    previous_from_page: false
-    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffone\d+\.dmg'   # laatste datum vóór de downloadlink
-    downloads:
-      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffone\d+\.dmg)["'']'}
-      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffone\d+x64\.exe)["'']'}
-  - name: FabFilter Simplon
-    category: PLUGINS
-    url: https://www.fabfilter.com/download
-    regex: 'downloads/ffsimplon(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffsimplon413 wordt 4.13
-    previous_from_page: false
-    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffsimplon\d+\.dmg'   # laatste datum vóór de downloadlink
-    downloads:
-      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffsimplon\d+\.dmg)["'']'}
-      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffsimplon\d+x64\.exe)["'']'}
-  - name: FabFilter Micro
-    category: PLUGINS
-    url: https://www.fabfilter.com/download
-    regex: 'downloads/ffmicro(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffmicro413 wordt 4.13
-    previous_from_page: false
-    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffmicro\d+\.dmg'   # laatste datum vóór de downloadlink
-    downloads:
-      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffmicro\d+\.dmg)["'']'}
-      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffmicro\d+x64\.exe)["'']'}
   - name: cntrlld Spectra
     category: PLUGINS
     url: https://cntrlld.com/download
@@ -290,3 +236,17 @@ items:
     notes_url: https://cntrlld.com/clearvox
     notes_label: Wat is nieuw
     note: Alleen macOS (VST3 en AU), beta
+  - name: Luminex Araneo
+    category: NETWORK
+    icon_text: AR
+    version: "1.11.0"   # handmatig; bron: bericht van distributeur DWR, 26 okt 2026 (niet op luminex.be zelf)
+    released: ""
+    link: https://www.luminex.be/download-araneo/
+    note: Download via aanmeldformulier (versie handmatig)
+  - name: DiGiCo
+    category: CONTROLS
+    icon_text: DG
+    version: "V22"   # handmatig; nieuwste console-software (maart 2026). Vul het exacte buildnummer in als je dat kent.
+    released: ""
+    link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    note: Console-, offline- en Session Convert-software (versie handmatig)
