@@ -8,7 +8,7 @@
   "previous": "4.18.0.11",
   "changed": "2026-11-23 14:48",
   "error": null,
-  "checked": "2026-11-23 16:05",
+  "checked": "2026-11-23 16:16",
   "downloads": [],
   "released": "2026-07-15",
   "notes": null,
@@ -24,7 +24,7 @@
   "previous": "5.6.4",
   "changed": "2026-11-23 15:01",
   "error": null,
-  "checked": "2026-11-23 16:05",
+  "checked": "2026-11-23 16:16",
   "downloads": [],
   "released": "2026-10-28",
   "notes": null,
@@ -40,7 +40,7 @@
   "previous": "7.8.3",
   "changed": "2026-11-23 16:05",
   "error": null,
-  "checked": "2026-11-23 16:05",
+  "checked": "2026-11-23 16:16",
   "downloads": [],
   "released": "2026-10-06",
   "notes": null,
@@ -56,7 +56,7 @@
   "previous": null,
   "changed": null,
   "error": "versie nog niet ingevuld in software.yml",
-  "checked": "2026-11-23 16:05",
+  "checked": "2026-11-23 16:16",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -71,7 +71,7 @@
   "previous": null,
   "changed": null,
   "error": "versie nog niet ingevuld in software.yml",
-  "checked": "2026-11-23 16:05",
+  "checked": "2026-11-23 16:16",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -86,7 +86,7 @@
   "previous": "2026.2.2",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 16:05",
+  "checked": "2026-11-23 16:16",
   "downloads": [
    {
     "label": "Mac",
@@ -115,7 +115,7 @@
   "previous": "2.5.3",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 16:05",
+  "checked": "2026-11-23 16:16",
   "downloads": [
    {
     "label": "Mac",
@@ -130,5 +130,54 @@
   "notes": null,
   "notes_url": "https://milanmanager.com/news",
   "notes_label": "Nieuws"
+ },
+ {
+  "name": "REAPER",
+  "category": "",
+  "link": "https://www.reaper.fm/download.php",
+  "note": "",
+  "version": "7.86",
+  "previous": null,
+  "changed": "2026-11-23 16:16",
+  "error": null,
+  "checked": "2026-11-23 16:16",
+  "downloads": [
+   {
+    "label": "Windows",
+    "url": "https://www.reaper.fm/files/7.x/reaper786_x64-install.exe"
+   },
+   {
+    "label": "Mac",
+    "url": "https://www.reaper.fm/files/7.x/reaper786_universal.dmg"
+   }
+  ],
+  "released": "2026-11-13",
+  "notes": [
+   "support new .ReaperPkg file format, allowing easy install/uninstall of JSFX/Extensions/Scripts/etc",
+   "\u2022"
+  ],
+  "notes_url": "https://www.reaper.fm/download.php",
+  "notes_label": "Changelog"
+ },
+ {
+  "name": "Lake Controller",
+  "category": "",
+  "link": "https://www.labgruppen.com/en/products/0825-AAN?tab=downloads",
+  "note": "Alleen Windows",
+  "version": "8.1.7",
+  "previous": "8.1.6",
+  "changed": "2026-11-23 16:16",
+  "error": null,
+  "checked": "2026-11-23 16:16",
+  "downloads": [
+   {
+    "label": "Windows",
+    "url": "https://cdn-media.empowertribe.com/cccd9c74c20b4e29873ec1076411373a/LakeController_v8_1_7_159.exe"
+   }
+  ],
+  "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
  }
 ]
