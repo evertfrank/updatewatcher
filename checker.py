@@ -159,7 +159,7 @@ def run():
             extras(it, r)
         out.append(r)
     f.write_text(json.dumps(out, indent=1))
-    (DATA / "index.html").write_text(render(out, now))
+    (DATA / "index.html").write_text(render(out, now, cfg.get("contact"), cfg.get("categories")))
     return cfg.get("interval_hours", 6)
 
 PALETTE = ["#c8202f", "#3a52b8", "#f3f1ea", "#ff6b78", "#6f8bff", "#9ea3b3"]  # kleur per categorie, in volgorde van software.yml
@@ -197,7 +197,7 @@ def is_new(i, now):
 
 ICON = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8m0 0L4.5 6.5M8 10l3.5-3.5M3 13.5h10"/></svg>'
 
-def row_html(i, now):
+def row_html(i, now, cat=""):
     e = html.escape
     new = is_new(i, now)
     badge = '<span class="badge">Nieuw</span>' if new else ""
@@ -220,17 +220,22 @@ def row_html(i, now):
     if i.get("notes_url"):
         more += f'<a href="{e(i["notes_url"])}" target="_blank" rel="noopener">{e(i["notes_label"])}</a>'
     more = f'<div class="more">{more}</div>' if more else ""
-    return (f'<li class="row{" new" if new else ""}"><div class="who"><span class="name">{e(i["name"])}</span>{badge}{note}</div>'
+    return (f'<li class="row{" new" if new else ""}" data-cat="{e(cat)}"><div class="who"><span class="name">{e(i["name"])}</span>{badge}{note}</div>'
             f'<div class="ver"><span class="num">{e(i["version"] or "onbekend")}</span>{was}{err}</div>'
             f'<div class="dl">{dl}</div>{more}</li>')
 
-def render(items, now):
+def render(items, now, contact=None, categories=None):
     e = html.escape
-    cats = {}
+    # categorieën uit software.yml (volgorde = volgorde van de zijbalk); een categorie die alleen bij een programma staat komt erbij
+    canon = {}
+    for c in (categories or []):
+        if str(c).strip():
+            canon.setdefault(str(c).strip().lower(), str(c).strip())
     for i in items:
-        cats.setdefault(i.get("category") or "", []).append(i)
-    grouped = any(cats)            # alleen groeperen als er categorieën zijn ingevuld
-    color = {c: PALETTE[n % len(PALETTE)] for n, c in enumerate(cats)}
+        c = str(i.get("category") or "").strip()
+        if c:
+            canon.setdefault(c.lower(), c)
+    cat_of = lambda i: canon.get(str(i.get("category") or "").strip().lower(), "")
     n_new = sum(is_new(i, now) for i in items)
     n_err = sum(bool(i["error"]) for i in items)
     if n_new:
@@ -241,37 +246,46 @@ def render(items, now):
         summary += f", bij {n_err} lukte de controle niet"
     summary += "."
 
-    if not grouped:
-        chips = ""
-        sections = '<ul class="list">' + "".join(row_html(i, now) for i in items) + "</ul>"
+    rows = "".join(row_html(i, now, cat_of(i)) for i in items)
+    listing = f'<ul class="list">{rows}</ul><p class="empty" id="empty" hidden></p>'
+    if canon:
+        nav = f'<button type="button" data-cat="*" aria-current="true"><span>ALL</span><b>{len(items)}</b></button>'
+        for c in canon.values():
+            nav += f'<button type="button" data-cat="{e(c)}" aria-current="false"><span>{e(c)}</span><b>{sum(cat_of(i) == c for i in items)}</b></button>'
+        layout = f'<div class="layout"><nav class="cats" aria-label="Categorieën">{nav}</nav><div>{listing}</div></div>'
     else:
-        chips = '<div class="chips" role="group" aria-label="Filter op categorie"><button class="chip" data-cat="*" aria-pressed="true">Alles</button>'
-        sections = ""
-        for c, group in cats.items():
-            name = c or "Overig"
-            chips += f'<button class="chip" data-cat="{e(name)}" aria-pressed="false" style="--c:{color[c]}"><i></i>{e(name)}</button>'
-            sections += (f'<section data-cat="{e(name)}" style="--c:{color[c]}"><h2>{e(name)}<span class="count">{len(group)}</span></h2>'
-                         f'<ul class="list">{"".join(row_html(i, now) for i in group)}</ul></section>')
-        chips += "</div>"
+        layout = listing
 
-    return (PAGE.replace("__NOW__", e(nl_datetime(now))).replace("__SUMMARY__", e(summary))
-                .replace("__CHIPS__", chips).replace("__SECTIONS__", sections))
+    contact = contact or {}
+    endpoint, mail, key = (str(contact.get(k) or "").strip() for k in ("endpoint", "email", "access_key"))
+    ask = dialog = ""
+    if endpoint:
+        ask = '<button class="ask" id="ask" type="button">Mis je iets?</button>'
+        keyfield = f'<input type="hidden" name="access_key" value="{e(key)}">' if key else ""
+        dialog = DIALOG.replace("__ENDPOINT__", e(endpoint)).replace("__KEYFIELD__", keyfield)
+    elif mail:
+        ask = f'<a class="ask" href="mailto:{e(mail)}?subject=Software%20updates">Mis je iets?</a>'
+    return (PAGE.replace("__ASK__", ask).replace("__DIALOG__", dialog).replace("__NOW__", e(nl_datetime(now)))
+                .replace("__SUMMARY__", e(summary)).replace("__LAYOUT__", layout))
 
 PAGE = """<!doctype html>
 <html lang="nl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Software updates</title>
+<title>Software Update Watcher</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='48' height='48' rx='11' fill='%231b2a5e'/%3E%3Ccircle cx='24' cy='25' r='14' fill='%230b0c0f' stroke='%233a52b8' stroke-width='1.5'/%3E%3Cg stroke='%23f3f1ea' stroke-width='1.6' stroke-linecap='round' opacity='.55'%3E%3Cpath d='M10.5 31l-2.2 1.3M7.8 24H10M10.5 17L8.3 15.7M37.5 31l2.2 1.3M40.2 24H38M37.5 17l2.2-1.3'/%3E%3C/g%3E%3Cpath d='M24 25L33 14.5' stroke='%23c8202f' stroke-width='3.2' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='25' r='3.2' fill='%23f3f1ea'/%3E%3Cpath d='M33 8.5l4.5 0 0 4.5' fill='none' stroke='%23d4222f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' transform='translate(-1 0)'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:dark;--display:"Big Shoulders Display","Barlow Condensed","Arial Narrow",sans-serif;
+:root{color-scheme:dark;--display:"Poppins","Arial Black","Helvetica Neue",Arial,sans-serif;
 --bg:#0b0c0f;--surface:#14161b;--line:#2a2e38;--text:#f3f1ea;--muted:#9ea3b3;
 --navy:#1b2a5e;--navy-line:#3a52b8;--red:#c8202f;--red-soft:#ff6b78;--btn:#f3f1ea;--btn-ink:#0b0c0f}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 "Instrument Sans",system-ui,sans-serif}
 .wrap{max-width:960px;margin:0 auto;padding:clamp(1.25rem,4vw,2.5rem) 1rem 3rem}
 header{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.25rem 1.5rem;padding-bottom:.6rem;border-bottom:2px solid var(--red)}
-h1{font:800 clamp(1.6rem,4vw,2.3rem)/1 var(--display);letter-spacing:.01em;margin:0}
+h1{display:flex;align-items:center;gap:.65rem;font:800 clamp(1.15rem,3.6vw,1.7rem)/1 var(--display);letter-spacing:-.01em;text-transform:uppercase;margin:0}
+h1 em{font-style:normal;color:#d4222f}
+.logo{width:2.1em;height:2.1em;flex:none}
 .checked{color:var(--muted);font-size:.8rem;margin:0}
 .summary{font-size:.95rem;margin:1rem 0 1.25rem}
 .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 1.5rem}
@@ -280,7 +294,7 @@ h1{font:800 clamp(1.6rem,4vw,2.3rem)/1 var(--display);letter-spacing:.01em;margi
 .chip[aria-pressed=true]{background:var(--navy);color:var(--text);border-color:var(--navy-line)}
 .chip:focus-visible,.btn:focus-visible,.more summary:focus-visible,.more a:focus-visible{outline:2px solid var(--red-soft);outline-offset:2px}
 section{margin:0 0 1.75rem}
-h2{display:flex;align-items:baseline;gap:.5rem;margin:0 0 .5rem;font:700 1.1rem/1 var(--display)}
+h2{display:flex;align-items:baseline;gap:.5rem;margin:0 0 .5rem;font:800 1rem/1 var(--display);letter-spacing:-.02em}
 .count{font:500 .78rem "Instrument Sans",sans-serif;color:var(--muted)}
 .list{--c:var(--navy-line);list-style:none;margin:0;padding:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
 .row{position:relative;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) 11rem;gap:.5rem 1.25rem;align-items:center;padding:.7rem 1rem .7rem 1.25rem;border-top:1px solid var(--line)}
@@ -293,7 +307,7 @@ h2{display:flex;align-items:baseline;gap:.5rem;margin:0 0 .5rem;font:700 1.1rem/
 .badge::before{content:"";width:.4rem;height:.4rem;border-radius:50%;background:#fff;box-shadow:0 0 6px #fff;animation:lamp 1.8s ease-in-out infinite}
 @keyframes lamp{50%{opacity:.25}}
 @media (prefers-reduced-motion:reduce){.badge::before{animation:none}}
-.num{display:inline-block;padding:.1rem .6rem;border:1px solid var(--navy-line);border-radius:9px;background:var(--navy);font:700 clamp(1.15rem,3vw,1.4rem)/1.2 var(--display);font-variant-numeric:tabular-nums}
+.num{display:inline-block;padding:.1rem .6rem;border:1px solid var(--navy-line);border-radius:9px;background:var(--navy);font:800 clamp(1rem,2.8vw,1.2rem)/1.2 var(--display);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
 .was{display:block;color:var(--muted);font-size:.75rem;margin-top:.1rem}
 .err{display:block;color:var(--red-soft);font-size:.78rem;margin-top:.1rem}
 .dl{display:flex;flex-wrap:wrap;gap:.4rem;justify-content:flex-end}
@@ -304,22 +318,88 @@ h2{display:flex;align-items:baseline;gap:.5rem;margin:0 0 .5rem;font:700 1.1rem/
 .more summary{cursor:pointer;font-weight:600}
 .more ul{margin:.4rem 0 0;padding-left:1rem;color:var(--muted);max-width:70ch}
 .more a{color:var(--text)}
+.side{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem}
+.ask{padding:.3rem .8rem;border:1px solid var(--red);border-radius:6px;background:none;color:var(--text);font:inherit;font-size:.8rem;font-weight:600;text-decoration:none;cursor:pointer}
+.ask:hover{background:var(--red)}
+.ask:focus-visible{outline:2px solid var(--red-soft);outline-offset:2px}
+dialog{width:min(30rem,calc(100vw - 2rem));padding:1.25rem;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--text)}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+dialog p{margin:.25rem 0 1rem;color:var(--muted);font-size:.85rem}
+dialog label{display:block;margin:0 0 .8rem;color:var(--muted);font-size:.8rem}
+dialog textarea,dialog input:not([type=hidden]):not([type=checkbox]){display:block;width:100%;margin-top:.25rem;padding:.5rem .6rem;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--text);font:inherit;font-size:.9rem}
+dialog textarea{resize:vertical}
+dialog textarea:focus-visible,dialog input:focus-visible{outline:2px solid var(--red-soft);outline-offset:1px}
+#cstatus{min-height:1.3em;margin:.25rem 0 .75rem}
+.actions{display:flex;gap:.5rem}
+button.btn{border:0;font-family:inherit;cursor:pointer}
+button.btn:disabled{opacity:.6;cursor:default}
+.btn.ghost{background:none;color:var(--text);border:1px solid var(--line)}
+.btn.ghost:hover{background:var(--line)}
+[hidden]{display:none!important}
+.layout{display:grid;grid-template-columns:10rem minmax(0,1fr);gap:1.5rem;align-items:start}
+.cats{position:sticky;top:1rem;display:flex;flex-direction:column;gap:.15rem}
+.cats button{display:flex;justify-content:space-between;align-items:center;gap:.5rem;width:100%;padding:.5rem .7rem;border:0;border-left:3px solid transparent;border-radius:0 6px 6px 0;background:none;color:var(--muted);font:600 .8rem/1.1 "Instrument Sans",sans-serif;text-align:left;cursor:pointer}
+.cats button b{font-weight:500;font-size:.72rem}
+.cats button:hover{color:var(--text)}
+.cats button[aria-current=true]{background:var(--navy);border-left-color:var(--red);color:var(--text)}
+.cats button:focus-visible{outline:2px solid var(--red-soft);outline-offset:2px}
+.empty{margin:0;padding:1rem;border:1px dashed var(--line);border-radius:10px;color:var(--muted)}
+@media (max-width:700px){.layout{grid-template-columns:1fr}.cats{position:static;flex-direction:row;overflow-x:auto;gap:.4rem;padding-bottom:.25rem}
+.cats button{width:auto;white-space:nowrap;border:1px solid var(--line);border-radius:999px}
+.cats button[aria-current=true]{border-color:var(--red)}}
 footer{margin-top:1.25rem;color:var(--muted);font-size:.78rem}
 @media (max-width:700px){.row{grid-template-columns:1fr}.dl{justify-content:flex-start}}
 </style></head><body><div class="wrap">
-<header><h1>Software updates</h1><p class="checked">Laatst gecontroleerd __NOW__</p></header>
+<header><h1><svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#1b2a5e"/><circle cx="24" cy="25" r="14" fill="#0b0c0f" stroke="#3a52b8" stroke-width="1.5"/><g stroke="#f3f1ea" stroke-width="1.6" stroke-linecap="round" opacity=".55"><path d="M10.5 31l-2.2 1.3M7.8 24H10M10.5 17L8.3 15.7M37.5 31l2.2 1.3M40.2 24H38M37.5 17l2.2-1.3"/></g><path d="M24 25L33 14.5" stroke="#c8202f" stroke-width="3.2" stroke-linecap="round"/><circle cx="24" cy="25" r="3.2" fill="#f3f1ea"/><path d="M33 8.5l4.5 0 0 4.5" fill="none" stroke="#d4222f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(-1 0)"/></svg><span>Software <em>Update</em> Watcher</span></h1><div class="side"><p class="checked">Laatst gecontroleerd __NOW__</p>__ASK__</div></header>
 <p class="summary">__SUMMARY__</p>
-__CHIPS__
-__SECTIONS__
+__LAYOUT__
 <footer>De lijst wordt elke 6 uur automatisch bijgewerkt.</footer>
 </div>
+__DIALOG__
 <script>
-const chips=[...document.querySelectorAll('.chip')],secs=[...document.querySelectorAll('section[data-cat]')];
-chips.forEach(c=>c.addEventListener('click',()=>{
-  chips.forEach(x=>x.setAttribute('aria-pressed',String(x===c)));
-  secs.forEach(s=>{s.hidden=c.dataset.cat!=='*'&&s.dataset.cat!==c.dataset.cat});
-}));
+const btns=[...document.querySelectorAll('.cats button')],rows=[...document.querySelectorAll('.row')],list=document.querySelector('.list'),empty=document.getElementById('empty');
+function show(cat){
+  let n=0;
+  rows.forEach(r=>{const on=cat==='*'||r.dataset.cat===cat;r.hidden=!on;if(on)n++});
+  btns.forEach(b=>b.setAttribute('aria-current',String(b.dataset.cat===cat)));
+  list.hidden=n===0;empty.hidden=n!==0;
+  if(!n)empty.textContent='Hier staat nog niets. Zet category: '+cat+' bij een programma in software.yml.';
+}
+btns.forEach(b=>b.addEventListener('click',()=>{show(b.dataset.cat);history.replaceState(null,'','#'+(b.dataset.cat==='*'?'':encodeURIComponent(b.dataset.cat)))}));
+if(btns.length){const h=decodeURIComponent(location.hash.slice(1));show(btns.some(b=>b.dataset.cat===h)?h:'*')}
+const dlg=document.getElementById('contact');
+if(dlg){
+  const form=document.getElementById('cform'),st=document.getElementById('cstatus'),send=form.querySelector('[type=submit]');
+  document.getElementById('ask').addEventListener('click',()=>{st.textContent='';dlg.showModal()});
+  document.getElementById('cancel').addEventListener('click',()=>dlg.close());
+  form.addEventListener('submit',async ev=>{
+    ev.preventDefault();
+    if(form.botcheck.checked)return;
+    send.disabled=true;st.style.color='';st.textContent='Bezig met versturen...';
+    try{
+      const r=await fetch(form.dataset.endpoint,{method:'POST',headers:{Accept:'application/json'},body:new FormData(form)});
+      const j=await r.json().catch(()=>({}));
+      if(r.ok&&(j.success===true||j.ok===true)){form.reset();st.textContent='Bedankt, je bericht is verstuurd.';setTimeout(()=>dlg.close(),1800)}
+      else throw new Error('mislukt')
+    }catch(_){st.style.color='var(--red-soft)';st.textContent='Versturen is niet gelukt. Probeer het later opnieuw.'}
+    send.disabled=false;
+  });
+}
 </script></body></html>"""
+
+DIALOG = """<dialog id="contact" aria-labelledby="ctitle">
+<form id="cform" data-endpoint="__ENDPOINT__">
+<h2 id="ctitle">Mis je iets?</h2>
+<p>Mis je een programma, of klopt er iets niet? Laat het weten.</p>
+<label>Bericht<textarea name="message" required maxlength="2000" rows="5"></textarea></label>
+<label>Je naam (niet verplicht)<input name="name" maxlength="80" autocomplete="name"></label>
+<label>E-mailadres, als je antwoord wilt (niet verplicht)<input type="email" name="email" maxlength="120" autocomplete="email"></label>
+__KEYFIELD__
+<input type="hidden" name="subject" value="Software updates: bericht van de pagina">
+<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+<p id="cstatus" role="status"></p>
+<div class="actions"><button class="btn" type="submit">Versturen</button><button class="btn ghost" type="button" id="cancel">Annuleren</button></div>
+</form></dialog>"""
 
 if __name__ == "__main__":
     DATA.mkdir(exist_ok=True)

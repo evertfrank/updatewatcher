@@ -10,7 +10,7 @@
 #   version         zelf invullen (bijvoorbeeld als de download achter een login zit)
 #
 # Optioneel:
-#   category        om te groeperen (nu bewust niet gebruikt)
+#   category        een van de categorieën hierboven; zonder category staat het programma alleen onder ALL
 #   link            waar de downloadknop heen gaat (standaard: url)
 #   downloads       meerdere knoppen, bijvoorbeeld Mac en Windows
 #   notes_url       link naar de release notes ({version} en {version_dash} worden ingevuld)
@@ -20,8 +20,20 @@
 #   released        release-datum zelf invullen, bijvoorbeeld "2026-10-09" (bij handmatige versies)
 #
 interval_hours: 6
+
+# Categorieën in de zijbalk, in deze volgorde. 'ALL' staat er altijd boven.
+# Ze komen op een programma met  category: NAAM  (hoofdletters maken niet uit).
+categories: [DAW, NETWORK, CONTROLS, PLUGINS, PA Design & Control]
+
+# Knop "Mis je iets?" op de pagina. Laat 'endpoint' leeg en er verschijnt geen formulier.
+contact:
+  endpoint: ""      # bijvoorbeeld https://api.web3forms.com/submit
+  access_key: ""    # de sleutel die web3forms.com je per e-mail stuurt (mag openbaar in de pagina staan)
+  email: ""         # alleen als 'endpoint' leeg is: de knop opent dan het mailprogramma, maar je adres staat dan open en bloot in de pagina
+
 items:
   - name: Dante Controller
+    category: NETWORK
     url: https://www.getdante.com/platform/windows
     regex: 'Dante Controller v(\d+(?:\.\d+)+) Package'
     notes_url: "https://www.getdante.com/releases/dante-controller/windows/dante-controller-v{version_dash}-package-windows/"
@@ -29,6 +41,7 @@ items:
     date_regex: 'Release Date:\s*(?:<[^>]*>\s*)*(\d{1,2}(?:st|nd|rd|th)? of [A-Za-z]+ \d{4})'
     note: Download vereist Audinate-account
   - name: QLab
+    category: DAW
     url: https://qlab.app/download/
     regex: 'release-notes/(\d+\.\d+(?:\.\d+)*)'                  # alle versies in de links; hoogste = huidig, daarna = vorige
     json: https://formulae.brew.sh/api/cask/qlab.json            # reserve als qlab.app de checker blokkeert (403)
@@ -39,6 +52,7 @@ items:
     notes_regex: '((?:<p[^>]*>(?:(?!</p>).)*?[Ff]ixed.*?</p>\s*)+)'
     link: https://qlab.app/downloads/QLab.dmg
   - name: Shure Wireless Workbench
+    category: CONTROLS
     url: https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench
     regex: '(\d+\.\d+(?:\.\d+)*)\s*(?:<[^>]*>\s*)*See Release Notes'
     date_regex: '{version}.{0,800}?([A-Z][a-z]+ \d{2}, \d{4})'
@@ -46,16 +60,19 @@ items:
     notes_url: https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench
     notes_label: Alle versies en release notes
   - name: L-Acoustics Network Manager
+    category: NETWORK
     version: ""        # zelf invullen; de download zit achter een login
     released: ""       # optioneel: release-datum, bijvoorbeeld "2026-10-09"
     link: https://access.l-acoustics.com/download-center/software/network-manager
     note: Download vereist L-Acoustics-account (versie handmatig)
   - name: L-Acoustics Soundvision
+    category: PA Design & Control
     version: ""
     released: ""
     link: https://access.l-acoustics.com/download-center/software/soundvision
     note: Download vereist L-Acoustics-account (versie handmatig)
   - name: LiveProfessor
+    category: DAW
     url: https://www.audiostrom.com/change-log
     regex: 'LiveProfessor (\d+\.\d+\.\d+)'
     date_regex: 'LiveProfessor {version}\b.{0,600}?([A-Z][a-z]+ \d{1,2}, \d{4})'
@@ -66,6 +83,7 @@ items:
       - {label: Mac, url: "https://fls-a2124b9f-5148-4760-a455-ace2436abe75.laravel.cloud/software/1004/{version}/LiveProfessor.dmg"}
       - {label: Windows, url: "https://fls-a2124b9f-5148-4760-a455-ace2436abe75.laravel.cloud/software/1004/{version}/LiveProfessor-win-x64.msi"}
   - name: Milan Manager
+    category: NETWORK
     url: https://milanmanager.com/
     regex: 'MilanManager V(\d+\.\d+\.\d+)'
     notes_url: https://milanmanager.com/news
@@ -74,6 +92,7 @@ items:
       - {label: Mac, regex: 'href=["'']([^"'']*MilanManager-V{version}\.dmg[^"'']*)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*MilanManager-V{version}\.zip[^"'']*)["'']'}
   - name: REAPER
+    category: DAW
     url: https://www.reaper.fm/download.php
     regex: 'Version (\d+\.\d+)\s*:'
     previous_from_page: false                       # de pagina noemt meer versienummers; vorige versie zelf bijhouden
@@ -85,9 +104,25 @@ items:
       - {label: Windows, regex: 'href=["'']([^"'']*reaper\d+_x64-install\.exe)["'']'}
       - {label: Mac, regex: 'href=["'']([^"'']*reaper\d+_universal\.dmg)["'']'}
   - name: Lake Controller
+    category: CONTROLS
     url: https://www.labgruppen.com/en/products/0825-AAN?tab=downloads
     regex: 'LakeController_v(\d+_\d+_\d+)_\d+\.exe'
     replace: ["_", "."]                             # 8_1_7 wordt 8.1.7
     note: Alleen Windows
     downloads:
       - {label: Windows, regex: 'href=["'']([^"'']*LakeController_v{version_us}_\d+\.exe)["'']'}
+  - name: Green-GO Control
+    category: CONTROLS
+    url: https://greengocom.com/software-products/control
+    regex: 'downloads\.greengoconnect\.com/(\d+\.\d+\.\d+)/windows/green-go-control\.msi'   # versie staat alleen in de downloadlink
+    notes_url: https://manual.greengoconnect.com/en/software/
+    notes_label: Handleiding
+    downloads:
+      - {label: Windows, regex: 'href=["'']([^"'']*/{version}/windows/green-go-control\.msi)["'']'}
+      - {label: Mac, regex: 'href=["'']([^"'']*/{version}/macos/green-go-control\.dmg)["'']'}
+  - name: d&b ArrayCalc
+    category: PA Design & Control
+    version: "12.10.0"
+    released: "2026-10-20"
+    link: https://www.dbaudio.com/global/en/products/software/arraycalc/
+    note: Download vereist My d&b-account (versie handmatig)
