@@ -206,6 +206,66 @@ items:
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffsaturn\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffsaturn\d+x64\.exe)["'']'}
+  - name: FabFilter Timeless 3
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Timeless 3.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Timeless 3.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/fftimeless\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/fftimeless\d+x64\.exe)["'']'}
+  - name: FabFilter Volcano 3
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Volcano 3.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Volcano 3.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffvolcano\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffvolcano\d+x64\.exe)["'']'}
+  - name: FabFilter Twin 3
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Twin 3.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Twin 3.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/fftwin\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/fftwin\d+x64\.exe)["'']'}
+  - name: FabFilter One
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter One.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter One.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffone\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffone\d+x64\.exe)["'']'}
+  - name: FabFilter Simplon
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Simplon.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Simplon.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffsimplon\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffsimplon\d+x64\.exe)["'']'}
+  - name: FabFilter Micro
+    category: PLUGINS
+    url: https://www.fabfilter.com/download
+    regex: 'FabFilter Micro.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    previous_from_page: false
+    date_regex: 'FabFilter Micro.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    note: Gratis proefversie 30 dagen
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffmicro\d+\.dmg)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffmicro\d+x64\.exe)["'']'}
   - name: cntrlld Spectra
     category: PLUGINS
     url: https://cntrlld.com/download
@@ -218,7 +278,11 @@ items:
       - {label: Mac, regex: 'href=["'']([^"'']*SPECTRA-v{version}\.pkg)["'']'}
   - name: cntrlld ClearVox
     category: PLUGINS
-    version: ""        # vul hier de versie in; de downloadpagina is niet automatisch te lezen
-    released: ""
+    url: https://cntrlld.com/clearvox
+    regex: 'current build\s*(?:<[^>]*>\s*)*v?(\d+\.\d+\.\d+)'
+    previous_from_page: false
+    date_regex: '{version}.{0,300}?(\d{4}-\d{2}-\d{2})'
     link: https://cntrlld.com/clearvox/download
-    note: Versie handmatig
+    notes_url: https://cntrlld.com/clearvox
+    notes_label: Wat is nieuw
+    note: Alleen macOS (VST3 en AU), beta
