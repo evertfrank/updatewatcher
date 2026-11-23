@@ -11,7 +11,7 @@
   "previous": "4.18.0.11",
   "changed": "2026-11-23 14:48",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Windows",
@@ -39,7 +39,7 @@
   "previous": "5.6.4",
   "changed": "2026-11-23 15:01",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [],
   "released": "2026-10-28",
   "notes": [
@@ -73,7 +73,7 @@
   "previous": "7.8.3",
   "changed": "2026-11-23 16:05",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [],
   "released": "2026-10-06",
   "notes": null,
@@ -92,7 +92,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -111,7 +111,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -130,7 +130,7 @@
   "previous": "2026.2.2",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Mac",
@@ -162,7 +162,7 @@
   "previous": "2.5.3",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Mac",
@@ -190,7 +190,7 @@
   "previous": null,
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Windows",
@@ -221,7 +221,7 @@
   "previous": "8.1.6",
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Windows",
@@ -245,7 +245,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Windows",
@@ -273,7 +273,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [],
   "released": "2026-10-20",
   "notes": null,
@@ -292,7 +292,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Mac",
@@ -320,7 +320,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Mac",
@@ -348,7 +348,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Mac",
@@ -376,7 +376,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Mac",
@@ -404,7 +404,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Mac",
@@ -432,7 +432,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Mac",
@@ -460,7 +460,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Mac",
@@ -488,7 +488,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Mac",
@@ -497,174 +497,6 @@
    {
     "label": "Windows",
     "url": "https://cdn-b.fabfilter.com/downloads/ffsaturn213x64.exe"
-   }
-  ],
-  "released": "2026-04-16",
-  "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
- },
- {
-  "name": "FabFilter Timeless 3",
-  "category": "PLUGINS",
-  "icon": "icons/www-fabfilter-com.png",
-  "favorite": false,
-  "icon_text": "",
-  "link": "https://www.fabfilter.com/download",
-  "note": "",
-  "version": "3.10",
-  "previous": null,
-  "changed": "2026-11-23 16:55",
-  "error": null,
-  "checked": "2026-11-23 18:17",
-  "downloads": [
-   {
-    "label": "Mac",
-    "url": "https://cdn-b.fabfilter.com/downloads/fftimeless310.dmg"
-   },
-   {
-    "label": "Windows",
-    "url": "https://cdn-b.fabfilter.com/downloads/fftimeless310x64.exe"
-   }
-  ],
-  "released": "2026-04-16",
-  "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
- },
- {
-  "name": "FabFilter Volcano 3",
-  "category": "PLUGINS",
-  "icon": "icons/www-fabfilter-com.png",
-  "favorite": false,
-  "icon_text": "",
-  "link": "https://www.fabfilter.com/download",
-  "note": "",
-  "version": "3.09",
-  "previous": null,
-  "changed": "2026-11-23 16:55",
-  "error": null,
-  "checked": "2026-11-23 18:17",
-  "downloads": [
-   {
-    "label": "Mac",
-    "url": "https://cdn-b.fabfilter.com/downloads/ffvolcano309.dmg"
-   },
-   {
-    "label": "Windows",
-    "url": "https://cdn-b.fabfilter.com/downloads/ffvolcano309x64.exe"
-   }
-  ],
-  "released": "2026-04-16",
-  "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
- },
- {
-  "name": "FabFilter Twin 3",
-  "category": "PLUGINS",
-  "icon": "icons/www-fabfilter-com.png",
-  "favorite": false,
-  "icon_text": "",
-  "link": "https://www.fabfilter.com/download",
-  "note": "",
-  "version": "3.10",
-  "previous": null,
-  "changed": "2026-11-23 16:55",
-  "error": null,
-  "checked": "2026-11-23 18:17",
-  "downloads": [
-   {
-    "label": "Mac",
-    "url": "https://cdn-b.fabfilter.com/downloads/fftwin310.dmg"
-   },
-   {
-    "label": "Windows",
-    "url": "https://cdn-b.fabfilter.com/downloads/fftwin310x64.exe"
-   }
-  ],
-  "released": "2026-10-27",
-  "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
- },
- {
-  "name": "FabFilter One",
-  "category": "PLUGINS",
-  "icon": "icons/www-fabfilter-com.png",
-  "favorite": false,
-  "icon_text": "",
-  "link": "https://www.fabfilter.com/download",
-  "note": "",
-  "version": "3.52",
-  "previous": null,
-  "changed": "2026-11-23 16:55",
-  "error": null,
-  "checked": "2026-11-23 18:17",
-  "downloads": [
-   {
-    "label": "Mac",
-    "url": "https://cdn-b.fabfilter.com/downloads/ffone352.dmg"
-   },
-   {
-    "label": "Windows",
-    "url": "https://cdn-b.fabfilter.com/downloads/ffone352x64.exe"
-   }
-  ],
-  "released": "2026-04-16",
-  "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
- },
- {
-  "name": "FabFilter Simplon",
-  "category": "PLUGINS",
-  "icon": "icons/www-fabfilter-com.png",
-  "favorite": false,
-  "icon_text": "",
-  "link": "https://www.fabfilter.com/download",
-  "note": "",
-  "version": "1.42",
-  "previous": null,
-  "changed": "2026-11-23 16:55",
-  "error": null,
-  "checked": "2026-11-23 18:17",
-  "downloads": [
-   {
-    "label": "Mac",
-    "url": "https://cdn-b.fabfilter.com/downloads/ffsimplon142.dmg"
-   },
-   {
-    "label": "Windows",
-    "url": "https://cdn-b.fabfilter.com/downloads/ffsimplon142x64.exe"
-   }
-  ],
-  "released": "2026-04-16",
-  "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
- },
- {
-  "name": "FabFilter Micro",
-  "category": "PLUGINS",
-  "icon": "icons/www-fabfilter-com.png",
-  "favorite": false,
-  "icon_text": "",
-  "link": "https://www.fabfilter.com/download",
-  "note": "",
-  "version": "1.32",
-  "previous": null,
-  "changed": "2026-11-23 16:55",
-  "error": null,
-  "checked": "2026-11-23 18:17",
-  "downloads": [
-   {
-    "label": "Mac",
-    "url": "https://cdn-b.fabfilter.com/downloads/ffmicro132.dmg"
-   },
-   {
-    "label": "Windows",
-    "url": "https://cdn-b.fabfilter.com/downloads/ffmicro132x64.exe"
    }
   ],
   "released": "2026-04-16",
@@ -684,7 +516,7 @@
   "previous": null,
   "changed": "2026-11-23 16:40",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Mac",
@@ -708,7 +540,7 @@
   "previous": null,
   "changed": "2026-11-23 16:47",
   "error": null,
-  "checked": "2026-11-23 18:17",
+  "checked": "2026-11-23 18:39",
   "downloads": [
    {
     "label": "Mac",
@@ -719,5 +551,43 @@
   "notes": null,
   "notes_url": "https://cntrlld.com/clearvox",
   "notes_label": "Wat is nieuw"
+ },
+ {
+  "name": "Luminex Araneo",
+  "category": "NETWORK",
+  "icon": "icons/www-luminex-be.png",
+  "favorite": false,
+  "icon_text": "AR",
+  "link": "https://www.luminex.be/download-araneo/",
+  "note": "Download via aanmeldformulier (versie handmatig)",
+  "version": "1.11.0",
+  "previous": null,
+  "changed": "2026-11-23 18:39",
+  "error": null,
+  "checked": "2026-11-23 18:39",
+  "downloads": [],
+  "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "DiGiCo",
+  "category": "CONTROLS",
+  "icon": "",
+  "favorite": false,
+  "icon_text": "DG",
+  "link": "https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software",
+  "note": "Console-, offline- en Session Convert-software (versie handmatig)",
+  "version": "V22",
+  "previous": null,
+  "changed": "2026-11-23 18:39",
+  "error": null,
+  "checked": "2026-11-23 18:39",
+  "downloads": [],
+  "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
  }
 ]
