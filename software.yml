@@ -49,7 +49,7 @@ items:
     date_regex: '[Rr]elease [Dd]ate.{0,200}?([A-Z][a-z]+ \d{1,2}, \d{4})|{version}.{0,400}?([A-Z][a-z]+ \d{1,2}, \d{4})'
     notes_url: "https://qlab.app/release-notes/{version}"
     notes_page: "https://qlab.app/release-notes/{version}"
-    notes_regex: '((?:<p[^>]*>(?:(?!</p>).)*?[Ff]ixed.*?</p>\s*)+)'
+    notes_regex: '<h2[^>]*>\s*{version}\s*</h2>(.*?)(?=<h2|<footer|$)'   # alles onder het versienummer
     link: https://qlab.app/downloads/QLab.dmg
   - name: Shure Wireless Workbench
     category: CONTROLS
@@ -129,9 +129,9 @@ items:
   - name: FabFilter Pro-Q 4
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Pro\-Q 4.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/ffproq(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffproq413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Pro\-Q 4.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffproq\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffproq\d+\.dmg)["'']'}
@@ -139,9 +139,9 @@ items:
   - name: FabFilter Pro-C 3
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Pro\-C 3.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/ffproc(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffproc413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Pro\-C 3.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffproc\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffproc\d+\.dmg)["'']'}
@@ -149,9 +149,9 @@ items:
   - name: FabFilter Pro-L 2
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Pro\-L 2.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/ffprol(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffprol413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Pro\-L 2.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffprol\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffprol\d+\.dmg)["'']'}
@@ -159,9 +159,9 @@ items:
   - name: FabFilter Pro-R 2
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Pro\-R 2.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/ffpror(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffpror413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Pro\-R 2.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffpror\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffpror\d+\.dmg)["'']'}
@@ -169,9 +169,9 @@ items:
   - name: FabFilter Pro-MB
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Pro\-MB.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/ffpromb(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffpromb413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Pro\-MB.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffpromb\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffpromb\d+\.dmg)["'']'}
@@ -179,9 +179,9 @@ items:
   - name: FabFilter Pro-DS
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Pro\-DS.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/ffprods(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffprods413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Pro\-DS.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffprods\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffprods\d+\.dmg)["'']'}
@@ -189,9 +189,9 @@ items:
   - name: FabFilter Pro-G
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Pro\-G.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/ffprog(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffprog413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Pro\-G.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffprog\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffprog\d+\.dmg)["'']'}
@@ -199,9 +199,9 @@ items:
   - name: FabFilter Saturn 2
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Saturn 2.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/ffsaturn(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffsaturn413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Saturn 2.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffsaturn\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffsaturn\d+\.dmg)["'']'}
@@ -209,9 +209,9 @@ items:
   - name: FabFilter Timeless 3
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Timeless 3.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/fftimeless(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: fftimeless413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Timeless 3.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/fftimeless\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/fftimeless\d+\.dmg)["'']'}
@@ -219,9 +219,9 @@ items:
   - name: FabFilter Volcano 3
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Volcano 3.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/ffvolcano(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffvolcano413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Volcano 3.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffvolcano\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffvolcano\d+\.dmg)["'']'}
@@ -229,9 +229,9 @@ items:
   - name: FabFilter Twin 3
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Twin 3.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/fftwin(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: fftwin413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Twin 3.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/fftwin\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/fftwin\d+\.dmg)["'']'}
@@ -239,9 +239,9 @@ items:
   - name: FabFilter One
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter One.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/ffone(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffone413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter One.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffone\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffone\d+\.dmg)["'']'}
@@ -249,9 +249,9 @@ items:
   - name: FabFilter Simplon
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Simplon.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/ffsimplon(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffsimplon413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Simplon.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffsimplon\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffsimplon\d+\.dmg)["'']'}
@@ -259,9 +259,9 @@ items:
   - name: FabFilter Micro
     category: PLUGINS
     url: https://www.fabfilter.com/download
-    regex: 'FabFilter Micro.{0,400}?(\d+\.\d+)\s*(?:<[^>]*>\s*)*[—–-]\s*[A-Z][a-z]{2} \d{1,2}, \d{4}'
+    regex: 'downloads/ffmicro(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffmicro413 wordt 4.13
     previous_from_page: false
-    date_regex: 'FabFilter Micro.{0,400}?{version}\s*(?:<[^>]*>\s*)*[—–-]\s*([A-Z][a-z]{2} \d{1,2}, \d{4})'
+    date_regex: '([A-Z][a-z]{2} \d{1,2}, \d{4})(?:(?!\d{4}).){0,4000}?downloads/ffmicro\d+\.dmg'   # laatste datum vóór de downloadlink
     note: Gratis proefversie 30 dagen
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffmicro\d+\.dmg)["'']'}
