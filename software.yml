@@ -12,6 +12,7 @@
 # Optioneel:
 #   icon            optioneel: pad of link naar een afbeelding, bijvoorbeeld icons/qlab.png (bestand in docs/icons/); zonder icon komt er een lettericoon
 #   icon_text       optioneel: eigen letters voor het lettericoon
+#   favorite        true: komt ook onder FAVORITES (bovenaan de zijbalk) en krijgt een sterretje
 #   category        een van de categorieën hierboven; zonder category staat het programma alleen onder ALL
 #   link            waar de downloadknop heen gaat (standaard: url)
 #   downloads       meerdere knoppen, bijvoorbeeld Mac en Windows
@@ -68,6 +69,7 @@ items:
     notes_url: https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench
     notes_label: Alle versies en release notes
   - name: L-Acoustics Network Manager
+    favorite: true
     icon_text: NWM
     category: PA DESIGN & CONTROL
     version: "2026.2.1"   # handmatig; bron: l-acoustics.com/products/network-manager (juli 2026)
@@ -75,6 +77,7 @@ items:
     link: https://www.l-acoustics.com/products/network-manager/
     note: Versie handmatig bijgehouden
   - name: L-Acoustics Soundvision
+    favorite: true
     icon_text: SV
     category: PA DESIGN & CONTROL
     version: "2026.4"   # handmatig; bron: l-acoustics.com/products/soundvision (oktober 2026)
@@ -82,6 +85,7 @@ items:
     link: https://www.l-acoustics.com/products/soundvision/
     note: Versie handmatig bijgehouden
   - name: LiveProfessor
+    favorite: true
     category: DAW
     url: https://www.audiostrom.com/change-log
     regex: 'LiveProfessor (\d+\.\d+\.\d+)'
@@ -114,6 +118,7 @@ items:
       - {label: Windows, regex: 'href=["'']([^"'']*reaper\d+_x64-install\.exe)["'']'}
       - {label: Mac, regex: 'href=["'']([^"'']*reaper\d+_universal\.dmg)["'']'}
   - name: Lake Controller
+    favorite: true
     category: CONTROLS
     url: https://www.labgruppen.com/en/products/0825-AAN?tab=downloads
     regex: 'LakeController_v(\d+_\d+_\d+)_\d+\.exe'

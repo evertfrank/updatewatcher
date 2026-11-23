@@ -194,7 +194,7 @@ def run():
     out = []
     for it in cfg["items"]:
         o = old.get(it["name"], {})
-        r = {"name": it["name"], "category": it.get("category", ""), "icon": it.get("icon", ""), "icon_text": it.get("icon_text", ""),
+        r = {"name": it["name"], "category": it.get("category", ""), "icon": it.get("icon", ""), "favorite": bool(it.get("favorite")), "icon_text": it.get("icon_text", ""),
              "link": it.get("link") or it.get("url"), "note": it.get("note", ""),
              "version": o.get("version"), "previous": o.get("previous"),
              "changed": o.get("changed"), "error": None, "checked": now}
@@ -272,12 +272,13 @@ def icon_html(i):
         return f'<img class="ico" src="{e(str(i["icon"]))}" alt="" width="32" height="32" loading="lazy">'
     txt = str(i.get("icon_text") or "").strip() or monogram(i["name"])
     tone = "r" if sum(map(ord, i["name"])) % 3 == 0 else "b"      # afwisselend blauw en rood
-    return f'<span class="ico mono {tone}" aria-hidden="true">{e(txt)}</span>'
+    return f'<span class="ico mono {tone}{" long" if len(txt) > 2 else ""}" aria-hidden="true">{e(txt)}</span>'
 
 def row_html(i, now, cat=""):
     e = html.escape
     new = is_new(i, now)
     badge = '<span class="badge">Nieuw</span>' if new else ""
+    star = '<svg class="star" viewBox="0 0 20 20" role="img" aria-label="Favoriet"><path d="M10 1.8l2.4 5.3 5.8.6-4.3 3.9 1.2 5.7L10 14.5l-5.1 2.8 1.2-5.7L1.8 7.7l5.8-.6z"/></svg>' if i.get("favorite") else ""
     note = f'<span class="note">{e(i["note"])}</span>' if i["note"] else ""
     was = ""
     if i["previous"]:
@@ -303,7 +304,7 @@ def row_html(i, now, cat=""):
     if i.get("notes_url"):
         more += f'<a href="{e(i["notes_url"])}" target="_blank" rel="noopener">{e(i["notes_label"])}</a>'
     more = f'<div class="more">{more}</div>' if more else ""
-    return (f'<li class="row{" new" if new else ""}" data-cat="{e(cat)}"><div class="who">{icon_html(i)}<div><span class="name">{e(i["name"])}</span>{badge}{note}</div></div>'
+    return (f'<li class="row{" new" if new else ""}" data-cat="{e(cat)}" data-fav="{1 if i.get("favorite") else 0}"><div class="who">{icon_html(i)}<div><span class="name">{e(i["name"])}</span>{star}{badge}{note}</div></div>'
             f'<div class="ver"><span class="num">{e(i["version"] or "onbekend")}</span>{was}{err}</div>'
             f'<div class="dl">{dl}</div>{more}</li>')
 
@@ -312,11 +313,11 @@ def render(items, now, contact=None, categories=None):
     # categorieën uit software.yml (volgorde = volgorde van de zijbalk); een categorie die alleen bij een programma staat komt erbij
     canon = {}
     for c in (categories or []):
-        if str(c).strip():
+        if str(c).strip() and str(c).strip().lower() != "favorites":
             canon.setdefault(str(c).strip().lower(), str(c).strip())
     for i in items:
         c = str(i.get("category") or "").strip()
-        if c:
+        if c and c.lower() != "favorites":
             canon.setdefault(c.lower(), c)
     cat_of = lambda i: canon.get(str(i.get("category") or "").strip().lower(), "")
     n_new = sum(is_new(i, now) for i in items)
@@ -330,9 +331,12 @@ def render(items, now, contact=None, categories=None):
     summary += "."
 
     rows = "".join(row_html(i, now, cat_of(i)) for i in items)
-    listing = f'<ul class="list">{rows}</ul><p class="empty" id="empty" hidden></p>'
+    search = '<div class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.5"/><path d="M13.5 13.5L17 17"/></svg><input id="q" type="search" placeholder="Zoek in software" aria-label="Zoek in software" autocomplete="off" spellcheck="false"></div>'
+    listing = f'{search}<ul class="list">{rows}</ul><p class="empty" id="empty" hidden></p>'
     if canon:
-        nav = f'<button type="button" data-cat="*" aria-current="true"><span>ALL</span><b>{len(items)}</b></button>'
+        nfav = sum(bool(i.get("favorite")) for i in items)
+        nav = f'<button type="button" class="fav" data-cat="FAVORITES" aria-current="false"><span>FAVORITES</span><b>{nfav}</b></button>'
+        nav += f'<button type="button" data-cat="*" aria-current="true"><span>ALL</span><b>{len(items)}</b></button>'
         for c in canon.values():
             nav += f'<button type="button" data-cat="{e(c)}" aria-current="false"><span>{e(c)}</span><b>{sum(cat_of(i) == c for i in items)}</b></button>'
         layout = f'<div class="layout"><nav class="cats" aria-label="Categorieën">{nav}</nav><div>{listing}</div></div>'
@@ -349,30 +353,61 @@ def render(items, now, contact=None, categories=None):
     elif mail:
         ask = f'<a class="ask" href="mailto:{e(mail)}?subject=Software%20updates">Mis je iets?</a>'
     return (PAGE.replace("__ASK__", ask).replace("__DIALOG__", dialog).replace("__NOW__", e(nl_datetime(now)))
-                .replace("__SUMMARY__", e(summary)).replace("__LAYOUT__", layout))
+                .replace("__SUMMARY__", e(summary)).replace("__LOGO__", logo_svg()).replace("__SW__", "".join(f"<i>{ch}</i>" for ch in "SOFTWARE")).replace("__FAVICON__", "data:image/svg+xml," + urllib.parse.quote(logo_svg(tile=True).replace(' class="logo"', '').replace("<svg ", "<svg xmlns='http://www.w3.org/2000/svg' ", 1))).replace("__LAYOUT__", layout))
+
+import math
+
+def logo_svg(tile=False, cls="logo", lit_col="#8ea2d8", hot_col="#c23f48", dim_col="#3a4260", needle_col="#ebe8e2", tile_col="#151a26"):
+    """Het merkteken: een ring van lichtjes zoals op een compressor of niveaumeter. Blauw brandt, de laatste rood (er is iets nieuws), de naald wijst naar de nieuwste stand."""
+    n, lit, hot, start, span = 18, 14, 16, 135, 270
+    parts = []
+    for i in range(n):
+        a = math.radians(start + i * span / (n - 1))
+        x1, y1, x2, y2 = 32 + 21 * math.cos(a), 32 + 21 * math.sin(a), 32 + 27.5 * math.cos(a), 32 + 27.5 * math.sin(a)
+        if i < lit:   col, op = lit_col, .35 + .65 * i / (lit - 1)
+        elif i < hot: col, op = hot_col, 1
+        else:         col, op = dim_col, 1
+        parts.append(f'<path d="M{x1:.2f} {y1:.2f}L{x2:.2f} {y2:.2f}" stroke="{col}" stroke-opacity="{op:.2f}" stroke-width="3.4" stroke-linecap="round"/>')
+    a = math.radians(start + (lit) * span / (n - 1))
+    nx, ny = 32 + 15 * math.cos(a), 32 + 15 * math.sin(a)
+    needle = f'<path d="M32 32L{nx:.2f} {ny:.2f}" stroke="{needle_col}" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="32" r="3.6" fill="{needle_col}"/>'
+    bg = '<rect width="64" height="64" rx="15" fill="{tile_col}"/>' if tile else ""
+    return f'<svg class="{cls}" viewBox="0 0 64 64" aria-hidden="true">{bg}{"".join(parts)}{needle}</svg>'
 
 PAGE = """<!doctype html>
 <html lang="nl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Software Update Watcher</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='48' height='48' rx='11' fill='%2326304f'/%3E%3Ccircle cx='24' cy='25' r='14' fill='%230e1118' stroke='%238ea2d8' stroke-width='1.5'/%3E%3Cg stroke='%23ebe8e2' stroke-width='1.6' stroke-linecap='round' opacity='.55'%3E%3Cpath d='M10.5 31l-2.2 1.3M7.8 24H10M10.5 17L8.3 15.7M37.5 31l2.2 1.3M40.2 24H38M37.5 17l2.2-1.3'/%3E%3C/g%3E%3Cpath d='M24 25L33 14.5' stroke='%23c23f48' stroke-width='3.2' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='25' r='3.2' fill='%23ebe8e2'/%3E%3Cpath d='M33 8.5l4.5 0 0 4.5' fill='none' stroke='%23c23f48' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' transform='translate(-1 0)'/%3E%3C/svg%3E">
+<link rel="icon" href="__FAVICON__">
+<meta name="description" content="Nieuwste versies van live-audio software, met directe downloadlinks.">
+<meta property="og:title" content="Software Update Watcher">
+<meta property="og:description" content="Nieuwste versies van live-audio software, met directe downloadlinks.">
+<meta property="og:image" content="https://evertfrank.github.io/updatewatcher/logo-share.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:dark;--display:"Poppins","Arial Black","Helvetica Neue",Arial,sans-serif;
 --bg:#0e1118;--surface:#151a26;--raise:#1b2132;--line:#252d41;--text:#ebe8e2;--muted:#8d95ab;
---blue:#8ea2d8;--blue-deep:#26304f;--red:#c23f48;--red-deep:#43191f;--red-soft:#d9636b}
+--blue:#8ea2d8;--blue-deep:#26304f;--red:#c23f48;--red-deep:#43191f;--red-soft:#d9636b;--gold:#d8b46e;--gold-deep:#3a301d}
 *{box-sizing:border-box}
 html{background:var(--bg)}
 body{margin:0;min-height:100vh;color:var(--text);font:14px/1.5 "Instrument Sans",system-ui,sans-serif;
 background:radial-gradient(60rem 22rem at 12% -6rem,color-mix(in srgb,var(--blue-deep) 70%,transparent),transparent 70%),radial-gradient(40rem 18rem at 100% -4rem,color-mix(in srgb,var(--red-deep) 55%,transparent),transparent 70%),var(--bg)}
 .wrap{max-width:1080px;margin:0 auto;padding:clamp(1.25rem,4vw,2.75rem) clamp(1rem,3vw,2rem) 3rem}
-header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:.75rem 1.5rem;padding-bottom:1.1rem;border-bottom:1px solid transparent;border-image:linear-gradient(90deg,var(--blue),var(--red) 55%,transparent) 1}
-.brand{display:flex;flex-direction:column;gap:.55rem}
-.by{margin:0;color:var(--blue);font-size:.78rem;font-weight:500;letter-spacing:.02em}
-h1{display:flex;align-items:center;gap:.75rem;font:800 clamp(1.15rem,3.6vw,1.65rem)/1 var(--display);letter-spacing:0;text-transform:uppercase;margin:0}
-h1 em{font-style:normal;color:var(--red)}
-.logo{width:2.2em;height:2.2em;flex:none}
+header{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:1rem 1.5rem}
+.banner{padding:clamp(1.1rem,3vw,1.9rem) clamp(1.1rem,3.5vw,2.2rem);border:1px solid color-mix(in srgb,var(--blue) 22%,var(--line));border-radius:22px;background:radial-gradient(70% 140% at 14% 50%,#34437a 0,#1b2342 58%,#12172a 100%);box-shadow:0 18px 50px -28px #000}
+.brand{display:flex;align-items:center;gap:clamp(1rem,3vw,1.9rem)}
+.word{display:flex;flex-direction:column;gap:.55rem}
+h1{display:flex;flex-direction:column;gap:.6rem;margin:0;font-family:var(--display);text-transform:uppercase}
+h1 .sw{display:flex;justify-content:space-between;font:700 clamp(.78rem,2.3vw,1.05rem)/1 var(--display);color:#a9b9e6}
+h1 .sw i{font-style:normal}
+h1 .uw{font:800 clamp(1.45rem,5vw,2.7rem)/.95 var(--display);letter-spacing:-.015em;white-space:nowrap;color:var(--text)}
+h1 em{font-style:normal;color:#d9636b}
+.by{margin:0;color:#8d95ab;font-size:.8rem;font-weight:500}
+.logo{width:clamp(3.4rem,11vw,6rem);height:auto;flex:none}
+.banner .checked{color:#9aa5c9}
+.banner .ask{border-color:#d9636b}
 .checked{color:var(--muted);font-size:.78rem;margin:0}
 .summary{color:var(--muted);font-size:.9rem;margin:1.25rem 0 1.75rem}
 .layout{display:grid;grid-template-columns:11rem minmax(0,1fr);gap:2.5rem;align-items:start}
@@ -382,7 +417,19 @@ h1 em{font-style:normal;color:var(--red)}
 .cats button:hover{color:var(--text);background:color-mix(in srgb,var(--raise) 60%,transparent)}
 .cats button[aria-current=true]{background:var(--raise);color:var(--text)}
 .cats button[aria-current=true]::before{content:"";position:absolute;left:-.5rem;top:25%;bottom:25%;width:2px;border-radius:2px;background:var(--red)}
+.cats button.fav{color:color-mix(in srgb,var(--gold) 80%,var(--muted))}
+.cats button.fav b{color:var(--gold)}
+.cats button.fav[aria-current=true]{background:var(--gold-deep);color:var(--gold)}
+.cats button.fav[aria-current=true]::before{background:var(--gold)}
+.cats button.fav{margin-bottom:.45rem}
+.cats button.fav::after{content:"";position:absolute;left:0;right:.6rem;bottom:-.3rem;height:1px;background:var(--line)}
 .cats button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.search{position:relative;margin:0 0 .5rem}
+.search svg{position:absolute;left:.9rem;top:50%;width:1rem;height:1rem;transform:translateY(-50%);fill:none;stroke:var(--muted);stroke-width:1.8;stroke-linecap:round;pointer-events:none}
+.search input{width:100%;padding:.65rem 1rem .65rem 2.6rem;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--text);font:inherit;font-size:.9rem;transition:border-color .15s,background .15s}
+.search input::placeholder{color:var(--muted)}
+.search input:hover{border-color:color-mix(in srgb,var(--blue) 40%,var(--line))}
+.search input:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-color:transparent}
 .list{list-style:none;margin:0;padding:0}
 .row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 11rem 13.6rem;gap:.4rem 1.5rem;align-items:center;padding:.95rem .25rem;border-top:1px solid var(--line)}
 .row:first-child{border-top:0}
@@ -391,9 +438,11 @@ h1 em{font-style:normal;color:var(--red)}
 .ico{flex:none;width:2.1rem;height:2.1rem;border-radius:10px;object-fit:contain}
 img.ico{padding:.3rem;background:var(--text)}
 .mono{display:grid;place-items:center;font:800 .72rem/1 var(--display);letter-spacing:.02em}
+.mono.long{font-size:.6rem;letter-spacing:0}
 .mono.b{background:var(--blue-deep);color:var(--blue);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--blue) 30%,transparent)}
 .mono.r{background:var(--red-deep);color:var(--red-soft);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--red) 35%,transparent)}
 .name{font-weight:600;font-size:.95rem}
+.star{width:.8rem;height:.8rem;margin-left:.45rem;fill:var(--gold);vertical-align:-.02em}
 .note{display:block;color:var(--muted);font-size:.76rem;margin-top:.1rem}
 .badge{display:inline-flex;align-items:center;gap:.4rem;margin-left:.6rem;padding:.08rem .55rem;border-radius:999px;background:var(--red-deep);color:var(--red-soft);font-size:.68rem;font-weight:600;vertical-align:.12em}
 .badge::before{content:"";width:.38rem;height:.38rem;border-radius:50%;background:var(--red);animation:lamp 1.8s ease-in-out infinite}
@@ -438,7 +487,7 @@ footer{margin-top:2rem;color:var(--muted);font-size:.75rem}
 .cats button[aria-current=true]{border-color:var(--red)}.cats button[aria-current=true]::before{display:none}
 .row{grid-template-columns:1fr}.dl{justify-content:start}}
 </style></head><body><div class="wrap">
-<header><div class="brand"><p class="by">by evertfront</p><h1><svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#26304f"/><circle cx="24" cy="25" r="14" fill="#0e1118" stroke="#8ea2d8" stroke-width="1.5"/><g stroke="#ebe8e2" stroke-width="1.6" stroke-linecap="round" opacity=".55"><path d="M10.5 31l-2.2 1.3M7.8 24H10M10.5 17L8.3 15.7M37.5 31l2.2 1.3M40.2 24H38M37.5 17l2.2-1.3"/></g><path d="M24 25L33 14.5" stroke="#c23f48" stroke-width="3.2" stroke-linecap="round"/><circle cx="24" cy="25" r="3.2" fill="#ebe8e2"/><path d="M33 8.5l4.5 0 0 4.5" fill="none" stroke="#c23f48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(-1 0)"/></svg><span>Software <em>Update</em> Watcher</span></h1></div><div class="side"><p class="checked">Laatst gecontroleerd __NOW__</p>__ASK__</div></header>
+<header class="banner"><div class="brand">__LOGO__<div class="word"><h1 aria-label="Software Update Watcher"><span class="sw" aria-hidden="true">__SW__</span><span class="uw" aria-hidden="true">Update <em>Watcher</em></span></h1><p class="by">by evertfront</p></div></div><div class="side"><p class="checked">Laatst gecontroleerd __NOW__</p>__ASK__</div></header>
 <p class="summary">__SUMMARY__</p>
 __LAYOUT__
 <footer>De lijst wordt elke 6 uur automatisch bijgewerkt.</footer>
@@ -446,15 +495,20 @@ __LAYOUT__
 __DIALOG__
 <script>
 const btns=[...document.querySelectorAll('.cats button')],rows=[...document.querySelectorAll('.row')],list=document.querySelector('.list'),empty=document.getElementById('empty');
-function show(cat){
-  let n=0;
-  rows.forEach(r=>{const on=cat==='*'||r.dataset.cat===cat;r.hidden=!on;if(on)n++});
+let cat='*';
+const q=document.getElementById('q');
+function show(c){
+  if(c!==undefined)cat=c;
+  const term=q.value.trim().toLowerCase();let n=0;
+  rows.forEach(r=>{const on=(cat==='*'||(cat==='FAVORITES'?r.dataset.fav==='1':r.dataset.cat===cat))&&(!term||r.textContent.toLowerCase().includes(term));r.hidden=!on;if(on)n++});
   btns.forEach(b=>b.setAttribute('aria-current',String(b.dataset.cat===cat)));
   list.hidden=n===0;empty.hidden=n!==0;
-  if(!n)empty.textContent='Hier staat nog niets. Zet category: '+cat+' bij een programma in software.yml.';
+  if(!n)empty.textContent=term?'Niets gevonden voor "'+q.value.trim()+'"'+(cat==='*'?'.':' in '+cat+'. Kies ALL om overal te zoeken.'):(cat==='FAVORITES'?'Nog geen favorieten. Zet favorite: true bij een programma in software.yml.':'Hier staat nog niets. Zet category: '+cat+' bij een programma in software.yml.');
 }
 btns.forEach(b=>b.addEventListener('click',()=>{show(b.dataset.cat);history.replaceState(null,'','#'+(b.dataset.cat==='*'?'':encodeURIComponent(b.dataset.cat)))}));
-if(btns.length){const h=decodeURIComponent(location.hash.slice(1));show(btns.some(b=>b.dataset.cat===h)?h:'*')}
+q.addEventListener('input',()=>show());
+document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==q&&!/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)){e.preventDefault();q.focus()}else if(e.key==='Escape'&&document.activeElement===q){q.value='';show();q.blur()}});
+{const h=decodeURIComponent(location.hash.slice(1));show(btns.some(b=>b.dataset.cat===h)?h:'*')}
 const dlg=document.getElementById('contact');
 if(dlg){
   const form=document.getElementById('cform'),st=document.getElementById('cstatus'),send=form.querySelector('[type=submit]');
