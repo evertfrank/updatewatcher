@@ -768,16 +768,3 @@ items:
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/driver_usbdk_mac_\d+\.zip)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/driver_madiface_win_\d+\.zip)["'']'}
-  - name: RME Digiface Dante netwerkdriver Windows
-    vendor: RME
-    website: https://rme-audio.de/digiface-dante.html
-    category: MIXING & I/O
-    icon_text: NW
-    url: https://rme-audio.de/digiface-dante.html
-    regex: 'driver_win_net_(\d)(\d+)_\d+\.zip'   # driver_win_net_09908_... wordt 0.9908
-    previous_from_page: false
-    date_regex: '(\d{4}-\d{2}-\d{2})(?:(?!\d{4}-\d{2}-\d{2}).){0,800}?driver_win_net_{version_nodots}_\d+\.zip'
-    link: https://rme-audio.de/digiface-dante.html
-    note: Optionele driver voor de interne netwerkpoort van de Digiface Dante, Windows 10 en hoger
-    downloads:
-      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/driver_win_net_{version_nodots}_\d+\.zip)["'']'}
