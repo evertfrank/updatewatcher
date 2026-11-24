@@ -14,7 +14,7 @@
   "previous": "4.18.0.11",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -53,7 +53,7 @@
   "previous": "5.6.4",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [],
   "released": "2026-10-28",
@@ -91,7 +91,7 @@
   "previous": "7.8.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -150,7 +150,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [],
   "released": "2026-07",
@@ -183,7 +183,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [],
   "released": "2026-10",
@@ -214,7 +214,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [],
   "released": "2026-01-05",
@@ -237,7 +237,7 @@
   "previous": "2026.2.2",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -273,7 +273,7 @@
   "previous": "2.5.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -305,7 +305,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -368,7 +368,7 @@
   "previous": "8.1.6",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -376,7 +376,7 @@
     "url": "https://cdn-media.empowertribe.com/cccd9c74c20b4e29873ec1076411373a/LakeController_v8_1_7_159.exe"
    }
   ],
-  "released": "2025-12-09",
+  "released": null,
   "notes": null,
   "notes_url": "https://legacy.adamson.ai/support/downloads-directory/design-and-control/lake-controller",
   "notes_label": "Release notes (pdf)"
@@ -396,7 +396,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -447,7 +447,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -479,7 +479,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -510,19 +510,13 @@
   "version": "1.4.1",
   "previous": null,
   "changed": null,
-  "error": null,
-  "checked": "2026-11-24 16:45",
+  "error": "geen versie gevonden (regex klopt niet meer?)",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
-  "downloads": [
-   {
-    "label": "Download",
-    "url": "https://legacy.adamson.ai/support/downloads-directory/design-and-control/arrayintelligence/1013-arrayintelligence-v1-4-1/file"
-   }
-  ],
+  "downloads": [],
   "released": null,
   "notes": null,
-  "notes_url": "https://legacy.adamson.ai/support/downloads-directory/design-and-control/arrayintelligence",
-  "notes_label": "Reference guide en release notes (pdf)"
+  "notes_url": null
  },
  {
   "name": "Adamson Blueprint AV",
@@ -538,23 +532,13 @@
   "version": "1.3.3",
   "previous": null,
   "changed": null,
-  "error": null,
-  "checked": "2026-11-24 16:45",
+  "error": "geen versie gevonden (regex klopt niet meer?)",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
-  "downloads": [
-   {
-    "label": "Mac",
-    "url": "https://legacy.adamson.ai/support/downloads-directory/design-and-control/blueprint-av/340-blueprint-v1-3-3-for-mac/file"
-   },
-   {
-    "label": "Windows",
-    "url": "https://legacy.adamson.ai/support/downloads-directory/design-and-control/blueprint-av/901-blueprintv1-3-3-setup-1/file"
-   }
-  ],
+  "downloads": [],
   "released": null,
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": null
  },
  {
   "name": "Meyer Sound MAPP 3D",
@@ -571,7 +555,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -603,7 +587,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -635,7 +619,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -667,7 +651,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -690,7 +674,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -726,7 +710,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -751,7 +735,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -783,7 +767,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -815,7 +799,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -847,7 +831,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -879,7 +863,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -911,7 +895,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -943,7 +927,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -975,7 +959,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1007,7 +991,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1035,7 +1019,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1067,7 +1051,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [],
   "released": "2026-06-12",
@@ -1092,7 +1076,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1124,7 +1108,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1156,7 +1140,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1190,7 +1174,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1222,7 +1206,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1254,7 +1238,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1286,7 +1270,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [],
   "released": "2026-01",
@@ -1309,7 +1293,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -1332,7 +1316,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1364,7 +1348,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1392,7 +1376,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1420,7 +1404,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1448,7 +1432,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1476,7 +1460,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1504,7 +1488,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1532,7 +1516,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1560,7 +1544,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1588,7 +1572,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1616,7 +1600,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1644,7 +1628,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1672,7 +1656,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1700,7 +1684,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1728,7 +1712,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
@@ -1760,7 +1744,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 16:45",
+  "checked": "2026-11-24 16:58",
   "tracked": true,
   "downloads": [
    {
