@@ -158,6 +158,7 @@ items:
     vendor: d&b audiotechnik
     website: https://www.dbaudio.com/global/en/products/software/arraycalc/
     icon_text: AC
+    note: Inloggen met eigen account vereist
     category: SYSTEM DESIGN & TUNING
     url: https://www.dbaudio.com/global/en/downloadcenter.json   # de downloadlijst wordt als JSON geladen
     regex: '"title":"ArrayCalc v(\d+\.\d+\.\d+) (?:Mac|Win)"'
@@ -170,6 +171,7 @@ items:
   - name: d&b R1 Remote Control
     vendor: d&b audiotechnik
     website: https://www.dbaudio.com/global/en/products/software/r1/
+    note: Inloggen met eigen account vereist
     category: SYSTEM DESIGN & TUNING
     icon_text: R1
     url: https://www.dbaudio.com/global/en/downloadcenter.json   # de downloadlijst wordt als JSON geladen
@@ -355,6 +357,7 @@ items:
     link: https://cntrlld.com/clearvox/download
     downloads:
       - {label: Mac, url: "https://cntrlld.com/clearvox/download"}
+    notes_regex: '<span class="ver">\s*{version}\s*</span>.*?<ul>(.*?)</ul>'   # tekst uit "What's new" bij de huidige versie
     notes_url: https://cntrlld.com/clearvox
     notes_label: Wat is nieuw
     note: Alleen macOS (VST3 en AU), beta
@@ -381,7 +384,7 @@ items:
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
-      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum3_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum3_V2242_Offline_Installer.zip}
+      - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum3_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum3_V2242_Offline_Installer.zip}
   - name: DiGiCo Q225 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -396,7 +399,7 @@ items:
     fallback_version: "2242.4"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
-      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum2_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/10/DiGiCo_Quantum2_V2242-4_Offline_Installer.zip}
+      - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum2_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/10/DiGiCo_Quantum2_V2242-4_Offline_Installer.zip}
   - name: DiGiCo Q112 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -411,7 +414,7 @@ items:
     fallback_version: "2242.4"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
-      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum1_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/10/DiGiCo_Quantum1_V2242-4_Offline_Installer.zip}
+      - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum1_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/10/DiGiCo_Quantum1_V2242-4_Offline_Installer.zip}
   - name: DiGiCo SD8 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -426,7 +429,7 @@ items:
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
-      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD8_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD8_V2242_Offline_Installer.zip}
+      - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD8_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD8_V2242_Offline_Installer.zip}
   - name: DiGiCo SD9 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -441,7 +444,7 @@ items:
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
-      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD9_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD9_V2242_Offline_Installer.zip}
+      - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD9_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD9_V2242_Offline_Installer.zip}
   - name: DiGiCo SD10 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -456,7 +459,7 @@ items:
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
-      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD10_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD10_V2242_Offline_Installer.zip}
+      - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD10_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD10_V2242_Offline_Installer.zip}
   - name: DiGiCo SD11 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -471,7 +474,7 @@ items:
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
-      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD11_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD11_V2242_Offline_Installer.zip}
+      - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD11_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD11_V2242_Offline_Installer.zip}
   - name: DiGiCo SD12 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -486,7 +489,7 @@ items:
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
-      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD12_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD12_V2242_Offline_Installer.zip}
+      - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD12_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD12_V2242_Offline_Installer.zip}
   - name: DiGiCo SD Convert
     vendor: DiGiCo
     category: MIXING & I/O
@@ -501,7 +504,7 @@ items:
     fallback_version: "2242.4"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
-      - {label: Download, regex: 'value=\\?"(https://[^"\\]*SDConvert_V[0-9-]+_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/10/SDConvert_V2242-4_Installer.zip}
+      - {label: Windows, regex: 'value=\\?"(https://[^"\\]*SDConvert_V[0-9-]+_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/10/SDConvert_V2242-4_Installer.zip}
   - name: RME TotalMix FX
     vendor: RME
     website: https://rme-audio.de/fireface-ufx-3.html
