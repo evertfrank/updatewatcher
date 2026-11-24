@@ -14,7 +14,7 @@
   "previous": "4.18.0.11",
   "changed": "2026-11-23 14:48",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Windows",
@@ -45,7 +45,7 @@
   "previous": "5.6.4",
   "changed": "2026-11-23 15:01",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [],
   "released": "2026-10-28",
   "notes": [
@@ -82,7 +82,7 @@
   "previous": "7.8.3",
   "changed": "2026-11-23 16:05",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [],
   "released": "2026-10-06",
   "notes": null,
@@ -104,7 +104,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -126,7 +126,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -148,7 +148,7 @@
   "previous": "2026.2.2",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -183,7 +183,7 @@
   "previous": "2.5.3",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -214,7 +214,7 @@
   "previous": null,
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Windows",
@@ -248,7 +248,7 @@
   "previous": "8.1.6",
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Windows",
@@ -275,7 +275,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Windows",
@@ -305,12 +305,22 @@
   "version": "12.10.0",
   "previous": null,
   "changed": "2026-11-23 16:37",
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-24 08:50",
-  "downloads": [],
-  "released": null,
+  "error": null,
+  "checked": "2026-11-24 09:07",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://www.dbaudio.com/global/en/service-and-support/downloads/download/view/23539/?cHash=60c059d48e3f17430471c4bf0ad9cf872e53d147aad9d2788a464739c24a1af2"
+   },
+   {
+    "label": "Windows",
+    "url": "https://www.dbaudio.com/global/en/service-and-support/downloads/download/view/23538/?cHash=7fe0edc4e31dfad404bd7c19e3ecc241140e45d51ee57eff6ef34fe483c90bbd"
+   }
+  ],
+  "released": "2026-10-20",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "d&b R1 Remote Control",
@@ -323,15 +333,25 @@
   "vendor": "d&b audiotechnik",
   "strip": true,
   "note": "",
-  "version": null,
+  "version": "3.48.1",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-24 08:50",
-  "downloads": [],
-  "released": null,
+  "changed": "2026-11-24 09:07",
+  "error": null,
+  "checked": "2026-11-24 09:07",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://www.dbaudio.com/global/en/service-and-support/downloads/download/view/23550/?cHash=521a2547c3d748dc1aa72304c4beb8696af595e0aaafea9092a592589feef756"
+   },
+   {
+    "label": "Windows",
+    "url": "https://www.dbaudio.com/global/en/service-and-support/downloads/download/view/23549/?cHash=3978e5db56b2b0e07a650c85ac9effb029418c2d1b6f4c8329b1b1d303b63798"
+   }
+  ],
+  "released": "2026-10-21",
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "Adamson Array Intelligence",
@@ -348,7 +368,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Download",
@@ -375,7 +395,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -406,7 +426,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [],
   "released": "2026-10-07",
   "notes": null,
@@ -424,15 +444,16 @@
   "vendor": "Meyer Sound",
   "strip": true,
   "note": "Voor Galaxy en CAL met Milan AVB",
-  "version": null,
+  "version": "4.16.0",
   "previous": null,
-  "changed": null,
-  "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-24 08:50",
+  "changed": "2026-11-24 09:07",
+  "error": null,
+  "checked": "2026-11-24 09:07",
   "downloads": [],
-  "released": null,
+  "released": "2026-03-03",
   "notes": null,
-  "notes_url": null
+  "notes_url": "https://docs.meyersound.com/products/en/release-notes---compass.html",
+  "notes_label": "Release notes"
  },
  {
   "name": "Meyer Sound Compass 3.12",
@@ -449,7 +470,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [],
   "released": "2017-07-09",
   "notes": null,
@@ -471,7 +492,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -502,7 +523,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -533,7 +554,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -564,7 +585,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -595,7 +616,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -626,7 +647,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -657,7 +678,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -688,7 +709,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -719,7 +740,7 @@
   "previous": null,
   "changed": "2026-11-23 16:40",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -746,7 +767,7 @@
   "previous": null,
   "changed": "2026-11-23 16:47",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
@@ -773,7 +794,7 @@
   "previous": null,
   "changed": "2026-11-23 18:39",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -794,8 +815,8 @@
   "version": "2242",
   "previous": null,
   "changed": null,
-  "error": "HTTP Error 403: Forbidden",
-  "checked": "2026-11-24 08:50",
+  "error": null,
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Download",
@@ -804,7 +825,8 @@
   ],
   "released": null,
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "DiGiCo Q225 Offline",
@@ -820,8 +842,8 @@
   "version": "2242.4",
   "previous": null,
   "changed": null,
-  "error": "HTTP Error 403: Forbidden",
-  "checked": "2026-11-24 08:50",
+  "error": null,
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Download",
@@ -830,7 +852,8 @@
   ],
   "released": null,
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "DiGiCo Q112 Offline",
@@ -846,8 +869,8 @@
   "version": "2242.4",
   "previous": null,
   "changed": null,
-  "error": "HTTP Error 403: Forbidden",
-  "checked": "2026-11-24 08:50",
+  "error": null,
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Download",
@@ -856,7 +879,8 @@
   ],
   "released": null,
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "DiGiCo SD Convert",
@@ -872,8 +896,8 @@
   "version": "2242.4",
   "previous": null,
   "changed": null,
-  "error": "HTTP Error 403: Forbidden",
-  "checked": "2026-11-24 08:50",
+  "error": null,
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Download",
@@ -882,7 +906,8 @@
   ],
   "released": null,
   "notes": null,
-  "notes_url": null
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "RME TotalMix FX",
@@ -899,7 +924,7 @@
   "previous": null,
   "changed": "2026-11-23 18:49",
   "error": null,
-  "checked": "2026-11-24 08:50",
+  "checked": "2026-11-24 09:07",
   "downloads": [
    {
     "label": "Mac",
