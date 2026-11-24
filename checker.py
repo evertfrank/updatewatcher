@@ -298,6 +298,9 @@ def seen_date(i):
     """Dag dat de checker de nieuwe versie zag; alleen gebruikt als er geen releasedatum bekend is."""
     return str(i.get("changed") or "")[:10] if i.get("previous") else ""
 
+ICON_MAC = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="10" height="7" rx="1"/><path d="M1.5 12.5h13"/></svg>'      # laptop
+ICON_WIN = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="2.5" width="13" height="8.5" rx="1"/><path d="M8 11v2.5M5 13.5h6"/></svg>'   # desktop-scherm
+
 ICON = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8m0 0L4.5 6.5M8 10l3.5-3.5M3 13.5h10"/></svg>'
 
 VENDORS = ("fabfilter", "cntrlld", "d&b", "l-acoustics", "shure")
@@ -365,15 +368,20 @@ def row_html(i, now, cat=""):
         was += f'<span class="was">Ontdekt op {e(nl_date(i["changed"]))}</span>'
     err = f'<span class="err">Controle mislukt: {e(i["error"])}</span>' if i["error"] else ""
     if i.get("downloads"):
-        btn = lambda d: f'<a class="btn" href="{e(d["url"])}">{ICON}{e(d["label"])}</a>'
         lab = lambda d: d["label"].lower()
+        def btn(d):
+            if lab(d).startswith("mac"):
+                return f'<a class="btn os" href="{e(d["url"])}">{ICON_MAC}{e(d["label"])}</a>'
+            if lab(d).startswith("win"):
+                return f'<a class="btn os" href="{e(d["url"])}">{ICON_WIN}{e(d["label"])}</a>'
+            return f'<a class="btn gen" href="{e(d["url"])}">{ICON}{e(d["label"])}</a>'   # algemene download
         mac = [d for d in i["downloads"] if lab(d).startswith("mac")]
         win = [d for d in i["downloads"] if lab(d).startswith("win")]
         rest = [d for d in i["downloads"] if d not in mac and d not in win]
         # twee vaste plekken: links Mac (ook als Windows ontbreekt), rechts Windows, zodat de knoppen onder elkaar staan
         dl = f'<span class="slot">{"".join(btn(d) for d in mac + rest)}</span><span class="slot">{"".join(btn(d) for d in win)}</span>'
     else:
-        dl = f'<span class="slot"><a class="btn" href="{e(i["link"] or "#")}">{ICON}Download</a></span><span class="slot"></span>'
+        dl = f'<span class="slot"><a class="btn gen" href="{e(i["link"] or "#")}">{ICON}Download</a></span><span class="slot"></span>'
     more = ""
     if i.get("notes"):
         more += '<details><summary>Wijzigingen</summary><ul>' + "".join(f"<li>{e(l)}</li>" for l in i["notes"]) + "</ul></details>"
@@ -551,7 +559,9 @@ a.name:hover,a.name:focus-visible{color:var(--blue);text-decoration-color:curren
 .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.38rem .85rem;border:1px solid color-mix(in srgb,var(--blue) 45%,transparent);border-radius:999px;background:none;color:var(--text);font-size:.78rem;font-weight:600;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
 .btn:hover{background:var(--blue);border-color:var(--blue);color:#0c1316}
 .btn:focus-visible,.more summary:focus-visible,.more a:focus-visible,.ask:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-.btn svg{width:.95em;height:.95em}
+.btn svg{width:1.05em;height:1.05em;flex:none}
+.btn.gen{border-color:color-mix(in srgb,var(--gold) 55%,transparent);color:color-mix(in srgb,var(--gold) 35%,var(--text))}
+.btn.gen:hover{background:var(--gold);border-color:var(--gold);color:#0c1316}
 .more{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:flex-start;gap:.4rem 1.5rem;font-size:.78rem}
 .more summary{cursor:pointer;color:var(--blue);font-weight:600}
 .more ul{margin:.4rem 0 0;padding-left:1rem;color:var(--muted);max-width:70ch}
