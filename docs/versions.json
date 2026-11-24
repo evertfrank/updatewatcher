@@ -14,7 +14,7 @@
   "previous": "4.18.0.11",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -53,7 +53,7 @@
   "previous": "5.6.4",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [],
   "released": "2026-10-28",
@@ -91,7 +91,7 @@
   "previous": "7.8.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -150,7 +150,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [],
   "released": "2026-07",
@@ -183,7 +183,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [],
   "released": "2026-10",
@@ -214,7 +214,7 @@
   "previous": "2026.2.2",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -250,7 +250,7 @@
   "previous": "2.5.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -282,7 +282,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -345,7 +345,7 @@
   "previous": "8.1.6",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -373,7 +373,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -424,7 +424,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -456,7 +456,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -488,7 +488,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -516,7 +516,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -548,7 +548,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -580,7 +580,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -612,7 +612,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -644,13 +644,35 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [],
   "released": null,
   "notes": null,
   "notes_url": "https://pksound.live/docs/dynamics-User-Manual-v1.14.0.pdf",
   "notes_label": "Handleiding (pdf)"
+ },
+ {
+  "name": "PMC6-2 firmware",
+  "category": "PA CONTROL & TUNING",
+  "icon": "",
+  "favorite": false,
+  "icon_text": "PMC",
+  "link": "https://pmc-speakers.com/firmware-downloads/",
+  "website": "https://pmc-speakers.com/firmware-downloads/",
+  "vendor": "PMC",
+  "strip": true,
+  "note": "Alleen voor PMC6, PMC6-2, PMC8-2, PMC8-2 SUB en PMC8 SUB (niet voor Master36); installeren via SoundAlign",
+  "version": null,
+  "previous": null,
+  "changed": null,
+  "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>",
+  "checked": "2026-11-24 12:59",
+  "tracked": true,
+  "downloads": [],
+  "released": null,
+  "notes": null,
+  "notes_url": null
  },
  {
   "name": "Rational Acoustics Smaart Suite",
@@ -667,7 +689,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -692,7 +714,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -724,7 +746,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -756,7 +778,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -788,7 +810,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -820,7 +842,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -852,7 +874,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -884,7 +906,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -916,7 +938,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -948,7 +970,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -976,7 +998,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1008,7 +1030,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [],
   "released": "2026-06-12",
@@ -1033,7 +1055,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1065,7 +1087,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1097,7 +1119,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1131,7 +1153,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1163,7 +1185,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1176,6 +1198,38 @@
    }
   ],
   "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "Prism Sound Titan Control & drivers",
+  "category": "AUDIO INTERFACES",
+  "icon": "icons/www-prismsound-io.png",
+  "favorite": false,
+  "icon_text": "PS",
+  "link": "https://www.prismsound.io/products/titan/downloads/",
+  "website": "https://www.prismsound.io/products/titan/",
+  "vendor": "Prism Sound",
+  "strip": true,
+  "note": "Control app, firmware en drivers voor Titan (ook Atlas en Lyra)",
+  "version": "Mac 2.1.6 \u00b7 Windows 2.1.5",
+  "previous": null,
+  "changed": null,
+  "error": null,
+  "checked": "2026-11-24 12:59",
+  "tracked": true,
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://www.prismsound.io/download/control-app-and-firmware-for-atlas-titan-and-lyra-for-mac-v2-1-6/?wpdmdl=27708"
+   },
+   {
+    "label": "Windows",
+    "url": "https://www.prismsound.io/download/drivers-and-control-app-for-atlas-titan-and-lyra-v2-1-5-windows-10-and-11-64-bit/?wpdmdl=23005"
+   }
+  ],
+  "released": "2025-08-19",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1195,7 +1249,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [],
   "released": "2026-01",
@@ -1218,7 +1272,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -1241,7 +1295,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1269,7 +1323,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1297,7 +1351,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1325,7 +1379,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1353,7 +1407,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1381,7 +1435,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1409,7 +1463,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1437,7 +1491,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1465,7 +1519,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1493,7 +1547,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1521,7 +1575,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1549,7 +1603,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1577,7 +1631,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1605,7 +1659,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
@@ -1637,7 +1691,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:52",
+  "checked": "2026-11-24 12:59",
   "tracked": true,
   "downloads": [
    {
