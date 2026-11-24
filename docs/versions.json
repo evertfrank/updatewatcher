@@ -12,9 +12,10 @@
   "note": "Mac-versie kan een nummer achterlopen",
   "version": "4.18.1.2",
   "previous": "4.18.0.11",
-  "changed": "2026-11-23 14:48",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -43,9 +44,10 @@
   "note": "",
   "version": "5.6.5",
   "previous": "5.6.4",
-  "changed": "2026-11-23 15:01",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [],
   "released": "2026-10-28",
   "notes": [
@@ -77,13 +79,19 @@
   "website": "https://www.shure.com/",
   "vendor": "Shure",
   "strip": true,
-  "note": "",
+  "note": "Shure vraagt bij downloaden om je gegevens",
   "version": "7.9.0",
   "previous": "7.8.3",
-  "changed": "2026-11-23 16:05",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
-  "downloads": [],
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
+  "downloads": [
+   {
+    "label": "Download",
+    "url": "https://softwarestore.shure.com/1720/?scope=registration&cart=253539&cfg=shure_2021_nr&x-pardot=instance1"
+   }
+  ],
   "released": "2026-10-06",
   "notes": null,
   "notes_url": "https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench",
@@ -102,9 +110,10 @@
   "note": "",
   "version": "2026.2.1",
   "previous": null,
-  "changed": "2026-11-23 17:15",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [],
   "released": null,
   "notes": null,
@@ -124,9 +133,10 @@
   "note": "",
   "version": "2026.4",
   "previous": null,
-  "changed": "2026-11-23 17:15",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [],
   "released": null,
   "notes": null,
@@ -146,9 +156,10 @@
   "note": "",
   "version": "2026.3.0",
   "previous": "2026.2.2",
-  "changed": "2026-11-23 15:41",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -181,9 +192,10 @@
   "note": "",
   "version": "3.0.3",
   "previous": "2.5.3",
-  "changed": "2026-11-23 15:41",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -212,9 +224,10 @@
   "note": "",
   "version": "7.86",
   "previous": null,
-  "changed": "2026-11-23 16:16",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -246,9 +259,10 @@
   "note": "Alleen Windows",
   "version": "8.1.7",
   "previous": "8.1.6",
-  "changed": "2026-11-23 16:16",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -273,9 +287,10 @@
   "note": "",
   "version": "5.2.2",
   "previous": null,
-  "changed": "2026-11-23 16:37",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -304,9 +319,10 @@
   "note": "Inloggen met eigen account vereist",
   "version": "12.10.0",
   "previous": null,
-  "changed": "2026-11-23 16:37",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -335,9 +351,10 @@
   "note": "Inloggen met eigen account vereist",
   "version": "3.48.1",
   "previous": null,
-  "changed": "2026-11-24 09:07",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -366,9 +383,10 @@
   "note": "",
   "version": "1.4.1",
   "previous": null,
-  "changed": "2026-11-24 08:38",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Download",
@@ -393,9 +411,10 @@
   "note": "",
   "version": "1.3.3",
   "previous": null,
-  "changed": "2026-11-24 08:38",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -424,9 +443,10 @@
   "note": "",
   "version": "1.26.1",
   "previous": null,
-  "changed": "2026-11-24 08:38",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [],
   "released": "2026-10-07",
   "notes": null,
@@ -446,9 +466,10 @@
   "note": "Voor Galaxy en CAL met Milan AVB",
   "version": "4.16.0",
   "previous": null,
-  "changed": "2026-11-24 09:07",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [],
   "released": "2026-03-03",
   "notes": null,
@@ -468,9 +489,10 @@
   "note": "For systems using Galileo and Callisto processors. Not compatible with macOS starting with Sonoma (macOS 14).",
   "version": "3.12.1",
   "previous": null,
-  "changed": "2026-11-24 08:38",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [],
   "released": "2017-07-09",
   "notes": null,
@@ -490,9 +512,10 @@
   "note": "Download via je Smaart-account",
   "version": "9.6.4",
   "previous": null,
-  "changed": "2026-11-24 09:34",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [],
   "released": null,
   "notes": null,
@@ -512,9 +535,10 @@
   "note": "",
   "version": "4.13",
   "previous": null,
-  "changed": "2026-11-23 16:55",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -543,9 +567,10 @@
   "note": "",
   "version": "3.02",
   "previous": null,
-  "changed": "2026-11-23 16:55",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -574,9 +599,10 @@
   "note": "",
   "version": "2.26",
   "previous": null,
-  "changed": "2026-11-23 16:55",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -605,9 +631,10 @@
   "note": "",
   "version": "2.06",
   "previous": null,
-  "changed": "2026-11-23 16:55",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -636,9 +663,10 @@
   "note": "",
   "version": "1.33",
   "previous": null,
-  "changed": "2026-11-23 16:55",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -667,9 +695,10 @@
   "note": "",
   "version": "1.32",
   "previous": null,
-  "changed": "2026-11-23 16:55",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -698,9 +727,10 @@
   "note": "",
   "version": "1.42",
   "previous": null,
-  "changed": "2026-11-23 16:55",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -729,9 +759,10 @@
   "note": "",
   "version": "2.13",
   "previous": null,
-  "changed": "2026-11-23 16:55",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -760,9 +791,10 @@
   "note": "Alleen macOS (VST3 en AU)",
   "version": "0.56.1",
   "previous": null,
-  "changed": "2026-11-23 16:40",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -787,9 +819,10 @@
   "note": "Alleen macOS (VST3 en AU), beta",
   "version": "0.5.36",
   "previous": null,
-  "changed": "2026-11-23 16:47",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
@@ -818,9 +851,10 @@
   "note": "Download via aanmeldformulier (versie handmatig)",
   "version": "1.11.0",
   "previous": null,
-  "changed": "2026-11-23 18:39",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [],
   "released": null,
   "notes": null,
@@ -842,7 +876,8 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -869,7 +904,8 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -896,7 +932,8 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -921,9 +958,10 @@
   "note": "",
   "version": "2242",
   "previous": null,
-  "changed": "2026-11-24 10:05",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -948,9 +986,10 @@
   "note": "",
   "version": "2242",
   "previous": null,
-  "changed": "2026-11-24 09:30",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -975,9 +1014,10 @@
   "note": "",
   "version": "2242",
   "previous": null,
-  "changed": "2026-11-24 09:30",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -1002,9 +1042,10 @@
   "note": "",
   "version": "2242",
   "previous": null,
-  "changed": "2026-11-24 09:30",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -1029,9 +1070,10 @@
   "note": "",
   "version": "2242",
   "previous": null,
-  "changed": "2026-11-24 09:30",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -1056,9 +1098,10 @@
   "note": "",
   "version": "2242",
   "previous": null,
-  "changed": "2026-11-24 09:30",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -1085,7 +1128,8 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Windows",
@@ -1110,9 +1154,10 @@
   "note": "Alleen Mac",
   "version": "2.10",
   "previous": null,
-  "changed": "2026-11-23 18:49",
+  "changed": null,
   "error": null,
-  "checked": "2026-11-24 10:05",
+  "checked": "2026-11-24 10:16",
+  "tracked": true,
   "downloads": [
    {
     "label": "Mac",
