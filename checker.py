@@ -59,6 +59,8 @@ def fill(t, ver):
     return t.replace("{version_dash}", ver.replace(".", "-")).replace("{version_us}", ver.replace(".", "_")).replace("{version}", ver)
 
 def parse_date(s):
+    if re.fullmatch(r"\d{9,11}", s.strip()):   # Unix-tijd, bijvoorbeeld uit een JSON-bestand
+        return datetime.datetime.fromtimestamp(int(s.strip()) + 7200, datetime.timezone.utc).strftime("%Y-%m-%d")
     s = re.sub(r"(\d)(?:st|nd|rd|th)\b", r"\1", s.strip().replace(" of ", " "))
     for f in ("%B %d, %Y", "%b %d, %Y", "%d %B %Y", "%B %d %Y", "%Y-%m-%d", "%d.%m.%Y"):
         try:
@@ -212,6 +214,12 @@ def run():
              "link": it.get("link") or it.get("url"), "website": site_url(it), "vendor": it.get("vendor") or it["name"], "strip": it.get("strip", True), "note": it.get("note", ""),
              "version": o.get("version"), "previous": o.get("previous"),
              "changed": o.get("changed"), "error": None, "checked": now}
+        if it.get("alt_url"):   # eerste bron niet bereikbaar? dan de tweede proberen
+            try:
+                fetch(it["url"])
+            except Exception as e:
+                print(f"INFO {it['name']}: {it['url']} gaf {str(e)[:60]}, probeer {it['alt_url']}", flush=True)
+                it = {**it, "url": it["alt_url"]}
         try:
             v, prev_page = check(it)
             if v != r["version"]:
