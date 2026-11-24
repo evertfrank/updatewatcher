@@ -580,31 +580,26 @@ def render(items, now, contact=None, categories=None, strip=None):
 import math
 
 def banner_svg():
-    """Banner: een mengtafel in silhouet. Kanaalstrips met knoppen, ledmeters en faders, vast patroon zodat de pagina niet bij elke run verandert."""
-    W, H = 1440, 300
-    caps = [0.62, 0.48, 0.55, 0.70, 0.40, 0.58, 0.66, 0.35, 0.52, 0.60, 0.45, 0.72, 0.50, 0.38, 0.64, 0.56, 0.42, 0.68, 0.47, 0.59, 0.53, 0.30, 0.61, 0.49, 0.57]
-    meters = [7, 5, 6, 9, 4, 6, 8, 3, 6, 7, 5, 10, 6, 4, 8, 7, 5, 9, 5, 7, 6, 3, 8, 5, 7]
+    """Dunne banner: een rij kanaalstrips van een mengtafel (knop, ledmeter, fader). Vast patroon, zodat de pagina niet bij elke run verandert."""
+    W, H = 1440, 56
     p = []
-    x0, step = 600, 34
-    for k, (c, m) in enumerate(zip(caps, meters)):
+    x0, step, n = 560, 19, 46
+    for k in range(n):
         x = x0 + k * step
-        if x > W - 10:
-            break
-        for ky in (34, 64, 94):   # knoppen
-            p.append(f'<circle cx="{x}" cy="{ky}" r="8" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>')
-            p.append(f'<path d="M{x} {ky}l{4 * ((k + ky) % 3 - 1)} -6" stroke="#fff" stroke-opacity=".8" stroke-width="1.6" stroke-linecap="round"/>')
-        for s in range(10):       # ledmeter
-            y = 168 - s * 6.5
-            on = s < m
-            col = "#9fd0ff" if s >= 8 else "#ffffff"
-            p.append(f'<rect x="{x - 5}" y="{y:.1f}" width="10" height="4" rx="1" fill="{col}" fill-opacity="{(.9 if on else .12)}"/>')
-        top, bot = 190, 286       # fader
-        p.append(f'<path d="M{x} {top}V{bot}" stroke="#fff" stroke-opacity=".3" stroke-width="3" stroke-linecap="round"/>')
-        cy = bot - c * (bot - top)
-        p.append(f'<rect x="{x - 11}" y="{cy - 6:.1f}" width="22" height="12" rx="2" fill="#fff" fill-opacity=".92"/>')
-        p.append(f'<path d="M{x - 8} {cy:.1f}H{x + 8}" stroke="#0b4f8a" stroke-width="1.4"/>')
+        lvl = 2 + (k * 7 + (k // 3) * 5) % 6           # 2..7 lampjes aan, onregelmatig maar vast
+        fad = ((k * 5 + 3) % 9) / 8                       # faderstand 0..1
+        a = math.radians(225 - ((k * 37) % 270))          # knopstand
+        p.append(f'<circle cx="{x}" cy="8" r="3.6" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.1"/>')
+        p.append(f'<path d="M{x} 8L{x + 3 * math.cos(a):.1f} {8 - 3 * math.sin(a):.1f}" stroke="#fff" stroke-opacity=".8" stroke-width="1.1" stroke-linecap="round"/>')
+        for sgm in range(7):
+            y = 30 - sgm * 2.9
+            col = "#9fd0ff" if sgm >= 5 else "#ffffff"
+            p.append(f'<rect x="{x - 3}" y="{y:.1f}" width="6" height="1.9" rx=".4" fill="{col}" fill-opacity="{.85 if sgm < lvl else .12}"/>')
+        p.append(f'<path d="M{x} 36V52" stroke="#fff" stroke-opacity=".28" stroke-width="1.6" stroke-linecap="round"/>')
+        cy = 50 - fad * 12
+        p.append(f'<rect x="{x - 5}" y="{cy - 2:.1f}" width="10" height="4" rx="1" fill="#fff" fill-opacity=".9"/>')
     return (f'<svg class="art" viewBox="0 0 {W} {H}" preserveAspectRatio="xMaxYMid meet" aria-hidden="true">'
-            '<defs><linearGradient id="fade" x1="0" x2="1"><stop offset=".4" stop-color="#fff" stop-opacity="0"/><stop offset=".72" stop-color="#fff" stop-opacity="1"/></linearGradient>'
+            '<defs><linearGradient id="fade" x1="0" x2="1"><stop offset=".38" stop-color="#fff" stop-opacity="0"/><stop offset=".62" stop-color="#fff" stop-opacity=".9"/></linearGradient>'
             f'<mask id="m"><rect width="{W}" height="{H}" fill="url(#fade)"/></mask></defs>'
             f'<g mask="url(#m)">{"".join(p)}</g></svg>')
 
@@ -656,17 +651,13 @@ body{margin:0;min-height:100vh;color:var(--text);font:16px/1.5 "Source Sans 3",s
 .search input{width:100%;min-height:2.6rem;padding:.5rem .9rem .5rem 2.5rem;border:0;border-radius:4px;background:#fff;color:var(--ink);font:inherit;font-size:1rem}
 .search input::placeholder{color:var(--muted)}
 .search input:focus-visible{outline:3px solid var(--blue-mid);outline-offset:1px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .hero{position:relative;overflow:hidden;background:linear-gradient(100deg,#062c4f 0%,#0a4478 55%,#0b4f8a 100%);color:#fff;border-top:1px solid rgba(255,255,255,.12)}
 .hero .art{position:absolute;inset:0;width:100%;height:100%}
-.hero .in{position:relative}
-.hero .in{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem 2rem;padding-block:clamp(1.25rem,3vw,2rem)}
-.title{display:flex;align-items:center;gap:clamp(1rem,2.5vw,1.75rem)}
-.title .logo{width:clamp(3rem,6vw,4rem);height:auto;flex:none}
-h1{margin:0;font-weight:300;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.05;color:#fff;letter-spacing:-.01em}
-.summary{margin:.3rem 0 0;font-size:1.02rem;color:var(--blue-mid)}
-.side{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem}
+.hero .in{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:.2rem 1.5rem;min-height:3.4rem;padding-block:.55rem}
+.summary{margin:0;font-size:1rem;font-weight:600;color:#fff}
 .checked{margin:0;color:var(--blue-mid);font-size:.92rem}
-.hero .side{margin-top:.5rem}
+.hero .ask{min-height:2rem;padding:.15rem .8rem;font-size:.86rem}
 .wrap{max-width:1240px;margin:0 auto;padding:clamp(1rem,3vw,2rem) clamp(1rem,3vw,1.5rem) 4rem}
 .layout{display:flex;flex-wrap:wrap;gap:1.75rem;align-items:flex-start}
 .layout>*{min-width:0}
@@ -765,10 +756,11 @@ footer{margin-top:2rem;color:var(--muted);font-size:.9rem}
 .cats button{width:auto;flex:none;white-space:nowrap;gap:.5rem}
 .cats button small{display:none}.cats button.my{margin-bottom:0}.cats button.my::after{display:none}
 .row{grid-template-columns:minmax(0,1fr) auto;gap:.5rem .75rem;padding:.75rem .1rem}.who,.more{grid-column:1/-1}.dl{grid-template-columns:repeat(2,6.1rem);gap:.35rem}.was{font-size:.8rem}.more{padding-left:0}
-.search{flex:1 1 100%}.hero .art{opacity:.16}.brand{gap:.55rem}.brand .mark{width:1.6rem;height:1.6rem}.brand{flex-wrap:wrap;row-gap:0}.brand b{font-size:.94rem}.brand span{flex-basis:100%;padding-left:2.15rem}.brand b,.brand span{white-space:nowrap}.brand span{font-size:.8rem}}
+.search{flex:1 1 100%}.hero .art{opacity:.22}.brand{gap:.55rem}.brand .mark{width:1.6rem;height:1.6rem}.brand{flex-wrap:wrap;row-gap:0}.brand b{font-size:.94rem}.brand span{flex-basis:100%;padding-left:2.15rem}.brand b,.brand span{white-space:nowrap}.brand span{font-size:.8rem}}
 </style></head><body>
 <header class="topbar"><div class="in"><a class="brand" href="./">__MARK__<b>Software Update Watcher</b><span>by evertfrank</span></a>__SEARCH__</div></header>
-<section class="hero">__BANNER__<div class="in"><div class="title"><div><h1>Software &amp; firmware</h1><p class="summary">__SUMMARY__</p><div class="side"><p class="checked">Laatst gecontroleerd __NOW__</p>__ASK__</div></div></div></div></section>
+<h1 class="sr">Software Update Watcher</h1>
+<section class="hero">__BANNER__<div class="in"><p class="summary">__SUMMARY__</p><p class="checked">Laatst gecontroleerd __NOW__</p>__ASK__</div></section>
 <div class="wrap">
 __LAYOUT__
 <footer>De lijst wordt elke 6 uur automatisch bijgewerkt.</footer>
