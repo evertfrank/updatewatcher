@@ -14,7 +14,7 @@
   "previous": "4.18.0.11",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -53,7 +53,7 @@
   "previous": "5.6.4",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [],
   "released": "2026-10-28",
@@ -91,7 +91,7 @@
   "previous": "7.8.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -150,7 +150,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [],
   "released": "2026-07",
@@ -183,7 +183,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [],
   "released": "2026-10",
@@ -200,6 +200,28 @@
   "notes_label": "Release notes"
  },
  {
+  "name": "Waves SoundGrid QRec",
+  "category": "PLAYBACK & RECORDING",
+  "icon": "icons/www-waves-com.ico",
+  "favorite": false,
+  "icon_text": "QR",
+  "link": "https://www.waves.com/downloads/central",
+  "website": "https://www.waves.com/mixers-racks/soundgrid-qrec",
+  "vendor": "Waves",
+  "strip": true,
+  "note": "Gratis; installeren via Waves Central",
+  "version": null,
+  "previous": null,
+  "changed": null,
+  "error": "geen versie gevonden (regex klopt niet meer?)",
+  "checked": "2026-11-24 13:10",
+  "tracked": true,
+  "downloads": [],
+  "released": null,
+  "notes": null,
+  "notes_url": null
+ },
+ {
   "name": "LiveProfessor",
   "category": "PLAYBACK & RECORDING",
   "icon": "icons/www-audiostrom-com.png",
@@ -214,7 +236,7 @@
   "previous": "2026.2.2",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -250,7 +272,7 @@
   "previous": "2.5.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -282,7 +304,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -345,7 +367,7 @@
   "previous": "8.1.6",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -373,7 +395,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -424,7 +446,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -456,7 +478,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -488,7 +510,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -516,7 +538,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -548,7 +570,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -580,7 +602,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -612,7 +634,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -644,7 +666,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -655,7 +677,7 @@
  {
   "name": "PMC6-2 firmware",
   "category": "PA CONTROL & TUNING",
-  "icon": "",
+  "icon": "icons/pmc-speakers-com.png",
   "favorite": false,
   "icon_text": "PMC",
   "link": "https://pmc-speakers.com/firmware-downloads/",
@@ -663,16 +685,30 @@
   "vendor": "PMC",
   "strip": true,
   "note": "Alleen voor PMC6, PMC6-2, PMC8-2, PMC8-2 SUB en PMC8 SUB (niet voor Master36); installeren via SoundAlign",
-  "version": null,
+  "version": "1.1.1.4",
   "previous": null,
   "changed": null,
-  "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1011)>",
-  "checked": "2026-11-24 12:59",
+  "error": null,
+  "checked": "2026-11-24 13:10",
   "tracked": true,
-  "downloads": [],
-  "released": null,
-  "notes": null,
-  "notes_url": null
+  "downloads": [
+   {
+    "label": "Firmware",
+    "url": "https://pmc-speakers.com/wp-content/themes/pmc-theme/firmware/PMC6-8%20FW-v1.1.1.4.pmc"
+   }
+  ],
+  "released": "2025-11-13",
+  "notes": [
+   "Improved responsiveness of EQ graph",
+   "Improved stability for XBD systems",
+   "Illuminated logo returns to white when SoundAlign is closed",
+   "Fix sorting order of speaker list",
+   "Fix preset \u2018Load from File\u2019 function",
+   "Fix issue where firmware updates would only be applied to the master speaker in an XBD system (applies to future updates)",
+   "Fix issue where some speakers could emit low-level pink noise during firmware updates (applies to future updates)"
+  ],
+  "notes_url": null,
+  "notes_label": "Release notes"
  },
  {
   "name": "Rational Acoustics Smaart Suite",
@@ -689,7 +725,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -714,7 +750,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -746,7 +782,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -778,7 +814,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -810,7 +846,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -842,7 +878,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -874,7 +910,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -906,7 +942,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -938,7 +974,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -970,7 +1006,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -998,7 +1034,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1030,7 +1066,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [],
   "released": "2026-06-12",
@@ -1055,7 +1091,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1087,7 +1123,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1119,7 +1155,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1153,7 +1189,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1185,7 +1221,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1217,7 +1253,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1249,7 +1285,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [],
   "released": "2026-01",
@@ -1272,13 +1308,45 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [],
   "released": null,
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
+ },
+ {
+  "name": "Yamaha DM Editor (DM7)",
+  "category": "CONSOLES",
+  "icon": "icons/usa-yamaha-com.png",
+  "favorite": false,
+  "icon_text": "DM",
+  "link": "https://usa.yamaha.com/support/updates/dm-editor-win.html",
+  "website": "https://usa.yamaha.com/products/proaudio/software/dm-editor/index.html",
+  "vendor": "Yamaha",
+  "strip": true,
+  "note": "Offline editor voor DM7 en DM5; download na inloggen bij Yamaha en akkoord met de licentie",
+  "version": "2.0.1",
+  "previous": null,
+  "changed": null,
+  "error": null,
+  "checked": "2026-11-24 13:10",
+  "tracked": true,
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://usa.yamaha.com/support/updates/dm-editor-mac.html"
+   },
+   {
+    "label": "Windows",
+    "url": "https://usa.yamaha.com/support/updates/dm-editor-win.html"
+   }
+  ],
+  "released": null,
+  "notes": null,
+  "notes_url": "https://usa.yamaha.com/support/updates/dm-editor-win.html",
+  "notes_label": "Wat is nieuw"
  },
  {
   "name": "DiGiCo Quantum 326/338 Offline",
@@ -1295,7 +1363,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1323,7 +1391,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1351,7 +1419,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1379,7 +1447,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1407,7 +1475,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1435,7 +1503,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1463,7 +1531,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1491,7 +1559,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1519,7 +1587,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1547,7 +1615,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1575,7 +1643,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1603,7 +1671,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1631,7 +1699,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1659,7 +1727,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
@@ -1691,7 +1759,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:59",
+  "checked": "2026-11-24 13:10",
   "tracked": true,
   "downloads": [
    {
