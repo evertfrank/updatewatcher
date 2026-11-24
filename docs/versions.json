@@ -14,7 +14,7 @@
   "previous": "4.18.0.11",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -53,7 +53,7 @@
   "previous": "5.6.4",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [],
   "released": "2026-10-28",
@@ -91,7 +91,7 @@
   "previous": "7.8.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -150,7 +150,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [],
   "released": "2026-07",
@@ -183,7 +183,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [],
   "released": "2026-10",
@@ -214,7 +214,7 @@
   "previous": null,
   "changed": null,
   "error": "geen versie gevonden (regex klopt niet meer?)",
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -236,7 +236,7 @@
   "previous": "2026.2.2",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -272,7 +272,7 @@
   "previous": "2.5.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -304,7 +304,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -367,7 +367,7 @@
   "previous": "8.1.6",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -395,7 +395,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -446,7 +446,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -478,7 +478,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -510,7 +510,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -538,7 +538,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -570,7 +570,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -602,7 +602,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -634,7 +634,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -666,7 +666,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -689,7 +689,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -725,7 +725,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -750,7 +750,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -782,7 +782,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -814,7 +814,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -846,7 +846,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -878,7 +878,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -910,7 +910,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -942,7 +942,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -974,7 +974,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1006,7 +1006,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1034,7 +1034,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1066,7 +1066,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [],
   "released": "2026-06-12",
@@ -1091,7 +1091,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1123,7 +1123,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1155,7 +1155,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1189,7 +1189,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1221,7 +1221,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1253,7 +1253,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1284,13 +1284,14 @@
   "version": "5.8.2.2",
   "previous": null,
   "changed": null,
-  "error": "<urlopen error [Errno 101] Network is unreachable>",
-  "checked": "2026-11-24 14:24",
+  "error": null,
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [],
-  "released": null,
+  "released": "2026-01",
   "notes": null,
-  "notes_url": null
+  "notes_url": "https://www.digitalaudiosupport.com/technical-bulletin-newsletter-archive/",
+  "notes_label": "Technical Bulletin"
  },
  {
   "name": "Luminex Araneo",
@@ -1307,7 +1308,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -1330,7 +1331,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1362,7 +1363,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1390,7 +1391,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1418,7 +1419,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1446,7 +1447,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1474,7 +1475,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1502,7 +1503,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1530,7 +1531,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1558,7 +1559,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1586,7 +1587,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1614,7 +1615,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1642,7 +1643,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1670,7 +1671,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1698,7 +1699,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1726,7 +1727,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
@@ -1758,7 +1759,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 14:24",
+  "checked": "2026-11-24 16:02",
   "tracked": true,
   "downloads": [
    {
