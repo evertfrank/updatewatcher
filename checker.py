@@ -394,7 +394,7 @@ def seen_date(i):
     """Dag dat de checker de nieuwe versie zag; alleen gebruikt als er geen releasedatum bekend is."""
     return str(i.get("changed") or "")[:10] if i.get("previous") else ""
 
-ICON_MAC = '<svg class="apple" viewBox="2.4 1 11 13.8" aria-hidden="true"><path fill="#fff" d="M8 5C6.8 4.1 5.3 4 4.2 4.7 2.6 5.7 2.3 7.9 2.9 10.1 3.6 12.5 5.1 14.5 6.5 14.5c.7 0 1-.4 1.5-.4s.8.4 1.5.4c1.4 0 2.9-2 3.6-4.4.6-2.2.3-4.4-1.3-5.4C10.7 4 9.2 4.1 8 5Z"/><path d="M8 5.1V3.4c0-.9.3-1.6.9-2.1" fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></svg>'      # wit appeltje (fruit) met steeltje
+ICON_MAC = '<svg class="apple" viewBox="2.4 1 11 13.8" aria-hidden="true"><path fill="currentColor" d="M8 5C6.8 4.1 5.3 4 4.2 4.7 2.6 5.7 2.3 7.9 2.9 10.1 3.6 12.5 5.1 14.5 6.5 14.5c.7 0 1-.4 1.5-.4s.8.4 1.5.4c1.4 0 2.9-2 3.6-4.4.6-2.2.3-4.4-1.3-5.4C10.7 4 9.2 4.1 8 5Z"/><path d="M8 5.1V3.4c0-.9.3-1.6.9-2.1" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>'      # wit appeltje (fruit) met steeltje
 ICON_WIN = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="2.5" width="13" height="8.5" rx="1"/><path d="M8 11v2.5M5 13.5h6"/></svg>'   # desktop-scherm
 
 ICON = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8m0 0L4.5 6.5M8 10l3.5-3.5M3 13.5h10"/></svg>'
@@ -503,6 +503,15 @@ def row_html(i, now, cat=""):
             f'<div class="ver">{num_html(i["version"])}{was}{err}</div>'
             f'<div class="dl">{dl}</div>{more}</li>')
 
+KEEP_UPPER = {"PA", "DJ", "DAW", "IEM", "AV", "RME", "USB", "MIDI"}
+
+def cat_label(c):
+    """'PLAYBACK & RECORDING' -> 'Playback & recording' (afkortingen als PA blijven staan)."""
+    words = [w if w.upper() in KEEP_UPPER else w.lower() for w in str(c).split()]
+    if words and words[0].upper() not in KEEP_UPPER:
+        words[0] = words[0][:1].upper() + words[0][1:]
+    return " ".join(words)
+
 def render(items, now, contact=None, categories=None, strip=None):
     e = html.escape
     # categorieën uit software.yml (volgorde = volgorde van de zijbalk); een categorie die alleen bij een programma staat komt erbij
@@ -527,15 +536,15 @@ def render(items, now, contact=None, categories=None, strip=None):
 
     rows = "".join(row_html(i, now, cat_of(i)) for i in sorted(items, key=lambda i: i["name"].casefold()))   # alfabetisch
     search = '<div class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.5"/><path d="M13.5 13.5L17 17"/></svg><input id="q" type="search" placeholder="Zoek in software" aria-label="Zoek in software" autocomplete="off" spellcheck="false"></div>'
-    listing = f'{vendors_html(items, strip)}{search}<ul class="list">{rows}</ul><p class="empty" id="empty" hidden></p>'
+    listing = f'{vendors_html(items, strip)}<div class="panel"><ul class="list">{rows}</ul></div><p class="empty" id="empty" hidden></p>'
     if canon:
         nrec = sum(is_recent(i, now) for i in items)
-        nav = f'<button type="button" class="rec" data-cat="RECENT" aria-current="false" title="Updates van de afgelopen 30 dagen, nieuwste bovenaan"><span>NEW UPDATES<small>Updates van de afgelopen 30 dagen</small></span><b>{nrec}</b></button>'
-        nav += '<button type="button" class="my" data-cat="MY" aria-current="false" title="Jouw eigen selectie, bewaard in deze browser"><span>MY PRODUCTS<small>Voeg toe met het plusje</small></span><b id="mycount">0</b></button>'
-        nav += f'<button type="button" data-cat="*" aria-current="true"><span>ALL</span><b>{len(items)}</b></button>'
+        nav = f'<button type="button" class="rec" data-cat="RECENT" aria-current="false" title="Updates van de afgelopen 30 dagen, nieuwste bovenaan"><span>Nieuwe updates<small>Afgelopen 30 dagen</small></span><b>{nrec}</b></button>'
+        nav += '<button type="button" class="my" data-cat="MY" aria-current="false" title="Jouw eigen selectie, bewaard in deze browser"><span>My products<small>Voeg toe met het plusje</small></span><b id="mycount">0</b></button>'
+        nav += f'<button type="button" data-cat="*" aria-current="true"><span>Alles</span><b>{len(items)}</b></button>'
         for c in canon.values():
-            nav += f'<button type="button" data-cat="{e(c)}" aria-current="false"><span>{e(c)}</span><b>{sum(cat_of(i) == c for i in items)}</b></button>'
-        layout = f'<div class="layout"><nav class="cats" aria-label="Categorieën">{nav}</nav><div>{listing}</div></div>'
+            nav += f'<button type="button" data-cat="{e(c)}" aria-current="false"><span>{e(cat_label(c))}</span><b>{sum(cat_of(i) == c for i in items)}</b></button>'
+        layout = f'<div class="layout"><nav class="cats" aria-label="Categorieën">{nav}</nav><div class="main">{listing}</div></div>'
     else:
         layout = listing
 
@@ -549,11 +558,40 @@ def render(items, now, contact=None, categories=None, strip=None):
     elif mail:
         ask = f'<a class="ask" href="mailto:{e(mail)}?subject=Software%20updates">Mis je iets?</a>'
     return (PAGE.replace("__ASK__", ask).replace("__DIALOG__", dialog).replace("__NOW__", e(nl_datetime(now)))
-                .replace("__SUMMARY__", e(summary)).replace("__LOGO__", logo_svg()).replace("__SW__", "".join(f"<i>{ch}</i>" for ch in "SOFTWARE")).replace("__FAVICON__", "data:image/svg+xml," + urllib.parse.quote(logo_svg(tile=True).replace(' class="logo"', '').replace("<svg ", "<svg xmlns='http://www.w3.org/2000/svg' ", 1))).replace("__LAYOUT__", layout))
+                .replace("__SUMMARY__", e(summary)).replace("__BANNER__", banner_svg()).replace("__LOGO__", logo_svg(lit_col="#ffffff", hot_col="#9fd0ff", dim_col="#4b7fac", needle_col="#ffffff")).replace("__MARK__", logo_svg(cls="mark", lit_col="#ffffff", hot_col="#9fd0ff", dim_col="#3d6f9c", needle_col="#ffffff")).replace("__SW__", "".join(f"<i>{ch}</i>" for ch in "SOFTWARE")).replace("__FAVICON__", "data:image/svg+xml," + urllib.parse.quote(logo_svg(tile=True, lit_col="#ffffff", hot_col="#9fd0ff", dim_col="#3d6f9c", needle_col="#ffffff").replace(' class="logo"', '').replace("<svg ", "<svg xmlns='http://www.w3.org/2000/svg' ", 1))).replace("__LAYOUT__", layout).replace("__SEARCH__", search))
 
 import math
 
-def logo_svg(tile=False, cls="logo", lit_col="#7fb8bd", hot_col="#d4814a", dim_col="#34484e", needle_col="#ebe8e2", tile_col="#121b1f"):
+def banner_svg():
+    """Banner: een mengtafel in silhouet. Kanaalstrips met knoppen, ledmeters en faders, vast patroon zodat de pagina niet bij elke run verandert."""
+    W, H = 1440, 300
+    caps = [0.62, 0.48, 0.55, 0.70, 0.40, 0.58, 0.66, 0.35, 0.52, 0.60, 0.45, 0.72, 0.50, 0.38, 0.64, 0.56, 0.42, 0.68, 0.47, 0.59, 0.53, 0.30, 0.61, 0.49, 0.57]
+    meters = [7, 5, 6, 9, 4, 6, 8, 3, 6, 7, 5, 10, 6, 4, 8, 7, 5, 9, 5, 7, 6, 3, 8, 5, 7]
+    p = []
+    x0, step = 600, 34
+    for k, (c, m) in enumerate(zip(caps, meters)):
+        x = x0 + k * step
+        if x > W - 10:
+            break
+        for ky in (34, 64, 94):   # knoppen
+            p.append(f'<circle cx="{x}" cy="{ky}" r="8" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.6"/>')
+            p.append(f'<path d="M{x} {ky}l{4 * ((k + ky) % 3 - 1)} -6" stroke="#fff" stroke-opacity=".8" stroke-width="1.6" stroke-linecap="round"/>')
+        for s in range(10):       # ledmeter
+            y = 168 - s * 6.5
+            on = s < m
+            col = "#9fd0ff" if s >= 8 else "#ffffff"
+            p.append(f'<rect x="{x - 5}" y="{y:.1f}" width="10" height="4" rx="1" fill="{col}" fill-opacity="{(.9 if on else .12)}"/>')
+        top, bot = 190, 286       # fader
+        p.append(f'<path d="M{x} {top}V{bot}" stroke="#fff" stroke-opacity=".3" stroke-width="3" stroke-linecap="round"/>')
+        cy = bot - c * (bot - top)
+        p.append(f'<rect x="{x - 11}" y="{cy - 6:.1f}" width="22" height="12" rx="2" fill="#fff" fill-opacity=".92"/>')
+        p.append(f'<path d="M{x - 8} {cy:.1f}H{x + 8}" stroke="#0b4f8a" stroke-width="1.4"/>')
+    return (f'<svg class="art" viewBox="0 0 {W} {H}" preserveAspectRatio="xMaxYMid meet" aria-hidden="true">'
+            '<defs><linearGradient id="fade" x1="0" x2="1"><stop offset=".4" stop-color="#fff" stop-opacity="0"/><stop offset=".72" stop-color="#fff" stop-opacity="1"/></linearGradient>'
+            f'<mask id="m"><rect width="{W}" height="{H}" fill="url(#fade)"/></mask></defs>'
+            f'<g mask="url(#m)">{"".join(p)}</g></svg>')
+
+def logo_svg(tile=False, cls="logo", lit_col="#0b4f8a", hot_col="#2f8fd8", dim_col="#cfd7df", needle_col="#1d2833", tile_col="#0b4f8a"):
     """Het merkteken: een ring van lichtjes zoals op een compressor of niveaumeter. Petrol brandt, de laatste oranje (er is iets nieuws), de naald wijst naar de nieuwste stand."""
     n, lit, hot, start, span = 18, 14, 16, 135, 270
     parts = []
@@ -567,7 +605,7 @@ def logo_svg(tile=False, cls="logo", lit_col="#7fb8bd", hot_col="#d4814a", dim_c
     a = math.radians(start + (lit) * span / (n - 1))
     nx, ny = 32 + 15 * math.cos(a), 32 + 15 * math.sin(a)
     needle = f'<path d="M32 32L{nx:.2f} {ny:.2f}" stroke="{needle_col}" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="32" r="3.6" fill="{needle_col}"/>'
-    bg = '<rect width="64" height="64" rx="15" fill="{tile_col}"/>' if tile else ""
+    bg = f'<rect width="64" height="64" rx="15" fill="{tile_col}"/>' if tile else ""
     return f'<svg class="{cls}" viewBox="0 0 64 64" aria-hidden="true">{bg}{"".join(parts)}{needle}</svg>'
 
 PAGE = """<!doctype html>
@@ -581,123 +619,108 @@ PAGE = """<!doctype html>
 <meta property="og:image" content="https://evertfrank.github.io/updatewatcher/logo-share.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:dark;--display:"Poppins","Arial Black","Helvetica Neue",Arial,sans-serif;
---bg:#0c1316;--surface:#121b1f;--raise:#182329;--line:#25343a;--text:#ebe8e2;--muted:#8a9a9f;
---blue:#7fb8bd;--blue-deep:#1d3b42;--red:#d4814a;--red-deep:#3d2616;--red-soft:#e8955a;--gold:#a99bd6;--gold-deep:#2c2745}
+:root{color-scheme:light;
+--bg:#dfe3e7;--surface:#ffffff;--soft:#f2f4f6;--line:#d8dde2;--ink:#1d2833;--text:#2b3640;--muted:#5d6b77;
+--blue:#0b4f8a;--blue-dark:#083a66;--blue-soft:#e8f0f8;--blue-mid:#c9daea}
 *{box-sizing:border-box}
 html{background:var(--bg)}
-body{margin:0;min-height:100vh;color:var(--text);font:14px/1.5 "Instrument Sans",system-ui,sans-serif;
-background:radial-gradient(60rem 22rem at 12% -6rem,color-mix(in srgb,var(--blue-deep) 70%,transparent),transparent 70%),radial-gradient(40rem 18rem at 100% -4rem,color-mix(in srgb,var(--red-deep) 55%,transparent),transparent 70%),var(--bg)}
-.wrap{max-width:1080px;margin:0 auto;padding:clamp(1.25rem,4vw,2.75rem) clamp(1rem,3vw,2rem) 3rem}
-header{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:1rem 1.5rem}
-.banner{padding:clamp(1.1rem,3vw,1.9rem) clamp(1.1rem,3.5vw,2.2rem);border:1px solid color-mix(in srgb,var(--blue) 22%,var(--line));border-radius:22px;background:radial-gradient(70% 140% at 14% 50%,#2c5560 0,#17323a 58%,#0f1d22 100%);box-shadow:0 18px 50px -28px #000}
-.brand{display:flex;align-items:center;gap:clamp(1rem,3vw,1.9rem)}
-.word{display:flex;flex-direction:column;gap:.55rem}
-h1{display:flex;flex-direction:column;gap:.6rem;margin:0;font-family:var(--display);text-transform:uppercase}
-h1 .sw{display:flex;justify-content:space-between;font:700 clamp(.78rem,2.3vw,1.05rem)/1 var(--display);color:#a6d3d6}
-h1 .sw i{font-style:normal}
-h1 .uw{font:800 clamp(1.45rem,5vw,2.7rem)/.95 var(--display);letter-spacing:-.015em;white-space:nowrap;color:var(--text)}
-h1 em{font-style:normal;color:#e8955a}
-.by{margin:0;color:#8a9a9f;font-size:.8rem;font-weight:500}
-.logo{width:clamp(3.4rem,11vw,6rem);height:auto;flex:none}
-.banner .checked{color:#8fb6ba}
-.banner .ask{border-color:#e8955a}
-.checked{color:var(--muted);font-size:.78rem;margin:0}
-.summary{color:var(--muted);font-size:.9rem;margin:1.25rem 0 1.75rem}
-.layout{display:grid;grid-template-columns:13.5rem minmax(0,1fr);gap:2.5rem;align-items:start}
-.cats{position:sticky;top:1.5rem;display:flex;flex-direction:column;gap:.2rem;padding-left:.25rem;border-left:1px solid var(--line)}
-.cats button{position:relative;display:flex;justify-content:space-between;align-items:center;gap:.5rem;width:100%;padding:.7rem .95rem;border:0;border-radius:10px;background:none;color:var(--muted);font:600 .98rem/1.2 "Instrument Sans",sans-serif;text-align:left;cursor:pointer;transition:color .15s,background .15s}
-.cats button b{font-weight:500;font-size:.82rem;color:var(--muted)}
-.cats button:hover{color:var(--text);background:color-mix(in srgb,var(--raise) 60%,transparent)}
-.cats button[aria-current=true]{background:var(--raise);color:var(--text)}
-.cats button[aria-current=true]::before{content:"";position:absolute;left:-.5rem;top:25%;bottom:25%;width:2px;border-radius:2px;background:var(--red)}
-.cats button.fav{color:color-mix(in srgb,var(--gold) 80%,var(--muted))}
-.cats button.fav b{color:var(--gold)}
-.cats button.fav[aria-current=true]{background:var(--gold-deep);color:var(--gold)}
-.cats button.fav[aria-current=true]::before{background:var(--gold)}
-.cats button.rec{margin-bottom:.45rem}
-.cats button.rec::after{content:"";position:absolute;left:0;right:.6rem;bottom:-.3rem;height:1px;background:var(--line)}
-.cats button.rec{color:color-mix(in srgb,var(--red-soft) 70%,var(--muted))}
-.cats button.rec b{color:var(--red-soft)}
-.cats button.rec[aria-current=true]{background:var(--red-deep);color:var(--red-soft)}
-.cats button.rec[aria-current=true]::before{background:var(--red)}
-.cats button span{text-align:left}
-.cats button.my{color:color-mix(in srgb,var(--gold) 75%,var(--muted))}.cats button.my b{color:var(--gold)}
-.cats button.my[aria-current=true]{background:var(--gold-deep);color:var(--gold)}.cats button.my[aria-current=true]::before{background:var(--gold)}
-.who{position:relative}
-.mine{flex:none;align-self:center;margin-left:auto;display:grid;place-items:center;width:1.7rem;height:1.7rem;padding:0;border:1px solid var(--line);border-radius:7px;background:none;color:var(--muted);cursor:pointer;transition:border-color .15s,background .15s,color .15s}
-.mine svg{width:.9rem;height:.9rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.mine .tick{display:none}.mine[aria-pressed=true] .tick{display:block}.mine[aria-pressed=true] .plus{display:none}
-.mine:hover{border-color:var(--gold);color:var(--gold)}
-.mine[aria-pressed=true]{background:var(--gold-deep);border-color:var(--gold);color:var(--gold)}
-.mine:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-.cats button small{display:block;margin-top:.2rem;font:500 .72rem/1.3 "Instrument Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--muted)}
-.cats button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-.layout>*{min-width:0}
-.vendors{display:flex;flex-wrap:nowrap;gap:.45rem;margin:0 0 .9rem;padding:.4rem .1rem .3rem;overflow-x:auto;scrollbar-width:none}.vendors::-webkit-scrollbar{display:none}
-.vendors button{position:relative;display:grid;place-items:center;flex:0 1 2.65rem;min-width:2.1rem;aspect-ratio:1;padding:0;border:1px solid var(--line);border-radius:11px;background:var(--surface);cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
-.vendors button .ico{width:74%;height:74%;border-radius:7px}
-.vendors button:hover{border-color:color-mix(in srgb,var(--blue) 50%,var(--line));transform:translateY(-1px)}
-.vendors button[aria-pressed=true]{border-color:var(--red);background:var(--red-deep);box-shadow:0 0 0 1px var(--red)}
-.vendors button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-.vendors button b{position:absolute;right:-.35rem;top:-.35rem;min-width:1.1rem;height:1.1rem;padding:0 .25rem;border-radius:999px;background:var(--raise);border:1px solid var(--line);color:var(--muted);font:600 .64rem/1rem "Instrument Sans",system-ui,sans-serif;text-align:center}
-.vendors button[aria-pressed=true] b{background:var(--red);border-color:var(--red);color:var(--bg)}
-@media (prefers-reduced-motion:reduce){.vendors button{transition:none}.vendors button:hover{transform:none}}
-.search{position:relative;margin:0 0 .5rem}
-.search svg{position:absolute;left:.9rem;top:50%;width:1rem;height:1rem;transform:translateY(-50%);fill:none;stroke:var(--muted);stroke-width:1.8;stroke-linecap:round;pointer-events:none}
-.search input{width:100%;padding:.65rem 1rem .65rem 2.6rem;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--text);font:inherit;font-size:.9rem;transition:border-color .15s,background .15s}
+body{margin:0;min-height:100vh;color:var(--text);font:16px/1.5 "Source Sans 3",system-ui,sans-serif;background:var(--bg)}
+.in{max-width:1240px;margin:0 auto;padding-inline:clamp(1rem,3vw,1.5rem)}
+.topbar{background:var(--blue);color:#fff}
+.topbar .in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1.5rem;padding-block:.9rem}
+.brand{display:flex;align-items:baseline;gap:.75rem;color:#fff;text-decoration:none}
+.brand{align-items:center}.brand .mark{width:2rem;height:2rem;flex:none}
+.brand b{font-weight:700;font-size:1.35rem;letter-spacing:.01em}
+.brand span{font-size:.88rem;color:var(--blue-mid)}
+.search{position:relative;flex:0 1 24rem}
+.search svg{position:absolute;left:.85rem;top:50%;width:1.05rem;height:1.05rem;transform:translateY(-50%);fill:none;stroke:var(--muted);stroke-width:1.8;stroke-linecap:round;pointer-events:none}
+.search input{width:100%;min-height:2.6rem;padding:.5rem .9rem .5rem 2.5rem;border:0;border-radius:4px;background:#fff;color:var(--ink);font:inherit;font-size:1rem}
 .search input::placeholder{color:var(--muted)}
-.search input:hover{border-color:color-mix(in srgb,var(--blue) 40%,var(--line))}
-.search input:focus-visible{outline:2px solid var(--blue);outline-offset:2px;border-color:transparent}
+.search input:focus-visible{outline:3px solid var(--blue-mid);outline-offset:1px}
+.hero{position:relative;overflow:hidden;background:linear-gradient(100deg,#062c4f 0%,#0a4478 55%,#0b4f8a 100%);color:#fff;border-top:1px solid rgba(255,255,255,.12)}
+.hero .art{position:absolute;inset:0;width:100%;height:100%}
+.hero .in{position:relative}
+.hero .in{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1rem 2rem;padding-block:clamp(1.25rem,3vw,2rem)}
+.title{display:flex;align-items:center;gap:clamp(1rem,2.5vw,1.75rem)}
+.title .logo{width:clamp(3rem,6vw,4rem);height:auto;flex:none}
+h1{margin:0;font-weight:300;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.05;color:#fff;letter-spacing:-.01em}
+.summary{margin:.3rem 0 0;font-size:1.02rem;color:var(--blue-mid)}
+.side{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem}
+.checked{margin:0;color:var(--blue-mid);font-size:.92rem}
+.hero .side{margin-top:.5rem}
+.wrap{max-width:1240px;margin:0 auto;padding:clamp(1rem,3vw,2rem) clamp(1rem,3vw,1.5rem) 4rem}
+.layout{display:flex;flex-wrap:wrap;gap:1.75rem;align-items:flex-start}
+.layout>*{min-width:0}
+.cats{flex:1 1 15rem;max-width:17rem;position:sticky;top:1rem;display:flex;flex-direction:column;gap:.1rem;padding:.5rem;background:var(--surface);border-radius:6px}
+.main{flex:999 1 34rem;display:flex;flex-direction:column;gap:1rem}
+.cats button{display:flex;justify-content:space-between;align-items:center;gap:.6rem;width:100%;min-height:2.75rem;padding:.45rem .85rem;border:0;border-radius:4px;background:none;color:var(--text);font:400 1rem/1.25 "Source Sans 3",sans-serif;text-align:left;cursor:pointer;transition:background .15s,color .15s}
+.cats button span{text-align:left}
+.cats button b{font-weight:400;font-size:.9rem;color:var(--muted)}
+.cats button small{display:block;margin-top:.1rem;font-size:.8rem;color:var(--muted)}
+.cats button:hover{background:var(--soft)}
+.cats button[aria-current=true]{background:var(--blue);color:#fff;font-weight:600}
+.cats button[aria-current=true] b,.cats button[aria-current=true] small{color:var(--blue-mid)}
+.cats button.my{margin-bottom:.35rem;position:relative}
+.cats button.my::after{content:"";position:absolute;left:.85rem;right:.85rem;bottom:-.25rem;height:1px;background:var(--line)}
+.cats button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.vendors{display:flex;flex-wrap:nowrap;gap:.5rem;padding:.25rem .1rem;overflow-x:auto;scrollbar-width:none}.vendors::-webkit-scrollbar{display:none}
+.vendors button{position:relative;display:grid;place-items:center;flex:0 1 2.75rem;min-width:2.2rem;aspect-ratio:1;padding:0;border:1px solid var(--line);border-radius:6px;background:var(--surface);cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.vendors button .ico{width:72%;height:72%;border-radius:4px}
+.vendors button:hover{border-color:var(--blue)}
+.vendors button[aria-pressed=true]{border-color:var(--blue);box-shadow:0 0 0 2px var(--blue)}
+.vendors button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.vendors button b{position:absolute;right:-.4rem;top:-.4rem;min-width:1.15rem;height:1.15rem;padding:0 .25rem;border-radius:999px;background:var(--blue);color:#fff;font:600 .68rem/1.15rem "Source Sans 3",sans-serif;text-align:center}
+.panel{background:var(--surface);border-radius:6px;padding:.25rem clamp(.75rem,2vw,1.25rem)}
 .list{list-style:none;margin:0;padding:0}
-.row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 11rem 13.6rem;gap:.4rem 1.5rem;align-items:center;padding:.95rem .25rem;border-top:1px solid var(--line)}
+.row{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 11rem 13.6rem;gap:.35rem 1.5rem;align-items:center;padding:.8rem .4rem;border-top:1px solid var(--line)}
 .row:first-child{border-top:0}
-.row.new::before{content:"";position:absolute;inset:.3rem -.75rem;z-index:-1;border-radius:12px;background:linear-gradient(90deg,color-mix(in srgb,var(--red-deep) 70%,transparent),transparent 80%)}
-.who{display:flex;align-items:center;gap:.85rem;min-width:0}
-.ico{flex:none;width:2.1rem;height:2.1rem;border-radius:10px;object-fit:contain}
-img.ico{padding:.3rem;background:var(--text)}
-.mono{display:grid;place-items:center;font:800 .72rem/1 var(--display);letter-spacing:.02em}
-.mono.long{font-size:.6rem;letter-spacing:0}
-.mono.b{background:var(--blue-deep);color:var(--blue);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--blue) 30%,transparent)}
-.mono.r{background:var(--red-deep);color:var(--red-soft);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--red) 35%,transparent)}
-.name{font-weight:600;font-size:.95rem;color:inherit;text-decoration:none}
+.row.new{background:linear-gradient(var(--blue-soft),var(--blue-soft)) padding-box;border-radius:4px}
+.row.new+.row{border-top-color:transparent}
+.who{position:relative;display:flex;align-items:center;gap:.85rem;min-width:0}
+.ico{flex:none;width:2.25rem;height:2.25rem;border-radius:6px;object-fit:contain}
+img.ico{padding:.25rem;background:#fff;box-shadow:inset 0 0 0 1px var(--line)}
+.mono{display:grid;place-items:center;font:700 .74rem/1 "Source Sans 3",sans-serif;letter-spacing:.02em}
+.mono.long{font-size:.62rem;letter-spacing:0}
+.mono.b{background:var(--soft);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.mono.r{background:var(--blue-soft);color:var(--blue)}
+.name{font-weight:600;font-size:1.02rem;color:var(--ink);text-decoration:none}
 a.name{text-decoration:underline;text-decoration-color:transparent;text-underline-offset:.2em;text-decoration-thickness:1.5px;transition:text-decoration-color .15s,color .15s}
 a.name:hover,a.name:focus-visible{color:var(--blue);text-decoration-color:currentColor}
-.star{width:.8rem;height:.8rem;margin-left:.45rem;fill:var(--gold);vertical-align:-.02em}
-.note{display:block;color:var(--muted);font-size:.76rem;margin-top:.1rem}
-.badge{display:inline-flex;align-items:center;gap:.4rem;margin-left:.6rem;padding:.08rem .55rem;border-radius:999px;background:var(--red-deep);color:var(--red-soft);font-size:.68rem;font-weight:600;vertical-align:.12em}
-.badge::before{content:"";width:.38rem;height:.38rem;border-radius:50%;background:var(--red);animation:lamp 1.8s ease-in-out infinite}
-@keyframes lamp{50%{opacity:.25}}
-@media (prefers-reduced-motion:reduce){.badge::before{animation:none}}
-.num{display:inline-block;color:var(--blue);font:700 1.05rem/1.2 var(--display);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
-.num.multi{font-size:.92rem}.num.multi span{display:block}
-.was{display:block;color:var(--muted);font-size:.74rem;margin-top:.05rem}
-.err{display:block;color:var(--red-soft);font-size:.76rem;margin-top:.1rem}
+.note{display:block;color:var(--muted);font-size:.86rem;margin-top:.05rem}
+.badge{display:inline-block;margin-left:.55rem;padding:.05rem .45rem;border-radius:3px;background:var(--blue);color:#fff;font-size:.74rem;font-weight:600;vertical-align:.1em}
+.num{display:inline-block;color:var(--blue);font:400 1.25rem/1.2 "Source Sans 3",sans-serif;font-variant-numeric:tabular-nums}
+.num.multi{font-size:1rem}.num.multi span{display:block}
+.was{display:block;color:var(--muted);font-size:.84rem;margin-top:.05rem}
+.err{display:block;color:#a3361f;font-size:.84rem;margin-top:.1rem}
 .dl{display:grid;grid-template-columns:repeat(2,6.6rem);gap:.4rem;justify-content:end}
 .slot{display:flex;flex-direction:column;gap:.4rem}
 .slot .btn{justify-content:center}
-.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.38rem .85rem;border:1px solid color-mix(in srgb,var(--blue) 45%,transparent);border-radius:999px;background:none;color:var(--text);font-size:.78rem;font-weight:600;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
-.btn:hover{background:var(--blue);border-color:var(--blue);color:#0c1316}
-.btn:focus-visible,.more summary:focus-visible,.more a:focus-visible,.ask:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-.btn svg{width:1.05em;height:1.05em;flex:none;position:relative;top:-.13em}   /* midden van het icoon op de hoofdletters */
-.btn svg.apple{width:.72em;height:.9em;top:-.15em}
-.btn.os:hover svg.apple path[fill]{fill:#0c1316}.btn.os:hover svg.apple path[stroke]{stroke:#0c1316}
-.btn.gen{border-color:color-mix(in srgb,var(--gold) 55%,transparent);color:color-mix(in srgb,var(--gold) 35%,var(--text))}
-.btn.gen:hover{background:var(--gold);border-color:var(--gold);color:#0c1316}
-.more{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:flex-start;gap:.4rem 1.5rem;font-size:.78rem}
+.btn{display:inline-flex;align-items:center;gap:.4rem;min-height:2.3rem;padding:.3rem .8rem;border:1px solid var(--blue);border-radius:4px;background:#fff;color:var(--blue);font-size:.9rem;font-weight:600;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.btn:hover{background:var(--blue);color:#fff}
+.btn svg{width:1.05em;height:1.05em;flex:none;position:relative;top:-.08em}
+.btn svg.apple{width:.72em;height:.9em;top:-.1em}
+.btn.gen{border-color:#8a96a1;color:var(--text)}
+.btn.gen:hover{background:var(--text);border-color:var(--text);color:#fff}
+.btn:focus-visible,.more summary:focus-visible,.more a:focus-visible,.ask:focus-visible,.mine:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.mine{flex:none;align-self:center;margin-left:auto;display:grid;place-items:center;width:2rem;height:2rem;padding:0;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--muted);cursor:pointer;transition:border-color .15s,background .15s,color .15s}
+.mine svg{width:.95rem;height:.95rem;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.mine .tick{display:none}.mine[aria-pressed=true] .tick{display:block}.mine[aria-pressed=true] .plus{display:none}
+.mine:hover{border-color:var(--blue);color:var(--blue)}
+.mine[aria-pressed=true]{background:var(--blue);border-color:var(--blue);color:#fff}
+.more{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:flex-start;gap:.3rem 1.5rem;font-size:.9rem;padding-left:3.1rem}
 .more summary{cursor:pointer;color:var(--blue);font-weight:600}
-.more ul{margin:.4rem 0 0;padding-left:1rem;color:var(--muted);max-width:70ch}
+.more ul{margin:.35rem 0 0;padding-left:1.1rem;color:var(--text);max-width:75ch}
 .more a{color:var(--blue)}
-.side{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem}
-.ask{padding:.35rem .9rem;border:1px solid var(--red);border-radius:999px;background:none;color:var(--text);font:inherit;font-size:.78rem;font-weight:600;text-decoration:none;cursor:pointer}
-.ask:hover{background:var(--red-deep)}
-dialog{width:min(30rem,calc(100vw - 2rem));padding:1.25rem;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--text)}
-dialog::backdrop{background:rgba(5,7,12,.75)}
-dialog p{margin:.25rem 0 1rem;color:var(--muted);font-size:.85rem}
-dialog label{display:block;margin:0 0 .8rem;color:var(--muted);font-size:.8rem}
-dialog textarea,dialog input:not([type=hidden]):not([type=checkbox]){display:block;width:100%;margin-top:.25rem;padding:.5rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);font:inherit;font-size:.9rem}
+.ask{min-height:2.4rem;padding:.35rem 1rem;border:1px solid var(--blue);border-radius:4px;background:#fff;color:var(--blue);font:inherit;font-size:.92rem;font-weight:600;text-decoration:none;cursor:pointer}
+.ask:hover{background:var(--blue);color:#fff}
+.hero .ask{background:#fff;border-color:#fff;color:var(--blue)}.hero .ask:hover{background:var(--blue-mid);border-color:var(--blue-mid);color:var(--ink)}
+dialog{width:min(30rem,calc(100vw - 2rem));padding:1.25rem;border:0;border-radius:6px;background:#fff;color:var(--text);box-shadow:0 20px 60px -20px rgba(16,32,48,.45)}
+dialog::backdrop{background:rgba(20,32,44,.45)}
+dialog p{margin:.25rem 0 1rem;color:var(--muted);font-size:.95rem}
+dialog label{display:block;margin:0 0 .8rem;color:var(--muted);font-size:.9rem}
+dialog textarea,dialog input:not([type=hidden]):not([type=checkbox]){display:block;width:100%;margin-top:.25rem;padding:.5rem .6rem;border:1px solid var(--line);border-radius:4px;background:#fff;color:var(--ink);font:inherit}
 dialog textarea{resize:vertical}
 dialog textarea:focus-visible,dialog input:focus-visible{outline:2px solid var(--blue);outline-offset:1px}
 #cstatus{min-height:1.3em;margin:.25rem 0 .75rem}
@@ -705,20 +728,21 @@ dialog textarea:focus-visible,dialog input:focus-visible{outline:2px solid var(-
 button.btn{font-family:inherit;cursor:pointer}
 button.btn:disabled{opacity:.6;cursor:default}
 .btn.ghost{color:var(--muted);border-color:var(--line)}
-.btn.ghost:hover{background:var(--line);color:var(--text)}
+.btn.ghost:hover{background:var(--soft);color:var(--ink)}
 [hidden]{display:none!important}
-.empty{margin:0;padding:1.25rem;border:1px dashed var(--line);border-radius:12px;color:var(--muted)}
-footer{margin-top:2rem;color:var(--muted);font-size:.75rem}
-@media (max-width:760px){.layout{grid-template-columns:1fr;gap:1.25rem}
-.cats{position:static;flex-direction:row;overflow-x:auto;gap:.4rem;padding:0 0 .25rem;border:0}
-.cats button{width:auto;white-space:nowrap;gap:.45rem;border:1px solid var(--line);border-radius:999px}
-.cats button[aria-current=true]{border-color:var(--red)}.cats button[aria-current=true]::before{display:none}
-.row{grid-template-columns:1fr}.dl{justify-content:start}
-.cats button.rec::after{display:none}.cats button small{display:none}
-.vendors{flex-wrap:nowrap;overflow-x:auto;padding:.4rem .1rem .3rem;margin-left:-.1rem;scrollbar-width:none}.vendors::-webkit-scrollbar{display:none}}
-</style></head><body><div class="wrap">
-<header class="banner"><div class="brand">__LOGO__<div class="word"><h1 aria-label="Software Update Watcher"><span class="sw" aria-hidden="true">__SW__</span><span class="uw" aria-hidden="true">Update <em>Watcher</em></span></h1><p class="by">by evertfrank</p></div></div><div class="side"><p class="checked">Laatst gecontroleerd __NOW__</p>__ASK__</div></header>
-<p class="summary">__SUMMARY__</p>
+.empty{margin:.75rem 0;padding:1.25rem;border:1px dashed var(--line);border-radius:6px;color:var(--muted);background:#fff}
+footer{margin-top:2rem;color:var(--muted);font-size:.9rem}
+@media (max-width:760px){
+.cats{position:static;flex:1 1 100%;max-width:none;flex-direction:row;overflow-x:auto;gap:.4rem;padding:.4rem;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cats button{width:auto;flex:none;white-space:nowrap;gap:.5rem}
+.cats button small{display:none}.cats button.my{margin-bottom:0}.cats button.my::after{display:none}
+.row{grid-template-columns:minmax(0,1fr) auto;gap:.5rem .75rem;padding:.75rem .1rem}.who,.more{grid-column:1/-1}.dl{grid-template-columns:repeat(2,6.1rem);gap:.35rem}.was{font-size:.8rem}.more{padding-left:0}
+.search{flex:1 1 100%}.hero .art{opacity:.16}.brand{gap:.55rem}.brand .mark{width:1.6rem;height:1.6rem}.brand b{font-size:1.1rem}.brand b,.brand span{white-space:nowrap}.brand span{font-size:.8rem}}
+</style></head><body>
+<header class="topbar"><div class="in"><a class="brand" href="./">__MARK__<b>Software Update Watcher</b><span>by evertfrank</span></a>__SEARCH__</div></header>
+<section class="hero">__BANNER__<div class="in"><div class="title">__LOGO__<div><h1>Software &amp; firmware</h1><p class="summary">__SUMMARY__</p><div class="side"><p class="checked">Laatst gecontroleerd __NOW__</p>__ASK__</div></div></div></div></section>
+<div class="wrap">
 __LAYOUT__
 <footer>De lijst wordt elke 6 uur automatisch bijgewerkt.</footer>
 </div>
