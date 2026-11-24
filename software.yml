@@ -29,7 +29,7 @@ interval_hours: 6
 
 # Categorieën in de zijbalk, in deze volgorde. 'ALL' staat er altijd boven.
 # Ze komen op een programma met  category: NAAM  (hoofdletters maken niet uit).
-categories: [SYSTEM DESIGN & TUNING, NETWORK, MIXING & I/O, PLAYBACK & RECORDING, WIRELESS & COMMS, PLUGINS]
+categories: [PA DESIGN, PA CONTROL & TUNING, CONSOLES, AUDIO INTERFACES, NETWORK, PLAYBACK & RECORDING, WIRELESS & COMMS, PLUGINS, UTILITIES]
 # fabrikant-icoontjes boven de zoekbalk (de naam bij vendor:), in deze volgorde
 strip_vendors: [Shure, L-Acoustics, Lake, Audiostrom, DiGiCo, Figure 53, Meyer Sound, RME, Green-GO]
 
@@ -89,7 +89,7 @@ items:
     website: https://www.l-acoustics.com/products/network-manager/
     favorite: true
     icon_text: NWM
-    category: SYSTEM DESIGN & TUNING
+    category: PA CONTROL & TUNING
     url: https://www.l-acoustics.com/products/network-manager/
     regex: 'LA Network Manager(?:\s|&nbsp;|<[^>]*>)*(20\d\d\.\d+(?:\.\d+)?)'   # versie uit de koppen op de productpagina (de download zelf zit achter het formulier)
     previous_from_page: false
@@ -102,7 +102,7 @@ items:
     website: https://www.l-acoustics.com/products/soundvision/
     favorite: true
     icon_text: SV
-    category: SYSTEM DESIGN & TUNING
+    category: PA DESIGN
     url: https://www.l-acoustics.com/products/soundvision/
     regex: '(?:Soundvision/Soundvision/(?:Mac|Windows)/|Soundvision_)(\d{4}\.\d+(?:\.\d+)?)(?:/|_)'   # versie uit de bestandsnamen op de productpagina (alleen lezen, de download zelf loopt via L-Acoustics)
     previous_from_page: false
@@ -149,7 +149,7 @@ items:
   - name: Lake Controller
     vendor: Lake
     favorite: true
-    category: SYSTEM DESIGN & TUNING
+    category: PA CONTROL & TUNING
     url: https://www.labgruppen.com/en/products/0825-AAN?tab=downloads
     regex: 'LakeController_v(\d+_\d+_\d+)_\d+\.exe'
     replace: ["_", "."]                             # 8_1_7 wordt 8.1.7
@@ -179,7 +179,7 @@ items:
     website: https://www.dbaudio.com/global/en/products/software/arraycalc/
     icon_text: AC
     note: Inloggen met eigen account vereist
-    category: SYSTEM DESIGN & TUNING
+    category: PA DESIGN
     url: https://www.dbaudio.com/global/en/downloadcenter.json   # de downloadlijst wordt als JSON geladen
     regex: '"title":"ArrayCalc v(\d+\.\d+\.\d+) (?:Mac|Win)"'
     previous_from_page: false
@@ -193,7 +193,7 @@ items:
     vendor: d&b audiotechnik
     website: https://www.dbaudio.com/global/en/products/software/r1/
     note: Inloggen met eigen account vereist
-    category: SYSTEM DESIGN & TUNING
+    category: PA CONTROL & TUNING
     icon_text: R1
     url: https://www.dbaudio.com/global/en/downloadcenter.json   # de downloadlijst wordt als JSON geladen
     regex: '"title":"R1 (\d+\.\d+\.\d+) (?:Mac|Win)"'
@@ -206,7 +206,7 @@ items:
     notes_link: {page: "https://www.dbaudio.com/global/en/downloadcenter.json", regex: '"title":"R1 Release notes {version}"(?:(?!"title").)*?"link":"([^"]+)"'}   # Engelse release notes (pdf, zonder login)
   - name: Adamson Array Intelligence
     vendor: Adamson
-    category: SYSTEM DESIGN & TUNING
+    category: PA DESIGN
     icon_text: AI
     url: https://legacy.adamson.ai/support/downloads-directory/design-and-control/arrayintelligence
     regex: 'ArrayIntelligence[\s_-]*V(\d+\.\d+(?:\.\d+)?)'   # bijvoorbeeld "ArrayIntelligence V1.4.1"
@@ -218,7 +218,7 @@ items:
     notes_label: Reference guide en release notes (pdf)
   - name: Adamson Blueprint AV
     vendor: Adamson
-    category: SYSTEM DESIGN & TUNING
+    category: PA DESIGN
     icon_text: BP
     url: https://legacy.adamson.ai/support/downloads-directory/design-and-control/blueprint-av
     regex: 'Blueprint\s*V(\d+\.\d+(?:\.\d+)?)'   # bijvoorbeeld "Blueprint V1.3.3 for Mac" of "BlueprintV1.3.3-win.zip"
@@ -229,7 +229,7 @@ items:
       - {label: Windows, regex: 'href=["'']([^"'']*/\d+-blueprint-?v[0-9-]+(?:-setup[0-9-]*|-for-pc|-win[a-z]*)/file)["'']'}
   - name: Meyer Sound MAPP 3D
     vendor: Meyer Sound
-    category: SYSTEM DESIGN & TUNING
+    category: PA DESIGN
     icon_text: M3D
     icon_site: https://meyersound.com
     url: https://software.meyersound.com/downloads/software
@@ -243,7 +243,7 @@ items:
       - {label: Windows, page: "nuxt:https://software.meyersound.com/downloads/software", regex: '(https://download\.sw\.meyersound\.com/software/mapp-3d/{version}/mapp-3d_{version}\.msi)'}
   - name: Meyer Sound Compass
     vendor: Meyer Sound
-    category: SYSTEM DESIGN & TUNING
+    category: PA CONTROL & TUNING
     icon_text: CO
     icon_site: https://meyersound.com
     url: https://software.meyersound.com/downloads/software
@@ -258,7 +258,7 @@ items:
       - {label: Windows, page: "nuxt:https://software.meyersound.com/downloads/software", regex: '(https://download\.sw\.meyersound\.com/software/compass/{version}/compass-{version}-\d+_win\.zip)'}
   - name: Meyer Sound Compass 3.12
     vendor: Meyer Sound
-    category: SYSTEM DESIGN & TUNING
+    category: PA CONTROL & TUNING
     icon_text: C3
     icon_site: https://meyersound.com
     url: https://software.meyersound.com/downloads/software
@@ -272,7 +272,7 @@ items:
       - {label: Windows, page: "nuxt:https://software.meyersound.com/downloads/software", regex: '(https://download\.sw\.meyersound\.com/software/compass/{version}/compass-{version}-\d+-installer\.win\.exe\.zip)'}
   - name: Rational Acoustics Smaart Suite
     vendor: Rational Acoustics
-    category: SYSTEM DESIGN & TUNING
+    category: PA CONTROL & TUNING
     icon_text: SM
     icon_site: https://www.rationalacoustics.com
     website: https://rationalacoustics.com/smaart-suite
@@ -425,7 +425,7 @@ items:
       - {label: Windows, regex: '"url"\s*:\s*"(https://www\.soundtheory\.com/static/Soundtheory Gullfoss {version}\.zip)"'}
   - name: iLok License Manager
     vendor: PACE
-    category: PLUGINS
+    category: UTILITIES
     icon_text: iL
     icon_site: https://www.ilok.com
     website: https://www.ilok.com/#!license-manager
@@ -437,7 +437,7 @@ items:
       - {label: Windows, url: "https://installers.ilok.com/iloklicensemanager/LicenseSupportInstallerWin.zip"}
   - name: VLC media player
     vendor: VideoLAN
-    category: PLAYBACK & RECORDING
+    category: UTILITIES
     icon_text: VLC
     icon_site: https://www.videolan.org
     website: https://www.videolan.org/vlc/
@@ -457,7 +457,7 @@ items:
     notes_label: Nieuws
   - name: Spotify
     vendor: Spotify
-    category: PLAYBACK & RECORDING
+    category: UTILITIES
     icon_text: SP
     icon_site: https://www.spotify.com
     website: https://www.spotify.com/nl/download/
@@ -468,7 +468,7 @@ items:
       - {label: Windows, url: "https://download.scdn.co/SpotifySetup.exe"}
   - name: NoMachine
     vendor: NoMachine
-    category: NETWORK
+    category: UTILITIES
     icon_text: NX
     icon_site: https://www.nomachine.com
     website: https://download.nomachine.com/personal-edition/
@@ -482,7 +482,7 @@ items:
       - {label: Windows, page: "https://download.nomachine.com/download/?id=41&platform=windows", regex: 'href="(https://[^"]*/nomachine-personal-edition_{version}_\d+_x64\.exe)"'}
   - name: DAD DADman (Core 256)
     vendor: Digital Audio Denmark
-    category: MIXING & I/O
+    category: AUDIO INTERFACES
     icon_text: DAD
     icon_site: https://digitalaudio.dk
     website: https://digitalaudio.dk/core-256/
@@ -505,7 +505,7 @@ items:
     note: Download via aanmeldformulier (versie handmatig)
   - name: DiGiCo Quantum 326/338 Offline
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: Q3
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
@@ -523,7 +523,7 @@ items:
     notes_label: Changelog
   - name: DiGiCo Q225 Offline
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: Q2
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
@@ -541,7 +541,7 @@ items:
     notes_label: Changelog
   - name: DiGiCo Q112 Offline
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: Q1
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
@@ -559,7 +559,7 @@ items:
     notes_label: Changelog
   - name: DiGiCo Quantum 852 Offline
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: Q8
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
@@ -577,7 +577,7 @@ items:
     notes_label: Changelog
   - name: DiGiCo Quantum 5 Offline
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: Q5
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
@@ -595,7 +595,7 @@ items:
     notes_label: Changelog
   - name: DiGiCo Quantum 7 Offline
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: Q7
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
@@ -613,7 +613,7 @@ items:
     notes_label: Changelog
   - name: DiGiCo SD7 Offline
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: SD7
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
@@ -631,7 +631,7 @@ items:
     notes_label: Changelog
   - name: DiGiCo SD8 Offline
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: SD8
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
@@ -649,7 +649,7 @@ items:
     notes_label: Changelog
   - name: DiGiCo SD9 Offline
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: SD9
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
@@ -667,7 +667,7 @@ items:
     notes_label: Changelog
   - name: DiGiCo SD10 Offline
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: SD10
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
@@ -685,7 +685,7 @@ items:
     notes_label: Changelog
   - name: DiGiCo SD11 Offline
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: SD11
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
@@ -703,7 +703,7 @@ items:
     notes_label: Changelog
   - name: DiGiCo SD12 Offline
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: SD12
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
@@ -721,7 +721,7 @@ items:
     notes_label: Changelog
   - name: DiGiCo SD Convert
     vendor: DiGiCo
-    category: MIXING & I/O
+    category: CONSOLES
     icon_text: SC
     icon_site: https://digico.biz
     website: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
@@ -740,7 +740,7 @@ items:
   - name: RME TotalMix FX
     vendor: RME
     website: https://rme-audio.de/fireface-ufx-3.html
-    category: MIXING & I/O
+    category: AUDIO INTERFACES
     icon_text: TM
     url: https://rme-audio.de/fireface-ufx-3.html
     regex: 'tmfx_(\d)(\d{2})_\d+_(?:mac|win)\.zip'   # versie zit in de bestandsnaam: tmfx_210_1991 wordt 2.10
@@ -754,7 +754,7 @@ items:
   - name: RME USB driver
     vendor: RME
     website: https://rme-audio.de/fireface-ufx-3.html
-    category: MIXING & I/O
+    category: AUDIO INTERFACES
     icon_text: DR
     url: https://rme-audio.de/fireface-ufx-3.html
     versions:   # Mac en Windows hebben elk een eigen versienummer
