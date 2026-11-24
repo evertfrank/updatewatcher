@@ -97,7 +97,7 @@ def parse_date(s):
     if re.fullmatch(r"\d{9,11}", s.strip()):   # Unix-tijd, bijvoorbeeld uit een JSON-bestand
         return datetime.datetime.fromtimestamp(int(s.strip()) + 7200, datetime.timezone.utc).strftime("%Y-%m-%d")
     s = re.sub(r"(\d)(?:st|nd|rd|th)\b", r"\1", s.strip().replace(" of ", " "))
-    for f in ("%B %d, %Y", "%b %d, %Y", "%d %B %Y", "%B %d %Y", "%Y-%m-%d", "%d.%m.%Y"):
+    for f in ("%B %d, %Y", "%b %d, %Y", "%d %B %Y", "%B %d %Y", "%Y-%m-%d", "%d.%m.%Y", "%d/%m/%Y"):
         try:
             return datetime.datetime.strptime(s, f).strftime("%Y-%m-%d")
         except ValueError:
@@ -446,6 +446,9 @@ def num_html(v):
         return '<span class="num multi">' + "".join(f"<span>{e(p)}</span>" for p in v.split(" \u00b7 ")) + "</span>"
     return f'<span class="num">{e(v or "onbekend")}</span>'
 
+MINE = ('<button type="button" class="mine" aria-pressed="false" title="Toevoegen aan My products" aria-label="Toevoegen aan My products">'
+        '<svg viewBox="0 0 16 16" aria-hidden="true"><path class="plus" d="M8 3.5v9M3.5 8h9"/><path class="tick" d="M3.5 8.5l3 3 6-7"/></svg></button>')
+
 def row_html(i, now, cat=""):
     e = html.escape
     new = is_new(i, now)
@@ -481,7 +484,7 @@ def row_html(i, now, cat=""):
     if i.get("notes_url"):
         more += f'<a href="{e(i["notes_url"])}" target="_blank" rel="noopener">{e(i["notes_label"])}</a>'
     more = f'<div class="more">{more}</div>' if more else ""
-    return (f'<li class="row{" new" if new else ""}" data-cat="{e(cat)}" data-fav="{1 if i.get("favorite") else 0}" data-recent="{1 if is_recent(i, now) else 0}" data-date="{e(update_date(i))}" data-seen="{e(seen_date(i))}" data-vendor="{e(i.get("vendor") or i["name"])}"><div class="who">{icon_html(i)}<div>{name_html(i)}{badge}{note}</div></div>'
+    return (f'<li class="row{" new" if new else ""}" data-cat="{e(cat)}" data-fav="{1 if i.get("favorite") else 0}" data-recent="{1 if is_recent(i, now) else 0}" data-date="{e(update_date(i))}" data-seen="{e(seen_date(i))}" data-vendor="{e(i.get("vendor") or i["name"])}" data-id="{e(re.sub(r"[^a-z0-9]+", "-", i["name"].lower()).strip("-"))}"><div class="who">{icon_html(i)}<div>{name_html(i)}{badge}{note}</div>{MINE}</div>'
             f'<div class="ver">{num_html(i["version"])}{was}{err}</div>'
             f'<div class="dl">{dl}</div>{more}</li>')
 
@@ -513,6 +516,7 @@ def render(items, now, contact=None, categories=None, strip=None):
     if canon:
         nrec = sum(is_recent(i, now) for i in items)
         nav = f'<button type="button" class="rec" data-cat="RECENT" aria-current="false" title="Updates van de afgelopen 30 dagen, nieuwste bovenaan"><span>NEW UPDATES<small>Updates van de afgelopen 30 dagen</small></span><b>{nrec}</b></button>'
+        nav += '<button type="button" class="my" data-cat="MY" aria-current="false" title="Jouw eigen selectie, bewaard in deze browser"><span>MY PRODUCTS<small>Voeg toe met het plusje</small></span><b id="mycount">0</b></button>'
         nav += f'<button type="button" data-cat="*" aria-current="true"><span>ALL</span><b>{len(items)}</b></button>'
         for c in canon.values():
             nav += f'<button type="button" data-cat="{e(c)}" aria-current="false"><span>{e(c)}</span><b>{sum(cat_of(i) == c for i in items)}</b></button>'
@@ -605,6 +609,15 @@ h1 em{font-style:normal;color:#e8955a}
 .cats button.rec[aria-current=true]{background:var(--red-deep);color:var(--red-soft)}
 .cats button.rec[aria-current=true]::before{background:var(--red)}
 .cats button span{text-align:left}
+.cats button.my{color:color-mix(in srgb,var(--gold) 75%,var(--muted))}.cats button.my b{color:var(--gold)}
+.cats button.my[aria-current=true]{background:var(--gold-deep);color:var(--gold)}.cats button.my[aria-current=true]::before{background:var(--gold)}
+.who{position:relative}
+.mine{flex:none;align-self:center;margin-left:auto;display:grid;place-items:center;width:1.7rem;height:1.7rem;padding:0;border:1px solid var(--line);border-radius:7px;background:none;color:var(--muted);cursor:pointer;transition:border-color .15s,background .15s,color .15s}
+.mine svg{width:.9rem;height:.9rem;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mine .tick{display:none}.mine[aria-pressed=true] .tick{display:block}.mine[aria-pressed=true] .plus{display:none}
+.mine:hover{border-color:var(--gold);color:var(--gold)}
+.mine[aria-pressed=true]{background:var(--gold-deep);border-color:var(--gold);color:var(--gold)}
+.mine:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .cats button small{display:block;margin-top:.2rem;font:500 .72rem/1.3 "Instrument Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--muted)}
 .cats button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .layout>*{min-width:0}
@@ -700,22 +713,28 @@ const btns=[...document.querySelectorAll('.cats button')],rows=[...document.quer
 let cat='*';
 const q=document.getElementById('q');
 const vbtns=[...document.querySelectorAll('.vendors button')];
+const MYKEY='uw-my-products';let my=new Set();
+try{my=new Set(JSON.parse(localStorage.getItem(MYKEY)||'[]'))}catch(_){}
+const myCount=document.getElementById('mycount');
+function syncMy(){rows.forEach(r=>{const b=r.querySelector('.mine');if(b){const on=my.has(r.dataset.id);b.setAttribute('aria-pressed',String(on));b.title=b.ariaLabel=on?'Verwijderen uit My products':'Toevoegen aan My products'}});if(myCount)myCount.textContent=[...rows].filter(r=>my.has(r.dataset.id)).length}
+rows.forEach(r=>{const b=r.querySelector('.mine');if(b)b.addEventListener('click',()=>{const id=r.dataset.id;my.has(id)?my.delete(id):my.add(id);try{localStorage.setItem(MYKEY,JSON.stringify([...my]))}catch(_){}syncMy();if(cat==='MY')show()})});
 const byDate=[...rows].sort((a,b)=>{const ra=a.dataset.date||'',rb=b.dataset.date||'';if(!!ra!==!!rb)return ra?-1:1;return rb.localeCompare(ra)||(b.dataset.seen||'').localeCompare(a.dataset.seen||'')});   // releasedatum, nieuwste eerst; zonder releasedatum onderaan
 function show(c){
   if(c!==undefined)cat=c;
   const term=q.value.trim().toLowerCase(),eff=term?'*':cat;   // zoeken doet altijd ALL
   let n=0;
-  rows.forEach(r=>{const on=(eff==='*'||(eff.startsWith('V:')?r.dataset.vendor===eff.slice(2):eff==='RECENT'?r.dataset.recent==='1':r.dataset.cat===eff))&&(!term||r.textContent.toLowerCase().includes(term));r.hidden=!on;if(on)n++});
+  rows.forEach(r=>{const on=(eff==='*'||(eff.startsWith('V:')?r.dataset.vendor===eff.slice(2):eff==='MY'?my.has(r.dataset.id):eff==='RECENT'?r.dataset.recent==='1':r.dataset.cat===eff))&&(!term||r.textContent.toLowerCase().includes(term));r.hidden=!on;if(on)n++});
   (eff==='RECENT'?byDate:rows).forEach(r=>list.appendChild(r));
   btns.forEach(b=>b.setAttribute('aria-current',String(b.dataset.cat===eff)));
   vbtns.forEach(b=>b.setAttribute('aria-pressed',String('V:'+b.dataset.v===eff)));
   list.hidden=n===0;empty.hidden=n!==0;
-  if(!n)empty.textContent=term?'Niets gevonden voor "'+q.value.trim()+'".':(cat==='RECENT'?'Geen updates in de afgelopen 30 dagen.':cat==='FAVORITES'?'Nog geen favorieten. Zet favorite: true bij een programma in software.yml.':'Hier staat nog niets. Zet category: '+cat+' bij een programma in software.yml.');
+  if(!n)empty.textContent=term?'Niets gevonden voor "'+q.value.trim()+'".':(cat==='RECENT'?'Geen updates in de afgelopen 30 dagen.':cat==='MY'?'Nog niets geselecteerd. Klik bij een programma op het plusje om het aan My products toe te voegen.':'Hier staat nog niets. Zet category: '+cat+' bij een programma in software.yml.');
 }
 btns.forEach(b=>b.addEventListener('click',()=>{q.value='';show(b.dataset.cat);history.replaceState(null,'','#'+(b.dataset.cat==='*'?'ALL':encodeURIComponent(b.dataset.cat)))}));
 vbtns.forEach(b=>b.addEventListener('click',()=>{const c='V:'+b.dataset.v;q.value='';const nc=cat===c?'*':c;show(nc);history.replaceState(null,'','#'+(nc==='*'?'ALL':encodeURIComponent(nc)))}));
 q.addEventListener('input',()=>show());
 document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==q&&!/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)){e.preventDefault();q.focus()}else if(e.key==='Escape'&&document.activeElement===q){q.value='';show();q.blur()}});
+syncMy();
 {const h=decodeURIComponent(location.hash.slice(1));show(h==='ALL'?'*':btns.some(b=>b.dataset.cat===h)||vbtns.some(b=>'V:'+b.dataset.v===h)?h:'RECENT')}
 const dlg=document.getElementById('contact');
 if(dlg){

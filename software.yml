@@ -283,6 +283,21 @@ items:
     notes_url: "https://pksound.live/docs/dynamics-User-Manual-v{version}.pdf"
     notes_label: Handleiding (pdf)
     note: Versie volgens de handleiding; download na registratie bij PK Sound (Windows en macOS)
+  - name: PMC6-2 firmware
+    vendor: PMC
+    category: PA CONTROL & TUNING
+    icon_text: PMC
+    icon_site: https://pmc-speakers.com
+    website: https://pmc-speakers.com/firmware-downloads/
+    url: https://pmc-speakers.com/firmware-downloads/
+    regex: 'PMC6-8[ -]FW-v(\d+(?:\.\d+)+)\.pmc'   # firmware voor PMC6, PMC6-2, PMC8-2 en PMC8 SUB
+    previous_from_page: false
+    date_regex: '<time datetime="(\d{4}-\d{2}-\d{2})">(?:(?!<time).)*?PMC6-8[ -]FW-v{version}\.pmc'
+    notes_regex: 'PMC6-8[ -]FW-v{version}\.pmc.*?firmware-release__notes">\s*(?:<h4>[^<]*</h4>)?(.*?)</div>'
+    link: https://pmc-speakers.com/firmware-downloads/
+    note: Alleen voor PMC6, PMC6-2, PMC8-2, PMC8-2 SUB en PMC8 SUB (niet voor Master36); installeren via SoundAlign
+    downloads:
+      - {label: Firmware, regex: 'href="(/wp-content/themes/pmc-theme/firmware/PMC6-8[ -]FW-v{version}\.pmc)"'}
   - name: Rational Acoustics Smaart Suite
     vendor: Rational Acoustics
     category: PA CONTROL & TUNING
@@ -493,6 +508,23 @@ items:
     downloads:
       - {label: Mac, regex: 'href="(https://[^"]*/nomachine-personal-edition_{version}_\d+\.dmg)"'}
       - {label: Windows, page: "https://download.nomachine.com/download/?id=41&platform=windows", regex: 'href="(https://[^"]*/nomachine-personal-edition_{version}_\d+_x64\.exe)"'}
+  - name: Prism Sound Titan Control & drivers
+    vendor: Prism Sound
+    category: AUDIO INTERFACES
+    icon_text: PS
+    icon_site: https://www.prismsound.io
+    website: https://www.prismsound.io/products/titan/
+    url: https://www.prismsound.io/products/titan/downloads/
+    versions:   # Mac-pakket en Windows-drivers hebben elk een eigen versie
+      - {label: Mac, regex: 'Lyra for Mac V(\d+\.\d+(?:\.\d+)?)'}
+      - {label: Windows, regex: 'Lyra V(\d+\.\d+(?:\.\d+)?) Windows'}
+    date_link: {page: "https://www.prismsound.io/products/titan/downloads/", regex: "href='(https://www\\.prismsound\\.io/download/control-app-and-firmware-for-atlas-titan-and-lyra-for-mac-v[0-9-]+/)'"}   # detailpagina van het Mac-pakket
+    date_regex: 'Create Date\s*<span[^>]*>\s*(\d{2}/\d{2}/\d{4})'
+    link: https://www.prismsound.io/products/titan/downloads/
+    note: Control app, firmware en drivers voor Titan (ook Atlas en Lyra)
+    downloads:
+      - {label: Mac, regex: 'data-downloadurl="(https://www\.prismsound\.io/download/control-app-and-firmware-for-atlas-titan-and-lyra-for-mac-v[0-9-]+/\?wpdmdl=\d+)'}
+      - {label: Windows, regex: 'data-downloadurl="(https://www\.prismsound\.io/download/drivers-and-control-app-for-atlas-titan-and-lyra-v[0-9-]+-windows[^"?]*/\?wpdmdl=\d+)'}
   - name: DAD DADman (Core 256)
     vendor: Digital Audio Denmark
     category: AUDIO INTERFACES
