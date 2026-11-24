@@ -75,6 +75,9 @@ items:
     link: https://www.shure.com/en-US/support/downloads/software-firmware-archive/wireless-workbench
     notes_url: https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench
     notes_label: Alle versies en release notes
+    downloads:   # Shure's eigen downloadknop: opent hun downloadformulier voor de nieuwste versie (Mac en Windows)
+      - {label: Download, regex: 'href="(https://softwarestore\.shure\.com/[^"]*scope=registration[^"]*)"'}
+    note: Shure vraagt bij downloaden om je gegevens
   - name: L-Acoustics Network Manager
     vendor: L-Acoustics
     website: https://www.l-acoustics.com/products/network-manager/
