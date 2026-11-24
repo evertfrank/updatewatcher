@@ -400,6 +400,81 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
       - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum1_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/10/DiGiCo_Quantum1_V2242-4_Offline_Installer.zip}
+  - name: DiGiCo SD8 Offline
+    vendor: DiGiCo
+    category: MIXING & I/O
+    icon_text: SD8
+    icon_site: https://digico.biz
+    website: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    url: https://support.digico.biz/api/v2/help_center/en-gb/articles/52664429792529.json   # Zendesk-API van de supportsite
+    alt_url: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    regex: 'DiGiCo_SD8_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
+    replace: ["-", "."]
+    previous_from_page: false
+    fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
+    link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    downloads:
+      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD8_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD8_V2242_Offline_Installer.zip}
+  - name: DiGiCo SD9 Offline
+    vendor: DiGiCo
+    category: MIXING & I/O
+    icon_text: SD9
+    icon_site: https://digico.biz
+    website: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    url: https://support.digico.biz/api/v2/help_center/en-gb/articles/52664429792529.json   # Zendesk-API van de supportsite
+    alt_url: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    regex: 'DiGiCo_SD9_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
+    replace: ["-", "."]
+    previous_from_page: false
+    fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
+    link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    downloads:
+      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD9_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD9_V2242_Offline_Installer.zip}
+  - name: DiGiCo SD10 Offline
+    vendor: DiGiCo
+    category: MIXING & I/O
+    icon_text: SD10
+    icon_site: https://digico.biz
+    website: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    url: https://support.digico.biz/api/v2/help_center/en-gb/articles/52664429792529.json   # Zendesk-API van de supportsite
+    alt_url: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    regex: 'DiGiCo_SD10_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
+    replace: ["-", "."]
+    previous_from_page: false
+    fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
+    link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    downloads:
+      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD10_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD10_V2242_Offline_Installer.zip}
+  - name: DiGiCo SD11 Offline
+    vendor: DiGiCo
+    category: MIXING & I/O
+    icon_text: SD11
+    icon_site: https://digico.biz
+    website: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    url: https://support.digico.biz/api/v2/help_center/en-gb/articles/52664429792529.json   # Zendesk-API van de supportsite
+    alt_url: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    regex: 'DiGiCo_SD11_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
+    replace: ["-", "."]
+    previous_from_page: false
+    fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
+    link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    downloads:
+      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD11_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD11_V2242_Offline_Installer.zip}
+  - name: DiGiCo SD12 Offline
+    vendor: DiGiCo
+    category: MIXING & I/O
+    icon_text: SD12
+    icon_site: https://digico.biz
+    website: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    url: https://support.digico.biz/api/v2/help_center/en-gb/articles/52664429792529.json   # Zendesk-API van de supportsite
+    alt_url: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    regex: 'DiGiCo_SD12_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
+    replace: ["-", "."]
+    previous_from_page: false
+    fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
+    link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    downloads:
+      - {label: Download, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD12_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD12_V2242_Offline_Installer.zip}
   - name: DiGiCo SD Convert
     vendor: DiGiCo
     category: MIXING & I/O
