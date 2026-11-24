@@ -298,7 +298,7 @@ def seen_date(i):
     """Dag dat de checker de nieuwe versie zag; alleen gebruikt als er geen releasedatum bekend is."""
     return str(i.get("changed") or "")[:10] if i.get("previous") else ""
 
-ICON_MAC = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.2C6.9 4.4 5.6 4.3 4.6 4.9 3.2 5.8 2.9 7.8 3.5 9.8 4.1 11.9 5.4 13.6 6.6 13.6c.6 0 .9-.3 1.4-.3s.8.3 1.4.3c1.2 0 2.5-1.7 3.1-3.8.6-2 .3-4-1.1-4.9-1-.6-2.3-.5-3.4.3Z"/><path d="M8 5.2V3.6c0-.8.3-1.5.9-2"/><path d="M8.6 3.2c.9-1.2 2.4-1.5 3.4-1-.4 1.1-1.8 1.8-3.4 1Z"/></svg>'      # appel (fruit) met steeltje en blaadje
+ICON_MAC = '<svg class="apple" viewBox="2.4 1 11 13.8" aria-hidden="true"><path fill="#fff" d="M8 5C6.8 4.1 5.3 4 4.2 4.7 2.6 5.7 2.3 7.9 2.9 10.1 3.6 12.5 5.1 14.5 6.5 14.5c.7 0 1-.4 1.5-.4s.8.4 1.5.4c1.4 0 2.9-2 3.6-4.4.6-2.2.3-4.4-1.3-5.4C10.7 4 9.2 4.1 8 5Z"/><path d="M8 5.1V3.4c0-.9.3-1.6.9-2.1" fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round"/></svg>'      # wit appeltje (fruit) met steeltje
 ICON_WIN = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="2.5" width="13" height="8.5" rx="1"/><path d="M8 11v2.5M5 13.5h6"/></svg>'   # desktop-scherm
 
 ICON = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8m0 0L4.5 6.5M8 10l3.5-3.5M3 13.5h10"/></svg>'
@@ -559,7 +559,9 @@ a.name:hover,a.name:focus-visible{color:var(--blue);text-decoration-color:curren
 .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.38rem .85rem;border:1px solid color-mix(in srgb,var(--blue) 45%,transparent);border-radius:999px;background:none;color:var(--text);font-size:.78rem;font-weight:600;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
 .btn:hover{background:var(--blue);border-color:var(--blue);color:#0c1316}
 .btn:focus-visible,.more summary:focus-visible,.more a:focus-visible,.ask:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
-.btn svg{width:1.05em;height:1.05em;flex:none}
+.btn svg{width:1.05em;height:1.05em;flex:none;position:relative;top:-.13em}   /* midden van het icoon op de hoofdletters */
+.btn svg.apple{width:.72em;height:.9em;top:-.15em}
+.btn.os:hover svg.apple path[fill]{fill:#0c1316}.btn.os:hover svg.apple path[stroke]{stroke:#0c1316}
 .btn.gen{border-color:color-mix(in srgb,var(--gold) 55%,transparent);color:color-mix(in srgb,var(--gold) 35%,var(--text))}
 .btn.gen:hover{background:var(--gold);border-color:var(--gold);color:#0c1316}
 .more{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:flex-start;gap:.4rem 1.5rem;font-size:.78rem}
