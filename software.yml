@@ -235,6 +235,18 @@ items:
     date_regex: '{version}(?:(?!\d+\.\d+\.\d+).){0,800}?([A-Z][a-z]+ \d{1,2}, \d{4})'
     link: https://software.meyersound.com/downloads/software
     note: For systems using Galileo and Callisto processors. Not compatible with macOS starting with Sonoma (macOS 14).
+  - name: Rational Acoustics Smaart Suite
+    vendor: Rational Acoustics
+    category: SYSTEM DESIGN & TUNING
+    icon_text: SM
+    icon_site: https://www.rationalacoustics.com
+    website: https://rationalacoustics.com/smaart-suite
+    url: https://support.rationalacoustics.com/support/solutions/articles/150000069197-smaart-suite-release-notes
+    regex: '>\s*(\d+\.\d+\.\d+)\s*<'   # versienummers die als losse kop in de release notes staan
+    previous_from_page: false
+    link: https://my.rationalacoustics.com   # downloaden kan alleen via je Smaart-account (login)
+    notes_url: https://support.rationalacoustics.com/support/solutions/articles/150000069197-smaart-suite-release-notes
+    note: Download via je Smaart-account
   - name: FabFilter Pro-Q 4
     vendor: FabFilter
     website: https://www.fabfilter.com/products/pro-q-4-equalizer-plug-in
