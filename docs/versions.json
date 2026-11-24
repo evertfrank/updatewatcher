@@ -14,7 +14,7 @@
   "previous": "4.18.0.11",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -27,7 +27,14 @@
    }
   ],
   "released": "2026-07-15",
-  "notes": null,
+  "notes": [
+   "N/A (patch release)",
+   "Dante Controller v4.18.1",
+   "CS-2180 / ETS-6807: Can\u2019t enroll devices into DDM from DC 4.18",
+   "CS-2012 / ETS-6058: Preset doesn\u2019t load with Codec parameter",
+   "CS-2090/ ETS-6529: Preset doesn\u2019t load with Clock Priority parameter",
+   "CS-2166 / ETS-6583: Tx channel label in XML file causes load preset error"
+  ],
   "notes_url": "https://www.getdante.com/releases/dante-controller/windows/dante-controller-v4-18-1-2-package-windows/",
   "notes_label": "Release notes"
  },
@@ -46,7 +53,7 @@
   "previous": "5.6.4",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [],
   "released": "2026-10-28",
@@ -84,7 +91,7 @@
   "previous": "7.8.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -93,7 +100,38 @@
    }
   ],
   "released": "2026-10-06",
-  "notes": null,
+  "notes": [
+   "Improvements",
+   "Updates the app to link to our End User License Agreement on shure.com and adds a link to our new Data Use License Agreement.",
+   "Adds additional filter ranges for Sound Devices ARX2, ARX8, ARX16, and ARX32 receivers.",
+   "Bug Fixes",
+   "ID-10801: When swapping frequencies with ADTD/Q, the frequencies do not update properly, and it creates a frequency conflict. Fixed since WWB7.8.1, seen since WWB 7.5.0.",
+   "ID-10055: Resolves an issue where the frequency field is empty in the Inventory Sidebar for ADXR devices after changing RF Band and reopening the sidebar without applying changes first. Seen since WWB 7.5.0.",
+   "ID-14259: Resolves an issue where battery errors are not displayed properly in Timeline or captured in Timeline System Events. Seen since WWB 7.5.0.",
+   "ID-10855: Resolves an issue where the count of selected TV channels in the TV exclusions dialog box was incorrect after changing the radius value and searching again. Seen since WWB 7.6.0.",
+   "ID-13808: Resolves an issue where the red overlay does not appear in Timeline in the RF antenna plot after toggling the channels for ANX4 (ULX-D mode), ULX-D, QLX-D, and SLX-D devices when no transmitter is present. Seen since WWB 7.6.1.",
+   "ID-15867: Resolves an issue where WWB's analytics did not capture the Operational Preset for AD PSM systems. Analytics like this help us to understand how many customers use each mode of our products so that we can improve Wireless Workbench for you. Seen since WWB 7.4.0.",
+   "ID-14452: Resolves an issue where text in the scan file recovery dialog box is cut off. Seen since WWB 7.8.0.",
+   "ID-15963: Resolves an issue where a file called 'debug.log' was generated in certain instances. Seen since WWB 7.8.0.",
+   "ID-14837: Resolves an issue where Wireless Workbench would become unresponsive while scrolling through a long list of channels recording in timeline. Seen since WWB 7.8.1.",
+   "ID-14694: Improves coordination behavior for ANX4 when channels are set to Auto antenna mode.",
+   "ID-15976: Resolves an issue where duplicate AD PSM channels appear in the inventory after closing and re-opening a show file when in Narrowband, Spatial Diversity mode before the device comes online again. Seen since WWB 7.8.2.",
+   "ID-15965: Resolves an issue where a receiver with Access Control enabled and locked is hard to see in the Scan sidebar without hovering over the row with the mouse. Seen since WWB 7.8.2.",
+   "ID-15928: Resolves a potential security issue related to unsanitized text handling within Wireless Workbench.",
+   "ID-15853: Resolves an issue where Wireless Workbench would not consistently report a hot battery status for ADXR portables. Requires AD PSM firmware 1.4.13 or later.",
+   "ID-15846: Resolves an issue where a frequency marker on the plot can be moved around even if a frequency is locked in the coordination workspace. Seen since WWB 7.8.2.",
+   "ID-14961: Resolves a security issue where an attacker might be able to manipulate memory or expose values otherwise meant to be hidden in certain scenarios.",
+   "ID-14937: Resolves an issue where Wireless Workbench does not properly report when an ANX4's firmware is invalid by placing an asterisk (*) after the firmware version. Seen since WWB 7.8.2.",
+   "ID-14807: Resolves a crash where Wireless Workbench would crash on device discovery. Seen since WWB 7.8.2.",
+   "ID-14731: Resolves an issue where ADXR battery errors are not displayed in the AD610 connections tab. Seen since WWB 7.8.2.",
+   "ID-15946: Resolves a crash when Timeline is running for extended periods with 120 channels as well as many channel strips are shown. Seen since WWB 7.8.3.",
+   "ID-15915: Resolves an issue where text related to analytics in the Preferences dialog was cut off in certain circumstances. Seen since WWB 7.8.3.",
+   "ID-15911: Resolves a crash when changing the operational preset on ADPSM transmitters while deployment is in progress.",
+   "ID-15908: Resolves a crash caused by a race condition.",
+   "ID-15888: Resolves an issue where Wireless Workbench would crash on launch. Seen since WWB 7.8.3.",
+   "Known Issues",
+   "ID-14603: WWB7 may hang (become unresponsive) when attempting to exit in scenarios where network devices are repeatedly power cycled."
+  ],
   "notes_url": "https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench",
   "notes_label": "Alle versies en release notes"
  },
@@ -112,7 +150,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [],
   "released": "2026-07",
@@ -145,7 +183,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [],
   "released": "2026-10",
@@ -176,7 +214,7 @@
   "previous": "2026.2.2",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -212,7 +250,7 @@
   "previous": "2.5.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -244,7 +282,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -258,8 +296,36 @@
   ],
   "released": "2026-11-13",
   "notes": [
+   "Packages",
    "support new .ReaperPkg file format, allowing easy install/uninstall of JSFX/Extensions/Scripts/etc",
-   "\u2022"
+   "Take markers",
+   "add 'Edit take marker' to context menu",
+   "add item mouse modifier to insert take marker with length via drag",
+   "support assigning click/doubleclick to set take marker color",
+   "support autoscroll when editing take marker position/length via drag",
+   "support mouse modifier mapping click to Edit",
+   "fix drawing glitches at extreme zoom levels with very long item lengths",
+   "preserve timing when on MIDI items and project tempo changes",
+   "when length specified, tint background for duration of marker",
+   "Render",
+   "avoid mid-render reset with some CLAP plug-ins",
+   "disable some unnecessary multi-core optimization when rendering a single file at a time",
+   "do not delete any files when canceling dry run render",
+   "fix dithering (7.83 regression)",
+   "Configuration import/export",
+   "show sizes of files",
+   "allow resizing windows",
+   "VST3",
+   "fix for some plugins that load saved I/O configuration incorrectly",
+   "possible fix for crash with some plugins when reconfiguring I/O",
+   "Batch converter",
+   "support converting .RPP files when preference enabled to show converted file progress",
+   "Default theme",
+   "fix color and HiDPI bugs for volume label when infoBlock visible",
+   "FX",
+   "obey hidden FX folder when generating FX list from script/quick-add menus and FX browser has not been opened",
+   "FX browser",
+   "don't change folder selection after scanning for new plugins"
   ],
   "notes_url": "https://www.reaper.fm/download.php",
   "notes_label": "Changelog"
@@ -279,7 +345,7 @@
   "previous": "8.1.6",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -307,7 +373,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -320,7 +386,26 @@
    }
   ],
   "released": "2026-04-23",
-  "notes": null,
+  "notes": [
+   "Complete refresh of the DECT monitor functionality",
+   "Fix stride monitor behaviour with multiple monitors in the config",
+   "Added warning to message center when the log file can't be opened at the location chosen by the user",
+   "Update all branding to match Green-GO's company styles",
+   "Update the EULA",
+   "Add check before updating firmware version, all devices need 5.2.1 before updating to 5.2.2",
+   "Fix styling and layout issues in quickstart wizard",
+   "Joining device popup waits for the device to fully connect before allowing to join",
+   "Pool wizard size is now usable on smaller screens",
+   "Device audio level indicator now scales correctly with the application size",
+   "Fix 4wire user GPIO settings stuck on previous setting",
+   "Muting the speaker dim now correctly shows up as being muted in Control",
+   "Only allow clearing and rebooting of devices when they are connected to the current config",
+   "Navigate to the dashboard just created",
+   "Don't shorten channel names in channel list",
+   "Allow identifying a Bridge device from the sidebar",
+   "Add optional date to clock element in dashboard",
+   "Fix opening the tech pincode modal twice when pressing return"
+  ],
   "notes_url": "https://manual.greengoconnect.com/en/software/",
   "notes_label": "Handleiding"
  },
@@ -339,7 +424,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -353,7 +438,7 @@
   ],
   "released": "2026-10-20",
   "notes": null,
-  "notes_url": null,
+  "notes_url": "https://www.dbaudio.com/assets/products/downloads/software/arraycalc/ArrayCalc_V12.10.0_Rel_Notes.PDF",
   "notes_label": "Release notes"
  },
  {
@@ -371,7 +456,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -385,7 +470,7 @@
   ],
   "released": "2026-10-21",
   "notes": null,
-  "notes_url": null,
+  "notes_url": "https://www.dbaudio.com/assets/products/downloads/software/r1/dbaudio-release-notes-r1-v3.48.1-en.pdf",
   "notes_label": "Release notes"
  },
  {
@@ -403,7 +488,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -413,8 +498,8 @@
   ],
   "released": null,
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://legacy.adamson.ai/support/downloads-directory/design-and-control/arrayintelligence",
+  "notes_label": "Reference guide en release notes (pdf)"
  },
  {
   "name": "Adamson Blueprint AV",
@@ -431,7 +516,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -463,9 +548,18 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
-  "downloads": [],
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://download.sw.meyersound.com/software/mapp-3d/1.26.1/mapp-3d_1.26.1_arm64.pkg"
+   },
+   {
+    "label": "Windows",
+    "url": "https://download.sw.meyersound.com/software/mapp-3d/1.26.1/mapp-3d_1.26.1.msi"
+   }
+  ],
   "released": "2026-10-07",
   "notes": null,
   "notes_url": "https://docs.meyersound.com/products/en/release-notes---mapp-3d.html",
@@ -486,9 +580,18 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
-  "downloads": [],
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://download.sw.meyersound.com/software/compass/4.16.0/compass-4.16.0-14289_mac.zip"
+   },
+   {
+    "label": "Windows",
+    "url": "https://download.sw.meyersound.com/software/compass/4.16.0/compass-4.16.0-14289_win.zip"
+   }
+  ],
   "released": "2026-03-03",
   "notes": null,
   "notes_url": "https://docs.meyersound.com/products/en/release-notes---compass.html",
@@ -509,9 +612,18 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
-  "downloads": [],
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://download.sw.meyersound.com/software/compass/3.12.1/compass-3.12.1-4823-osx.dmg.zip"
+   },
+   {
+    "label": "Windows",
+    "url": "https://download.sw.meyersound.com/software/compass/3.12.1/compass-3.12.1-4823-installer.win.exe.zip"
+   }
+  ],
   "released": "2017-07-09",
   "notes": null,
   "notes_url": null,
@@ -532,11 +644,13 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [],
   "released": null,
-  "notes": null,
+  "notes": [
+   "Fixed a bug with the command bar"
+  ],
   "notes_url": "https://support.rationalacoustics.com/support/solutions/articles/150000069197-smaart-suite-release-notes",
   "notes_label": "Release notes"
  },
@@ -555,7 +669,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -587,7 +701,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -619,7 +733,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -651,7 +765,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -683,7 +797,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -715,7 +829,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -747,7 +861,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -779,7 +893,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -811,7 +925,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -839,7 +953,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -871,7 +985,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [],
   "released": "2026-06-12",
@@ -896,7 +1010,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -928,7 +1042,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -960,7 +1074,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -976,8 +1090,8 @@
   "notes": [
    "VLC 3.0.24 is a major security update, with over 130 security fixes across VLC and its bundled libraries. It upgrades FFmpeg from 4.4 to 8.1.2 and updates 49 third-party libraries. New features include ATRAC decoding, CEA-708 captions in MP4, SRT listener mode and NV12 DirectShow capture on Windows. This release also fixes slow Windows startup when Daylight Saving Time changes and a MIDI playback crash on macOS 26 and later. More details on the release page. Security advisories will be updated a few days after the release."
   ],
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://www.videolan.org/news.html",
+  "notes_label": "Nieuws"
  },
  {
   "name": "Spotify",
@@ -994,7 +1108,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1026,7 +1140,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1044,6 +1158,29 @@
   "notes_label": "Release notes"
  },
  {
+  "name": "DAD DADman (Core 256)",
+  "category": "MIXING & I/O",
+  "icon": "icons/digitalaudio-dk.png",
+  "favorite": false,
+  "icon_text": "DAD",
+  "link": "https://www.digitalaudiosupport.com/login/",
+  "website": "https://digitalaudio.dk/core-256/",
+  "vendor": "Digital Audio Denmark",
+  "strip": true,
+  "note": "DADman-software en drivers voor de Core 256; downloaden na inloggen bij DAD",
+  "version": "5.8.2.2",
+  "previous": null,
+  "changed": null,
+  "error": null,
+  "checked": "2026-11-24 11:49",
+  "tracked": true,
+  "downloads": [],
+  "released": "2026-01",
+  "notes": null,
+  "notes_url": "https://www.digitalaudiosupport.com/technical-bulletin-newsletter-archive/",
+  "notes_label": "Technical Bulletin"
+ },
+ {
   "name": "Luminex Araneo",
   "category": "NETWORK",
   "icon": "icons/www-luminex-be.png",
@@ -1058,7 +1195,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -1081,7 +1218,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1091,8 +1228,8 @@
   ],
   "released": "2026-06",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "DiGiCo Q225 Offline",
@@ -1109,7 +1246,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1119,8 +1256,8 @@
   ],
   "released": "2026-10",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "DiGiCo Q112 Offline",
@@ -1137,7 +1274,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1147,8 +1284,8 @@
   ],
   "released": "2026-10",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "DiGiCo Quantum 852 Offline",
@@ -1165,7 +1302,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1175,8 +1312,8 @@
   ],
   "released": "2026-06",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "DiGiCo Quantum 5 Offline",
@@ -1193,7 +1330,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1203,8 +1340,8 @@
   ],
   "released": "2026-06",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "DiGiCo Quantum 7 Offline",
@@ -1221,7 +1358,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1231,8 +1368,8 @@
   ],
   "released": "2026-06",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "DiGiCo SD7 Offline",
@@ -1249,7 +1386,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1259,8 +1396,8 @@
   ],
   "released": "2026-06",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "DiGiCo SD8 Offline",
@@ -1277,7 +1414,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1287,8 +1424,8 @@
   ],
   "released": "2026-06",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "DiGiCo SD9 Offline",
@@ -1305,7 +1442,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1315,8 +1452,8 @@
   ],
   "released": "2026-06",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "DiGiCo SD10 Offline",
@@ -1333,7 +1470,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1343,8 +1480,8 @@
   ],
   "released": "2026-06",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "DiGiCo SD11 Offline",
@@ -1361,7 +1498,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1371,8 +1508,8 @@
   ],
   "released": "2026-06",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "DiGiCo SD12 Offline",
@@ -1389,7 +1526,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1399,8 +1536,8 @@
   ],
   "released": "2026-06",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "DiGiCo SD Convert",
@@ -1417,7 +1554,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1427,8 +1564,8 @@
   ],
   "released": "2026-10",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software",
+  "notes_label": "Changelog"
  },
  {
   "name": "RME TotalMix FX",
@@ -1445,7 +1582,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
@@ -1463,7 +1600,7 @@
   "notes_label": "Release notes"
  },
  {
-  "name": "RME USB driver Mac",
+  "name": "RME USB driver",
   "category": "MIXING & I/O",
   "icon": "icons/rme-audio-de.ico",
   "favorite": false,
@@ -1472,42 +1609,18 @@
   "website": "https://rme-audio.de/fireface-ufx-3.html",
   "vendor": "RME",
   "strip": true,
-  "note": "DriverKit-driver (macOS 11+) voor Fireface UFX III, MADIface USB en Digiface Dante",
-  "version": "4.34",
+  "note": "Mac (DriverKit, macOS 11+) en Windows 10/11 (x64 en Arm) voor Fireface UFX III, MADIface USB en Digiface Dante",
+  "version": "Mac 4.34 \u00b7 Windows 1.0.33",
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
     "label": "Mac",
     "url": "https://rme-audio.de/downloads/driver_usbdk_mac_434.zip"
-   }
-  ],
-  "released": "2026-11-10",
-  "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
- },
- {
-  "name": "RME USB driver Windows",
-  "category": "MIXING & I/O",
-  "icon": "icons/rme-audio-de.ico",
-  "favorite": false,
-  "icon_text": "DR",
-  "link": "https://rme-audio.de/fireface-ufx-3.html",
-  "website": "https://rme-audio.de/fireface-ufx-3.html",
-  "vendor": "RME",
-  "strip": true,
-  "note": "Windows 10/11 (x64 en Arm) voor Fireface UFX III, MADIface USB en Digiface Dante",
-  "version": "1.0.33",
-  "previous": null,
-  "changed": null,
-  "error": null,
-  "checked": "2026-11-24 11:22",
-  "tracked": true,
-  "downloads": [
+   },
    {
     "label": "Windows",
     "url": "https://www.rme-audio.de/downloads/driver_madiface_win_1033.zip"
@@ -1533,7 +1646,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:22",
+  "checked": "2026-11-24 11:49",
   "tracked": true,
   "downloads": [
    {
