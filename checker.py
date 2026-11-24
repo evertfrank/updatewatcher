@@ -478,7 +478,7 @@ def num_html(v):
         return '<span class="num multi">' + "".join(f"<span>{e(p)}</span>" for p in v.split(" \u00b7 ")) + "</span>"
     return f'<span class="num">{e(v or "onbekend")}</span>'
 
-MINE = ('<button type="button" class="mine" aria-pressed="false" title="Toevoegen aan My products" aria-label="Toevoegen aan My products">'
+MINE = ('<button type="button" class="mine" aria-pressed="false" title="Toevoegen aan Mijn favorieten" aria-label="Toevoegen aan Mijn favorieten">'
         '<svg viewBox="0 0 16 16" aria-hidden="true"><path class="plus" d="M8 3.5v9M3.5 8h9"/><path class="tick" d="M3.5 8.5l3 3 6-7"/></svg></button>')
 
 def row_html(i, now, cat=""):
@@ -557,7 +557,7 @@ def render(items, now, contact=None, categories=None, strip=None):
     if canon:
         nrec = sum(is_recent(i, now) for i in items)
         nav = f'<button type="button" class="rec" data-cat="RECENT" aria-current="false" title="Updates van de afgelopen 30 dagen, nieuwste bovenaan"><span>Nieuwe updates<small>Afgelopen 30 dagen</small></span><b>{nrec}</b></button>'
-        nav += '<button type="button" class="my" data-cat="MY" aria-current="false" title="Jouw eigen selectie, bewaard in deze browser"><span>My products<small>Voeg toe met het plusje</small></span><b id="mycount">0</b></button>'
+        nav += '<button type="button" class="my" data-cat="MY" aria-current="false" title="Jouw eigen selectie, bewaard in deze browser"><span>Mijn favorieten<small>Voeg toe met het plusje</small></span><b id="mycount">0</b></button>'
         nav += f'<button type="button" data-cat="*" aria-current="true"><span>Alles</span><b>{len(items)}</b></button>'
         for c in canon.values():
             nav += f'<button type="button" data-cat="{e(c)}" aria-current="false"><span>{e(cat_label(c))}</span><b>{sum(cat_of(i) == c for i in items)}</b></button>'
@@ -636,7 +636,7 @@ PAGE = """<!doctype html>
 <meta property="og:image" content="https://evertfrank.github.io/updatewatcher/logo-share.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,800&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{color-scheme:light;
 --bg:#dfe3e7;--surface:#ffffff;--soft:#f2f4f6;--line:#d8dde2;--ink:#1d2833;--text:#2b3640;--muted:#5d6b77;
@@ -649,7 +649,7 @@ body{margin:0;min-height:100vh;color:var(--text);font:16px/1.5 "Source Sans 3",s
 .topbar .in{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem 1.5rem;padding-block:.9rem}
 .brand{display:flex;align-items:baseline;gap:.75rem;color:#fff;text-decoration:none}
 .brand{align-items:center}.brand .mark{width:2rem;height:2rem;flex:none}
-.brand b{font-weight:700;font-size:1.35rem;letter-spacing:.01em}
+.brand b{font-family:Archivo,"Source Sans 3",sans-serif;font-stretch:125%;font-weight:800;font-size:1.35rem;letter-spacing:.01em;text-transform:uppercase}
 .brand span{font-size:.88rem;color:var(--blue-mid)}
 .search{position:relative;flex:0 1 24rem}
 .search svg{position:absolute;left:.85rem;top:50%;width:1.05rem;height:1.05rem;transform:translateY(-50%);fill:none;stroke:var(--muted);stroke-width:1.8;stroke-linecap:round;pointer-events:none}
@@ -755,10 +755,10 @@ footer{margin-top:2rem;color:var(--muted);font-size:.9rem}
 .cats button{width:auto;flex:none;white-space:nowrap;gap:.5rem}
 .cats button small{display:none}.cats button.my{margin-bottom:0}.cats button.my::after{display:none}
 .row{grid-template-columns:minmax(0,1fr) auto;gap:.5rem .75rem;padding:.75rem .1rem}.who,.more{grid-column:1/-1}.dl{grid-template-columns:repeat(2,6.1rem);gap:.35rem}.was{font-size:.8rem}.more{padding-left:0}
-.search{flex:1 1 100%}.hero .art{opacity:.16}.brand{gap:.55rem}.brand .mark{width:1.6rem;height:1.6rem}.brand b{font-size:1.1rem}.brand b,.brand span{white-space:nowrap}.brand span{font-size:.8rem}}
+.search{flex:1 1 100%}.hero .art{opacity:.16}.brand{gap:.55rem}.brand .mark{width:1.6rem;height:1.6rem}.brand{flex-wrap:wrap;row-gap:0}.brand b{font-size:.94rem}.brand span{flex-basis:100%;padding-left:2.15rem}.brand b,.brand span{white-space:nowrap}.brand span{font-size:.8rem}}
 </style></head><body>
 <header class="topbar"><div class="in"><a class="brand" href="./">__MARK__<b>Software Update Watcher</b><span>by evertfrank</span></a>__SEARCH__</div></header>
-<section class="hero">__BANNER__<div class="in"><div class="title">__LOGO__<div><h1>Software &amp; firmware</h1><p class="summary">__SUMMARY__</p><div class="side"><p class="checked">Laatst gecontroleerd __NOW__</p>__ASK__</div></div></div></div></section>
+<section class="hero">__BANNER__<div class="in"><div class="title"><div><h1>Software &amp; firmware</h1><p class="summary">__SUMMARY__</p><div class="side"><p class="checked">Laatst gecontroleerd __NOW__</p>__ASK__</div></div></div></div></section>
 <div class="wrap">
 __LAYOUT__
 <footer>De lijst wordt elke 6 uur automatisch bijgewerkt.</footer>
@@ -772,7 +772,7 @@ const vbtns=[...document.querySelectorAll('.vendors button')];
 const MYKEY='uw-my-products';let my=new Set();
 try{my=new Set(JSON.parse(localStorage.getItem(MYKEY)||'[]'))}catch(_){}
 const myCount=document.getElementById('mycount');
-function syncMy(){rows.forEach(r=>{const b=r.querySelector('.mine');if(b){const on=my.has(r.dataset.id);b.setAttribute('aria-pressed',String(on));b.title=b.ariaLabel=on?'Verwijderen uit My products':'Toevoegen aan My products'}});if(myCount)myCount.textContent=[...rows].filter(r=>my.has(r.dataset.id)).length}
+function syncMy(){rows.forEach(r=>{const b=r.querySelector('.mine');if(b){const on=my.has(r.dataset.id);b.setAttribute('aria-pressed',String(on));b.title=b.ariaLabel=on?'Verwijderen uit Mijn favorieten':'Toevoegen aan Mijn favorieten'}});if(myCount)myCount.textContent=[...rows].filter(r=>my.has(r.dataset.id)).length}
 rows.forEach(r=>{const b=r.querySelector('.mine');if(b)b.addEventListener('click',()=>{const id=r.dataset.id;my.has(id)?my.delete(id):my.add(id);try{localStorage.setItem(MYKEY,JSON.stringify([...my]))}catch(_){}syncMy();if(cat==='MY')show()})});
 const byDate=[...rows].sort((a,b)=>{const ra=a.dataset.date||'',rb=b.dataset.date||'';if(!!ra!==!!rb)return ra?-1:1;return rb.localeCompare(ra)||(b.dataset.seen||'').localeCompare(a.dataset.seen||'')});   // releasedatum, nieuwste eerst; zonder releasedatum onderaan
 function show(c){
@@ -784,7 +784,7 @@ function show(c){
   btns.forEach(b=>b.setAttribute('aria-current',String(b.dataset.cat===eff)));
   vbtns.forEach(b=>b.setAttribute('aria-pressed',String('V:'+b.dataset.v===eff)));
   list.hidden=n===0;empty.hidden=n!==0;
-  if(!n)empty.textContent=term?'Niets gevonden voor "'+q.value.trim()+'".':(cat==='RECENT'?'Geen updates in de afgelopen 30 dagen.':cat==='MY'?'Nog niets geselecteerd. Klik bij een programma op het plusje om het aan My products toe te voegen.':'Hier staat nog niets. Zet category: '+cat+' bij een programma in software.yml.');
+  if(!n)empty.textContent=term?'Niets gevonden voor "'+q.value.trim()+'".':(cat==='RECENT'?'Geen updates in de afgelopen 30 dagen.':cat==='MY'?'Nog niets geselecteerd. Klik bij een programma op het plusje om het aan Mijn favorieten toe te voegen.':'Hier staat nog niets. Zet category: '+cat+' bij een programma in software.yml.');
 }
 btns.forEach(b=>b.addEventListener('click',()=>{q.value='';show(b.dataset.cat);history.replaceState(null,'','#'+(b.dataset.cat==='*'?'ALL':encodeURIComponent(b.dataset.cat)))}));
 vbtns.forEach(b=>b.addEventListener('click',()=>{const c='V:'+b.dataset.v;q.value='';const nc=cat===c?'*':c;show(nc);history.replaceState(null,'','#'+(nc==='*'?'ALL':encodeURIComponent(nc)))}));
