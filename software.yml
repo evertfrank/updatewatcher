@@ -30,6 +30,8 @@ interval_hours: 6
 # Categorieën in de zijbalk, in deze volgorde. 'ALL' staat er altijd boven.
 # Ze komen op een programma met  category: NAAM  (hoofdletters maken niet uit).
 categories: [SYSTEM DESIGN & TUNING, NETWORK, MIXING & I/O, PLAYBACK & RECORDING, WIRELESS & COMMS, PLUGINS]
+# fabrikant-icoontjes boven de zoekbalk (de naam bij vendor:), in deze volgorde
+strip_vendors: [Shure, L-Acoustics, Lake, Audiostrom, DiGiCo, Figure 53, Meyer Sound, RME, Green-GO]
 
 # Knop "Mis je iets?" op de pagina. Laat 'endpoint' leeg en er verschijnt geen formulier.
 contact:
@@ -53,6 +55,8 @@ items:
     downloads:
       - {label: Windows, regex: 'href=["'']([^"'']*DanteController-{version}_windows\.exe)["'']'}
       - {label: Mac, regex: 'href=["'']([^"'']*DanteController-[\d.]+-macos-arm64\.dmg)["'']'}
+    notes_page: "https://www.getdante.com/releases/dante-controller/windows/dante-controller-v{version_dash}-package-windows/"
+    notes_regex: '<div[^>]*id="new-features"[^>]*>(.*?)<div[^>]*id="known-issues"'   # nieuwe functies en opgeloste fouten
   - name: QLab
     vendor: Figure 53
     category: PLAYBACK & RECORDING
@@ -78,6 +82,8 @@ items:
     downloads:   # Shure's eigen downloadknop: opent hun downloadformulier voor de nieuwste versie (Mac en Windows)
       - {label: Download, regex: 'href="(https://softwarestore\.shure\.com/[^"]*scope=registration[^"]*)"'}
     note: Shure vraagt bij downloaden om je gegevens
+    notes_regex: '"description":\{"value":"((?:[^"\\]|\\.)*)"\}\s*,\s*"versionNumber":\{"value":"{version}"'   # release notes uit de paginagegevens
+    notes_json: true
   - name: L-Acoustics Network Manager
     vendor: L-Acoustics
     website: https://www.l-acoustics.com/products/network-manager/
@@ -134,12 +140,12 @@ items:
     regex: 'Version (\d+\.\d+)\s*:'
     previous_from_page: false                       # de pagina noemt meer versienummers; vorige versie zelf bijhouden
     date_regex: 'Version {version}\s*:(?:<[^>]*>|\s)*([A-Z][a-z]+ \d{1,2}, \d{4})'
-    notes_regex: 'REAPER {version}\s*:.*?(<ul.*?</ul>)'
     notes_url: https://www.reaper.fm/download.php
     notes_label: Changelog
     downloads:                                      # links worden uit de pagina gehaald
       - {label: Windows, regex: 'href=["'']([^"'']*reaper\d+_x64-install\.exe)["'']'}
       - {label: Mac, regex: 'href=["'']([^"'']*reaper\d+_universal\.dmg)["'']'}
+    notes_regex: 'REAPER {version}:[^<]*</h3>.*?<a name="whatsnew"></a>(.*?</ul>\s*</div>)\s*</div>'   # alle wijzigingen van deze versie
   - name: Lake Controller
     vendor: Lake
     favorite: true
@@ -166,6 +172,8 @@ items:
     downloads:
       - {label: Windows, regex: 'href=["'']([^"'']*/{version}/windows/green-go-control\.msi)["'']'}
       - {label: Mac, regex: 'href=["'']([^"'']*/{version}/macos/green-go-control\.dmg)["'']'}
+    notes_regex: '"{version}"\s*,\s*"\d{4}-\d{2}-\d{2}"\s*,\s*"https:[^"]*windows[^"]*"(.*?)"https:[^"]*macos'   # wijzigingen uit de paginagegevens
+    notes_strings: true
   - name: d&b ArrayCalc
     vendor: d&b audiotechnik
     website: https://www.dbaudio.com/global/en/products/software/arraycalc/
@@ -180,6 +188,7 @@ items:
     downloads:   # d&b kan om een my d&b-login vragen
       - {label: Mac, regex: '"title":"ArrayCalc v{version} Mac"(?:(?!"title").)*?"link":"([^"]+)"'}
       - {label: Windows, regex: '"title":"ArrayCalc v{version} Win"(?:(?!"title").)*?"link":"([^"]+)"'}
+    notes_link: {page: "https://www.dbaudio.com/global/en/downloadcenter.json", regex: '"title":"ArrayCalc Release notes v{version}"(?:(?!"title").)*?"link":"([^"]+)"'}   # Engelse release notes (pdf, zonder login)
   - name: d&b R1 Remote Control
     vendor: d&b audiotechnik
     website: https://www.dbaudio.com/global/en/products/software/r1/
@@ -194,6 +203,7 @@ items:
     downloads:   # d&b kan om een my d&b-login vragen
       - {label: Mac, regex: '"title":"R1 {version} Mac"(?:(?!"title").)*?"link":"([^"]+)"'}
       - {label: Windows, regex: '"title":"R1 {version} Win"(?:(?!"title").)*?"link":"([^"]+)"'}
+    notes_link: {page: "https://www.dbaudio.com/global/en/downloadcenter.json", regex: '"title":"R1 Release notes {version}"(?:(?!"title").)*?"link":"([^"]+)"'}   # Engelse release notes (pdf, zonder login)
   - name: Adamson Array Intelligence
     vendor: Adamson
     category: SYSTEM DESIGN & TUNING
@@ -204,6 +214,8 @@ items:
     link: https://legacy.adamson.ai/support/downloads-directory/design-and-control/arrayintelligence
     downloads:
       - {label: Download, regex: 'href=["'']([^"'']*-arrayintelligence-v[0-9-]+/file)["'']'}   # zip-bestand voor de nieuwste versie
+    notes_url: https://legacy.adamson.ai/support/downloads-directory/design-and-control/arrayintelligence
+    notes_label: Reference guide en release notes (pdf)
   - name: Adamson Blueprint AV
     vendor: Adamson
     category: SYSTEM DESIGN & TUNING
@@ -226,6 +238,9 @@ items:
     date_regex: '{version}(?:(?!\d+\.\d+\.\d+).){0,800}?([A-Z][a-z]+ \d{1,2}, \d{4})'
     link: https://software.meyersound.com/downloads/software
     notes_url: https://docs.meyersound.com/products/en/release-notes---mapp-3d.html
+    downloads:
+      - {label: Mac, page: "nuxt:https://software.meyersound.com/downloads/software", regex: '(https://download\.sw\.meyersound\.com/software/mapp-3d/{version}/mapp-3d_{version}_arm64\.pkg)'}
+      - {label: Windows, page: "nuxt:https://software.meyersound.com/downloads/software", regex: '(https://download\.sw\.meyersound\.com/software/mapp-3d/{version}/mapp-3d_{version}\.msi)'}
   - name: Meyer Sound Compass
     vendor: Meyer Sound
     category: SYSTEM DESIGN & TUNING
@@ -238,6 +253,9 @@ items:
     link: https://software.meyersound.com/downloads/software
     notes_url: https://docs.meyersound.com/products/en/release-notes---compass.html
     note: Voor Galaxy en CAL met Milan AVB
+    downloads:
+      - {label: Mac, page: "nuxt:https://software.meyersound.com/downloads/software", regex: '(https://download\.sw\.meyersound\.com/software/compass/{version}/compass-{version}-\d+_mac\.zip)'}
+      - {label: Windows, page: "nuxt:https://software.meyersound.com/downloads/software", regex: '(https://download\.sw\.meyersound\.com/software/compass/{version}/compass-{version}-\d+_win\.zip)'}
   - name: Meyer Sound Compass 3.12
     vendor: Meyer Sound
     category: SYSTEM DESIGN & TUNING
@@ -249,6 +267,9 @@ items:
     date_regex: '{version}(?:(?!\d+\.\d+\.\d+).){0,800}?([A-Z][a-z]+ \d{1,2}, \d{4})'
     link: https://software.meyersound.com/downloads/software
     note: For systems using Galileo and Callisto processors. Not compatible with macOS starting with Sonoma (macOS 14).
+    downloads:
+      - {label: Mac, page: "nuxt:https://software.meyersound.com/downloads/software", regex: '(https://download\.sw\.meyersound\.com/software/compass/{version}/compass-{version}-\d+-osx\.dmg\.zip)'}
+      - {label: Windows, page: "nuxt:https://software.meyersound.com/downloads/software", regex: '(https://download\.sw\.meyersound\.com/software/compass/{version}/compass-{version}-\d+-installer\.win\.exe\.zip)'}
   - name: Rational Acoustics Smaart Suite
     vendor: Rational Acoustics
     category: SYSTEM DESIGN & TUNING
@@ -261,6 +282,7 @@ items:
     link: https://my.rationalacoustics.com   # downloaden kan alleen via je Smaart-account (login)
     notes_url: https://support.rationalacoustics.com/support/solutions/articles/150000069197-smaart-suite-release-notes
     note: Download via je Smaart-account
+    notes_regex: '>\s*{version}\s*<.*?(<ul.*?</ul>)'   # de lijst onder het versienummer
   - name: FabFilter Pro-Q 4
     vendor: FabFilter
     website: https://www.fabfilter.com/products/pro-q-4-equalizer-plug-in
@@ -431,6 +453,8 @@ items:
     downloads:
       - {label: Mac, regex: '((?:https:)?//get\.videolan\.org/vlc/{version}/macosx/vlc-{version}-universal\.dmg)'}
       - {label: Windows, regex: '((?:https:)?//get\.videolan\.org/vlc/{version}/win64/vlc-{version}-win64\.exe)'}
+    notes_url: https://www.videolan.org/news.html
+    notes_label: Nieuws
   - name: Spotify
     vendor: Spotify
     category: PLAYBACK & RECORDING
@@ -456,6 +480,20 @@ items:
     downloads:
       - {label: Mac, regex: 'href="(https://[^"]*/nomachine-personal-edition_{version}_\d+\.dmg)"'}
       - {label: Windows, page: "https://download.nomachine.com/download/?id=41&platform=windows", regex: 'href="(https://[^"]*/nomachine-personal-edition_{version}_\d+_x64\.exe)"'}
+  - name: DAD DADman (Core 256)
+    vendor: Digital Audio Denmark
+    category: MIXING & I/O
+    icon_text: DAD
+    icon_site: https://digitalaudio.dk
+    website: https://digitalaudio.dk/core-256/
+    url: https://www.digitalaudiosupport.com/technical-bulletin-newsletter-archive/
+    regex: 'DADman v\s*(\d+(?:\.\d+)+)'   # versie uit het overzicht van technische nieuwsbrieven
+    previous_from_page: false
+    date_regex: '(\d{4} [A-Z][a-z]+)\s*\(DADman v\s*{version}'   # alleen de maand van de nieuwsbrief
+    link: https://www.digitalaudiosupport.com/login/
+    notes_url: https://www.digitalaudiosupport.com/technical-bulletin-newsletter-archive/
+    notes_label: Technical Bulletin
+    note: DADman-software en drivers voor de Core 256; downloaden na inloggen bij DAD
   - name: Luminex Araneo
     strip: false   # niet in de icoontjesrij boven de zoekbalk
     vendor: Luminex
@@ -481,6 +519,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum3_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum3_V2242_Offline_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    notes_label: Changelog
   - name: DiGiCo Q225 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -497,6 +537,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum2_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/10/DiGiCo_Quantum2_V2242-4_Offline_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    notes_label: Changelog
   - name: DiGiCo Q112 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -513,6 +555,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum1_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/10/DiGiCo_Quantum1_V2242-4_Offline_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    notes_label: Changelog
   - name: DiGiCo Quantum 852 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -529,6 +573,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum8_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum8_V2242_Offline_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    notes_label: Changelog
   - name: DiGiCo Quantum 5 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -545,6 +591,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum5_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum5_V2242_Offline_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    notes_label: Changelog
   - name: DiGiCo Quantum 7 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -561,6 +609,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum7_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum7_V2242_Offline_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    notes_label: Changelog
   - name: DiGiCo SD7 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -577,6 +627,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD7_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD7_V2242_Offline_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    notes_label: Changelog
   - name: DiGiCo SD8 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -593,6 +645,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD8_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD8_V2242_Offline_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    notes_label: Changelog
   - name: DiGiCo SD9 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -609,6 +663,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD9_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD9_V2242_Offline_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    notes_label: Changelog
   - name: DiGiCo SD10 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -625,6 +681,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD10_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD10_V2242_Offline_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    notes_label: Changelog
   - name: DiGiCo SD11 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -641,6 +699,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD11_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD11_V2242_Offline_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    notes_label: Changelog
   - name: DiGiCo SD12 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -657,6 +717,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD12_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD12_V2242_Offline_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    notes_label: Changelog
   - name: DiGiCo SD Convert
     vendor: DiGiCo
     category: MIXING & I/O
@@ -673,6 +735,8 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*SDConvert_V[0-9-]+_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/10/SDConvert_V2242-4_Installer.zip}
+    notes_url: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    notes_label: Changelog
   - name: RME TotalMix FX
     vendor: RME
     website: https://rme-audio.de/fireface-ufx-3.html
@@ -687,32 +751,23 @@ items:
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/tmfx_\d+_\d+_mac\.zip)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/tmfx_\d+_\d+_win\.zip)["'']'}
-  - name: RME USB driver Mac
+  - name: RME USB driver
     vendor: RME
     website: https://rme-audio.de/fireface-ufx-3.html
     category: MIXING & I/O
     icon_text: DR
     url: https://rme-audio.de/fireface-ufx-3.html
-    regex: 'driver_usbdk_mac_(\d)(\d+)\.zip'   # DriverKit-driver, driver_usbdk_mac_434 wordt 4.34
-    previous_from_page: false
-    date_regex: '(\d{4}-\d{2}-\d{2})(?:(?!\d{4}-\d{2}-\d{2}).){0,800}?driver_usbdk_mac_\d+\.zip'
+    versions:   # Mac en Windows hebben elk een eigen versienummer
+      - {label: Mac, regex: 'driver_usbdk_mac_(\d)(\d+)\.zip'}
+      - {label: Windows, regex: 'driver_madiface_win_(\d)(\d)(\d+)\.zip'}
+    date_regex:   # de nieuwste van de twee
+      - '(\d{4}-\d{2}-\d{2})(?:(?!\d{4}-\d{2}-\d{2}).){0,800}?driver_usbdk_mac_\d+\.zip'
+      - '(\d{4}-\d{2}-\d{2})(?:(?!\d{4}-\d{2}-\d{2}).){0,800}?driver_madiface_win_\d+\.zip'
     link: https://rme-audio.de/fireface-ufx-3.html
-    note: DriverKit-driver (macOS 11+) voor Fireface UFX III, MADIface USB en Digiface Dante
+    note: Mac (DriverKit, macOS 11+) en Windows 10/11 (x64 en Arm) voor Fireface UFX III, MADIface USB en Digiface Dante
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/driver_usbdk_mac_\d+\.zip)["'']'}
-  - name: RME USB driver Windows
-    vendor: RME
-    website: https://rme-audio.de/fireface-ufx-3.html
-    category: MIXING & I/O
-    icon_text: DR
-    url: https://rme-audio.de/fireface-ufx-3.html
-    regex: 'driver_madiface_win_(\d)(\d)(\d+)\.zip'   # driver_madiface_win_1033 wordt 1.0.33
-    previous_from_page: false
-    date_regex: '(\d{4}-\d{2}-\d{2})(?:(?!\d{4}-\d{2}-\d{2}).){0,800}?driver_madiface_win_{version_nodots}\.zip'
-    link: https://rme-audio.de/fireface-ufx-3.html
-    note: Windows 10/11 (x64 en Arm) voor Fireface UFX III, MADIface USB en Digiface Dante
-    downloads:
-      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/driver_madiface_win_{version_nodots}\.zip)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/driver_madiface_win_\d+\.zip)["'']'}
   - name: RME Digiface Dante netwerkdriver Windows
     vendor: RME
     website: https://rme-audio.de/digiface-dante.html

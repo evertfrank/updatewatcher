@@ -27,6 +27,12 @@ def fetch(url):
     if url.startswith("pdftitles:"):   # bladwijzers van een pdf als tekst
         req = urllib.request.Request(url[10:], headers={"User-Agent": "Mozilla/5.0 update-watcher"})
         return pdf_titles(urllib.request.urlopen(req, timeout=60).read())
+    if url.startswith("nuxt:"):   # de gegevens achter een Nuxt-pagina (_payload.json)
+        real = url[5:]
+        m = re.search(r'data-src="([^"]*_payload\.json[^"]*)"', fetch(real))
+        if not m:
+            raise ValueError(f"geen _payload.json gevonden op {real}")
+        return fetch(urllib.parse.urljoin(real, html.unescape(m.group(1))))
     if url.startswith("b64:"):   # "b64:<attribuut>:<url>": de pagina bewaart zijn gegevens base64-gecodeerd in dat attribuut
         _, attr, real = url.split(":", 2)
         m = re.search(re.escape(attr) + r'="([A-Za-z0-9+/=]+)"', fetch(real))
@@ -65,6 +71,12 @@ def check(it):
     if it.get("github"):
         d = json.loads(fetch(f"https://api.github.com/repos/{it['github']}/releases/latest"))
         return d["tag_name"].lstrip("v"), None
+    if it.get("url") and it.get("versions"):   # meerdere onderdelen in één regel, bijv. "Mac 4.34 · Windows 1.0.33"
+        parts = []
+        for sub in it["versions"]:
+            v, _ = page_version({**it, **sub, "previous_from_page": False})
+            parts.append(f'{sub["label"]} {v}')
+        return " \u00b7 ".join(parts), None
     if it.get("url") and it.get("regex"):
         try:
             return page_version(it)
@@ -90,7 +102,7 @@ def parse_date(s):
             return datetime.datetime.strptime(s, f).strftime("%Y-%m-%d")
         except ValueError:
             pass
-    for f in ("%B %Y", "%b %Y", "%Y/%m"):   # alleen maand bekend, bijvoorbeeld "July 2026" of "2026/10" uit een downloadpad
+    for f in ("%B %Y", "%b %Y", "%Y %B", "%Y/%m"):   # alleen maand bekend, bijvoorbeeld "July 2026" of "2026/10" uit een downloadpad
         try:
             return datetime.datetime.strptime(s, f).strftime("%Y-%m")
         except ValueError:
@@ -103,7 +115,8 @@ def strip_html(h):
     h = re.sub(r"</?(?:li|p|div|br|span|h\d|tr|td|section|article)\b[^>]*>", "\n", h)
     h = re.sub(r"<[^>]+>", "", h)
     lines = [html.unescape(" ".join(l.split())) for l in h.split("\n")]
-    lines = [l for l in lines if l]
+    lines = [re.sub(r"\s*\[r=\w+\]|\s*\u2022$", "", l).strip() for l in lines]   # linkbolletjes en interne codes weg
+    lines = [l for l in lines if l and l != "\u2022"]
     out = []
     for l in lines:
         if out and out[-1].lower().rstrip(":") in LABELS:
@@ -141,8 +154,13 @@ def extras(it, r):
                     raise ValueError("link naar release notes niet gevonden")
                 date_url = ("pdftitles:" if it["date_link"].get("pdf") else "") + urllib.parse.urljoin(lp, html.unescape(lm.group(1)))
             page = fetch(date_url)
-            m = re.search(vpat(it["date_regex"], ver), page, re.S)
-            released = parse_date(next((g for g in m.groups() if g), "")) if m else None
+            found = []
+            for dr in (it["date_regex"] if isinstance(it["date_regex"], list) else [it["date_regex"]]):   # meerdere: nieuwste telt
+                m = re.search(vpat(dr, ver), page, re.S)
+                d = parse_date(next((g for g in m.groups() if g), "")) if m else None
+                if d:
+                    found.append(d)
+            released = max(found) if found else None
             if not released:
                 hint(name, "releasedatum", page, ver)
         except Exception as ex:
@@ -153,13 +171,27 @@ def extras(it, r):
         try:
             page = fetch(fill(it.get("notes_page", it.get("url", "")), ver))
             m = re.search(vpat(it["notes_regex"], ver), page, re.S)
-            notes = strip_html(next((g for g in m.groups() if g), "")) if m else None
+            block = next((g for g in m.groups() if g), "") if m else ""
+            if block and it.get("notes_json"):      # tekst staat als JSON-string in de pagina
+                block = json.loads('"' + block + '"')
+            if block and it.get("notes_strings"):   # losse JSON-teksten die met een spatie beginnen (Nuxt-paginagegevens)
+                notes = [json.loads('"' + x + '"').strip() for x in re.findall(r'"( [^"\\]*(?:\\.[^"\\]*)*)"', block)][:30]
+            else:
+                notes = strip_html(block) if block else None
             if not notes:
                 hint(name, "wijzigingen", page, ver, needle="<h1")
         except Exception as ex:
             print(f"INFO {name}: wijzigingen ophalen mislukt: {ex}", flush=True)
     r["notes"] = notes or None
     r["notes_url"] = fill(it["notes_url"], ver) if it.get("notes_url") else None
+    if it.get("notes_link"):   # adres van de release notes eerst opzoeken (bijv. een pdf in een downloadlijst)
+        try:
+            lp = it["notes_link"]["page"]
+            lm = re.search(vpat(it["notes_link"]["regex"], ver), fetch(lp), re.S)
+            if lm:
+                r["notes_url"] = urllib.parse.urljoin(lp, html.unescape(lm.group(1)))
+        except Exception as ex:
+            print(f"INFO {name}: link naar release notes niet gevonden: {ex}", flush=True)
     r["notes_label"] = it.get("notes_label", "Release notes")
 
 def resolve_downloads(it, ver):
@@ -284,7 +316,7 @@ def run():
             r["icon"] = site_icon(it)
         out.append(r)
     f.write_text(json.dumps(out, indent=1))
-    (DATA / "index.html").write_text(render(out, now, cfg.get("contact"), cfg.get("categories")))
+    (DATA / "index.html").write_text(render(out, now, cfg.get("contact"), cfg.get("categories"), cfg.get("strip_vendors")))
     return cfg.get("interval_hours", 6)
 
 PALETTE = ["#d4814a", "#7fb8bd", "#ebe8e2", "#e8955a", "#7fb8bd", "#8a9a9f"]  # kleur per categorie, in volgorde van software.yml
@@ -380,7 +412,7 @@ def name_html(i):
         return f'<span class="name">{e(i["name"])}</span>'
     return f'<a class="name" href="{e(u)}" target="_blank" rel="noopener" title="Naar de website van de fabrikant">{e(i["name"])}</a>'
 
-def vendors_html(items):
+def vendors_html(items, strip=None):
     """Rij icoontjes per fabrikant boven de zoekbalk; klikken toont alleen die fabrikant."""
     e = html.escape
     groups = {}
@@ -389,7 +421,12 @@ def vendors_html(items):
             continue          # plugins en programma's met strip: false komen niet in de icoontjesrij
         groups.setdefault(i.get("vendor") or i["name"], []).append(i)
     out = []
-    for v, its in sorted(groups.items(), key=lambda g: g[0].casefold()):   # alfabetisch
+    if strip:   # alleen de fabrikanten uit strip_vendors in software.yml, in die volgorde
+        order = [str(x).casefold() for x in strip]
+        pairs = sorted(((v, its) for v, its in groups.items() if v.casefold() in order), key=lambda g: order.index(g[0].casefold()))
+    else:
+        pairs = sorted(groups.items(), key=lambda g: g[0].casefold())   # alfabetisch
+    for v, its in pairs:
         src = next((i for i in its if i.get("icon")), None)
         if not src:          # geen echte afbeelding gevonden: niet tonen in de rij
             continue
@@ -401,6 +438,13 @@ def vendors_html(items):
     if not out:
         return ""
     return f'<div class="vendors" role="group" aria-label="Fabrikanten">{"".join(out)}</div>'
+
+def num_html(v):
+    """Versienummer; meerdere onderdelen ("Mac 4.34 · Windows 1.0.33") onder elkaar."""
+    e = html.escape
+    if v and " \u00b7 " in v:
+        return '<span class="num multi">' + "".join(f"<span>{e(p)}</span>" for p in v.split(" \u00b7 ")) + "</span>"
+    return f'<span class="num">{e(v or "onbekend")}</span>'
 
 def row_html(i, now, cat=""):
     e = html.escape
@@ -438,10 +482,10 @@ def row_html(i, now, cat=""):
         more += f'<a href="{e(i["notes_url"])}" target="_blank" rel="noopener">{e(i["notes_label"])}</a>'
     more = f'<div class="more">{more}</div>' if more else ""
     return (f'<li class="row{" new" if new else ""}" data-cat="{e(cat)}" data-fav="{1 if i.get("favorite") else 0}" data-recent="{1 if is_recent(i, now) else 0}" data-date="{e(update_date(i))}" data-seen="{e(seen_date(i))}" data-vendor="{e(i.get("vendor") or i["name"])}"><div class="who">{icon_html(i)}<div>{name_html(i)}{badge}{note}</div></div>'
-            f'<div class="ver"><span class="num">{e(i["version"] or "onbekend")}</span>{was}{err}</div>'
+            f'<div class="ver">{num_html(i["version"])}{was}{err}</div>'
             f'<div class="dl">{dl}</div>{more}</li>')
 
-def render(items, now, contact=None, categories=None):
+def render(items, now, contact=None, categories=None, strip=None):
     e = html.escape
     # categorieën uit software.yml (volgorde = volgorde van de zijbalk); een categorie die alleen bij een programma staat komt erbij
     canon = {}
@@ -465,7 +509,7 @@ def render(items, now, contact=None, categories=None):
 
     rows = "".join(row_html(i, now, cat_of(i)) for i in sorted(items, key=lambda i: i["name"].casefold()))   # alfabetisch
     search = '<div class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.5"/><path d="M13.5 13.5L17 17"/></svg><input id="q" type="search" placeholder="Zoek in software" aria-label="Zoek in software" autocomplete="off" spellcheck="false"></div>'
-    listing = f'{vendors_html(items)}{search}<ul class="list">{rows}</ul><p class="empty" id="empty" hidden></p>'
+    listing = f'{vendors_html(items, strip)}{search}<ul class="list">{rows}</ul><p class="empty" id="empty" hidden></p>'
     if canon:
         nrec = sum(is_recent(i, now) for i in items)
         nav = f'<button type="button" class="rec" data-cat="RECENT" aria-current="false" title="Updates van de afgelopen 30 dagen, nieuwste bovenaan"><span>NEW UPDATES<small>Updates van de afgelopen 30 dagen</small></span><b>{nrec}</b></button>'
@@ -600,6 +644,7 @@ a.name:hover,a.name:focus-visible{color:var(--blue);text-decoration-color:curren
 @keyframes lamp{50%{opacity:.25}}
 @media (prefers-reduced-motion:reduce){.badge::before{animation:none}}
 .num{display:inline-block;color:var(--blue);font:700 1.05rem/1.2 var(--display);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.num.multi{font-size:.92rem}.num.multi span{display:block}
 .was{display:block;color:var(--muted);font-size:.74rem;margin-top:.05rem}
 .err{display:block;color:var(--red-soft);font-size:.76rem;margin-top:.1rem}
 .dl{display:grid;grid-template-columns:repeat(2,6.6rem);gap:.4rem;justify-content:end}
