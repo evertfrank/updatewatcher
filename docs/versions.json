@@ -14,7 +14,7 @@
   "previous": "4.18.0.11",
   "changed": "2026-11-23 14:48",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Windows",
@@ -45,7 +45,7 @@
   "previous": "5.6.4",
   "changed": "2026-11-23 15:01",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [],
   "released": "2026-10-28",
   "notes": [
@@ -82,7 +82,7 @@
   "previous": "7.8.3",
   "changed": "2026-11-23 16:05",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [],
   "released": "2026-10-06",
   "notes": null,
@@ -104,7 +104,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -126,7 +126,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -148,7 +148,7 @@
   "previous": "2026.2.2",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -183,7 +183,7 @@
   "previous": "2.5.3",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -214,7 +214,7 @@
   "previous": null,
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Windows",
@@ -248,7 +248,7 @@
   "previous": "8.1.6",
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Windows",
@@ -275,7 +275,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Windows",
@@ -306,7 +306,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -337,7 +337,7 @@
   "previous": null,
   "changed": "2026-11-24 09:07",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -368,7 +368,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Download",
@@ -395,7 +395,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -426,7 +426,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [],
   "released": "2026-10-07",
   "notes": null,
@@ -448,7 +448,7 @@
   "previous": null,
   "changed": "2026-11-24 09:07",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [],
   "released": "2026-03-03",
   "notes": null,
@@ -470,11 +470,33 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [],
   "released": "2017-07-09",
   "notes": null,
   "notes_url": null,
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "Rational Acoustics Smaart Suite",
+  "category": "SYSTEM DESIGN & TUNING",
+  "icon": "icons/www-rationalacoustics-com.jpg",
+  "favorite": false,
+  "icon_text": "SM",
+  "link": "https://my.rationalacoustics.com",
+  "website": "https://rationalacoustics.com/smaart-suite",
+  "vendor": "Rational Acoustics",
+  "strip": true,
+  "note": "Download via je Smaart-account",
+  "version": "9.6.4",
+  "previous": null,
+  "changed": "2026-11-24 09:34",
+  "error": null,
+  "checked": "2026-11-24 09:34",
+  "downloads": [],
+  "released": null,
+  "notes": null,
+  "notes_url": "https://support.rationalacoustics.com/support/solutions/articles/150000069197-smaart-suite-release-notes",
   "notes_label": "Release notes"
  },
  {
@@ -492,7 +514,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -523,7 +545,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -554,7 +576,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -585,7 +607,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -616,7 +638,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -647,7 +669,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -678,7 +700,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -709,7 +731,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -740,7 +762,7 @@
   "previous": null,
   "changed": "2026-11-23 16:40",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -767,7 +789,7 @@
   "previous": null,
   "changed": "2026-11-23 16:47",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
@@ -794,7 +816,7 @@
   "previous": null,
   "changed": "2026-11-23 18:39",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -816,7 +838,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Download",
@@ -843,7 +865,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Download",
@@ -870,7 +892,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Download",
@@ -897,7 +919,7 @@
   "previous": null,
   "changed": "2026-11-24 09:30",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Download",
@@ -924,7 +946,7 @@
   "previous": null,
   "changed": "2026-11-24 09:30",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Download",
@@ -951,7 +973,7 @@
   "previous": null,
   "changed": "2026-11-24 09:30",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Download",
@@ -978,7 +1000,7 @@
   "previous": null,
   "changed": "2026-11-24 09:30",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Download",
@@ -1005,7 +1027,7 @@
   "previous": null,
   "changed": "2026-11-24 09:30",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Download",
@@ -1032,7 +1054,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Download",
@@ -1059,7 +1081,7 @@
   "previous": null,
   "changed": "2026-11-23 18:49",
   "error": null,
-  "checked": "2026-11-24 09:30",
+  "checked": "2026-11-24 09:34",
   "downloads": [
    {
     "label": "Mac",
