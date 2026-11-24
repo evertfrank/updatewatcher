@@ -129,8 +129,11 @@ def resolve_downloads(it, ver):
                 m = re.search(d["regex"].replace("{version_us}", ver.replace(".", "_")).replace("{version}", re.escape(ver)), fetch(it["url"]))
                 if m:
                     out.append({"label": d["label"], "url": urllib.parse.urljoin(it["url"], html.unescape(next(g for g in m.groups() if g)))})   # bij meerdere groepen telt de eerste die iets vond
+                elif d.get("fallback"):
+                    out.append({"label": d["label"], "url": d["fallback"]})
         except Exception:
-            pass
+            if d.get("fallback"):   # pagina niet bereikbaar: laatst bekende directe link gebruiken
+                out.append({"label": d["label"], "url": d["fallback"]})
     return out
 
 def fetch_bytes(url):
@@ -206,7 +209,7 @@ def run():
     for it in cfg["items"]:
         o = old.get(it["name"], {})
         r = {"name": it["name"], "category": it.get("category", ""), "icon": it.get("icon", ""), "favorite": bool(it.get("favorite")), "icon_text": it.get("icon_text", ""),
-             "link": it.get("link") or it.get("url"), "website": site_url(it), "vendor": it.get("vendor") or it["name"], "note": it.get("note", ""),
+             "link": it.get("link") or it.get("url"), "website": site_url(it), "vendor": it.get("vendor") or it["name"], "strip": it.get("strip", True), "note": it.get("note", ""),
              "version": o.get("version"), "previous": o.get("previous"),
              "changed": o.get("changed"), "error": None, "checked": now}
         try:
@@ -217,6 +220,8 @@ def run():
                 r["previous"] = prev_page   # echte vorige versie uit de pagina gaat voor
         except Exception as e:
             r["error"] = str(e)[:200]
+            if not r["version"] and it.get("fallback_version"):   # nog nooit gelukt: laatst bekende versie tonen
+                r["version"] = str(it["fallback_version"])
         print(("OK   " if not r["error"] else "FOUT ") + it["name"] + ": " + (r["error"] or r["version"]), flush=True)
         r["downloads"] = resolve_downloads(it, r["version"]) if r["version"] else []
         r["released"], r["notes"], r["notes_url"] = None, None, None
@@ -320,9 +325,11 @@ def vendors_html(items):
     e = html.escape
     groups = {}
     for i in items:
+        if str(i.get("category", "")).upper() == "PLUGINS" or i.get("strip") is False:
+            continue          # plugins en programma's met strip: false komen niet in de icoontjesrij
         groups.setdefault(i.get("vendor") or i["name"], []).append(i)
     out = []
-    for v, its in groups.items():
+    for v, its in sorted(groups.items(), key=lambda g: g[0].casefold()):   # alfabetisch
         src = next((i for i in its if i.get("icon")), None)
         if not src:          # geen echte afbeelding gevonden: niet tonen in de rij
             continue
@@ -492,9 +499,9 @@ h1 em{font-style:normal;color:#e8955a}
 .cats button small{display:block;margin-top:.2rem;font:500 .72rem/1.3 "Instrument Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--muted)}
 .cats button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .layout>*{min-width:0}
-.vendors{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 .9rem}
-.vendors button{position:relative;display:grid;place-items:center;width:2.65rem;height:2.65rem;padding:0;border:1px solid var(--line);border-radius:11px;background:var(--surface);cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
-.vendors button .ico{width:1.95rem;height:1.95rem;border-radius:7px}
+.vendors{display:flex;flex-wrap:nowrap;gap:.45rem;margin:0 0 .9rem;padding:.4rem .1rem .3rem;overflow-x:auto;scrollbar-width:none}.vendors::-webkit-scrollbar{display:none}
+.vendors button{position:relative;display:grid;place-items:center;flex:0 1 2.65rem;min-width:2.1rem;aspect-ratio:1;padding:0;border:1px solid var(--line);border-radius:11px;background:var(--surface);cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.vendors button .ico{width:74%;height:74%;border-radius:7px}
 .vendors button:hover{border-color:color-mix(in srgb,var(--blue) 50%,var(--line));transform:translateY(-1px)}
 .vendors button[aria-pressed=true]{border-color:var(--red);background:var(--red-deep);box-shadow:0 0 0 1px var(--red)}
 .vendors button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
