@@ -270,6 +270,19 @@ items:
     downloads:
       - {label: Mac, page: "nuxt:https://software.meyersound.com/downloads/software", regex: '(https://download\.sw\.meyersound\.com/software/compass/{version}/compass-{version}-\d+-osx\.dmg\.zip)'}
       - {label: Windows, page: "nuxt:https://software.meyersound.com/downloads/software", regex: '(https://download\.sw\.meyersound\.com/software/compass/{version}/compass-{version}-\d+-installer\.win\.exe\.zip)'}
+  - name: PK Sound .dynamics
+    vendor: PK Sound
+    category: PA CONTROL & TUNING
+    icon_text: PK
+    icon_site: https://pksound.live
+    website: https://pksound.live/dynamics
+    url: https://pksound.live/technical-library
+    regex: 'dynamics-User-Manual-v(\d+\.\d+(?:\.\d+)?)\.pdf'   # versie van de nieuwste handleiding (PK Sound noemt de softwareversie nergens anders)
+    previous_from_page: false
+    link: https://pksound.live/dynamics
+    notes_url: "https://pksound.live/docs/dynamics-User-Manual-v{version}.pdf"
+    notes_label: Handleiding (pdf)
+    note: Versie volgens de handleiding; download na registratie bij PK Sound (Windows en macOS)
   - name: Rational Acoustics Smaart Suite
     vendor: Rational Acoustics
     category: PA CONTROL & TUNING
