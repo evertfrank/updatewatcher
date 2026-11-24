@@ -556,7 +556,7 @@ def render(items, now, contact=None, categories=None, strip=None):
     listing = f'{vendors_html(items, strip)}<div class="panel"><ul class="list">{rows}</ul></div><p class="empty" id="empty" hidden></p>'
     if canon:
         nrec = sum(is_recent(i, now) for i in items)
-        nav = f'<button type="button" class="rec" data-cat="RECENT" aria-current="false" title="Updates van de afgelopen 30 dagen, nieuwste bovenaan"><span>Nieuwe updates<small>Afgelopen 30 dagen</small></span><b>{nrec}</b></button>'
+        nav = f'<button type="button" class="rec" data-cat="RECENT" aria-current="false" title="Updates van de afgelopen 30 dagen, nieuwste bovenaan"><span>Nieuwste updates<small>Afgelopen 30 dagen</small></span><b>{nrec}</b></button>'
         nav += '<button type="button" class="my" data-cat="MY" aria-current="false" title="Jouw eigen selectie, bewaard in deze browser"><span>Mijn favorieten<small>Voeg toe met het plusje</small></span><b id="mycount">0</b></button>'
         nav += f'<button type="button" data-cat="*" aria-current="true"><span>Alles</span><b>{len(items)}</b></button>'
         for c in canon.values():
@@ -680,6 +680,16 @@ h1{margin:0;font-weight:300;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.05;
 .cats button[aria-current=true]{background:var(--blue);color:#fff;font-weight:600}
 .cats button[aria-current=true] b,.cats button[aria-current=true] small{color:var(--blue-mid)}
 .cats button.my{margin-bottom:.35rem;position:relative}
+.cats button.rec{background:#e2f2e7;color:#19663b;margin-bottom:.15rem}
+.cats button.rec b,.cats button.rec small{color:#4c8a62}
+.cats button.rec:hover{background:#d1e9d9}
+.cats button.rec[aria-current=true]{background:#1e7a46;color:#fff}
+.cats button.rec[aria-current=true] b,.cats button.rec[aria-current=true] small{color:#cfe9d8}
+.cats button.my{background:#e3eef8;color:var(--blue)}
+.cats button.my b,.cats button.my small{color:#4d7aa3}
+.cats button.my:hover{background:#d4e5f4}
+.cats button.my[aria-current=true]{background:#1f6fb2;color:#fff}
+.cats button.my[aria-current=true] b,.cats button.my[aria-current=true] small{color:#d6e7f6}
 .cats button.my::after{content:"";position:absolute;left:.85rem;right:.85rem;bottom:-.25rem;height:1px;background:var(--line)}
 .cats button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .vendors{display:flex;flex-wrap:nowrap;gap:.5rem;padding:.25rem .1rem;overflow-x:auto;scrollbar-width:none}.vendors::-webkit-scrollbar{display:none}
