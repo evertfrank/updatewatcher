@@ -8,8 +8,25 @@ DATA = pathlib.Path("docs")
 
 def vkey(v): return tuple(int(x) for x in v.split("."))
 
+def pdf_titles(data):
+    """Leest de inhoudsopgave (bladwijzers) van een pdf zonder extra bibliotheek: daar staan vaak versie en datum in."""
+    raw = data.decode("latin-1")
+    out = []
+    for m in re.finditer(r"/Title\s*(\((?:\\.|[^\\)])*\)|<[0-9A-Fa-f\s]*>)", raw):
+        v = m.group(1)
+        if v.startswith("<"):
+            b = bytes.fromhex(re.sub(r"\s", "", v[1:-1]))
+        else:
+            b = re.sub(r"\\([0-7]{1,3}|.)", lambda e: chr(int(e.group(1), 8)) if e.group(1)[0] in "01234567" else
+                       {"n": "\n", "r": "\r", "t": "\t", "b": "\b", "f": "\f"}.get(e.group(1), e.group(1)), v[1:-1], flags=re.S).encode("latin-1", "replace")
+        out.append(b[2:].decode("utf-16-be", "replace") if b[:2] == b"\xfe\xff" else b.decode("latin-1"))
+    return "\n".join(out)
+
 @functools.lru_cache(maxsize=None)
 def fetch(url):
+    if url.startswith("pdftitles:"):   # bladwijzers van een pdf als tekst
+        req = urllib.request.Request(url[10:], headers={"User-Agent": "Mozilla/5.0 update-watcher"})
+        return pdf_titles(urllib.request.urlopen(req, timeout=60).read())
     if url.startswith("b64:"):   # "b64:<attribuut>:<url>": de pagina bewaart zijn gegevens base64-gecodeerd in dat attribuut
         _, attr, real = url.split(":", 2)
         m = re.search(re.escape(attr) + r'="([A-Za-z0-9+/=]+)"', fetch(real))
@@ -73,6 +90,11 @@ def parse_date(s):
             return datetime.datetime.strptime(s, f).strftime("%Y-%m-%d")
         except ValueError:
             pass
+    for f in ("%B %Y", "%b %Y", "%Y/%m"):   # alleen maand bekend, bijvoorbeeld "July 2026" of "2026/10" uit een downloadpad
+        try:
+            return datetime.datetime.strptime(s, f).strftime("%Y-%m")
+        except ValueError:
+            pass
     return None
 
 LABELS = {"fixed", "fix", "new", "improved", "improvement", "changed", "added", "removed", "feature"}
@@ -101,6 +123,7 @@ def hint(name, what, page, ver, needle=None):
 def vpat(p, ver):
     """Vult de versie in een regex in: {version} = 2.10, {version_us} = 2_10, {version_nodots} = 210."""
     return (p.replace("{version_us}", ver.replace(".", "_")).replace("{version_nodots}", ver.replace(".", ""))
+             .replace("{version_dash}", ver.replace(".", "-"))
              .replace("{version}", re.escape(ver)))
 
 def extras(it, r):
@@ -110,7 +133,14 @@ def extras(it, r):
         released = parse_date(str(it["released"])) or str(it["released"]).strip()
     elif it.get("date_regex"):
         try:
-            page = fetch(fill(it.get("date_url", it.get("url", "")), ver))
+            date_url = fill(it.get("date_url", it.get("url", "")), ver)
+            if it.get("date_link"):   # adres van de datumbron eerst opzoeken op een pagina (bijv. de pdf met release notes)
+                lp = it["date_link"]["page"]
+                lm = re.search(vpat(it["date_link"]["regex"], ver), fetch(lp))
+                if not lm:
+                    raise ValueError("link naar release notes niet gevonden")
+                date_url = ("pdftitles:" if it["date_link"].get("pdf") else "") + urllib.parse.urljoin(lp, html.unescape(lm.group(1)))
+            page = fetch(date_url)
             m = re.search(vpat(it["date_regex"], ver), page, re.S)
             released = parse_date(next((g for g in m.groups() if g), "")) if m else None
             if not released:
@@ -271,6 +301,9 @@ def nl_date(s):
 
 def nl_iso(s):
     try:
+        if len(s) == 7:   # alleen maand bekend
+            d = datetime.datetime.strptime(s, "%Y-%m")
+            return f"{MONTHS[d.month - 1]} {d.year}"
         d = datetime.datetime.strptime(s, "%Y-%m-%d")
         return f"{d.day} {MONTHS[d.month - 1]} {d.year}"
     except Exception:
@@ -297,7 +330,8 @@ def is_recent(i, now, days=RECENT_DAYS):
     try:
         today = datetime.datetime.strptime(now, FMT)
         if i.get("released"):
-            d = (today - datetime.datetime.strptime(i["released"], "%Y-%m-%d")).days
+            r = i["released"]
+            d = (today - datetime.datetime.strptime(r + "-01" if len(r) == 7 else r, "%Y-%m-%d")).days   # alleen maand: telt vanaf de 1e
             return 0 <= d < days
         if i.get("previous") and i.get("changed"):
             return (today - datetime.datetime.strptime(i["changed"], FMT)).days < days

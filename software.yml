@@ -87,6 +87,8 @@ items:
     url: https://www.l-acoustics.com/products/network-manager/
     regex: 'LA Network Manager(?:\s|&nbsp;|<[^>]*>)*(20\d\d\.\d+(?:\.\d+)?)'   # versie uit de koppen op de productpagina (de download zelf zit achter het formulier)
     previous_from_page: false
+    date_regex: 'release_notes-container">\s*<h2>\s*([A-Z][a-z]+ \d{4})\s*</h2>(?:(?!</div>).)*?LA Network Manager(?:\s|&nbsp;|<[^>]*>)*{version}'   # alleen de maand staat erbij
+    notes_regex: 'release_notes-container">\s*<h2>[^<]*</h2>((?:(?!</div>).)*?{version}(?:(?!</div>).)*)'
     icon_site: https://www.l-acoustics.com   # icoon van de hoofdsite, de downloadlink hieronder staat op een andere host
     link: https://access.l-acoustics.com/download-center/software/network-manager   # downloadcentrum van L-Acoustics (login)
   - name: L-Acoustics Soundvision
@@ -98,6 +100,8 @@ items:
     url: https://www.l-acoustics.com/products/soundvision/
     regex: '(?:Soundvision/Soundvision/(?:Mac|Windows)/|Soundvision_)(\d{4}\.\d+(?:\.\d+)?)(?:/|_)'   # versie uit de bestandsnamen op de productpagina (alleen lezen, de download zelf loopt via L-Acoustics)
     previous_from_page: false
+    date_regex: 'release_notes-container">\s*<h2>\s*([A-Z][a-z]+ \d{4})\s*</h2>(?:(?!</div>).)*?Soundvision(?:\s|&nbsp;|<[^>]*>)*{version}'   # alleen de maand staat erbij
+    notes_regex: 'release_notes-container">\s*<h2>[^<]*</h2>((?:(?!</div>).)*?{version}(?:(?!</div>).)*)'
     icon_site: https://www.l-acoustics.com   # icoon van de hoofdsite, de downloadlink hieronder staat op een andere host
     link: https://access.l-acoustics.com/download-center/software/soundvision   # downloadcentrum van L-Acoustics (login)
   - name: LiveProfessor
@@ -146,12 +150,17 @@ items:
     note: Alleen Windows
     downloads:
       - {label: Windows, regex: 'href=["'']([^"'']*LakeController_v{version_us}_\d+\.exe)["'']'}
+    date_link: {page: "https://legacy.adamson.ai/support/downloads-directory/design-and-control/lake-controller", pdf: true, regex: 'href="([^"]*/\d+-lake-controller-v{version_dash}-release-note[^"]*/file)"'}   # release notes-pdf via Adamson
+    date_regex: 'Release v{version}\W*Installer\s*\d+\s*\((\d{4}-\d{2}-\d{2})\)'   # bijv. "Patch Release v8.1.7 — Installer 159 (2025-12-09)"
+    notes_url: https://legacy.adamson.ai/support/downloads-directory/design-and-control/lake-controller
+    notes_label: Release notes (pdf)
   - name: Green-GO Control
     vendor: Green-GO
     website: https://greengocom.com/software-products/control
     category: WIRELESS & COMMS
     url: https://greengocom.com/software-products/control
     regex: 'downloads\.greengoconnect\.com/(\d+\.\d+\.\d+)/windows/green-go-control\.msi'   # versie staat alleen in de downloadlink
+    date_regex: '"{version}"\s*,\s*"(\d{4}-\d{2}-\d{2})"'   # releaseDate uit de paginagegevens
     notes_url: https://manual.greengoconnect.com/en/software/
     notes_label: Handleiding
     downloads:
@@ -372,6 +381,8 @@ items:
     url: https://www.alphalabsaudio.com/defeedback/
     regex: 'Download\s+V(\d+\.\d+(?:\.\d+)?)\s+Plugin Installer'
     previous_from_page: false
+    date_regex: 'changelog-version">\s*V{version}\s*</span>\s*<span class="changelog-date">\s*([A-Z][a-z]+ \d{1,2}, \d{4})'
+    notes_regex: 'changelog-version">\s*V{version}\s*</span>.*?<p>(.*?)</p>'
     link: https://www.alphalabsaudio.com/defeedback/
     note: Download na akkoord met de voorwaarden op hun site
   - name: Soundtheory Gullfoss Live
@@ -411,6 +422,10 @@ items:
     url: https://www.videolan.org/vlc/
     regex: 'get\.videolan\.org/vlc/(\d+\.\d+\.\d+)/(?:macosx|win64)/'
     previous_from_page: false
+    date_url: https://www.videolan.org/news.html
+    date_regex: '>VLC {version}</a></div>\s*<div class=.date.>(\d{4}-\d{2}-\d{2})<'
+    notes_page: https://www.videolan.org/news.html
+    notes_regex: '>VLC {version}</a></div>\s*<div class=.date.>[^<]*</div>\s*<p class=.news-descr.>(.*?)</p>'
     link: https://www.videolan.org/vlc/
     note: Mac universal (Intel en Apple silicon), Windows 64-bit
     downloads:
@@ -461,6 +476,7 @@ items:
     regex: 'DiGiCo_Quantum3_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/DiGiCo_Quantum3_V[0-9-]+_Offline_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
@@ -476,6 +492,7 @@ items:
     regex: 'DiGiCo_Quantum2_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/DiGiCo_Quantum2_V[0-9-]+_Offline_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242.4"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
@@ -491,6 +508,7 @@ items:
     regex: 'DiGiCo_Quantum1_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/DiGiCo_Quantum1_V[0-9-]+_Offline_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242.4"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
@@ -506,6 +524,7 @@ items:
     regex: 'DiGiCo_Quantum8_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/DiGiCo_Quantum8_V[0-9-]+_Offline_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
@@ -521,6 +540,7 @@ items:
     regex: 'DiGiCo_Quantum5_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/DiGiCo_Quantum5_V[0-9-]+_Offline_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
@@ -536,6 +556,7 @@ items:
     regex: 'DiGiCo_Quantum7_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/DiGiCo_Quantum7_V[0-9-]+_Offline_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
@@ -551,6 +572,7 @@ items:
     regex: 'DiGiCo_SD7_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/DiGiCo_SD7_V[0-9-]+_Offline_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
@@ -566,6 +588,7 @@ items:
     regex: 'DiGiCo_SD8_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/DiGiCo_SD8_V[0-9-]+_Offline_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
@@ -581,6 +604,7 @@ items:
     regex: 'DiGiCo_SD9_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/DiGiCo_SD9_V[0-9-]+_Offline_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
@@ -596,6 +620,7 @@ items:
     regex: 'DiGiCo_SD10_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/DiGiCo_SD10_V[0-9-]+_Offline_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
@@ -611,6 +636,7 @@ items:
     regex: 'DiGiCo_SD11_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/DiGiCo_SD11_V[0-9-]+_Offline_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
@@ -626,6 +652,7 @@ items:
     regex: 'DiGiCo_SD12_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/DiGiCo_SD12_V[0-9-]+_Offline_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
     downloads:
@@ -641,6 +668,7 @@ items:
     regex: 'SDConvert_V(\d+(?:-\d+)?)_Installer\.zip'
     replace: ["-", "."]
     previous_from_page: false
+    date_regex: 'uploads/(\d{4}/\d{2})/SDConvert_V[0-9-]+_Installer\.zip'   # maand uit het downloadpad
     fallback_version: "2242.4"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
