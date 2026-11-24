@@ -1,4 +1,4 @@
-import json, re, sys, time, threading, urllib.request, html, datetime, pathlib, http.server, functools
+import base64, json, re, sys, time, threading, urllib.request, html, datetime, pathlib, http.server, functools
 import yaml
 import urllib.parse
 from zoneinfo import ZoneInfo
@@ -10,6 +10,12 @@ def vkey(v): return tuple(int(x) for x in v.split("."))
 
 @functools.lru_cache(maxsize=None)
 def fetch(url):
+    if url.startswith("b64:"):   # "b64:<attribuut>:<url>": de pagina bewaart zijn gegevens base64-gecodeerd in dat attribuut
+        _, attr, real = url.split(":", 2)
+        m = re.search(re.escape(attr) + r'="([A-Za-z0-9+/=]+)"', fetch(real))
+        if not m:
+            raise ValueError(f"attribuut {attr} niet gevonden op {real}")
+        return base64.b64decode(m.group(1)).decode("utf-8", "replace")
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 update-watcher"})
     return urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
 
@@ -92,6 +98,11 @@ def hint(name, what, page, ver, needle=None):
         n = page.find(needle)
         print(f"INFO {name}: pagina vanaf {needle}: " + " ".join(page[n:n + 1100].split()), flush=True)
 
+def vpat(p, ver):
+    """Vult de versie in een regex in: {version} = 2.10, {version_us} = 2_10, {version_nodots} = 210."""
+    return (p.replace("{version_us}", ver.replace(".", "_")).replace("{version_nodots}", ver.replace(".", ""))
+             .replace("{version}", re.escape(ver)))
+
 def extras(it, r):
     ver, name = r["version"], r["name"]
     released = None
@@ -100,7 +111,7 @@ def extras(it, r):
     elif it.get("date_regex"):
         try:
             page = fetch(fill(it.get("date_url", it.get("url", "")), ver))
-            m = re.search(it["date_regex"].replace("{version}", re.escape(ver)), page, re.S)
+            m = re.search(vpat(it["date_regex"], ver), page, re.S)
             released = parse_date(next((g for g in m.groups() if g), "")) if m else None
             if not released:
                 hint(name, "releasedatum", page, ver)
@@ -111,7 +122,7 @@ def extras(it, r):
     if it.get("notes_regex"):
         try:
             page = fetch(fill(it.get("notes_page", it.get("url", "")), ver))
-            m = re.search(it["notes_regex"].replace("{version}", re.escape(ver)), page, re.S)
+            m = re.search(vpat(it["notes_regex"], ver), page, re.S)
             notes = strip_html(next((g for g in m.groups() if g), "")) if m else None
             if not notes:
                 hint(name, "wijzigingen", page, ver, needle="<h1")
@@ -128,9 +139,9 @@ def resolve_downloads(it, ver):
             if "url" in d:  # vaste link met {version}
                 out.append({"label": d["label"], "url": d["url"].replace("{version}", ver)})
             else:           # link uit de pagina halen met een regex (één groep = de href)
-                m = re.search(d["regex"].replace("{version_us}", ver.replace(".", "_")).replace("{version}", re.escape(ver)), fetch(it["url"]))
+                m = re.search(vpat(d["regex"], ver), fetch(d.get("page") or it["url"]))   # page: andere pagina voor deze knop
                 if m:
-                    out.append({"label": d["label"], "url": urllib.parse.urljoin(it["url"], html.unescape(next(g for g in m.groups() if g)))})   # bij meerdere groepen telt de eerste die iets vond
+                    out.append({"label": d["label"], "url": urllib.parse.urljoin(it.get("link") if it["url"].startswith("b64:") else it["url"], html.unescape(next(g for g in m.groups() if g))).replace(" ", "%20")})   # bij meerdere groepen telt de eerste die iets vond
                 elif d.get("fallback"):
                     out.append({"label": d["label"], "url": d["fallback"]})
         except Exception:
@@ -622,11 +633,11 @@ function show(c){
   list.hidden=n===0;empty.hidden=n!==0;
   if(!n)empty.textContent=term?'Niets gevonden voor "'+q.value.trim()+'".':(cat==='RECENT'?'Geen updates in de afgelopen 30 dagen.':cat==='FAVORITES'?'Nog geen favorieten. Zet favorite: true bij een programma in software.yml.':'Hier staat nog niets. Zet category: '+cat+' bij een programma in software.yml.');
 }
-btns.forEach(b=>b.addEventListener('click',()=>{q.value='';show(b.dataset.cat);history.replaceState(null,'','#'+(b.dataset.cat==='*'?'':encodeURIComponent(b.dataset.cat)))}));
-vbtns.forEach(b=>b.addEventListener('click',()=>{const c='V:'+b.dataset.v;q.value='';const nc=cat===c?'*':c;show(nc);history.replaceState(null,'','#'+(nc==='*'?'':encodeURIComponent(nc)))}));
+btns.forEach(b=>b.addEventListener('click',()=>{q.value='';show(b.dataset.cat);history.replaceState(null,'','#'+(b.dataset.cat==='*'?'ALL':encodeURIComponent(b.dataset.cat)))}));
+vbtns.forEach(b=>b.addEventListener('click',()=>{const c='V:'+b.dataset.v;q.value='';const nc=cat===c?'*':c;show(nc);history.replaceState(null,'','#'+(nc==='*'?'ALL':encodeURIComponent(nc)))}));
 q.addEventListener('input',()=>show());
 document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement!==q&&!/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)){e.preventDefault();q.focus()}else if(e.key==='Escape'&&document.activeElement===q){q.value='';show();q.blur()}});
-{const h=decodeURIComponent(location.hash.slice(1));show(btns.some(b=>b.dataset.cat===h)||vbtns.some(b=>'V:'+b.dataset.v===h)?h:'*')}
+{const h=decodeURIComponent(location.hash.slice(1));show(h==='ALL'?'*':btns.some(b=>b.dataset.cat===h)||vbtns.some(b=>'V:'+b.dataset.v===h)?h:'RECENT')}
 const dlg=document.getElementById('contact');
 if(dlg){
   const form=document.getElementById('cform'),st=document.getElementById('cstatus'),send=form.querySelector('[type=submit]');

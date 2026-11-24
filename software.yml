@@ -364,6 +364,83 @@ items:
     notes_url: https://cntrlld.com/clearvox
     notes_label: Wat is nieuw
     note: Alleen macOS (VST3 en AU), beta
+  - name: Alpha Labs De-Feedback
+    vendor: Alpha Labs
+    category: PLUGINS
+    icon_text: DF
+    website: https://www.alphalabsaudio.com/defeedback/
+    url: https://www.alphalabsaudio.com/defeedback/
+    regex: 'Download\s+V(\d+\.\d+(?:\.\d+)?)\s+Plugin Installer'
+    previous_from_page: false
+    link: https://www.alphalabsaudio.com/defeedback/
+    note: Download na akkoord met de voorwaarden op hun site
+  - name: Soundtheory Gullfoss Live
+    vendor: Soundtheory
+    category: PLUGINS
+    icon_text: GL
+    icon_site: https://www.soundtheory.com
+    website: https://www.soundtheory.com/gullfoss
+    url: b64:data-state:https://www.soundtheory.com/downloads   # de downloadpagina bewaart versies en links gecodeerd in data-state
+    regex: '"gullfoss"\s*:\s*"(\d+\.\d+\.\d+)"'
+    previous_from_page: false
+    link: https://www.soundtheory.com/downloads
+    notes_url: https://www.soundtheory.com/static/Gullfoss%20Changelog.pdf
+    notes_label: Changelog
+    note: Eén installer voor alle Gullfoss-edities, ook Live (iLok vereist)
+    downloads:
+      - {label: Mac, regex: '"url"\s*:\s*"(https://www\.soundtheory\.com/static/Soundtheory Gullfoss {version}\.dmg)"'}
+      - {label: Windows, regex: '"url"\s*:\s*"(https://www\.soundtheory\.com/static/Soundtheory Gullfoss {version}\.zip)"'}
+  - name: iLok License Manager
+    vendor: PACE
+    category: PLUGINS
+    icon_text: iL
+    icon_site: https://www.ilok.com
+    website: https://www.ilok.com/#!license-manager
+    version: "Nieuwste"   # iLok toont geen versienummer; de links hieronder geven altijd de nieuwste installer
+    link: https://www.ilok.com/#!license-manager
+    note: License Support-installer, macOS 10.14+ en Windows 10+ (64-bit)
+    downloads:
+      - {label: Mac, url: "https://installers.ilok.com/iloklicensemanager/LicenseSupportInstallerMac.zip"}
+      - {label: Windows, url: "https://installers.ilok.com/iloklicensemanager/LicenseSupportInstallerWin.zip"}
+  - name: VLC media player
+    vendor: VideoLAN
+    category: PLAYBACK & RECORDING
+    icon_text: VLC
+    icon_site: https://www.videolan.org
+    website: https://www.videolan.org/vlc/
+    url: https://www.videolan.org/vlc/
+    regex: 'get\.videolan\.org/vlc/(\d+\.\d+\.\d+)/(?:macosx|win64)/'
+    previous_from_page: false
+    link: https://www.videolan.org/vlc/
+    note: Mac universal (Intel en Apple silicon), Windows 64-bit
+    downloads:
+      - {label: Mac, regex: '((?:https:)?//get\.videolan\.org/vlc/{version}/macosx/vlc-{version}-universal\.dmg)'}
+      - {label: Windows, regex: '((?:https:)?//get\.videolan\.org/vlc/{version}/win64/vlc-{version}-win64\.exe)'}
+  - name: Spotify
+    vendor: Spotify
+    category: PLAYBACK & RECORDING
+    icon_text: SP
+    icon_site: https://www.spotify.com
+    website: https://www.spotify.com/nl/download/
+    version: "Nieuwste"   # Spotify toont geen versienummer; de links hieronder geven altijd de nieuwste installer
+    link: https://www.spotify.com/nl/download/
+    downloads:
+      - {label: Mac, url: "https://download.scdn.co/SpotifyInstaller.zip"}
+      - {label: Windows, url: "https://download.scdn.co/SpotifySetup.exe"}
+  - name: NoMachine
+    vendor: NoMachine
+    category: NETWORK
+    icon_text: NX
+    icon_site: https://www.nomachine.com
+    website: https://download.nomachine.com/personal-edition/
+    url: https://download.nomachine.com/download/?id=117&platform=mac
+    regex: 'nomachine-personal-edition_(\d+\.\d+\.\d+)_\d+\.dmg'
+    previous_from_page: false
+    link: https://download.nomachine.com/personal-edition/
+    note: Personal Edition; voor inkomende verbindingen is een abonnement nodig
+    downloads:
+      - {label: Mac, regex: 'href="(https://[^"]*/nomachine-personal-edition_{version}_\d+\.dmg)"'}
+      - {label: Windows, page: "https://download.nomachine.com/download/?id=41&platform=windows", regex: 'href="(https://[^"]*/nomachine-personal-edition_{version}_\d+_x64\.exe)"'}
   - name: Luminex Araneo
     strip: false   # niet in de icoontjesrij boven de zoekbalk
     vendor: Luminex
@@ -433,6 +510,51 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     downloads:
       - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum8_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum8_V2242_Offline_Installer.zip}
+  - name: DiGiCo Quantum 5 Offline
+    vendor: DiGiCo
+    category: MIXING & I/O
+    icon_text: Q5
+    icon_site: https://digico.biz
+    website: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    url: https://support.digico.biz/api/v2/help_center/en-gb/articles/52664394111889.json   # Zendesk-API van de supportsite
+    alt_url: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    regex: 'DiGiCo_Quantum5_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
+    replace: ["-", "."]
+    previous_from_page: false
+    fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
+    link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    downloads:
+      - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum5_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum5_V2242_Offline_Installer.zip}
+  - name: DiGiCo Quantum 7 Offline
+    vendor: DiGiCo
+    category: MIXING & I/O
+    icon_text: Q7
+    icon_site: https://digico.biz
+    website: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    url: https://support.digico.biz/api/v2/help_center/en-gb/articles/52664394111889.json   # Zendesk-API van de supportsite
+    alt_url: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    regex: 'DiGiCo_Quantum7_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
+    replace: ["-", "."]
+    previous_from_page: false
+    fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
+    link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
+    downloads:
+      - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_Quantum7_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum7_V2242_Offline_Installer.zip}
+  - name: DiGiCo SD7 Offline
+    vendor: DiGiCo
+    category: MIXING & I/O
+    icon_text: SD7
+    icon_site: https://digico.biz
+    website: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    url: https://support.digico.biz/api/v2/help_center/en-gb/articles/52664429792529.json   # Zendesk-API van de supportsite
+    alt_url: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    regex: 'DiGiCo_SD7_V(\d+(?:-\d+)?)_Offline_Installer\.zip'
+    replace: ["-", "."]
+    previous_from_page: false
+    fallback_version: "2242"   # alleen gebruikt als de supportsite niet bereikbaar is en er nog geen versie bekend is
+    link: https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software
+    downloads:
+      - {label: Windows, regex: 'value=\\?"(https://[^"\\]*DiGiCo_SD7_V[0-9-]+_Offline_Installer\.zip)', fallback: https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD7_V2242_Offline_Installer.zip}
   - name: DiGiCo SD8 Offline
     vendor: DiGiCo
     category: MIXING & I/O
@@ -529,10 +651,50 @@ items:
     category: MIXING & I/O
     icon_text: TM
     url: https://rme-audio.de/fireface-ufx-3.html
-    regex: 'tmfx_(\d)(\d{2})_\d+_mac\.zip'   # versie zit in de bestandsnaam: tmfx_210_1991 wordt 2.10
+    regex: 'tmfx_(\d)(\d{2})_\d+_(?:mac|win)\.zip'   # versie zit in de bestandsnaam: tmfx_210_1991 wordt 2.10
     previous_from_page: false
     date_regex: '(\d{4}-\d{2}-\d{2})(?:(?!\d{4}-\d{2}-\d{2}).){0,800}?tmfx_\d+_\d+_mac\.zip'   # laatste datum vóór de downloadlink
     link: https://rme-audio.de/fireface-ufx-3.html
-    note: Alleen Mac
+    note: Voor alle RME USB-interfaces
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/tmfx_\d+_\d+_mac\.zip)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/tmfx_\d+_\d+_win\.zip)["'']'}
+  - name: RME USB driver Mac
+    vendor: RME
+    website: https://rme-audio.de/fireface-ufx-3.html
+    category: MIXING & I/O
+    icon_text: DR
+    url: https://rme-audio.de/fireface-ufx-3.html
+    regex: 'driver_usbdk_mac_(\d)(\d+)\.zip'   # DriverKit-driver, driver_usbdk_mac_434 wordt 4.34
+    previous_from_page: false
+    date_regex: '(\d{4}-\d{2}-\d{2})(?:(?!\d{4}-\d{2}-\d{2}).){0,800}?driver_usbdk_mac_\d+\.zip'
+    link: https://rme-audio.de/fireface-ufx-3.html
+    note: DriverKit-driver (macOS 11+) voor Fireface UFX III, MADIface USB en Digiface Dante
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/driver_usbdk_mac_\d+\.zip)["'']'}
+  - name: RME USB driver Windows
+    vendor: RME
+    website: https://rme-audio.de/fireface-ufx-3.html
+    category: MIXING & I/O
+    icon_text: DR
+    url: https://rme-audio.de/fireface-ufx-3.html
+    regex: 'driver_madiface_win_(\d)(\d)(\d+)\.zip'   # driver_madiface_win_1033 wordt 1.0.33
+    previous_from_page: false
+    date_regex: '(\d{4}-\d{2}-\d{2})(?:(?!\d{4}-\d{2}-\d{2}).){0,800}?driver_madiface_win_{version_nodots}\.zip'
+    link: https://rme-audio.de/fireface-ufx-3.html
+    note: Windows 10/11 (x64 en Arm) voor Fireface UFX III, MADIface USB en Digiface Dante
+    downloads:
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/driver_madiface_win_{version_nodots}\.zip)["'']'}
+  - name: RME Digiface Dante netwerkdriver Windows
+    vendor: RME
+    website: https://rme-audio.de/digiface-dante.html
+    category: MIXING & I/O
+    icon_text: NW
+    url: https://rme-audio.de/digiface-dante.html
+    regex: 'driver_win_net_(\d)(\d+)_\d+\.zip'   # driver_win_net_09908_... wordt 0.9908
+    previous_from_page: false
+    date_regex: '(\d{4}-\d{2}-\d{2})(?:(?!\d{4}-\d{2}-\d{2}).){0,800}?driver_win_net_{version_nodots}_\d+\.zip'
+    link: https://rme-audio.de/digiface-dante.html
+    note: Optionele driver voor de interne netwerkpoort van de Digiface Dante, Windows 10 en hoger
+    downloads:
+      - {label: Windows, regex: 'href=["'']([^"'']*/downloads/driver_win_net_{version_nodots}_\d+\.zip)["'']'}
