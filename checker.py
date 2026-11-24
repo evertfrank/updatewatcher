@@ -298,7 +298,7 @@ def seen_date(i):
     """Dag dat de checker de nieuwe versie zag; alleen gebruikt als er geen releasedatum bekend is."""
     return str(i.get("changed") or "")[:10] if i.get("previous") else ""
 
-ICON_MAC = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="10" height="7" rx="1"/><path d="M1.5 12.5h13"/></svg>'      # laptop
+ICON_MAC = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5.2C6.9 4.4 5.6 4.3 4.6 4.9 3.2 5.8 2.9 7.8 3.5 9.8 4.1 11.9 5.4 13.6 6.6 13.6c.6 0 .9-.3 1.4-.3s.8.3 1.4.3c1.2 0 2.5-1.7 3.1-3.8.6-2 .3-4-1.1-4.9-1-.6-2.3-.5-3.4.3Z"/><path d="M8 5.2V3.6c0-.8.3-1.5.9-2"/><path d="M8.6 3.2c.9-1.2 2.4-1.5 3.4-1-.4 1.1-1.8 1.8-3.4 1Z"/></svg>'      # appel (fruit) met steeltje en blaadje
 ICON_WIN = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="2.5" width="13" height="8.5" rx="1"/><path d="M8 11v2.5M5 13.5h6"/></svg>'   # desktop-scherm
 
 ICON = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8m0 0L4.5 6.5M8 10l3.5-3.5M3 13.5h10"/></svg>'
