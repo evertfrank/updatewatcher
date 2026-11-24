@@ -14,7 +14,7 @@
   "previous": "4.18.0.11",
   "changed": "2026-11-23 14:48",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Windows",
@@ -45,7 +45,7 @@
   "previous": "5.6.4",
   "changed": "2026-11-23 15:01",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [],
   "released": "2026-10-28",
   "notes": [
@@ -82,7 +82,7 @@
   "previous": "7.8.3",
   "changed": "2026-11-23 16:05",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [],
   "released": "2026-10-06",
   "notes": null,
@@ -104,7 +104,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -126,7 +126,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -148,7 +148,7 @@
   "previous": "2026.2.2",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -183,7 +183,7 @@
   "previous": "2.5.3",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -214,7 +214,7 @@
   "previous": null,
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Windows",
@@ -248,7 +248,7 @@
   "previous": "8.1.6",
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Windows",
@@ -275,7 +275,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Windows",
@@ -301,12 +301,12 @@
   "website": "https://www.dbaudio.com/global/en/products/software/arraycalc/",
   "vendor": "d&b audiotechnik",
   "strip": true,
-  "note": "",
+  "note": "Inloggen met eigen account vereist",
   "version": "12.10.0",
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -332,12 +332,12 @@
   "website": "https://www.dbaudio.com/global/en/products/software/r1/",
   "vendor": "d&b audiotechnik",
   "strip": true,
-  "note": "",
+  "note": "Inloggen met eigen account vereist",
   "version": "3.48.1",
   "previous": null,
   "changed": "2026-11-24 09:07",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -368,7 +368,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Download",
@@ -395,7 +395,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -426,7 +426,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [],
   "released": "2026-10-07",
   "notes": null,
@@ -448,7 +448,7 @@
   "previous": null,
   "changed": "2026-11-24 09:07",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [],
   "released": "2026-03-03",
   "notes": null,
@@ -470,7 +470,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [],
   "released": "2017-07-09",
   "notes": null,
@@ -492,7 +492,7 @@
   "previous": null,
   "changed": "2026-11-24 09:34",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -514,7 +514,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -545,7 +545,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -576,7 +576,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -607,7 +607,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -638,7 +638,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -669,7 +669,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -700,7 +700,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -731,7 +731,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -762,7 +762,7 @@
   "previous": null,
   "changed": "2026-11-23 16:40",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -789,7 +789,7 @@
   "previous": null,
   "changed": "2026-11-23 16:47",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
@@ -797,7 +797,11 @@
    }
   ],
   "released": "2026-11-15",
-  "notes": null,
+  "notes": [
+   "Live and Live+ take more of the room, the ambience and the PA away around the voice, and keep the voice as open and natural as the mic.",
+   "Live uses about 30 % less CPU per insert.",
+   "Stability improvements."
+  ],
   "notes_url": "https://cntrlld.com/clearvox",
   "notes_label": "Wat is nieuw"
  },
@@ -816,7 +820,7 @@
   "previous": null,
   "changed": "2026-11-23 18:39",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -838,10 +842,10 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
-    "label": "Download",
+    "label": "Windows",
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum3_V2242_Offline_Installer.zip"
    }
   ],
@@ -865,10 +869,10 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
-    "label": "Download",
+    "label": "Windows",
     "url": "https://digico.biz/wp-content/uploads/2026/10/DiGiCo_Quantum2_V2242-4_Offline_Installer.zip"
    }
   ],
@@ -892,10 +896,10 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
-    "label": "Download",
+    "label": "Windows",
     "url": "https://digico.biz/wp-content/uploads/2026/10/DiGiCo_Quantum1_V2242-4_Offline_Installer.zip"
    }
   ],
@@ -919,10 +923,10 @@
   "previous": null,
   "changed": "2026-11-24 09:30",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
-    "label": "Download",
+    "label": "Windows",
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD8_V2242_Offline_Installer.zip"
    }
   ],
@@ -946,10 +950,10 @@
   "previous": null,
   "changed": "2026-11-24 09:30",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
-    "label": "Download",
+    "label": "Windows",
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD9_V2242_Offline_Installer.zip"
    }
   ],
@@ -973,10 +977,10 @@
   "previous": null,
   "changed": "2026-11-24 09:30",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
-    "label": "Download",
+    "label": "Windows",
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD10_V2242_Offline_Installer.zip"
    }
   ],
@@ -1000,10 +1004,10 @@
   "previous": null,
   "changed": "2026-11-24 09:30",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
-    "label": "Download",
+    "label": "Windows",
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD11_V2242_Offline_Installer.zip"
    }
   ],
@@ -1027,10 +1031,10 @@
   "previous": null,
   "changed": "2026-11-24 09:30",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
-    "label": "Download",
+    "label": "Windows",
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD12_V2242_Offline_Installer.zip"
    }
   ],
@@ -1054,10 +1058,10 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
-    "label": "Download",
+    "label": "Windows",
     "url": "https://digico.biz/wp-content/uploads/2026/10/SDConvert_V2242-4_Installer.zip"
    }
   ],
@@ -1081,7 +1085,7 @@
   "previous": null,
   "changed": "2026-11-23 18:49",
   "error": null,
-  "checked": "2026-11-24 09:34",
+  "checked": "2026-11-24 10:00",
   "downloads": [
    {
     "label": "Mac",
