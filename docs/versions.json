@@ -14,7 +14,7 @@
   "previous": "4.18.0.11",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -53,7 +53,7 @@
   "previous": "5.6.4",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [],
   "released": "2026-10-28",
@@ -91,7 +91,7 @@
   "previous": "7.8.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -150,7 +150,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [],
   "released": "2026-07",
@@ -183,7 +183,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [],
   "released": "2026-10",
@@ -214,7 +214,7 @@
   "previous": "2026.2.2",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -250,7 +250,7 @@
   "previous": "2.5.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -282,7 +282,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -345,7 +345,7 @@
   "previous": "8.1.6",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -373,7 +373,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -424,7 +424,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -456,7 +456,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -488,7 +488,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -516,7 +516,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -548,7 +548,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -580,7 +580,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -612,7 +612,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -630,6 +630,29 @@
   "notes_label": "Release notes"
  },
  {
+  "name": "PK Sound .dynamics",
+  "category": "PA CONTROL & TUNING",
+  "icon": "icons/pksound-live.png",
+  "favorite": false,
+  "icon_text": "PK",
+  "link": "https://pksound.live/dynamics",
+  "website": "https://pksound.live/dynamics",
+  "vendor": "PK Sound",
+  "strip": true,
+  "note": "Versie volgens de handleiding; download na registratie bij PK Sound (Windows en macOS)",
+  "version": "1.14.0",
+  "previous": null,
+  "changed": null,
+  "error": null,
+  "checked": "2026-11-24 12:52",
+  "tracked": true,
+  "downloads": [],
+  "released": null,
+  "notes": null,
+  "notes_url": "https://pksound.live/docs/dynamics-User-Manual-v1.14.0.pdf",
+  "notes_label": "Handleiding (pdf)"
+ },
+ {
   "name": "Rational Acoustics Smaart Suite",
   "category": "PA CONTROL & TUNING",
   "icon": "icons/www-rationalacoustics-com.jpg",
@@ -644,7 +667,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -669,7 +692,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -701,7 +724,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -733,7 +756,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -765,7 +788,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -797,7 +820,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -829,7 +852,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -861,7 +884,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -893,7 +916,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -925,7 +948,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -953,7 +976,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -985,7 +1008,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [],
   "released": "2026-06-12",
@@ -1010,7 +1033,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1042,7 +1065,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1074,7 +1097,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1108,7 +1131,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1140,7 +1163,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1172,7 +1195,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [],
   "released": "2026-01",
@@ -1195,7 +1218,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -1218,7 +1241,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1246,7 +1269,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1274,7 +1297,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1302,7 +1325,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1330,7 +1353,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1358,7 +1381,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1386,7 +1409,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1414,7 +1437,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1442,7 +1465,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1470,7 +1493,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1498,7 +1521,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1526,7 +1549,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1554,7 +1577,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1582,7 +1605,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
@@ -1614,7 +1637,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 12:28",
+  "checked": "2026-11-24 12:52",
   "tracked": true,
   "downloads": [
    {
