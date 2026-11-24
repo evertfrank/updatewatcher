@@ -13,7 +13,7 @@
   "previous": "4.18.0.11",
   "changed": "2026-11-23 14:48",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Windows",
@@ -43,7 +43,7 @@
   "previous": "5.6.4",
   "changed": "2026-11-23 15:01",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [],
   "released": "2026-10-28",
   "notes": [
@@ -79,7 +79,7 @@
   "previous": "7.8.3",
   "changed": "2026-11-23 16:05",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [],
   "released": "2026-10-06",
   "notes": null,
@@ -100,7 +100,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -121,7 +121,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -142,7 +142,7 @@
   "previous": "2026.2.2",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
@@ -176,7 +176,7 @@
   "previous": "2.5.3",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
@@ -206,7 +206,7 @@
   "previous": null,
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Windows",
@@ -239,7 +239,7 @@
   "previous": "8.1.6",
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Windows",
@@ -265,7 +265,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Windows",
@@ -287,17 +287,154 @@
   "icon": "icons/www-dbaudio-com.png",
   "favorite": false,
   "icon_text": "AC",
-  "link": "https://www.dbaudio.com/global/en/products/software/arraycalc/",
+  "link": "https://www.dbaudio.com/global/en/service-and-support/downloads/?category=12,14",
   "website": "https://www.dbaudio.com/global/en/products/software/arraycalc/",
   "vendor": "d&b audiotechnik",
-  "note": "Download vereist My d&b-account (versie handmatig)",
+  "note": "",
   "version": "12.10.0",
   "previous": null,
   "changed": "2026-11-23 16:37",
-  "error": null,
-  "checked": "2026-11-24 08:25",
+  "error": "geen versie gevonden (regex klopt niet meer?)",
+  "checked": "2026-11-24 08:38",
   "downloads": [],
-  "released": "2026-10-20",
+  "released": null,
+  "notes": null,
+  "notes_url": null
+ },
+ {
+  "name": "d&b R1 Remote Control",
+  "category": "SYSTEM DESIGN & TUNING",
+  "icon": "icons/www-dbaudio-com.png",
+  "favorite": false,
+  "icon_text": "R1",
+  "link": "https://www.dbaudio.com/global/en/service-and-support/downloads/?category=12,14",
+  "website": "https://www.dbaudio.com/global/en/products/software/r1/",
+  "vendor": "d&b audiotechnik",
+  "note": "",
+  "version": null,
+  "previous": null,
+  "changed": null,
+  "error": "geen versie gevonden (regex klopt niet meer?)",
+  "checked": "2026-11-24 08:38",
+  "downloads": [],
+  "released": null,
+  "notes": null,
+  "notes_url": null
+ },
+ {
+  "name": "Adamson Array Intelligence",
+  "category": "SYSTEM DESIGN & TUNING",
+  "icon": "icons/legacy-adamson-ai.ico",
+  "favorite": false,
+  "icon_text": "AI",
+  "link": "https://legacy.adamson.ai/support/downloads-directory/design-and-control/arrayintelligence",
+  "website": "https://legacy.adamson.ai/",
+  "vendor": "Adamson",
+  "note": "",
+  "version": "1.4.1",
+  "previous": null,
+  "changed": "2026-11-24 08:38",
+  "error": null,
+  "checked": "2026-11-24 08:38",
+  "downloads": [
+   {
+    "label": "Download",
+    "url": "https://legacy.adamson.ai/support/downloads-directory/design-and-control/arrayintelligence/1013-arrayintelligence-v1-4-1/file"
+   }
+  ],
+  "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "Adamson Blueprint AV",
+  "category": "SYSTEM DESIGN & TUNING",
+  "icon": "icons/legacy-adamson-ai.ico",
+  "favorite": false,
+  "icon_text": "BP",
+  "link": "https://legacy.adamson.ai/support/downloads-directory/design-and-control/blueprint-av",
+  "website": "https://legacy.adamson.ai/",
+  "vendor": "Adamson",
+  "note": "",
+  "version": "1.3.3",
+  "previous": null,
+  "changed": "2026-11-24 08:38",
+  "error": null,
+  "checked": "2026-11-24 08:38",
+  "downloads": [
+   {
+    "label": "Mac",
+    "url": "https://legacy.adamson.ai/support/downloads-directory/design-and-control/blueprint-av/340-blueprint-v1-3-3-for-mac/file"
+   },
+   {
+    "label": "Windows",
+    "url": "https://legacy.adamson.ai/support/downloads-directory/design-and-control/blueprint-av/901-blueprintv1-3-3-setup-1/file"
+   }
+  ],
+  "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "Meyer Sound MAPP 3D",
+  "category": "SYSTEM DESIGN & TUNING",
+  "icon": "icons/meyersound-com.jpg",
+  "favorite": false,
+  "icon_text": "M3D",
+  "link": "https://software.meyersound.com/downloads/software",
+  "website": "https://meyersound.com/",
+  "vendor": "Meyer Sound",
+  "note": "",
+  "version": "1.26.1",
+  "previous": null,
+  "changed": "2026-11-24 08:38",
+  "error": null,
+  "checked": "2026-11-24 08:38",
+  "downloads": [],
+  "released": "2026-10-07",
+  "notes": null,
+  "notes_url": "https://docs.meyersound.com/products/en/release-notes---mapp-3d.html",
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "Meyer Sound Compass",
+  "category": "SYSTEM DESIGN & TUNING",
+  "icon": "icons/meyersound-com.jpg",
+  "favorite": false,
+  "icon_text": "CO",
+  "link": "https://software.meyersound.com/downloads/software",
+  "website": "https://meyersound.com/",
+  "vendor": "Meyer Sound",
+  "note": "Voor Galaxy en CAL met Milan AVB",
+  "version": null,
+  "previous": null,
+  "changed": null,
+  "error": "geen versie gevonden (regex klopt niet meer?)",
+  "checked": "2026-11-24 08:38",
+  "downloads": [],
+  "released": null,
+  "notes": null,
+  "notes_url": null
+ },
+ {
+  "name": "Meyer Sound Compass 3.12",
+  "category": "SYSTEM DESIGN & TUNING",
+  "icon": "icons/meyersound-com.jpg",
+  "favorite": false,
+  "icon_text": "C3",
+  "link": "https://software.meyersound.com/downloads/software",
+  "website": "https://meyersound.com/",
+  "vendor": "Meyer Sound",
+  "note": "For systems using Galileo and Callisto processors. Not compatible with macOS starting with Sonoma (macOS 14).",
+  "version": "3.12.1",
+  "previous": null,
+  "changed": "2026-11-24 08:38",
+  "error": null,
+  "checked": "2026-11-24 08:38",
+  "downloads": [],
+  "released": "2017-07-09",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -316,7 +453,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
@@ -346,7 +483,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
@@ -376,7 +513,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
@@ -406,7 +543,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
@@ -436,7 +573,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
@@ -466,7 +603,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
@@ -496,7 +633,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
@@ -526,7 +663,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
@@ -556,7 +693,7 @@
   "previous": null,
   "changed": "2026-11-23 16:40",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
@@ -582,7 +719,7 @@
   "previous": null,
   "changed": "2026-11-23 16:47",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
@@ -608,7 +745,7 @@
   "previous": null,
   "changed": "2026-11-23 18:39",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -629,7 +766,7 @@
   "previous": null,
   "changed": "2026-11-23 18:39",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -650,7 +787,7 @@
   "previous": null,
   "changed": "2026-11-23 18:49",
   "error": null,
-  "checked": "2026-11-24 08:25",
+  "checked": "2026-11-24 08:38",
   "downloads": [
    {
     "label": "Mac",
