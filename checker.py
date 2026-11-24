@@ -60,7 +60,7 @@ def fill(t, ver):
 
 def parse_date(s):
     s = re.sub(r"(\d)(?:st|nd|rd|th)\b", r"\1", s.strip().replace(" of ", " "))
-    for f in ("%B %d, %Y", "%b %d, %Y", "%d %B %Y", "%B %d %Y", "%Y-%m-%d"):
+    for f in ("%B %d, %Y", "%b %d, %Y", "%d %B %Y", "%B %d %Y", "%Y-%m-%d", "%d.%m.%Y"):
         try:
             return datetime.datetime.strptime(s, f).strftime("%Y-%m-%d")
         except ValueError:
@@ -128,7 +128,7 @@ def resolve_downloads(it, ver):
             else:           # link uit de pagina halen met een regex (één groep = de href)
                 m = re.search(d["regex"].replace("{version_us}", ver.replace(".", "_")).replace("{version}", re.escape(ver)), fetch(it["url"]))
                 if m:
-                    out.append({"label": d["label"], "url": urllib.parse.urljoin(it["url"], html.unescape(m.group(1)))})
+                    out.append({"label": d["label"], "url": urllib.parse.urljoin(it["url"], html.unescape(next(g for g in m.groups() if g)))})   # bij meerdere groepen telt de eerste die iets vond
         except Exception:
             pass
     return out
@@ -277,6 +277,14 @@ def is_recent(i, now, days=RECENT_DAYS):
         pass
     return False
 
+def update_date(i):
+    """Releasedatum van de software, voor het sorteren van NEW UPDATES."""
+    return str(i.get("released") or "")[:10]
+
+def seen_date(i):
+    """Dag dat de checker de nieuwe versie zag; alleen gebruikt als er geen releasedatum bekend is."""
+    return str(i.get("changed") or "")[:10] if i.get("previous") else ""
+
 ICON = '<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v8m0 0L4.5 6.5M8 10l3.5-3.5M3 13.5h10"/></svg>'
 
 VENDORS = ("fabfilter", "cntrlld", "d&b", "l-acoustics", "shure")
@@ -357,7 +365,7 @@ def row_html(i, now, cat=""):
     if i.get("notes_url"):
         more += f'<a href="{e(i["notes_url"])}" target="_blank" rel="noopener">{e(i["notes_label"])}</a>'
     more = f'<div class="more">{more}</div>' if more else ""
-    return (f'<li class="row{" new" if new else ""}" data-cat="{e(cat)}" data-fav="{1 if i.get("favorite") else 0}" data-recent="{1 if is_recent(i, now) else 0}" data-vendor="{e(i.get("vendor") or i["name"])}"><div class="who">{icon_html(i)}<div>{name_html(i)}{badge}{note}</div></div>'
+    return (f'<li class="row{" new" if new else ""}" data-cat="{e(cat)}" data-fav="{1 if i.get("favorite") else 0}" data-recent="{1 if is_recent(i, now) else 0}" data-date="{e(update_date(i))}" data-seen="{e(seen_date(i))}" data-vendor="{e(i.get("vendor") or i["name"])}"><div class="who">{icon_html(i)}<div>{name_html(i)}{badge}{note}</div></div>'
             f'<div class="ver"><span class="num">{e(i["version"] or "onbekend")}</span>{was}{err}</div>'
             f'<div class="dl">{dl}</div>{more}</li>')
 
@@ -383,12 +391,12 @@ def render(items, now, contact=None, categories=None):
         summary += f", bij {n_err} lukte de controle niet"
     summary += "."
 
-    rows = "".join(row_html(i, now, cat_of(i)) for i in items)
+    rows = "".join(row_html(i, now, cat_of(i)) for i in sorted(items, key=lambda i: i["name"].casefold()))   # alfabetisch
     search = '<div class="search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.5"/><path d="M13.5 13.5L17 17"/></svg><input id="q" type="search" placeholder="Zoek in software" aria-label="Zoek in software" autocomplete="off" spellcheck="false"></div>'
     listing = f'{vendors_html(items)}{search}<ul class="list">{rows}</ul><p class="empty" id="empty" hidden></p>'
     if canon:
         nrec = sum(is_recent(i, now) for i in items)
-        nav = f'<button type="button" class="rec" data-cat="RECENT" aria-current="false"><span>UPDATED LAST 30 DAYS</span><b>{nrec}</b></button>'
+        nav = f'<button type="button" class="rec" data-cat="RECENT" aria-current="false" title="Updates van de afgelopen 30 dagen, nieuwste bovenaan"><span>NEW UPDATES<small>Updates van de afgelopen 30 dagen</small></span><b>{nrec}</b></button>'
         nav += f'<button type="button" data-cat="*" aria-current="true"><span>ALL</span><b>{len(items)}</b></button>'
         for c in canon.values():
             nav += f'<button type="button" data-cat="{e(c)}" aria-current="false"><span>{e(c)}</span><b>{sum(cat_of(i) == c for i in items)}</b></button>'
@@ -481,6 +489,7 @@ h1 em{font-style:normal;color:#e8955a}
 .cats button.rec[aria-current=true]{background:var(--red-deep);color:var(--red-soft)}
 .cats button.rec[aria-current=true]::before{background:var(--red)}
 .cats button span{text-align:left}
+.cats button small{display:block;margin-top:.2rem;font:500 .72rem/1.3 "Instrument Sans",system-ui,sans-serif;letter-spacing:0;text-transform:none;color:var(--muted)}
 .cats button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 .layout>*{min-width:0}
 .vendors{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 .9rem}
@@ -556,7 +565,7 @@ footer{margin-top:2rem;color:var(--muted);font-size:.75rem}
 .cats button{width:auto;white-space:nowrap;gap:.45rem;border:1px solid var(--line);border-radius:999px}
 .cats button[aria-current=true]{border-color:var(--red)}.cats button[aria-current=true]::before{display:none}
 .row{grid-template-columns:1fr}.dl{justify-content:start}
-.cats button.rec::after{display:none}
+.cats button.rec::after{display:none}.cats button small{display:none}
 .vendors{flex-wrap:nowrap;overflow-x:auto;padding:.4rem .1rem .3rem;margin-left:-.1rem;scrollbar-width:none}.vendors::-webkit-scrollbar{display:none}}
 </style></head><body><div class="wrap">
 <header class="banner"><div class="brand">__LOGO__<div class="word"><h1 aria-label="Software Update Watcher"><span class="sw" aria-hidden="true">__SW__</span><span class="uw" aria-hidden="true">Update <em>Watcher</em></span></h1><p class="by">by evertfrank</p></div></div><div class="side"><p class="checked">Laatst gecontroleerd __NOW__</p>__ASK__</div></header>
@@ -570,11 +579,13 @@ const btns=[...document.querySelectorAll('.cats button')],rows=[...document.quer
 let cat='*';
 const q=document.getElementById('q');
 const vbtns=[...document.querySelectorAll('.vendors button')];
+const byDate=[...rows].sort((a,b)=>{const ra=a.dataset.date||'',rb=b.dataset.date||'';if(!!ra!==!!rb)return ra?-1:1;return rb.localeCompare(ra)||(b.dataset.seen||'').localeCompare(a.dataset.seen||'')});   // releasedatum, nieuwste eerst; zonder releasedatum onderaan
 function show(c){
   if(c!==undefined)cat=c;
   const term=q.value.trim().toLowerCase(),eff=term?'*':cat;   // zoeken doet altijd ALL
   let n=0;
   rows.forEach(r=>{const on=(eff==='*'||(eff.startsWith('V:')?r.dataset.vendor===eff.slice(2):eff==='RECENT'?r.dataset.recent==='1':r.dataset.cat===eff))&&(!term||r.textContent.toLowerCase().includes(term));r.hidden=!on;if(on)n++});
+  (eff==='RECENT'?byDate:rows).forEach(r=>list.appendChild(r));
   btns.forEach(b=>b.setAttribute('aria-current',String(b.dataset.cat===eff)));
   vbtns.forEach(b=>b.setAttribute('aria-pressed',String('V:'+b.dataset.v===eff)));
   list.hidden=n===0;empty.hidden=n!==0;

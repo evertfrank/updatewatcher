@@ -158,10 +158,82 @@ items:
     website: https://www.dbaudio.com/global/en/products/software/arraycalc/
     icon_text: AC
     category: SYSTEM DESIGN & TUNING
-    version: "12.10.0"
-    released: "2026-10-20"
-    link: https://www.dbaudio.com/global/en/products/software/arraycalc/
-    note: Download vereist My d&b-account (versie handmatig)
+    url: https://www.dbaudio.com/global/en/service-and-support/downloads/?category=12,14
+    regex: 'ArrayCalc(?:\s|&nbsp;|<[^>]*>)*v(\d+\.\d+\.\d+)(?:\s|&nbsp;|<[^>]*>)*(?:Mac|Win)'
+    previous_from_page: false
+    date_regex: 'ArrayCalc(?:\s|&nbsp;|<[^>]*>)*v{version}(?:\s|&nbsp;|<[^>]*>)*Mac(?:(?!\d{2}\.\d{2}\.\d{4}).){0,2000}?(\d{2}\.\d{2}\.\d{4})'
+    link: https://www.dbaudio.com/global/en/service-and-support/downloads/?category=12,14
+    downloads:
+      - {label: Mac, regex: '(?s)<a\b[^>]*href="([^"]*/download/view/\d+/[^"]*)"[^>]*>(?:(?!</a>).)*?ArrayCalc(?:\s|&nbsp;|<[^>]*>)*v{version}(?:\s|&nbsp;|<[^>]*>)*Mac|ArrayCalc(?:\s|&nbsp;|<[^>]*>)*v{version}(?:\s|&nbsp;|<[^>]*>)*Mac(?:(?!ArrayCalc(?:\s|&nbsp;|<[^>]*>)*v?\d+\.\d+).)*?href="([^"]*/download/view/\d+/[^"]*)"'}
+      - {label: Windows, regex: '(?s)<a\b[^>]*href="([^"]*/download/view/\d+/[^"]*)"[^>]*>(?:(?!</a>).)*?ArrayCalc(?:\s|&nbsp;|<[^>]*>)*v{version}(?:\s|&nbsp;|<[^>]*>)*Win|ArrayCalc(?:\s|&nbsp;|<[^>]*>)*v{version}(?:\s|&nbsp;|<[^>]*>)*Win(?:(?!ArrayCalc(?:\s|&nbsp;|<[^>]*>)*v?\d+\.\d+).)*?href="([^"]*/download/view/\d+/[^"]*)"'}
+  - name: d&b R1 Remote Control
+    vendor: d&b audiotechnik
+    website: https://www.dbaudio.com/global/en/products/software/r1/
+    category: SYSTEM DESIGN & TUNING
+    icon_text: R1
+    url: https://www.dbaudio.com/global/en/service-and-support/downloads/?category=12,14
+    regex: '\bR1(?:\s|&nbsp;|<[^>]*>)*(\d+\.\d+\.\d+)(?:\s|&nbsp;|<[^>]*>)*(?:Mac|Win)'
+    previous_from_page: false
+    date_regex: '\bR1(?:\s|&nbsp;|<[^>]*>)*{version}(?:\s|&nbsp;|<[^>]*>)*Mac(?:(?!\d{2}\.\d{2}\.\d{4}).){0,2000}?(\d{2}\.\d{2}\.\d{4})'
+    link: https://www.dbaudio.com/global/en/service-and-support/downloads/?category=12,14
+    downloads:
+      - {label: Mac, regex: '(?s)<a\b[^>]*href="([^"]*/download/view/\d+/[^"]*)"[^>]*>(?:(?!</a>).)*?R1(?:\s|&nbsp;|<[^>]*>)*{version}(?:\s|&nbsp;|<[^>]*>)*Mac|\bR1(?:\s|&nbsp;|<[^>]*>)*{version}(?:\s|&nbsp;|<[^>]*>)*Mac(?:(?!\bR1(?:\s|&nbsp;|<[^>]*>)*v?\d+\.\d+).)*?href="([^"]*/download/view/\d+/[^"]*)"'}
+      - {label: Windows, regex: '(?s)<a\b[^>]*href="([^"]*/download/view/\d+/[^"]*)"[^>]*>(?:(?!</a>).)*?R1(?:\s|&nbsp;|<[^>]*>)*{version}(?:\s|&nbsp;|<[^>]*>)*Win|\bR1(?:\s|&nbsp;|<[^>]*>)*{version}(?:\s|&nbsp;|<[^>]*>)*Win(?:(?!\bR1(?:\s|&nbsp;|<[^>]*>)*v?\d+\.\d+).)*?href="([^"]*/download/view/\d+/[^"]*)"'}
+  - name: Adamson Array Intelligence
+    vendor: Adamson
+    category: SYSTEM DESIGN & TUNING
+    icon_text: AI
+    url: https://legacy.adamson.ai/support/downloads-directory/design-and-control/arrayintelligence
+    regex: 'ArrayIntelligence[\s_-]*V(\d+\.\d+(?:\.\d+)?)'   # bijvoorbeeld "ArrayIntelligence V1.4.1"
+    previous_from_page: false
+    link: https://legacy.adamson.ai/support/downloads-directory/design-and-control/arrayintelligence
+    downloads:
+      - {label: Download, regex: 'href=["'']([^"'']*-arrayintelligence-v[0-9-]+/file)["'']'}   # zip-bestand voor de nieuwste versie
+  - name: Adamson Blueprint AV
+    vendor: Adamson
+    category: SYSTEM DESIGN & TUNING
+    icon_text: BP
+    url: https://legacy.adamson.ai/support/downloads-directory/design-and-control/blueprint-av
+    regex: 'Blueprint\s*V(\d+\.\d+(?:\.\d+)?)'   # bijvoorbeeld "Blueprint V1.3.3 for Mac" of "BlueprintV1.3.3-win.zip"
+    previous_from_page: false
+    link: https://legacy.adamson.ai/support/downloads-directory/design-and-control/blueprint-av
+    downloads:
+      - {label: Mac, regex: 'href=["'']([^"'']*/\d+-blueprint-?v[0-9-]+-for-mac/file)["'']'}
+      - {label: Windows, regex: 'href=["'']([^"'']*/\d+-blueprint-?v[0-9-]+(?:-setup[0-9-]*|-for-pc|-win[a-z]*)/file)["'']'}
+  - name: Meyer Sound MAPP 3D
+    vendor: Meyer Sound
+    category: SYSTEM DESIGN & TUNING
+    icon_text: M3D
+    icon_site: https://meyersound.com
+    url: https://software.meyersound.com/downloads/software
+    regex: 'MAPP(?:\s|&nbsp;|<[^>]*>)*3D(?!(?:\s|&nbsp;)*Account)(?:(?!\d+\.\d+\.\d+).){0,400}?(\d+\.\d+\.\d+)'   # eerste versienummer na de titel "MAPP 3D"
+    previous_from_page: false
+    date_regex: '{version}(?:(?!\d+\.\d+\.\d+).){0,400}?([A-Z][a-z]+ \d{1,2}, \d{4})'
+    link: https://software.meyersound.com/downloads/software
+    notes_url: https://docs.meyersound.com/products/en/release-notes---mapp-3d.html
+  - name: Meyer Sound Compass
+    vendor: Meyer Sound
+    category: SYSTEM DESIGN & TUNING
+    icon_text: CO
+    icon_site: https://meyersound.com
+    url: https://software.meyersound.com/downloads/software
+    regex: '(?<![\d.])(\d+\.\d+\.\d+)(?![\d.])(?:(?!\d+\.\d+\.\d+).){0,800}?Galaxy and CAL systems using MILAN'   # versie vlak voor "For Galaxy and CAL systems using MILAN AVB"
+    previous_from_page: false
+    date_regex: '{version}(?:(?!\d+\.\d+\.\d+).){0,400}?([A-Z][a-z]+ \d{1,2}, \d{4})'
+    link: https://software.meyersound.com/downloads/software
+    notes_url: https://docs.meyersound.com/products/en/release-notes---compass.html
+    note: Voor Galaxy en CAL met Milan AVB
+  - name: Meyer Sound Compass 3.12
+    vendor: Meyer Sound
+    category: SYSTEM DESIGN & TUNING
+    icon_text: C3
+    icon_site: https://meyersound.com
+    url: https://software.meyersound.com/downloads/software
+    regex: '(?<![\d.])(3\.12\.\d+)(?![\d.])'
+    previous_from_page: false
+    date_regex: '{version}(?:(?!\d+\.\d+\.\d+).){0,400}?([A-Z][a-z]+ \d{1,2}, \d{4})'
+    link: https://software.meyersound.com/downloads/software
+    note: For systems using Galileo and Callisto processors. Not compatible with macOS starting with Sonoma (macOS 14).
   - name: FabFilter Pro-Q 4
     vendor: FabFilter
     website: https://www.fabfilter.com/products/pro-q-4-equalizer-plug-in
