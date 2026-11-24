@@ -20,13 +20,15 @@
 #   notes_label     tekst van die link
 #   date_regex      regex met één groep: de release-datum, gezocht op date_url (standaard: url)
 #   notes_regex     regex met één groep: het HTML-stuk met de wijzigingen, gezocht op notes_page (standaard: url)
+#   vendor          fabrikant; programma's met dezelfde vendor delen één icoontje boven de zoekbalk
+#   website         pagina van de fabrikant waar de naam naartoe linkt (standaard: de hoofdpagina van de site uit url/link)
 #   released        release-datum zelf invullen, bijvoorbeeld "2026-10-09" (bij handmatige versies)
 #
 interval_hours: 6
 
 # Categorieën in de zijbalk, in deze volgorde. 'ALL' staat er altijd boven.
 # Ze komen op een programma met  category: NAAM  (hoofdletters maken niet uit).
-categories: [DAW, NETWORK, CONTROLS, PLUGINS, PA DESIGN & CONTROL]
+categories: [SYSTEM DESIGN & TUNING, NETWORK, MIXING & I/O, PLAYBACK & RECORDING, WIRELESS & COMMS, PLUGINS]
 
 # Knop "Mis je iets?" op de pagina. Laat 'endpoint' leeg en er verschijnt geen formulier.
 contact:
@@ -36,6 +38,8 @@ contact:
 
 items:
   - name: Dante Controller
+    vendor: Audinate
+    website: https://www.getdante.com/products/software-essentials/dante-controller/
     icon_text: DC
     category: NETWORK
     url: https://www.getdante.com/resources/software-downloads/
@@ -49,7 +53,8 @@ items:
       - {label: Windows, regex: 'href=["'']([^"'']*DanteController-{version}_windows\.exe)["'']'}
       - {label: Mac, regex: 'href=["'']([^"'']*DanteController-[\d.]+-macos-arm64\.dmg)["'']'}
   - name: QLab
-    category: DAW
+    vendor: Figure 53
+    category: PLAYBACK & RECORDING
     url: https://qlab.app/download/
     regex: 'release-notes/(\d+\.\d+(?:\.\d+)*)'                  # alle versies in de links; hoogste = huidig, daarna = vorige
     json: https://formulae.brew.sh/api/cask/qlab.json            # reserve als qlab.app de checker blokkeert (403)
@@ -60,8 +65,9 @@ items:
     notes_regex: '<h2[^>]*>\s*{version}\s*</h2>(.*?)(?=<h2|<footer|$)'   # alles onder het versienummer
     link: https://qlab.app/downloads/QLab.dmg
   - name: Shure Wireless Workbench
+    vendor: Shure
     icon_text: WWB
-    category: CONTROLS
+    category: WIRELESS & COMMS
     url: https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench
     regex: '(\d+\.\d+(?:\.\d+)*)\s*(?:<[^>]*>\s*)*See Release Notes'
     date_regex: '{version}.{0,800}?([A-Z][a-z]+ \d{2}, \d{4})'
@@ -69,24 +75,31 @@ items:
     notes_url: https://www.shure.com/en-us/support/downloads/software-firmware-archive/wireless-workbench
     notes_label: Alle versies en release notes
   - name: L-Acoustics Network Manager
+    vendor: L-Acoustics
+    website: https://www.l-acoustics.com/products/network-manager/
     favorite: true
     icon_text: NWM
-    category: PA DESIGN & CONTROL
-    version: "2026.2.1"   # handmatig; bron: l-acoustics.com/products/network-manager (juli 2026)
-    released: ""
-    link: https://www.l-acoustics.com/products/network-manager/
-    note: Versie handmatig bijgehouden
+    category: SYSTEM DESIGN & TUNING
+    url: https://www.l-acoustics.com/products/network-manager/
+    regex: 'LA Network Manager(?:\s|&nbsp;|<[^>]*>)*(20\d\d\.\d+(?:\.\d+)?)'   # versie uit de koppen op de productpagina (de download zelf zit achter het formulier)
+    previous_from_page: false
+    icon_site: https://www.l-acoustics.com   # icoon van de hoofdsite, de downloadlink hieronder staat op een andere host
+    link: https://access.l-acoustics.com/download-center/software/network-manager   # downloadcentrum van L-Acoustics (login)
   - name: L-Acoustics Soundvision
+    vendor: L-Acoustics
+    website: https://www.l-acoustics.com/products/soundvision/
     favorite: true
     icon_text: SV
-    category: PA DESIGN & CONTROL
-    version: "2026.4"   # handmatig; bron: l-acoustics.com/products/soundvision (oktober 2026)
-    released: ""
-    link: https://www.l-acoustics.com/products/soundvision/
-    note: Versie handmatig bijgehouden
+    category: SYSTEM DESIGN & TUNING
+    url: https://www.l-acoustics.com/products/soundvision/
+    regex: '(?:Soundvision/Soundvision/(?:Mac|Windows)/|Soundvision_)(\d{4}\.\d+(?:\.\d+)?)(?:/|_)'   # versie uit de bestandsnamen op de productpagina (alleen lezen, de download zelf loopt via L-Acoustics)
+    previous_from_page: false
+    icon_site: https://www.l-acoustics.com   # icoon van de hoofdsite, de downloadlink hieronder staat op een andere host
+    link: https://access.l-acoustics.com/download-center/software/soundvision   # downloadcentrum van L-Acoustics (login)
   - name: LiveProfessor
+    vendor: Audiostrom
     favorite: true
-    category: DAW
+    category: PLAYBACK & RECORDING
     url: https://www.audiostrom.com/change-log
     regex: 'LiveProfessor (\d+\.\d+\.\d+)'
     date_regex: 'LiveProfessor {version}\b.{0,600}?([A-Z][a-z]+ \d{1,2}, \d{4})'
@@ -97,6 +110,7 @@ items:
       - {label: Mac, url: "https://fls-a2124b9f-5148-4760-a455-ace2436abe75.laravel.cloud/software/1004/{version}/LiveProfessor.dmg"}
       - {label: Windows, url: "https://fls-a2124b9f-5148-4760-a455-ace2436abe75.laravel.cloud/software/1004/{version}/LiveProfessor-win-x64.msi"}
   - name: Milan Manager
+    vendor: Milan Manager
     category: NETWORK
     url: https://milanmanager.com/
     regex: 'MilanManager V(\d+\.\d+\.\d+)'
@@ -106,7 +120,8 @@ items:
       - {label: Mac, regex: 'href=["'']([^"'']*MilanManager-V{version}\.dmg[^"'']*)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*MilanManager-V{version}\.zip[^"'']*)["'']'}
   - name: REAPER
-    category: DAW
+    vendor: Cockos
+    category: PLAYBACK & RECORDING
     url: https://www.reaper.fm/download.php
     regex: 'Version (\d+\.\d+)\s*:'
     previous_from_page: false                       # de pagina noemt meer versienummers; vorige versie zelf bijhouden
@@ -118,8 +133,9 @@ items:
       - {label: Windows, regex: 'href=["'']([^"'']*reaper\d+_x64-install\.exe)["'']'}
       - {label: Mac, regex: 'href=["'']([^"'']*reaper\d+_universal\.dmg)["'']'}
   - name: Lake Controller
+    vendor: Lake
     favorite: true
-    category: CONTROLS
+    category: SYSTEM DESIGN & TUNING
     url: https://www.labgruppen.com/en/products/0825-AAN?tab=downloads
     regex: 'LakeController_v(\d+_\d+_\d+)_\d+\.exe'
     replace: ["_", "."]                             # 8_1_7 wordt 8.1.7
@@ -127,7 +143,9 @@ items:
     downloads:
       - {label: Windows, regex: 'href=["'']([^"'']*LakeController_v{version_us}_\d+\.exe)["'']'}
   - name: Green-GO Control
-    category: CONTROLS
+    vendor: Green-GO
+    website: https://greengocom.com/software-products/control
+    category: WIRELESS & COMMS
     url: https://greengocom.com/software-products/control
     regex: 'downloads\.greengoconnect\.com/(\d+\.\d+\.\d+)/windows/green-go-control\.msi'   # versie staat alleen in de downloadlink
     notes_url: https://manual.greengoconnect.com/en/software/
@@ -136,13 +154,17 @@ items:
       - {label: Windows, regex: 'href=["'']([^"'']*/{version}/windows/green-go-control\.msi)["'']'}
       - {label: Mac, regex: 'href=["'']([^"'']*/{version}/macos/green-go-control\.dmg)["'']'}
   - name: d&b ArrayCalc
+    vendor: d&b audiotechnik
+    website: https://www.dbaudio.com/global/en/products/software/arraycalc/
     icon_text: AC
-    category: PA DESIGN & CONTROL
+    category: SYSTEM DESIGN & TUNING
     version: "12.10.0"
     released: "2026-10-20"
     link: https://www.dbaudio.com/global/en/products/software/arraycalc/
     note: Download vereist My d&b-account (versie handmatig)
   - name: FabFilter Pro-Q 4
+    vendor: FabFilter
+    website: https://www.fabfilter.com/products/pro-q-4-equalizer-plug-in
     category: PLUGINS
     url: https://www.fabfilter.com/download
     regex: 'downloads/ffproq(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffproq413 wordt 4.13
@@ -152,6 +174,8 @@ items:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffproq\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffproq\d+x64\.exe)["'']'}
   - name: FabFilter Pro-C 3
+    vendor: FabFilter
+    website: https://www.fabfilter.com/products/pro-c-3-compressor-plug-in
     category: PLUGINS
     url: https://www.fabfilter.com/download
     regex: 'downloads/ffproc(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffproc413 wordt 4.13
@@ -161,6 +185,8 @@ items:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffproc\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffproc\d+x64\.exe)["'']'}
   - name: FabFilter Pro-L 2
+    vendor: FabFilter
+    website: https://www.fabfilter.com/products/pro-l-2-limiter-plug-in
     category: PLUGINS
     url: https://www.fabfilter.com/download
     regex: 'downloads/ffprol(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffprol413 wordt 4.13
@@ -170,6 +196,8 @@ items:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffprol\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffprol\d+x64\.exe)["'']'}
   - name: FabFilter Pro-R 2
+    vendor: FabFilter
+    website: https://www.fabfilter.com/products/pro-r-2-reverb-plug-in
     category: PLUGINS
     url: https://www.fabfilter.com/download
     regex: 'downloads/ffpror(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffpror413 wordt 4.13
@@ -179,6 +207,8 @@ items:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffpror\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffpror\d+x64\.exe)["'']'}
   - name: FabFilter Pro-MB
+    vendor: FabFilter
+    website: https://www.fabfilter.com/products/pro-mb-multiband-compressor-plug-in
     category: PLUGINS
     url: https://www.fabfilter.com/download
     regex: 'downloads/ffpromb(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffpromb413 wordt 4.13
@@ -188,6 +218,7 @@ items:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffpromb\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffpromb\d+x64\.exe)["'']'}
   - name: FabFilter Pro-DS
+    vendor: FabFilter
     category: PLUGINS
     url: https://www.fabfilter.com/download
     regex: 'downloads/ffprods(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffprods413 wordt 4.13
@@ -197,6 +228,7 @@ items:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffprods\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffprods\d+x64\.exe)["'']'}
   - name: FabFilter Pro-G
+    vendor: FabFilter
     category: PLUGINS
     url: https://www.fabfilter.com/download
     regex: 'downloads/ffprog(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffprog413 wordt 4.13
@@ -206,6 +238,8 @@ items:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffprog\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffprog\d+x64\.exe)["'']'}
   - name: FabFilter Saturn 2
+    vendor: FabFilter
+    website: https://www.fabfilter.com/products/saturn-2-multiband-distortion-saturation-plug-in
     category: PLUGINS
     url: https://www.fabfilter.com/download
     regex: 'downloads/ffsaturn(\d)(\d{2})\.dmg'   # versie zit in de bestandsnaam: ffsaturn413 wordt 4.13
@@ -215,6 +249,7 @@ items:
       - {label: Mac, regex: 'href=["'']([^"'']*/downloads/ffsaturn\d+\.dmg)["'']'}
       - {label: Windows, regex: 'href=["'']([^"'']*/downloads/ffsaturn\d+x64\.exe)["'']'}
   - name: cntrlld Spectra
+    vendor: cntrlld
     category: PLUGINS
     url: https://cntrlld.com/download
     regex: 'Latest build:\s*(?:<[^>]*>\s*)*v?(\d+\.\d+\.\d+)'
@@ -225,6 +260,8 @@ items:
     downloads:
       - {label: Mac, regex: 'href=["'']([^"'']*SPECTRA-v{version}\.pkg)["'']'}
   - name: cntrlld ClearVox
+    vendor: cntrlld
+    website: https://cntrlld.com/clearvox
     category: PLUGINS
     url: https://cntrlld.com/clearvox
     regex: 'current build\s*(?:<[^>]*>\s*)*v?(\d+\.\d+\.\d+)'
@@ -237,6 +274,7 @@ items:
     notes_label: Wat is nieuw
     note: Alleen macOS (VST3 en AU), beta
   - name: Luminex Araneo
+    vendor: Luminex
     category: NETWORK
     icon_text: AR
     version: "1.11.0"   # handmatig; bron: bericht van distributeur DWR, 26 okt 2026 (niet op luminex.be zelf)
@@ -244,7 +282,8 @@ items:
     link: https://www.luminex.be/download-araneo/
     note: Download via aanmeldformulier (versie handmatig)
   - name: DiGiCo
-    category: CONTROLS
+    vendor: DiGiCo
+    category: MIXING & I/O
     icon_text: DG
     icon_site: https://digico.biz   # icoon ophalen van de hoofdwebsite (de supportsite is geblokkeerd)
     version: "V22"   # handmatig; nieuwste console-software (maart 2026). Vul het exacte buildnummer in als je dat kent.
@@ -252,11 +291,15 @@ items:
     link: https://support.digico.biz/hc/en-gb/articles/52664394111889-Version-22-Quantum-Software
     note: Console-, offline- en Session Convert-software (versie handmatig)
   - name: RME TotalMix FX
-    category: CONTROLS
+    vendor: RME
+    website: https://rme-audio.de/fireface-ufx-3.html
+    category: MIXING & I/O
     icon_text: TM
-    version: "2.10"   # handmatig; bron: RME-driverpagina van de Fireface UFX III (installer tmfx_210_1991, 22 okt 2026)
-    released: "2026-10-22"
+    url: https://rme-audio.de/fireface-ufx-3.html
+    regex: 'tmfx_(\d)(\d{2})_\d+_mac\.zip'   # versie zit in de bestandsnaam: tmfx_210_1991 wordt 2.10
+    previous_from_page: false
+    date_regex: '(\d{4}-\d{2}-\d{2})(?:(?!\d{4}-\d{2}-\d{2}).){0,800}?tmfx_\d+_\d+_mac\.zip'   # laatste datum vóór de downloadlink
     link: https://rme-audio.de/fireface-ufx-3.html
-    note: Alleen Mac (versie handmatig)
+    note: Alleen Mac
     downloads:
-      - {label: Mac, url: "https://rme-audio.de/downloads/tmfx_210_1991_mac.zip"}
+      - {label: Mac, regex: 'href=["'']([^"'']*/downloads/tmfx_\d+_\d+_mac\.zip)["'']'}
