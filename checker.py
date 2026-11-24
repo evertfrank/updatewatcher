@@ -371,17 +371,17 @@ def row_html(i, now, cat=""):
         lab = lambda d: d["label"].lower()
         def btn(d):
             if lab(d).startswith("mac"):
-                return f'<a class="btn os" href="{e(d["url"])}">{ICON_MAC}{e(d["label"])}</a>'
+                return f'<a class="btn os" href="{e(d["url"])}" target="_blank" rel="noopener">{ICON_MAC}{e(d["label"])}</a>'
             if lab(d).startswith("win"):
-                return f'<a class="btn os" href="{e(d["url"])}">{ICON_WIN}{e(d["label"])}</a>'
-            return f'<a class="btn gen" href="{e(d["url"])}">{ICON}{e(d["label"])}</a>'   # algemene download
+                return f'<a class="btn os" href="{e(d["url"])}" target="_blank" rel="noopener">{ICON_WIN}{e(d["label"])}</a>'
+            return f'<a class="btn gen" href="{e(d["url"])}" target="_blank" rel="noopener">{ICON}{e(d["label"])}</a>'   # algemene download
         mac = [d for d in i["downloads"] if lab(d).startswith("mac")]
         win = [d for d in i["downloads"] if lab(d).startswith("win")]
         rest = [d for d in i["downloads"] if d not in mac and d not in win]
         # twee vaste plekken: links Mac (ook als Windows ontbreekt), rechts Windows, zodat de knoppen onder elkaar staan
         dl = f'<span class="slot">{"".join(btn(d) for d in mac + rest)}</span><span class="slot">{"".join(btn(d) for d in win)}</span>'
     else:
-        dl = f'<span class="slot"><a class="btn gen" href="{e(i["link"] or "#")}">{ICON}Download</a></span><span class="slot"></span>'
+        dl = f'<span class="slot"><a class="btn gen" href="{e(i["link"] or "#")}" target="_blank" rel="noopener">{ICON}Download</a></span><span class="slot"></span>'
     more = ""
     if i.get("notes"):
         more += '<details><summary>Wijzigingen</summary><ul>' + "".join(f"<li>{e(l)}</li>" for l in i["notes"]) + "</ul></details>"
