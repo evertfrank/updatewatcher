@@ -14,7 +14,7 @@
   "previous": "4.18.0.11",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -46,7 +46,7 @@
   "previous": "5.6.4",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [],
   "released": "2026-10-28",
@@ -84,7 +84,7 @@
   "previous": "7.8.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -112,11 +112,21 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [],
-  "released": null,
-  "notes": null,
+  "released": "2026-07",
+  "notes": [
+   "This release pack supersedes the May 21, 2026 release pack, bringing various improvements and issue fixes, and solving performance and stability issues when using large sessions.",
+   "LA Network Manager 2026.2.1",
+   "No new features since LA Network Manager 2026.2:",
+   "New CS1 enclosure sets and factory layouts for LA12X and LA7.16(i) amplified controllers.",
+   "Possibility to connect streams from Milan-AVB talkers implementing Milan 1.3 specification.",
+   "When loading a Soundvision file, in case 4-channel amplified controllers driving the same type of enclosure have unused output channels, the empty channels are automatically filled with the corresponding factory preset.",
+   "When loading a Soundvision file, polarity settings are now imported in LA Network Manager.",
+   "Added shortcut C key to open Autoclimate in the Tuning page.",
+   "Refer to the Read Me file or the LA Network Manager Help for more details."
+  ],
   "notes_url": null,
   "notes_label": "Release notes"
  },
@@ -135,11 +145,19 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [],
-  "released": null,
-  "notes": null,
+  "released": "2026-10",
+  "notes": [
+   "Soundvision 2026.4 is the last release to support macOS 10.15 (Catalina).",
+   "New features in Soundvision 2026.4:",
+   "Soundvision now fully supports Apple Silicon, leading to improved performance and better stability on Mac.",
+   "An array of four L1 and one L1D loudspeaker enclosures is created by default when adding an L1 source.",
+   "Added K2-BAR for L2(D).",
+   "Added Feature Overview document to the L-Acoustics website to further describe how Autofilter works.",
+   "Refer to the readme file and the Soundvision Help for more details."
+  ],
   "notes_url": null,
   "notes_label": "Release notes"
  },
@@ -158,7 +176,7 @@
   "previous": "2026.2.2",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -194,7 +212,7 @@
   "previous": "2.5.3",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -226,7 +244,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -261,7 +279,7 @@
   "previous": "8.1.6",
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -269,10 +287,10 @@
     "url": "https://cdn-media.empowertribe.com/cccd9c74c20b4e29873ec1076411373a/LakeController_v8_1_7_159.exe"
    }
   ],
-  "released": null,
+  "released": "2025-12-09",
   "notes": null,
-  "notes_url": null,
-  "notes_label": "Release notes"
+  "notes_url": "https://legacy.adamson.ai/support/downloads-directory/design-and-control/lake-controller",
+  "notes_label": "Release notes (pdf)"
  },
  {
   "name": "Green-GO Control",
@@ -289,7 +307,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -301,7 +319,7 @@
     "url": "https://downloads.greengoconnect.com/5.2.2/macos/green-go-control.dmg"
    }
   ],
-  "released": null,
+  "released": "2026-04-23",
   "notes": null,
   "notes_url": "https://manual.greengoconnect.com/en/software/",
   "notes_label": "Handleiding"
@@ -321,7 +339,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -353,7 +371,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -385,7 +403,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -413,7 +431,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -445,7 +463,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [],
   "released": "2026-10-07",
@@ -468,7 +486,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [],
   "released": "2026-03-03",
@@ -491,7 +509,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [],
   "released": "2017-07-09",
@@ -514,7 +532,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -537,7 +555,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -569,7 +587,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -601,7 +619,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -633,7 +651,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -665,7 +683,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -697,7 +715,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -729,7 +747,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -761,7 +779,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -793,7 +811,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -821,7 +839,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -853,11 +871,13 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [],
-  "released": null,
-  "notes": null,
+  "released": "2026-06-12",
+  "notes": [
+   "Fixed more CPU usage issues on Mac. Made level meter stay permanently, further updated how the plugin license ties to the machine. Minor bug fixes, UI changes. Added an entry field for \"optional info\" during activation for specific use cases involving inventory tracking (contact us for details). Increased the strength range, so that what is now 80% was the old 100% setting."
+  ],
   "notes_url": null,
   "notes_label": "Release notes"
  },
@@ -876,7 +896,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -908,7 +928,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -940,7 +960,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -952,8 +972,10 @@
     "url": "https://get.videolan.org/vlc/3.0.24/win64/vlc-3.0.24-win64.exe"
    }
   ],
-  "released": null,
-  "notes": null,
+  "released": "2026-09-22",
+  "notes": [
+   "VLC 3.0.24 is a major security update, with over 130 security fixes across VLC and its bundled libraries. It upgrades FFmpeg from 4.4 to 8.1.2 and updates 49 third-party libraries. New features include ATRAC decoding, CEA-708 captions in MP4, SRT listener mode and NV12 DirectShow capture on Windows. This release also fixes slow Windows startup when Daylight Saving Time changes and a MIDI playback crash on macOS 26 and later. More details on the release page. Security advisories will be updated a few days after the release."
+  ],
   "notes_url": null,
   "notes_label": "Release notes"
  },
@@ -972,7 +994,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1004,7 +1026,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1036,7 +1058,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [],
   "released": null,
@@ -1059,7 +1081,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1067,7 +1089,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum3_V2242_Offline_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-06",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1087,7 +1109,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1095,7 +1117,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/10/DiGiCo_Quantum2_V2242-4_Offline_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-10",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1115,7 +1137,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1123,7 +1145,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/10/DiGiCo_Quantum1_V2242-4_Offline_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-10",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1143,7 +1165,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1151,7 +1173,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum8_V2242_Offline_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-06",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1171,7 +1193,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1179,7 +1201,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum5_V2242_Offline_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-06",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1199,7 +1221,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1207,7 +1229,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_Quantum7_V2242_Offline_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-06",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1227,7 +1249,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1235,7 +1257,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD7_V2242_Offline_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-06",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1255,7 +1277,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1263,7 +1285,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD8_V2242_Offline_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-06",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1283,7 +1305,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1291,7 +1313,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD9_V2242_Offline_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-06",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1311,7 +1333,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1319,7 +1341,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD10_V2242_Offline_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-06",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1339,7 +1361,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1347,7 +1369,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD11_V2242_Offline_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-06",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1367,7 +1389,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1375,7 +1397,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD12_V2242_Offline_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-06",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1395,7 +1417,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1403,7 +1425,7 @@
     "url": "https://digico.biz/wp-content/uploads/2026/10/SDConvert_V2242-4_Installer.zip"
    }
   ],
-  "released": null,
+  "released": "2026-10",
   "notes": null,
   "notes_url": null,
   "notes_label": "Release notes"
@@ -1423,7 +1445,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1455,7 +1477,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1483,7 +1505,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
@@ -1511,7 +1533,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 11:01",
+  "checked": "2026-11-24 11:22",
   "tracked": true,
   "downloads": [
    {
