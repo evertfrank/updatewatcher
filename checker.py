@@ -8,6 +8,19 @@ DATA = pathlib.Path("docs")
 
 def vkey(v): return tuple(int(x) for x in v.split("."))
 
+LAX_TLS_HOSTS = set()   # hosts met insecure_tls: true in software.yml (server stuurt een onvolledige certificaatketen)
+
+def tls_for(url):
+    """Normaal volledige certificaatcontrole; alleen voor uitdrukkelijk genoemde hosts zonder controle."""
+    import ssl
+    host = urllib.parse.urlparse(url).hostname or ""
+    if host in LAX_TLS_HOSTS:
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        return ctx
+    return None
+
 def pdf_titles(data):
     """Leest de inhoudsopgave (bladwijzers) van een pdf zonder extra bibliotheek: daar staan vaak versie en datum in."""
     raw = data.decode("latin-1")
@@ -40,7 +53,7 @@ def fetch(url):
             raise ValueError(f"attribuut {attr} niet gevonden op {real}")
         return base64.b64decode(m.group(1)).decode("utf-8", "replace")
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 update-watcher"})
-    return urllib.request.urlopen(req, timeout=30).read().decode("utf-8", "replace")
+    return urllib.request.urlopen(req, timeout=30, context=tls_for(url)).read().decode("utf-8", "replace")
 
 def debug_dump(name, page):
     print(f"--- DEBUG {name}: {len(page)} tekens ontvangen", flush=True)
@@ -213,7 +226,7 @@ def resolve_downloads(it, ver):
 
 def fetch_bytes(url):
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 update-watcher"})
-    with urllib.request.urlopen(req, timeout=20) as resp:
+    with urllib.request.urlopen(req, timeout=20, context=tls_for(url)) as resp:
         return resp.read(400_000), resp.headers.get("Content-Type", "")
 
 ICON_EXT = {"image/png": "png", "image/svg+xml": "svg", "image/x-icon": "ico", "image/vnd.microsoft.icon": "ico", "image/jpeg": "jpg", "image/webp": "webp", "image/gif": "gif"}
@@ -277,6 +290,8 @@ def site_url(it):
 
 def run():
     cfg = yaml.safe_load(CFG.read_text())
+    LAX_TLS_HOSTS.update(urllib.parse.urlparse(u).hostname for it in cfg.get("items", []) if it.get("insecure_tls")
+                         for u in (it.get("url"), it.get("icon_site"), it.get("link")) if u and u.startswith("http"))
     f = DATA / "versions.json"
     old = {i["name"]: i for i in json.loads(f.read_text())} if f.exists() else {}
     now = datetime.datetime.now(ZoneInfo("Europe/Amsterdam")).strftime("%Y-%m-%d %H:%M")
