@@ -74,6 +74,8 @@ def fetch(url):
 
 def debug_dump(name, page):
     print(f"--- DEBUG {name}: {len(page)} tekens ontvangen", flush=True)
+    if len(page) < 3000:   # korte reactie: waarschijnlijk een blokkade- of doorverwijspagina, laat zien wat erin staat
+        print("     INHOUD", " ".join(re.sub(r"<[^>]+>", " ", page).split())[:400], flush=True)
     show = lambda tag, items, n: [print("    ", tag, " ".join(m.split())[:200], flush=True) for m in items[:n]]
     show("INPUT", re.findall(r"<input[^>]*(?:version|release)[^>]*>", page, re.I), 20)
     show("DATA ", re.findall(r"data-[\w-]*(?:version|release)[\w-]*=\"[^\"]*\"", page, re.I), 10)
@@ -344,6 +346,12 @@ def run():
         r["released"], r["notes"], r["notes_url"] = None, None, None
         if r["version"] and not r["error"]:
             extras(it, r)
+        if o.get("version") and o.get("version") == r["version"]:   # bron (tijdelijk) onbereikbaar: eerder gevonden gegevens bewaren
+            for k in ("released", "notes", "notes_url", "notes_label"):
+                if not r.get(k) and o.get(k):
+                    r[k] = o[k]
+            if not r["downloads"] and o.get("downloads"):
+                r["downloads"] = o["downloads"]
         if not r["icon"]:
             r["icon"] = site_icon(it)
         out.append(r)
