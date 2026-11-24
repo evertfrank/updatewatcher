@@ -316,16 +316,15 @@ def vendors_html(items):
     out = []
     for v, its in groups.items():
         src = next((i for i in its if i.get("icon")), None)
-        if len(its) == 1:
-            ico = icon_html(its[0])
-        elif src:
-            ico = icon_html({"icon": src["icon"], "name": v})
-        else:
-            ico = icon_html({"name": v})
+        if not src:          # geen echte afbeelding gevonden: niet tonen in de rij
+            continue
+        ico = icon_html({"icon": src["icon"], "name": v})
         n = len(its)
         cnt = f'<b>{n}</b>' if n > 1 else ""
         label = f"{v}: {n} programma's" if n > 1 else f"{v}: {its[0]['name']}"
         out.append(f'<button type="button" data-v="{e(v)}" aria-pressed="false" title="{e(label)}" aria-label="{e(label)}">{ico}{cnt}</button>')
+    if not out:
+        return ""
     return f'<div class="vendors" role="group" aria-label="Fabrikanten">{"".join(out)}</div>'
 
 def row_html(i, now, cat=""):
