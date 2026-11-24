@@ -14,7 +14,7 @@
   "previous": "4.18.0.11",
   "changed": "2026-11-23 14:48",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Windows",
@@ -45,7 +45,7 @@
   "previous": "5.6.4",
   "changed": "2026-11-23 15:01",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [],
   "released": "2026-10-28",
   "notes": [
@@ -82,7 +82,7 @@
   "previous": "7.8.3",
   "changed": "2026-11-23 16:05",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [],
   "released": "2026-10-06",
   "notes": null,
@@ -104,7 +104,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -126,7 +126,7 @@
   "previous": null,
   "changed": "2026-11-23 17:15",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -148,7 +148,7 @@
   "previous": "2026.2.2",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -183,7 +183,7 @@
   "previous": "2.5.3",
   "changed": "2026-11-23 15:41",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -214,7 +214,7 @@
   "previous": null,
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Windows",
@@ -248,7 +248,7 @@
   "previous": "8.1.6",
   "changed": "2026-11-23 16:16",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Windows",
@@ -275,7 +275,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Windows",
@@ -306,7 +306,7 @@
   "previous": null,
   "changed": "2026-11-23 16:37",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -337,7 +337,7 @@
   "previous": null,
   "changed": "2026-11-24 09:07",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -368,7 +368,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Download",
@@ -395,7 +395,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -426,7 +426,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [],
   "released": "2026-10-07",
   "notes": null,
@@ -448,7 +448,7 @@
   "previous": null,
   "changed": "2026-11-24 09:07",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [],
   "released": "2026-03-03",
   "notes": null,
@@ -470,7 +470,7 @@
   "previous": null,
   "changed": "2026-11-24 08:38",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [],
   "released": "2017-07-09",
   "notes": null,
@@ -492,7 +492,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -523,7 +523,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -554,7 +554,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -585,7 +585,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -616,7 +616,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -647,7 +647,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -678,7 +678,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -709,7 +709,7 @@
   "previous": null,
   "changed": "2026-11-23 16:55",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -728,7 +728,7 @@
  {
   "name": "cntrlld Spectra",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/cntrlld-com.png",
   "favorite": false,
   "icon_text": "",
   "link": "https://cntrlld.com/download",
@@ -740,7 +740,7 @@
   "previous": null,
   "changed": "2026-11-23 16:40",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -755,7 +755,7 @@
  {
   "name": "cntrlld ClearVox",
   "category": "PLUGINS",
-  "icon": "",
+  "icon": "icons/cntrlld-com.png",
   "favorite": false,
   "icon_text": "",
   "link": "https://cntrlld.com/clearvox/download",
@@ -767,7 +767,7 @@
   "previous": null,
   "changed": "2026-11-23 16:47",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
@@ -794,7 +794,7 @@
   "previous": null,
   "changed": "2026-11-23 18:39",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [],
   "released": null,
   "notes": null,
@@ -816,7 +816,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Download",
@@ -843,7 +843,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Download",
@@ -870,11 +870,146 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Download",
     "url": "https://digico.biz/wp-content/uploads/2026/10/DiGiCo_Quantum1_V2242-4_Offline_Installer.zip"
+   }
+  ],
+  "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "DiGiCo SD8 Offline",
+  "category": "MIXING & I/O",
+  "icon": "icons/digico-biz.png",
+  "favorite": false,
+  "icon_text": "SD8",
+  "link": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "website": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "vendor": "DiGiCo",
+  "strip": true,
+  "note": "",
+  "version": "2242",
+  "previous": null,
+  "changed": "2026-11-24 09:30",
+  "error": null,
+  "checked": "2026-11-24 09:30",
+  "downloads": [
+   {
+    "label": "Download",
+    "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD8_V2242_Offline_Installer.zip"
+   }
+  ],
+  "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "DiGiCo SD9 Offline",
+  "category": "MIXING & I/O",
+  "icon": "icons/digico-biz.png",
+  "favorite": false,
+  "icon_text": "SD9",
+  "link": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "website": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "vendor": "DiGiCo",
+  "strip": true,
+  "note": "",
+  "version": "2242",
+  "previous": null,
+  "changed": "2026-11-24 09:30",
+  "error": null,
+  "checked": "2026-11-24 09:30",
+  "downloads": [
+   {
+    "label": "Download",
+    "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD9_V2242_Offline_Installer.zip"
+   }
+  ],
+  "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "DiGiCo SD10 Offline",
+  "category": "MIXING & I/O",
+  "icon": "icons/digico-biz.png",
+  "favorite": false,
+  "icon_text": "SD10",
+  "link": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "website": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "vendor": "DiGiCo",
+  "strip": true,
+  "note": "",
+  "version": "2242",
+  "previous": null,
+  "changed": "2026-11-24 09:30",
+  "error": null,
+  "checked": "2026-11-24 09:30",
+  "downloads": [
+   {
+    "label": "Download",
+    "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD10_V2242_Offline_Installer.zip"
+   }
+  ],
+  "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "DiGiCo SD11 Offline",
+  "category": "MIXING & I/O",
+  "icon": "icons/digico-biz.png",
+  "favorite": false,
+  "icon_text": "SD11",
+  "link": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "website": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "vendor": "DiGiCo",
+  "strip": true,
+  "note": "",
+  "version": "2242",
+  "previous": null,
+  "changed": "2026-11-24 09:30",
+  "error": null,
+  "checked": "2026-11-24 09:30",
+  "downloads": [
+   {
+    "label": "Download",
+    "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD11_V2242_Offline_Installer.zip"
+   }
+  ],
+  "released": null,
+  "notes": null,
+  "notes_url": null,
+  "notes_label": "Release notes"
+ },
+ {
+  "name": "DiGiCo SD12 Offline",
+  "category": "MIXING & I/O",
+  "icon": "icons/digico-biz.png",
+  "favorite": false,
+  "icon_text": "SD12",
+  "link": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "website": "https://support.digico.biz/hc/en-gb/articles/52664429792529-Version-22-SD-Software",
+  "vendor": "DiGiCo",
+  "strip": true,
+  "note": "",
+  "version": "2242",
+  "previous": null,
+  "changed": "2026-11-24 09:30",
+  "error": null,
+  "checked": "2026-11-24 09:30",
+  "downloads": [
+   {
+    "label": "Download",
+    "url": "https://digico.biz/wp-content/uploads/2026/06/DiGiCo_SD12_V2242_Offline_Installer.zip"
    }
   ],
   "released": null,
@@ -897,7 +1032,7 @@
   "previous": null,
   "changed": null,
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Download",
@@ -924,7 +1059,7 @@
   "previous": null,
   "changed": "2026-11-23 18:49",
   "error": null,
-  "checked": "2026-11-24 09:17",
+  "checked": "2026-11-24 09:30",
   "downloads": [
    {
     "label": "Mac",
