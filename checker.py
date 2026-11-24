@@ -1,4 +1,4 @@
-import base64, json, re, sys, time, threading, urllib.request, html, datetime, pathlib, http.server, functools
+import base64, json, re, socket, sys, time, threading, urllib.request, html, datetime, pathlib, http.server, functools
 import yaml
 import urllib.parse
 from zoneinfo import ZoneInfo
@@ -35,6 +35,23 @@ def pdf_titles(data):
         out.append(b[2:].decode("utf-16-be", "replace") if b[:2] == b"\xfe\xff" else b.decode("latin-1"))
     return "\n".join(out)
 
+
+def open_v4_retry(req, **kw):
+    """Netwerkfout (bv. 'Network is unreachable' via IPv6 op GitHub)? Eén keer opnieuw, alleen via IPv4."""
+    try:
+        return urllib.request.urlopen(req, **kw)
+    except urllib.error.URLError as e:
+        if not isinstance(getattr(e, "reason", None), OSError):
+            raise
+        orig = socket.getaddrinfo
+        def v4(host, port, family=0, *a, **k):
+            return orig(host, port, socket.AF_INET, *a, **k)
+        socket.getaddrinfo = v4
+        try:
+            return urllib.request.urlopen(req, **kw)
+        finally:
+            socket.getaddrinfo = orig
+
 @functools.lru_cache(maxsize=None)
 def fetch(url):
     if url.startswith("pdftitles:"):   # bladwijzers van een pdf als tekst
@@ -53,7 +70,7 @@ def fetch(url):
             raise ValueError(f"attribuut {attr} niet gevonden op {real}")
         return base64.b64decode(m.group(1)).decode("utf-8", "replace")
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 update-watcher"})
-    return urllib.request.urlopen(req, timeout=30, context=tls_for(url)).read().decode("utf-8", "replace")
+    return open_v4_retry(req, timeout=30, context=tls_for(url)).read().decode("utf-8", "replace")
 
 def debug_dump(name, page):
     print(f"--- DEBUG {name}: {len(page)} tekens ontvangen", flush=True)
