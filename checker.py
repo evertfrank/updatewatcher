@@ -209,11 +209,13 @@ def run():
     now = datetime.datetime.now(ZoneInfo("Europe/Amsterdam")).strftime("%Y-%m-%d %H:%M")
     out = []
     for it in cfg["items"]:
-        o = old.get(it["name"], {})
+        o = dict(old.get(it["name"], {}))
+        if o and not o.get("tracked"):   # eenmalig: oude data telde de eerste controle ten onrechte als "nieuwe versie"
+            o["changed"] = None
         r = {"name": it["name"], "category": it.get("category", ""), "icon": it.get("icon", ""), "favorite": bool(it.get("favorite")), "icon_text": it.get("icon_text", ""),
              "link": it.get("link") or it.get("url"), "website": site_url(it), "vendor": it.get("vendor") or it["name"], "strip": it.get("strip", True), "note": it.get("note", ""),
              "version": o.get("version"), "previous": o.get("previous"),
-             "changed": o.get("changed"), "error": None, "checked": now}
+             "changed": o.get("changed"), "error": None, "checked": now, "tracked": True}
         if it.get("alt_url"):   # eerste bron niet bereikbaar? dan de tweede proberen
             try:
                 fetch(it["url"])
@@ -222,7 +224,9 @@ def run():
                 it = {**it, "url": it["alt_url"]}
         try:
             v, prev_page = check(it)
-            if v != r["version"]:
+            if r["version"] is None:            # eerste keer gezien: geen update, alleen vastleggen
+                r["version"] = v
+            elif v != r["version"]:             # echte nieuwe versie
                 r["previous"], r["version"], r["changed"] = r["version"], v, now
             if prev_page:
                 r["previous"] = prev_page   # echte vorige versie uit de pagina gaat voor
